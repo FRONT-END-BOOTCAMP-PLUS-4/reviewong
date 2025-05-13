@@ -123,12 +123,54 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  username: 'username',
+  nickname: 'nickname',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt',
   password: 'password',
-  profileImage: 'profileImage'
+  imageUrl: 'imageUrl',
+  reviewCount: 'reviewCount',
+  likeCount: 'likeCount',
+  gradeId: 'gradeId'
+};
+
+exports.Prisma.GradeScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.CodeSnippetScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.CodeSnippetCategoryScalarFieldEnum = {
+  codeId: 'codeId',
+  categoryId: 'categoryId'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  parentId: 'parentId',
+  userId: 'userId',
+  codeId: 'codeId'
+};
+
+exports.Prisma.ReviewLikeScalarFieldEnum = {
+  userId: 'userId',
+  reviewId: 'reviewId'
 };
 
 exports.Prisma.SortOrder = {
@@ -148,7 +190,13 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Grade: 'Grade',
+  CodeSnippet: 'CodeSnippet',
+  Category: 'Category',
+  CodeSnippetCategory: 'CodeSnippetCategory',
+  Review: 'Review',
+  ReviewLike: 'ReviewLike'
 };
 
 /**

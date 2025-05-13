@@ -18,6 +18,36 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Grade
+ * 
+ */
+export type Grade = $Result.DefaultSelection<Prisma.$GradePayload>
+/**
+ * Model CodeSnippet
+ * 
+ */
+export type CodeSnippet = $Result.DefaultSelection<Prisma.$CodeSnippetPayload>
+/**
+ * Model Category
+ * 
+ */
+export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
+/**
+ * Model CodeSnippetCategory
+ * 
+ */
+export type CodeSnippetCategory = $Result.DefaultSelection<Prisma.$CodeSnippetCategoryPayload>
+/**
+ * Model Review
+ * 
+ */
+export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
+/**
+ * Model ReviewLike
+ * 
+ */
+export type ReviewLike = $Result.DefaultSelection<Prisma.$ReviewLikePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +183,66 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.grade`: Exposes CRUD operations for the **Grade** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Grades
+    * const grades = await prisma.grade.findMany()
+    * ```
+    */
+  get grade(): Prisma.GradeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.codeSnippet`: Exposes CRUD operations for the **CodeSnippet** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CodeSnippets
+    * const codeSnippets = await prisma.codeSnippet.findMany()
+    * ```
+    */
+  get codeSnippet(): Prisma.CodeSnippetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.category`: Exposes CRUD operations for the **Category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categories
+    * const categories = await prisma.category.findMany()
+    * ```
+    */
+  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.codeSnippetCategory`: Exposes CRUD operations for the **CodeSnippetCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CodeSnippetCategories
+    * const codeSnippetCategories = await prisma.codeSnippetCategory.findMany()
+    * ```
+    */
+  get codeSnippetCategory(): Prisma.CodeSnippetCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.review`: Exposes CRUD operations for the **Review** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Reviews
+    * const reviews = await prisma.review.findMany()
+    * ```
+    */
+  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.reviewLike`: Exposes CRUD operations for the **ReviewLike** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ReviewLikes
+    * const reviewLikes = await prisma.reviewLike.findMany()
+    * ```
+    */
+  get reviewLike(): Prisma.ReviewLikeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +683,13 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Grade: 'Grade',
+    CodeSnippet: 'CodeSnippet',
+    Category: 'Category',
+    CodeSnippetCategory: 'CodeSnippetCategory',
+    Review: 'Review',
+    ReviewLike: 'ReviewLike'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "grade" | "codeSnippet" | "category" | "codeSnippetCategory" | "review" | "reviewLike"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +783,450 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Grade: {
+        payload: Prisma.$GradePayload<ExtArgs>
+        fields: Prisma.GradeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GradeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GradeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>
+          }
+          findFirst: {
+            args: Prisma.GradeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GradeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>
+          }
+          findMany: {
+            args: Prisma.GradeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>[]
+          }
+          create: {
+            args: Prisma.GradeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>
+          }
+          createMany: {
+            args: Prisma.GradeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GradeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>[]
+          }
+          delete: {
+            args: Prisma.GradeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>
+          }
+          update: {
+            args: Prisma.GradeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>
+          }
+          deleteMany: {
+            args: Prisma.GradeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GradeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GradeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>[]
+          }
+          upsert: {
+            args: Prisma.GradeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradePayload>
+          }
+          aggregate: {
+            args: Prisma.GradeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGrade>
+          }
+          groupBy: {
+            args: Prisma.GradeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GradeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GradeCountArgs<ExtArgs>
+            result: $Utils.Optional<GradeCountAggregateOutputType> | number
+          }
+        }
+      }
+      CodeSnippet: {
+        payload: Prisma.$CodeSnippetPayload<ExtArgs>
+        fields: Prisma.CodeSnippetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CodeSnippetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CodeSnippetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>
+          }
+          findFirst: {
+            args: Prisma.CodeSnippetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CodeSnippetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>
+          }
+          findMany: {
+            args: Prisma.CodeSnippetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>[]
+          }
+          create: {
+            args: Prisma.CodeSnippetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>
+          }
+          createMany: {
+            args: Prisma.CodeSnippetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CodeSnippetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>[]
+          }
+          delete: {
+            args: Prisma.CodeSnippetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>
+          }
+          update: {
+            args: Prisma.CodeSnippetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>
+          }
+          deleteMany: {
+            args: Prisma.CodeSnippetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CodeSnippetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CodeSnippetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>[]
+          }
+          upsert: {
+            args: Prisma.CodeSnippetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>
+          }
+          aggregate: {
+            args: Prisma.CodeSnippetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCodeSnippet>
+          }
+          groupBy: {
+            args: Prisma.CodeSnippetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CodeSnippetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CodeSnippetCountArgs<ExtArgs>
+            result: $Utils.Optional<CodeSnippetCountAggregateOutputType> | number
+          }
+        }
+      }
+      Category: {
+        payload: Prisma.$CategoryPayload<ExtArgs>
+        fields: Prisma.CategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.CategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          update: {
+            args: Prisma.CategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategory>
+          }
+          groupBy: {
+            args: Prisma.CategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      CodeSnippetCategory: {
+        payload: Prisma.$CodeSnippetCategoryPayload<ExtArgs>
+        fields: Prisma.CodeSnippetCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CodeSnippetCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CodeSnippetCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CodeSnippetCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CodeSnippetCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CodeSnippetCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CodeSnippetCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CodeSnippetCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CodeSnippetCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.CodeSnippetCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>
+          }
+          update: {
+            args: Prisma.CodeSnippetCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CodeSnippetCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CodeSnippetCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CodeSnippetCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CodeSnippetCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CodeSnippetCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCodeSnippetCategory>
+          }
+          groupBy: {
+            args: Prisma.CodeSnippetCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CodeSnippetCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CodeSnippetCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CodeSnippetCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      Review: {
+        payload: Prisma.$ReviewPayload<ExtArgs>
+        fields: Prisma.ReviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findFirst: {
+            args: Prisma.ReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findMany: {
+            args: Prisma.ReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          create: {
+            args: Prisma.ReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          createMany: {
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          delete: {
+            args: Prisma.ReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          update: {
+            args: Prisma.ReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.ReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          aggregate: {
+            args: Prisma.ReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReview>
+          }
+          groupBy: {
+            args: Prisma.ReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewCountAggregateOutputType> | number
+          }
+        }
+      }
+      ReviewLike: {
+        payload: Prisma.$ReviewLikePayload<ExtArgs>
+        fields: Prisma.ReviewLikeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReviewLikeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReviewLikeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>
+          }
+          findFirst: {
+            args: Prisma.ReviewLikeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReviewLikeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>
+          }
+          findMany: {
+            args: Prisma.ReviewLikeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>[]
+          }
+          create: {
+            args: Prisma.ReviewLikeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>
+          }
+          createMany: {
+            args: Prisma.ReviewLikeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReviewLikeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>[]
+          }
+          delete: {
+            args: Prisma.ReviewLikeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>
+          }
+          update: {
+            args: Prisma.ReviewLikeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>
+          }
+          deleteMany: {
+            args: Prisma.ReviewLikeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReviewLikeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReviewLikeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>[]
+          }
+          upsert: {
+            args: Prisma.ReviewLikeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>
+          }
+          aggregate: {
+            args: Prisma.ReviewLikeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReviewLike>
+          }
+          groupBy: {
+            args: Prisma.ReviewLikeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewLikeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReviewLikeCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewLikeCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +1315,12 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    grade?: GradeOmit
+    codeSnippet?: CodeSnippetOmit
+    category?: CategoryOmit
+    codeSnippetCategory?: CodeSnippetCategoryOmit
+    review?: ReviewOmit
+    reviewLike?: ReviewLikeOmit
   }
 
   /* Types for Logging */
@@ -864,6 +1410,187 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    codeSnippets: number
+    reviews: number
+    reviewLikes: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codeSnippets?: boolean | UserCountOutputTypeCountCodeSnippetsArgs
+    reviews?: boolean | UserCountOutputTypeCountReviewsArgs
+    reviewLikes?: boolean | UserCountOutputTypeCountReviewLikesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCodeSnippetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeSnippetWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReviewLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewLikeWhereInput
+  }
+
+
+  /**
+   * Count Type GradeCountOutputType
+   */
+
+  export type GradeCountOutputType = {
+    users: number
+  }
+
+  export type GradeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | GradeCountOutputTypeCountUsersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GradeCountOutputType without action
+   */
+  export type GradeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradeCountOutputType
+     */
+    select?: GradeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GradeCountOutputType without action
+   */
+  export type GradeCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+
+  /**
+   * Count Type CodeSnippetCountOutputType
+   */
+
+  export type CodeSnippetCountOutputType = {
+    reviews: number
+    categories: number
+  }
+
+  export type CodeSnippetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews?: boolean | CodeSnippetCountOutputTypeCountReviewsArgs
+    categories?: boolean | CodeSnippetCountOutputTypeCountCategoriesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CodeSnippetCountOutputType without action
+   */
+  export type CodeSnippetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCountOutputType
+     */
+    select?: CodeSnippetCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CodeSnippetCountOutputType without action
+   */
+  export type CodeSnippetCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
+  /**
+   * CodeSnippetCountOutputType without action
+   */
+  export type CodeSnippetCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeSnippetCategoryWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    codeSnippetCategories: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codeSnippetCategories?: boolean | CategoryCountOutputTypeCountCodeSnippetCategoriesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountCodeSnippetCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeSnippetCategoryWhereInput
+  }
+
+
+  /**
+   * Count Type ReviewCountOutputType
+   */
+
+  export type ReviewCountOutputType = {
+    likes: number
+  }
+
+  export type ReviewCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    likes?: boolean | ReviewCountOutputTypeCountLikesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ReviewCountOutputType without action
+   */
+  export type ReviewCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewCountOutputType
+     */
+    select?: ReviewCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ReviewCountOutputType without action
+   */
+  export type ReviewCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewLikeWhereInput
+  }
+
 
   /**
    * Models
@@ -875,76 +1602,120 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserAvgAggregateOutputType = {
+    reviewCount: number | null
+    likeCount: number | null
+    gradeId: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    reviewCount: number | null
+    likeCount: number | null
+    gradeId: number | null
   }
 
   export type UserMinAggregateOutputType = {
     id: string | null
     email: string | null
-    username: string | null
+    nickname: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
     password: string | null
-    profileImage: string | null
+    imageUrl: string | null
+    reviewCount: number | null
+    likeCount: number | null
+    gradeId: number | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     email: string | null
-    username: string | null
+    nickname: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
     password: string | null
-    profileImage: string | null
+    imageUrl: string | null
+    reviewCount: number | null
+    likeCount: number | null
+    gradeId: number | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     email: number
-    username: number
+    nickname: number
     createdAt: number
     updatedAt: number
     deletedAt: number
     password: number
-    profileImage: number
+    imageUrl: number
+    reviewCount: number
+    likeCount: number
+    gradeId: number
     _all: number
   }
 
 
+  export type UserAvgAggregateInputType = {
+    reviewCount?: true
+    likeCount?: true
+    gradeId?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    reviewCount?: true
+    likeCount?: true
+    gradeId?: true
+  }
+
   export type UserMinAggregateInputType = {
     id?: true
     email?: true
-    username?: true
+    nickname?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
     password?: true
-    profileImage?: true
+    imageUrl?: true
+    reviewCount?: true
+    likeCount?: true
+    gradeId?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
-    username?: true
+    nickname?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
     password?: true
-    profileImage?: true
+    imageUrl?: true
+    reviewCount?: true
+    likeCount?: true
+    gradeId?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
-    username?: true
+    nickname?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
     password?: true
-    profileImage?: true
+    imageUrl?: true
+    reviewCount?: true
+    likeCount?: true
+    gradeId?: true
     _all?: true
   }
 
@@ -986,6 +1757,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1016,6 +1799,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -1023,13 +1808,18 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     email: string
-    username: string
+    nickname: string
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
     password: string
-    profileImage: string | null
+    imageUrl: string | null
+    reviewCount: number
+    likeCount: number
+    gradeId: number | null
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1051,61 +1841,101 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
-    username?: boolean
+    nickname?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
     password?: boolean
-    profileImage?: boolean
+    imageUrl?: boolean
+    reviewCount?: boolean
+    likeCount?: boolean
+    gradeId?: boolean
+    grade?: boolean | User$gradeArgs<ExtArgs>
+    codeSnippets?: boolean | User$codeSnippetsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
+    reviewLikes?: boolean | User$reviewLikesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
-    username?: boolean
+    nickname?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
     password?: boolean
-    profileImage?: boolean
+    imageUrl?: boolean
+    reviewCount?: boolean
+    likeCount?: boolean
+    gradeId?: boolean
+    grade?: boolean | User$gradeArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
-    username?: boolean
+    nickname?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
     password?: boolean
-    profileImage?: boolean
+    imageUrl?: boolean
+    reviewCount?: boolean
+    likeCount?: boolean
+    gradeId?: boolean
+    grade?: boolean | User$gradeArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
-    username?: boolean
+    nickname?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
     password?: boolean
-    profileImage?: boolean
+    imageUrl?: boolean
+    reviewCount?: boolean
+    likeCount?: boolean
+    gradeId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "createdAt" | "updatedAt" | "deletedAt" | "password" | "profileImage", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "nickname" | "createdAt" | "updatedAt" | "deletedAt" | "password" | "imageUrl" | "reviewCount" | "likeCount" | "gradeId", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grade?: boolean | User$gradeArgs<ExtArgs>
+    codeSnippets?: boolean | User$codeSnippetsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
+    reviewLikes?: boolean | User$reviewLikesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grade?: boolean | User$gradeArgs<ExtArgs>
+  }
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grade?: boolean | User$gradeArgs<ExtArgs>
+  }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      grade: Prisma.$GradePayload<ExtArgs> | null
+      codeSnippets: Prisma.$CodeSnippetPayload<ExtArgs>[]
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
+      reviewLikes: Prisma.$ReviewLikePayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
-      username: string
+      nickname: string
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
       password: string
-      profileImage: string | null
+      imageUrl: string | null
+      reviewCount: number
+      likeCount: number
+      gradeId: number | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1500,6 +2330,10 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    grade<T extends User$gradeArgs<ExtArgs> = {}>(args?: Subset<T, User$gradeArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    codeSnippets<T extends User$codeSnippetsArgs<ExtArgs> = {}>(args?: Subset<T, User$codeSnippetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviewLikes<T extends User$reviewLikesArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewLikesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1531,12 +2365,15 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly username: FieldRef<"User", 'String'>
+    readonly nickname: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly deletedAt: FieldRef<"User", 'DateTime'>
     readonly password: FieldRef<"User", 'String'>
-    readonly profileImage: FieldRef<"User", 'String'>
+    readonly imageUrl: FieldRef<"User", 'String'>
+    readonly reviewCount: FieldRef<"User", 'Int'>
+    readonly likeCount: FieldRef<"User", 'Int'>
+    readonly gradeId: FieldRef<"User", 'Int'>
   }
     
 
@@ -1553,6 +2390,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1572,6 +2413,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1589,6 +2434,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1638,6 +2487,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1686,6 +2539,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1729,6 +2586,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The data needed to create a User.
      */
     data: XOR<UserCreateInput, UserUncheckedCreateInput>
@@ -1762,6 +2623,10 @@ export namespace Prisma {
      */
     data: UserCreateManyInput | UserCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1776,6 +2641,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1828,6 +2697,10 @@ export namespace Prisma {
      * Limit how many Users to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1842,6 +2715,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The filter to search for the User to update in case it exists.
      */
@@ -1869,6 +2746,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1889,6 +2770,97 @@ export namespace Prisma {
   }
 
   /**
+   * User.grade
+   */
+  export type User$gradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    where?: GradeWhereInput
+  }
+
+  /**
+   * User.codeSnippets
+   */
+  export type User$codeSnippetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    where?: CodeSnippetWhereInput
+    orderBy?: CodeSnippetOrderByWithRelationInput | CodeSnippetOrderByWithRelationInput[]
+    cursor?: CodeSnippetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CodeSnippetScalarFieldEnum | CodeSnippetScalarFieldEnum[]
+  }
+
+  /**
+   * User.reviews
+   */
+  export type User$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * User.reviewLikes
+   */
+  export type User$reviewLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    where?: ReviewLikeWhereInput
+    orderBy?: ReviewLikeOrderByWithRelationInput | ReviewLikeOrderByWithRelationInput[]
+    cursor?: ReviewLikeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewLikeScalarFieldEnum | ReviewLikeScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1900,6 +2872,6593 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Grade
+   */
+
+  export type AggregateGrade = {
+    _count: GradeCountAggregateOutputType | null
+    _avg: GradeAvgAggregateOutputType | null
+    _sum: GradeSumAggregateOutputType | null
+    _min: GradeMinAggregateOutputType | null
+    _max: GradeMaxAggregateOutputType | null
+  }
+
+  export type GradeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type GradeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type GradeMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type GradeMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type GradeCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type GradeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type GradeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type GradeMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type GradeMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type GradeCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type GradeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Grade to aggregate.
+     */
+    where?: GradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Grades to fetch.
+     */
+    orderBy?: GradeOrderByWithRelationInput | GradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Grades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Grades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Grades
+    **/
+    _count?: true | GradeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GradeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GradeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GradeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GradeMaxAggregateInputType
+  }
+
+  export type GetGradeAggregateType<T extends GradeAggregateArgs> = {
+        [P in keyof T & keyof AggregateGrade]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGrade[P]>
+      : GetScalarType<T[P], AggregateGrade[P]>
+  }
+
+
+
+
+  export type GradeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GradeWhereInput
+    orderBy?: GradeOrderByWithAggregationInput | GradeOrderByWithAggregationInput[]
+    by: GradeScalarFieldEnum[] | GradeScalarFieldEnum
+    having?: GradeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GradeCountAggregateInputType | true
+    _avg?: GradeAvgAggregateInputType
+    _sum?: GradeSumAggregateInputType
+    _min?: GradeMinAggregateInputType
+    _max?: GradeMaxAggregateInputType
+  }
+
+  export type GradeGroupByOutputType = {
+    id: number
+    name: string
+    _count: GradeCountAggregateOutputType | null
+    _avg: GradeAvgAggregateOutputType | null
+    _sum: GradeSumAggregateOutputType | null
+    _min: GradeMinAggregateOutputType | null
+    _max: GradeMaxAggregateOutputType | null
+  }
+
+  type GetGradeGroupByPayload<T extends GradeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GradeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GradeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GradeGroupByOutputType[P]>
+            : GetScalarType<T[P], GradeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GradeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    users?: boolean | Grade$usersArgs<ExtArgs>
+    _count?: boolean | GradeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["grade"]>
+
+  export type GradeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["grade"]>
+
+  export type GradeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["grade"]>
+
+  export type GradeSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type GradeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["grade"]>
+  export type GradeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | Grade$usersArgs<ExtArgs>
+    _count?: boolean | GradeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GradeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type GradeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $GradePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Grade"
+    objects: {
+      users: Prisma.$UserPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["grade"]>
+    composites: {}
+  }
+
+  type GradeGetPayload<S extends boolean | null | undefined | GradeDefaultArgs> = $Result.GetResult<Prisma.$GradePayload, S>
+
+  type GradeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GradeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GradeCountAggregateInputType | true
+    }
+
+  export interface GradeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Grade'], meta: { name: 'Grade' } }
+    /**
+     * Find zero or one Grade that matches the filter.
+     * @param {GradeFindUniqueArgs} args - Arguments to find a Grade
+     * @example
+     * // Get one Grade
+     * const grade = await prisma.grade.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GradeFindUniqueArgs>(args: SelectSubset<T, GradeFindUniqueArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Grade that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GradeFindUniqueOrThrowArgs} args - Arguments to find a Grade
+     * @example
+     * // Get one Grade
+     * const grade = await prisma.grade.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GradeFindUniqueOrThrowArgs>(args: SelectSubset<T, GradeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Grade that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeFindFirstArgs} args - Arguments to find a Grade
+     * @example
+     * // Get one Grade
+     * const grade = await prisma.grade.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GradeFindFirstArgs>(args?: SelectSubset<T, GradeFindFirstArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Grade that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeFindFirstOrThrowArgs} args - Arguments to find a Grade
+     * @example
+     * // Get one Grade
+     * const grade = await prisma.grade.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GradeFindFirstOrThrowArgs>(args?: SelectSubset<T, GradeFindFirstOrThrowArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Grades that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Grades
+     * const grades = await prisma.grade.findMany()
+     * 
+     * // Get first 10 Grades
+     * const grades = await prisma.grade.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const gradeWithIdOnly = await prisma.grade.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GradeFindManyArgs>(args?: SelectSubset<T, GradeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Grade.
+     * @param {GradeCreateArgs} args - Arguments to create a Grade.
+     * @example
+     * // Create one Grade
+     * const Grade = await prisma.grade.create({
+     *   data: {
+     *     // ... data to create a Grade
+     *   }
+     * })
+     * 
+     */
+    create<T extends GradeCreateArgs>(args: SelectSubset<T, GradeCreateArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Grades.
+     * @param {GradeCreateManyArgs} args - Arguments to create many Grades.
+     * @example
+     * // Create many Grades
+     * const grade = await prisma.grade.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GradeCreateManyArgs>(args?: SelectSubset<T, GradeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Grades and returns the data saved in the database.
+     * @param {GradeCreateManyAndReturnArgs} args - Arguments to create many Grades.
+     * @example
+     * // Create many Grades
+     * const grade = await prisma.grade.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Grades and only return the `id`
+     * const gradeWithIdOnly = await prisma.grade.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GradeCreateManyAndReturnArgs>(args?: SelectSubset<T, GradeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Grade.
+     * @param {GradeDeleteArgs} args - Arguments to delete one Grade.
+     * @example
+     * // Delete one Grade
+     * const Grade = await prisma.grade.delete({
+     *   where: {
+     *     // ... filter to delete one Grade
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GradeDeleteArgs>(args: SelectSubset<T, GradeDeleteArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Grade.
+     * @param {GradeUpdateArgs} args - Arguments to update one Grade.
+     * @example
+     * // Update one Grade
+     * const grade = await prisma.grade.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GradeUpdateArgs>(args: SelectSubset<T, GradeUpdateArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Grades.
+     * @param {GradeDeleteManyArgs} args - Arguments to filter Grades to delete.
+     * @example
+     * // Delete a few Grades
+     * const { count } = await prisma.grade.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GradeDeleteManyArgs>(args?: SelectSubset<T, GradeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Grades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Grades
+     * const grade = await prisma.grade.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GradeUpdateManyArgs>(args: SelectSubset<T, GradeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Grades and returns the data updated in the database.
+     * @param {GradeUpdateManyAndReturnArgs} args - Arguments to update many Grades.
+     * @example
+     * // Update many Grades
+     * const grade = await prisma.grade.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Grades and only return the `id`
+     * const gradeWithIdOnly = await prisma.grade.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GradeUpdateManyAndReturnArgs>(args: SelectSubset<T, GradeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Grade.
+     * @param {GradeUpsertArgs} args - Arguments to update or create a Grade.
+     * @example
+     * // Update or create a Grade
+     * const grade = await prisma.grade.upsert({
+     *   create: {
+     *     // ... data to create a Grade
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Grade we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GradeUpsertArgs>(args: SelectSubset<T, GradeUpsertArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Grades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeCountArgs} args - Arguments to filter Grades to count.
+     * @example
+     * // Count the number of Grades
+     * const count = await prisma.grade.count({
+     *   where: {
+     *     // ... the filter for the Grades we want to count
+     *   }
+     * })
+    **/
+    count<T extends GradeCountArgs>(
+      args?: Subset<T, GradeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GradeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Grade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GradeAggregateArgs>(args: Subset<T, GradeAggregateArgs>): Prisma.PrismaPromise<GetGradeAggregateType<T>>
+
+    /**
+     * Group by Grade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GradeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GradeGroupByArgs['orderBy'] }
+        : { orderBy?: GradeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GradeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGradeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Grade model
+   */
+  readonly fields: GradeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Grade.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GradeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    users<T extends Grade$usersArgs<ExtArgs> = {}>(args?: Subset<T, Grade$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Grade model
+   */
+  interface GradeFieldRefs {
+    readonly id: FieldRef<"Grade", 'Int'>
+    readonly name: FieldRef<"Grade", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Grade findUnique
+   */
+  export type GradeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Grade to fetch.
+     */
+    where: GradeWhereUniqueInput
+  }
+
+  /**
+   * Grade findUniqueOrThrow
+   */
+  export type GradeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Grade to fetch.
+     */
+    where: GradeWhereUniqueInput
+  }
+
+  /**
+   * Grade findFirst
+   */
+  export type GradeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Grade to fetch.
+     */
+    where?: GradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Grades to fetch.
+     */
+    orderBy?: GradeOrderByWithRelationInput | GradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Grades.
+     */
+    cursor?: GradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Grades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Grades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Grades.
+     */
+    distinct?: GradeScalarFieldEnum | GradeScalarFieldEnum[]
+  }
+
+  /**
+   * Grade findFirstOrThrow
+   */
+  export type GradeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Grade to fetch.
+     */
+    where?: GradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Grades to fetch.
+     */
+    orderBy?: GradeOrderByWithRelationInput | GradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Grades.
+     */
+    cursor?: GradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Grades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Grades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Grades.
+     */
+    distinct?: GradeScalarFieldEnum | GradeScalarFieldEnum[]
+  }
+
+  /**
+   * Grade findMany
+   */
+  export type GradeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Grades to fetch.
+     */
+    where?: GradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Grades to fetch.
+     */
+    orderBy?: GradeOrderByWithRelationInput | GradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Grades.
+     */
+    cursor?: GradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Grades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Grades.
+     */
+    skip?: number
+    distinct?: GradeScalarFieldEnum | GradeScalarFieldEnum[]
+  }
+
+  /**
+   * Grade create
+   */
+  export type GradeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Grade.
+     */
+    data: XOR<GradeCreateInput, GradeUncheckedCreateInput>
+  }
+
+  /**
+   * Grade createMany
+   */
+  export type GradeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Grades.
+     */
+    data: GradeCreateManyInput | GradeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Grade createManyAndReturn
+   */
+  export type GradeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Grades.
+     */
+    data: GradeCreateManyInput | GradeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Grade update
+   */
+  export type GradeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Grade.
+     */
+    data: XOR<GradeUpdateInput, GradeUncheckedUpdateInput>
+    /**
+     * Choose, which Grade to update.
+     */
+    where: GradeWhereUniqueInput
+  }
+
+  /**
+   * Grade updateMany
+   */
+  export type GradeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Grades.
+     */
+    data: XOR<GradeUpdateManyMutationInput, GradeUncheckedUpdateManyInput>
+    /**
+     * Filter which Grades to update
+     */
+    where?: GradeWhereInput
+    /**
+     * Limit how many Grades to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Grade updateManyAndReturn
+   */
+  export type GradeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * The data used to update Grades.
+     */
+    data: XOR<GradeUpdateManyMutationInput, GradeUncheckedUpdateManyInput>
+    /**
+     * Filter which Grades to update
+     */
+    where?: GradeWhereInput
+    /**
+     * Limit how many Grades to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Grade upsert
+   */
+  export type GradeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Grade to update in case it exists.
+     */
+    where: GradeWhereUniqueInput
+    /**
+     * In case the Grade found by the `where` argument doesn't exist, create a new Grade with this data.
+     */
+    create: XOR<GradeCreateInput, GradeUncheckedCreateInput>
+    /**
+     * In case the Grade was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GradeUpdateInput, GradeUncheckedUpdateInput>
+  }
+
+  /**
+   * Grade delete
+   */
+  export type GradeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+    /**
+     * Filter which Grade to delete.
+     */
+    where: GradeWhereUniqueInput
+  }
+
+  /**
+   * Grade deleteMany
+   */
+  export type GradeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Grades to delete
+     */
+    where?: GradeWhereInput
+    /**
+     * Limit how many Grades to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Grade.users
+   */
+  export type Grade$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * Grade without action
+   */
+  export type GradeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Grade
+     */
+    select?: GradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Grade
+     */
+    omit?: GradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CodeSnippet
+   */
+
+  export type AggregateCodeSnippet = {
+    _count: CodeSnippetCountAggregateOutputType | null
+    _avg: CodeSnippetAvgAggregateOutputType | null
+    _sum: CodeSnippetSumAggregateOutputType | null
+    _min: CodeSnippetMinAggregateOutputType | null
+    _max: CodeSnippetMaxAggregateOutputType | null
+  }
+
+  export type CodeSnippetAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CodeSnippetSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CodeSnippetMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+  }
+
+  export type CodeSnippetMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+  }
+
+  export type CodeSnippetCountAggregateOutputType = {
+    id: number
+    title: number
+    content: number
+    createdAt: number
+    updatedAt: number
+    userId: number
+    _all: number
+  }
+
+
+  export type CodeSnippetAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CodeSnippetSumAggregateInputType = {
+    id?: true
+  }
+
+  export type CodeSnippetMinAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+  }
+
+  export type CodeSnippetMaxAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+  }
+
+  export type CodeSnippetCountAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type CodeSnippetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodeSnippet to aggregate.
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippets to fetch.
+     */
+    orderBy?: CodeSnippetOrderByWithRelationInput | CodeSnippetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CodeSnippetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CodeSnippets
+    **/
+    _count?: true | CodeSnippetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CodeSnippetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CodeSnippetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CodeSnippetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CodeSnippetMaxAggregateInputType
+  }
+
+  export type GetCodeSnippetAggregateType<T extends CodeSnippetAggregateArgs> = {
+        [P in keyof T & keyof AggregateCodeSnippet]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCodeSnippet[P]>
+      : GetScalarType<T[P], AggregateCodeSnippet[P]>
+  }
+
+
+
+
+  export type CodeSnippetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeSnippetWhereInput
+    orderBy?: CodeSnippetOrderByWithAggregationInput | CodeSnippetOrderByWithAggregationInput[]
+    by: CodeSnippetScalarFieldEnum[] | CodeSnippetScalarFieldEnum
+    having?: CodeSnippetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CodeSnippetCountAggregateInputType | true
+    _avg?: CodeSnippetAvgAggregateInputType
+    _sum?: CodeSnippetSumAggregateInputType
+    _min?: CodeSnippetMinAggregateInputType
+    _max?: CodeSnippetMaxAggregateInputType
+  }
+
+  export type CodeSnippetGroupByOutputType = {
+    id: number
+    title: string
+    content: string
+    createdAt: Date
+    updatedAt: Date
+    userId: string
+    _count: CodeSnippetCountAggregateOutputType | null
+    _avg: CodeSnippetAvgAggregateOutputType | null
+    _sum: CodeSnippetSumAggregateOutputType | null
+    _min: CodeSnippetMinAggregateOutputType | null
+    _max: CodeSnippetMaxAggregateOutputType | null
+  }
+
+  type GetCodeSnippetGroupByPayload<T extends CodeSnippetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CodeSnippetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CodeSnippetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CodeSnippetGroupByOutputType[P]>
+            : GetScalarType<T[P], CodeSnippetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CodeSnippetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | CodeSnippet$reviewsArgs<ExtArgs>
+    categories?: boolean | CodeSnippet$categoriesArgs<ExtArgs>
+    _count?: boolean | CodeSnippetCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeSnippet"]>
+
+  export type CodeSnippetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeSnippet"]>
+
+  export type CodeSnippetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeSnippet"]>
+
+  export type CodeSnippetSelectScalar = {
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+  }
+
+  export type CodeSnippetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["codeSnippet"]>
+  export type CodeSnippetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | CodeSnippet$reviewsArgs<ExtArgs>
+    categories?: boolean | CodeSnippet$categoriesArgs<ExtArgs>
+    _count?: boolean | CodeSnippetCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CodeSnippetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CodeSnippetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CodeSnippetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CodeSnippet"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
+      categories: Prisma.$CodeSnippetCategoryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      content: string
+      createdAt: Date
+      updatedAt: Date
+      userId: string
+    }, ExtArgs["result"]["codeSnippet"]>
+    composites: {}
+  }
+
+  type CodeSnippetGetPayload<S extends boolean | null | undefined | CodeSnippetDefaultArgs> = $Result.GetResult<Prisma.$CodeSnippetPayload, S>
+
+  type CodeSnippetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CodeSnippetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CodeSnippetCountAggregateInputType | true
+    }
+
+  export interface CodeSnippetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeSnippet'], meta: { name: 'CodeSnippet' } }
+    /**
+     * Find zero or one CodeSnippet that matches the filter.
+     * @param {CodeSnippetFindUniqueArgs} args - Arguments to find a CodeSnippet
+     * @example
+     * // Get one CodeSnippet
+     * const codeSnippet = await prisma.codeSnippet.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CodeSnippetFindUniqueArgs>(args: SelectSubset<T, CodeSnippetFindUniqueArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CodeSnippet that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CodeSnippetFindUniqueOrThrowArgs} args - Arguments to find a CodeSnippet
+     * @example
+     * // Get one CodeSnippet
+     * const codeSnippet = await prisma.codeSnippet.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CodeSnippetFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeSnippetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodeSnippet that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetFindFirstArgs} args - Arguments to find a CodeSnippet
+     * @example
+     * // Get one CodeSnippet
+     * const codeSnippet = await prisma.codeSnippet.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CodeSnippetFindFirstArgs>(args?: SelectSubset<T, CodeSnippetFindFirstArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodeSnippet that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetFindFirstOrThrowArgs} args - Arguments to find a CodeSnippet
+     * @example
+     * // Get one CodeSnippet
+     * const codeSnippet = await prisma.codeSnippet.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CodeSnippetFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeSnippetFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CodeSnippets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CodeSnippets
+     * const codeSnippets = await prisma.codeSnippet.findMany()
+     * 
+     * // Get first 10 CodeSnippets
+     * const codeSnippets = await prisma.codeSnippet.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const codeSnippetWithIdOnly = await prisma.codeSnippet.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CodeSnippetFindManyArgs>(args?: SelectSubset<T, CodeSnippetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CodeSnippet.
+     * @param {CodeSnippetCreateArgs} args - Arguments to create a CodeSnippet.
+     * @example
+     * // Create one CodeSnippet
+     * const CodeSnippet = await prisma.codeSnippet.create({
+     *   data: {
+     *     // ... data to create a CodeSnippet
+     *   }
+     * })
+     * 
+     */
+    create<T extends CodeSnippetCreateArgs>(args: SelectSubset<T, CodeSnippetCreateArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CodeSnippets.
+     * @param {CodeSnippetCreateManyArgs} args - Arguments to create many CodeSnippets.
+     * @example
+     * // Create many CodeSnippets
+     * const codeSnippet = await prisma.codeSnippet.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CodeSnippetCreateManyArgs>(args?: SelectSubset<T, CodeSnippetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CodeSnippets and returns the data saved in the database.
+     * @param {CodeSnippetCreateManyAndReturnArgs} args - Arguments to create many CodeSnippets.
+     * @example
+     * // Create many CodeSnippets
+     * const codeSnippet = await prisma.codeSnippet.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CodeSnippets and only return the `id`
+     * const codeSnippetWithIdOnly = await prisma.codeSnippet.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CodeSnippetCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeSnippetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CodeSnippet.
+     * @param {CodeSnippetDeleteArgs} args - Arguments to delete one CodeSnippet.
+     * @example
+     * // Delete one CodeSnippet
+     * const CodeSnippet = await prisma.codeSnippet.delete({
+     *   where: {
+     *     // ... filter to delete one CodeSnippet
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CodeSnippetDeleteArgs>(args: SelectSubset<T, CodeSnippetDeleteArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CodeSnippet.
+     * @param {CodeSnippetUpdateArgs} args - Arguments to update one CodeSnippet.
+     * @example
+     * // Update one CodeSnippet
+     * const codeSnippet = await prisma.codeSnippet.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CodeSnippetUpdateArgs>(args: SelectSubset<T, CodeSnippetUpdateArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CodeSnippets.
+     * @param {CodeSnippetDeleteManyArgs} args - Arguments to filter CodeSnippets to delete.
+     * @example
+     * // Delete a few CodeSnippets
+     * const { count } = await prisma.codeSnippet.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CodeSnippetDeleteManyArgs>(args?: SelectSubset<T, CodeSnippetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodeSnippets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CodeSnippets
+     * const codeSnippet = await prisma.codeSnippet.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CodeSnippetUpdateManyArgs>(args: SelectSubset<T, CodeSnippetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodeSnippets and returns the data updated in the database.
+     * @param {CodeSnippetUpdateManyAndReturnArgs} args - Arguments to update many CodeSnippets.
+     * @example
+     * // Update many CodeSnippets
+     * const codeSnippet = await prisma.codeSnippet.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CodeSnippets and only return the `id`
+     * const codeSnippetWithIdOnly = await prisma.codeSnippet.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CodeSnippetUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeSnippetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CodeSnippet.
+     * @param {CodeSnippetUpsertArgs} args - Arguments to update or create a CodeSnippet.
+     * @example
+     * // Update or create a CodeSnippet
+     * const codeSnippet = await prisma.codeSnippet.upsert({
+     *   create: {
+     *     // ... data to create a CodeSnippet
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CodeSnippet we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CodeSnippetUpsertArgs>(args: SelectSubset<T, CodeSnippetUpsertArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CodeSnippets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCountArgs} args - Arguments to filter CodeSnippets to count.
+     * @example
+     * // Count the number of CodeSnippets
+     * const count = await prisma.codeSnippet.count({
+     *   where: {
+     *     // ... the filter for the CodeSnippets we want to count
+     *   }
+     * })
+    **/
+    count<T extends CodeSnippetCountArgs>(
+      args?: Subset<T, CodeSnippetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CodeSnippetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CodeSnippet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CodeSnippetAggregateArgs>(args: Subset<T, CodeSnippetAggregateArgs>): Prisma.PrismaPromise<GetCodeSnippetAggregateType<T>>
+
+    /**
+     * Group by CodeSnippet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CodeSnippetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CodeSnippetGroupByArgs['orderBy'] }
+        : { orderBy?: CodeSnippetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CodeSnippetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodeSnippetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CodeSnippet model
+   */
+  readonly fields: CodeSnippetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CodeSnippet.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CodeSnippetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviews<T extends CodeSnippet$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippet$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categories<T extends CodeSnippet$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippet$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CodeSnippet model
+   */
+  interface CodeSnippetFieldRefs {
+    readonly id: FieldRef<"CodeSnippet", 'Int'>
+    readonly title: FieldRef<"CodeSnippet", 'String'>
+    readonly content: FieldRef<"CodeSnippet", 'String'>
+    readonly createdAt: FieldRef<"CodeSnippet", 'DateTime'>
+    readonly updatedAt: FieldRef<"CodeSnippet", 'DateTime'>
+    readonly userId: FieldRef<"CodeSnippet", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CodeSnippet findUnique
+   */
+  export type CodeSnippetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippet to fetch.
+     */
+    where: CodeSnippetWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippet findUniqueOrThrow
+   */
+  export type CodeSnippetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippet to fetch.
+     */
+    where: CodeSnippetWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippet findFirst
+   */
+  export type CodeSnippetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippet to fetch.
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippets to fetch.
+     */
+    orderBy?: CodeSnippetOrderByWithRelationInput | CodeSnippetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodeSnippets.
+     */
+    cursor?: CodeSnippetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeSnippets.
+     */
+    distinct?: CodeSnippetScalarFieldEnum | CodeSnippetScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippet findFirstOrThrow
+   */
+  export type CodeSnippetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippet to fetch.
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippets to fetch.
+     */
+    orderBy?: CodeSnippetOrderByWithRelationInput | CodeSnippetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodeSnippets.
+     */
+    cursor?: CodeSnippetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeSnippets.
+     */
+    distinct?: CodeSnippetScalarFieldEnum | CodeSnippetScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippet findMany
+   */
+  export type CodeSnippetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippets to fetch.
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippets to fetch.
+     */
+    orderBy?: CodeSnippetOrderByWithRelationInput | CodeSnippetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CodeSnippets.
+     */
+    cursor?: CodeSnippetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippets.
+     */
+    skip?: number
+    distinct?: CodeSnippetScalarFieldEnum | CodeSnippetScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippet create
+   */
+  export type CodeSnippetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CodeSnippet.
+     */
+    data: XOR<CodeSnippetCreateInput, CodeSnippetUncheckedCreateInput>
+  }
+
+  /**
+   * CodeSnippet createMany
+   */
+  export type CodeSnippetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CodeSnippets.
+     */
+    data: CodeSnippetCreateManyInput | CodeSnippetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CodeSnippet createManyAndReturn
+   */
+  export type CodeSnippetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * The data used to create many CodeSnippets.
+     */
+    data: CodeSnippetCreateManyInput | CodeSnippetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CodeSnippet update
+   */
+  export type CodeSnippetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CodeSnippet.
+     */
+    data: XOR<CodeSnippetUpdateInput, CodeSnippetUncheckedUpdateInput>
+    /**
+     * Choose, which CodeSnippet to update.
+     */
+    where: CodeSnippetWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippet updateMany
+   */
+  export type CodeSnippetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CodeSnippets.
+     */
+    data: XOR<CodeSnippetUpdateManyMutationInput, CodeSnippetUncheckedUpdateManyInput>
+    /**
+     * Filter which CodeSnippets to update
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * Limit how many CodeSnippets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeSnippet updateManyAndReturn
+   */
+  export type CodeSnippetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * The data used to update CodeSnippets.
+     */
+    data: XOR<CodeSnippetUpdateManyMutationInput, CodeSnippetUncheckedUpdateManyInput>
+    /**
+     * Filter which CodeSnippets to update
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * Limit how many CodeSnippets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CodeSnippet upsert
+   */
+  export type CodeSnippetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CodeSnippet to update in case it exists.
+     */
+    where: CodeSnippetWhereUniqueInput
+    /**
+     * In case the CodeSnippet found by the `where` argument doesn't exist, create a new CodeSnippet with this data.
+     */
+    create: XOR<CodeSnippetCreateInput, CodeSnippetUncheckedCreateInput>
+    /**
+     * In case the CodeSnippet was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CodeSnippetUpdateInput, CodeSnippetUncheckedUpdateInput>
+  }
+
+  /**
+   * CodeSnippet delete
+   */
+  export type CodeSnippetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+    /**
+     * Filter which CodeSnippet to delete.
+     */
+    where: CodeSnippetWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippet deleteMany
+   */
+  export type CodeSnippetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodeSnippets to delete
+     */
+    where?: CodeSnippetWhereInput
+    /**
+     * Limit how many CodeSnippets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeSnippet.reviews
+   */
+  export type CodeSnippet$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippet.categories
+   */
+  export type CodeSnippet$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    where?: CodeSnippetCategoryWhereInput
+    orderBy?: CodeSnippetCategoryOrderByWithRelationInput | CodeSnippetCategoryOrderByWithRelationInput[]
+    cursor?: CodeSnippetCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CodeSnippetCategoryScalarFieldEnum | CodeSnippetCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippet without action
+   */
+  export type CodeSnippetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippet
+     */
+    select?: CodeSnippetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippet
+     */
+    omit?: CodeSnippetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Category
+   */
+
+  export type AggregateCategory = {
+    _count: CategoryCountAggregateOutputType | null
+    _avg: CategoryAvgAggregateOutputType | null
+    _sum: CategorySumAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  export type CategoryAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CategorySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CategoryMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CategoryMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type CategoryAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CategorySumAggregateInputType = {
+    id?: true
+  }
+
+  export type CategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Category to aggregate.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categories
+    **/
+    _count?: true | CategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategory[P]>
+      : GetScalarType<T[P], AggregateCategory[P]>
+  }
+
+
+
+
+  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
+    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
+    having?: CategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryCountAggregateInputType | true
+    _avg?: CategoryAvgAggregateInputType
+    _sum?: CategorySumAggregateInputType
+    _min?: CategoryMinAggregateInputType
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type CategoryGroupByOutputType = {
+    id: number
+    name: string
+    _count: CategoryCountAggregateOutputType | null
+    _avg: CategoryAvgAggregateOutputType | null
+    _sum: CategorySumAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    codeSnippetCategories?: boolean | Category$codeSnippetCategoriesArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codeSnippetCategories?: boolean | Category$codeSnippetCategoriesArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Category"
+    objects: {
+      codeSnippetCategories: Prisma.$CodeSnippetCategoryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["category"]>
+    composites: {}
+  }
+
+  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryCountAggregateInputType | true
+    }
+
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+    /**
+     * Find zero or one Category that matches the filter.
+     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categories
+     * const categories = await prisma.category.findMany()
+     * 
+     * // Get first 10 Categories
+     * const categories = await prisma.category.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Category.
+     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * @example
+     * // Create one Category
+     * const Category = await prisma.category.create({
+     *   data: {
+     *     // ... data to create a Category
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Categories.
+     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Categories and returns the data saved in the database.
+     * @param {CategoryCreateManyAndReturnArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Category.
+     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * @example
+     * // Delete one Category
+     * const Category = await prisma.category.delete({
+     *   where: {
+     *     // ... filter to delete one Category
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Category.
+     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * @example
+     * // Update one Category
+     * const category = await prisma.category.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Categories.
+     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * @example
+     * // Delete a few Categories
+     * const { count } = await prisma.category.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories and returns the data updated in the database.
+     * @param {CategoryUpdateManyAndReturnArgs} args - Arguments to update many Categories.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Category.
+     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * @example
+     * // Update or create a Category
+     * const category = await prisma.category.upsert({
+     *   create: {
+     *     // ... data to create a Category
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Category we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @example
+     * // Count the number of Categories
+     * const count = await prisma.category.count({
+     *   where: {
+     *     // ... the filter for the Categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryCountArgs>(
+      args?: Subset<T, CategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+
+    /**
+     * Group by Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Category model
+   */
+  readonly fields: CategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Category.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    codeSnippetCategories<T extends Category$codeSnippetCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, Category$codeSnippetCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Category model
+   */
+  interface CategoryFieldRefs {
+    readonly id: FieldRef<"Category", 'Int'>
+    readonly name: FieldRef<"Category", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Category findUnique
+   */
+  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findUniqueOrThrow
+   */
+  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findFirst
+   */
+  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findFirstOrThrow
+   */
+  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findMany
+   */
+  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Categories to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category create
+   */
+  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Category.
+     */
+    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+  }
+
+  /**
+   * Category createMany
+   */
+  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category createManyAndReturn
+   */
+  export type CategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category update
+   */
+  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Category.
+     */
+    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+    /**
+     * Choose, which Category to update.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category updateMany
+   */
+  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category updateManyAndReturn
+   */
+  export type CategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category upsert
+   */
+  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Category to update in case it exists.
+     */
+    where: CategoryWhereUniqueInput
+    /**
+     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
+     */
+    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    /**
+     * In case the Category was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * Category delete
+   */
+  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter which Category to delete.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category deleteMany
+   */
+  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categories to delete
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category.codeSnippetCategories
+   */
+  export type Category$codeSnippetCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    where?: CodeSnippetCategoryWhereInput
+    orderBy?: CodeSnippetCategoryOrderByWithRelationInput | CodeSnippetCategoryOrderByWithRelationInput[]
+    cursor?: CodeSnippetCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CodeSnippetCategoryScalarFieldEnum | CodeSnippetCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category without action
+   */
+  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CodeSnippetCategory
+   */
+
+  export type AggregateCodeSnippetCategory = {
+    _count: CodeSnippetCategoryCountAggregateOutputType | null
+    _avg: CodeSnippetCategoryAvgAggregateOutputType | null
+    _sum: CodeSnippetCategorySumAggregateOutputType | null
+    _min: CodeSnippetCategoryMinAggregateOutputType | null
+    _max: CodeSnippetCategoryMaxAggregateOutputType | null
+  }
+
+  export type CodeSnippetCategoryAvgAggregateOutputType = {
+    codeId: number | null
+    categoryId: number | null
+  }
+
+  export type CodeSnippetCategorySumAggregateOutputType = {
+    codeId: number | null
+    categoryId: number | null
+  }
+
+  export type CodeSnippetCategoryMinAggregateOutputType = {
+    codeId: number | null
+    categoryId: number | null
+  }
+
+  export type CodeSnippetCategoryMaxAggregateOutputType = {
+    codeId: number | null
+    categoryId: number | null
+  }
+
+  export type CodeSnippetCategoryCountAggregateOutputType = {
+    codeId: number
+    categoryId: number
+    _all: number
+  }
+
+
+  export type CodeSnippetCategoryAvgAggregateInputType = {
+    codeId?: true
+    categoryId?: true
+  }
+
+  export type CodeSnippetCategorySumAggregateInputType = {
+    codeId?: true
+    categoryId?: true
+  }
+
+  export type CodeSnippetCategoryMinAggregateInputType = {
+    codeId?: true
+    categoryId?: true
+  }
+
+  export type CodeSnippetCategoryMaxAggregateInputType = {
+    codeId?: true
+    categoryId?: true
+  }
+
+  export type CodeSnippetCategoryCountAggregateInputType = {
+    codeId?: true
+    categoryId?: true
+    _all?: true
+  }
+
+  export type CodeSnippetCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodeSnippetCategory to aggregate.
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippetCategories to fetch.
+     */
+    orderBy?: CodeSnippetCategoryOrderByWithRelationInput | CodeSnippetCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CodeSnippetCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippetCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippetCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CodeSnippetCategories
+    **/
+    _count?: true | CodeSnippetCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CodeSnippetCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CodeSnippetCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CodeSnippetCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CodeSnippetCategoryMaxAggregateInputType
+  }
+
+  export type GetCodeSnippetCategoryAggregateType<T extends CodeSnippetCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCodeSnippetCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCodeSnippetCategory[P]>
+      : GetScalarType<T[P], AggregateCodeSnippetCategory[P]>
+  }
+
+
+
+
+  export type CodeSnippetCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeSnippetCategoryWhereInput
+    orderBy?: CodeSnippetCategoryOrderByWithAggregationInput | CodeSnippetCategoryOrderByWithAggregationInput[]
+    by: CodeSnippetCategoryScalarFieldEnum[] | CodeSnippetCategoryScalarFieldEnum
+    having?: CodeSnippetCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CodeSnippetCategoryCountAggregateInputType | true
+    _avg?: CodeSnippetCategoryAvgAggregateInputType
+    _sum?: CodeSnippetCategorySumAggregateInputType
+    _min?: CodeSnippetCategoryMinAggregateInputType
+    _max?: CodeSnippetCategoryMaxAggregateInputType
+  }
+
+  export type CodeSnippetCategoryGroupByOutputType = {
+    codeId: number
+    categoryId: number
+    _count: CodeSnippetCategoryCountAggregateOutputType | null
+    _avg: CodeSnippetCategoryAvgAggregateOutputType | null
+    _sum: CodeSnippetCategorySumAggregateOutputType | null
+    _min: CodeSnippetCategoryMinAggregateOutputType | null
+    _max: CodeSnippetCategoryMaxAggregateOutputType | null
+  }
+
+  type GetCodeSnippetCategoryGroupByPayload<T extends CodeSnippetCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CodeSnippetCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CodeSnippetCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CodeSnippetCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CodeSnippetCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CodeSnippetCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    codeId?: boolean
+    categoryId?: boolean
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeSnippetCategory"]>
+
+  export type CodeSnippetCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    codeId?: boolean
+    categoryId?: boolean
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeSnippetCategory"]>
+
+  export type CodeSnippetCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    codeId?: boolean
+    categoryId?: boolean
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeSnippetCategory"]>
+
+  export type CodeSnippetCategorySelectScalar = {
+    codeId?: boolean
+    categoryId?: boolean
+  }
+
+  export type CodeSnippetCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"codeId" | "categoryId", ExtArgs["result"]["codeSnippetCategory"]>
+  export type CodeSnippetCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+  export type CodeSnippetCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+  export type CodeSnippetCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $CodeSnippetCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CodeSnippetCategory"
+    objects: {
+      codeSnippet: Prisma.$CodeSnippetPayload<ExtArgs>
+      category: Prisma.$CategoryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      codeId: number
+      categoryId: number
+    }, ExtArgs["result"]["codeSnippetCategory"]>
+    composites: {}
+  }
+
+  type CodeSnippetCategoryGetPayload<S extends boolean | null | undefined | CodeSnippetCategoryDefaultArgs> = $Result.GetResult<Prisma.$CodeSnippetCategoryPayload, S>
+
+  type CodeSnippetCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CodeSnippetCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CodeSnippetCategoryCountAggregateInputType | true
+    }
+
+  export interface CodeSnippetCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeSnippetCategory'], meta: { name: 'CodeSnippetCategory' } }
+    /**
+     * Find zero or one CodeSnippetCategory that matches the filter.
+     * @param {CodeSnippetCategoryFindUniqueArgs} args - Arguments to find a CodeSnippetCategory
+     * @example
+     * // Get one CodeSnippetCategory
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CodeSnippetCategoryFindUniqueArgs>(args: SelectSubset<T, CodeSnippetCategoryFindUniqueArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CodeSnippetCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CodeSnippetCategoryFindUniqueOrThrowArgs} args - Arguments to find a CodeSnippetCategory
+     * @example
+     * // Get one CodeSnippetCategory
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CodeSnippetCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeSnippetCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodeSnippetCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryFindFirstArgs} args - Arguments to find a CodeSnippetCategory
+     * @example
+     * // Get one CodeSnippetCategory
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CodeSnippetCategoryFindFirstArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindFirstArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodeSnippetCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryFindFirstOrThrowArgs} args - Arguments to find a CodeSnippetCategory
+     * @example
+     * // Get one CodeSnippetCategory
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CodeSnippetCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CodeSnippetCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CodeSnippetCategories
+     * const codeSnippetCategories = await prisma.codeSnippetCategory.findMany()
+     * 
+     * // Get first 10 CodeSnippetCategories
+     * const codeSnippetCategories = await prisma.codeSnippetCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `codeId`
+     * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.findMany({ select: { codeId: true } })
+     * 
+     */
+    findMany<T extends CodeSnippetCategoryFindManyArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CodeSnippetCategory.
+     * @param {CodeSnippetCategoryCreateArgs} args - Arguments to create a CodeSnippetCategory.
+     * @example
+     * // Create one CodeSnippetCategory
+     * const CodeSnippetCategory = await prisma.codeSnippetCategory.create({
+     *   data: {
+     *     // ... data to create a CodeSnippetCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends CodeSnippetCategoryCreateArgs>(args: SelectSubset<T, CodeSnippetCategoryCreateArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CodeSnippetCategories.
+     * @param {CodeSnippetCategoryCreateManyArgs} args - Arguments to create many CodeSnippetCategories.
+     * @example
+     * // Create many CodeSnippetCategories
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CodeSnippetCategoryCreateManyArgs>(args?: SelectSubset<T, CodeSnippetCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CodeSnippetCategories and returns the data saved in the database.
+     * @param {CodeSnippetCategoryCreateManyAndReturnArgs} args - Arguments to create many CodeSnippetCategories.
+     * @example
+     * // Create many CodeSnippetCategories
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CodeSnippetCategories and only return the `codeId`
+     * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.createManyAndReturn({
+     *   select: { codeId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CodeSnippetCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeSnippetCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CodeSnippetCategory.
+     * @param {CodeSnippetCategoryDeleteArgs} args - Arguments to delete one CodeSnippetCategory.
+     * @example
+     * // Delete one CodeSnippetCategory
+     * const CodeSnippetCategory = await prisma.codeSnippetCategory.delete({
+     *   where: {
+     *     // ... filter to delete one CodeSnippetCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CodeSnippetCategoryDeleteArgs>(args: SelectSubset<T, CodeSnippetCategoryDeleteArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CodeSnippetCategory.
+     * @param {CodeSnippetCategoryUpdateArgs} args - Arguments to update one CodeSnippetCategory.
+     * @example
+     * // Update one CodeSnippetCategory
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CodeSnippetCategoryUpdateArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CodeSnippetCategories.
+     * @param {CodeSnippetCategoryDeleteManyArgs} args - Arguments to filter CodeSnippetCategories to delete.
+     * @example
+     * // Delete a few CodeSnippetCategories
+     * const { count } = await prisma.codeSnippetCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CodeSnippetCategoryDeleteManyArgs>(args?: SelectSubset<T, CodeSnippetCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodeSnippetCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CodeSnippetCategories
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CodeSnippetCategoryUpdateManyArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodeSnippetCategories and returns the data updated in the database.
+     * @param {CodeSnippetCategoryUpdateManyAndReturnArgs} args - Arguments to update many CodeSnippetCategories.
+     * @example
+     * // Update many CodeSnippetCategories
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CodeSnippetCategories and only return the `codeId`
+     * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.updateManyAndReturn({
+     *   select: { codeId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CodeSnippetCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CodeSnippetCategory.
+     * @param {CodeSnippetCategoryUpsertArgs} args - Arguments to update or create a CodeSnippetCategory.
+     * @example
+     * // Update or create a CodeSnippetCategory
+     * const codeSnippetCategory = await prisma.codeSnippetCategory.upsert({
+     *   create: {
+     *     // ... data to create a CodeSnippetCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CodeSnippetCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CodeSnippetCategoryUpsertArgs>(args: SelectSubset<T, CodeSnippetCategoryUpsertArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CodeSnippetCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryCountArgs} args - Arguments to filter CodeSnippetCategories to count.
+     * @example
+     * // Count the number of CodeSnippetCategories
+     * const count = await prisma.codeSnippetCategory.count({
+     *   where: {
+     *     // ... the filter for the CodeSnippetCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CodeSnippetCategoryCountArgs>(
+      args?: Subset<T, CodeSnippetCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CodeSnippetCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CodeSnippetCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CodeSnippetCategoryAggregateArgs>(args: Subset<T, CodeSnippetCategoryAggregateArgs>): Prisma.PrismaPromise<GetCodeSnippetCategoryAggregateType<T>>
+
+    /**
+     * Group by CodeSnippetCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeSnippetCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CodeSnippetCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CodeSnippetCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CodeSnippetCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CodeSnippetCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodeSnippetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CodeSnippetCategory model
+   */
+  readonly fields: CodeSnippetCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CodeSnippetCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CodeSnippetCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    codeSnippet<T extends CodeSnippetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippetDefaultArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CodeSnippetCategory model
+   */
+  interface CodeSnippetCategoryFieldRefs {
+    readonly codeId: FieldRef<"CodeSnippetCategory", 'Int'>
+    readonly categoryId: FieldRef<"CodeSnippetCategory", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CodeSnippetCategory findUnique
+   */
+  export type CodeSnippetCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippetCategory to fetch.
+     */
+    where: CodeSnippetCategoryWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippetCategory findUniqueOrThrow
+   */
+  export type CodeSnippetCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippetCategory to fetch.
+     */
+    where: CodeSnippetCategoryWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippetCategory findFirst
+   */
+  export type CodeSnippetCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippetCategory to fetch.
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippetCategories to fetch.
+     */
+    orderBy?: CodeSnippetCategoryOrderByWithRelationInput | CodeSnippetCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodeSnippetCategories.
+     */
+    cursor?: CodeSnippetCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippetCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippetCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeSnippetCategories.
+     */
+    distinct?: CodeSnippetCategoryScalarFieldEnum | CodeSnippetCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippetCategory findFirstOrThrow
+   */
+  export type CodeSnippetCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippetCategory to fetch.
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippetCategories to fetch.
+     */
+    orderBy?: CodeSnippetCategoryOrderByWithRelationInput | CodeSnippetCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodeSnippetCategories.
+     */
+    cursor?: CodeSnippetCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippetCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippetCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeSnippetCategories.
+     */
+    distinct?: CodeSnippetCategoryScalarFieldEnum | CodeSnippetCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippetCategory findMany
+   */
+  export type CodeSnippetCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which CodeSnippetCategories to fetch.
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeSnippetCategories to fetch.
+     */
+    orderBy?: CodeSnippetCategoryOrderByWithRelationInput | CodeSnippetCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CodeSnippetCategories.
+     */
+    cursor?: CodeSnippetCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeSnippetCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeSnippetCategories.
+     */
+    skip?: number
+    distinct?: CodeSnippetCategoryScalarFieldEnum | CodeSnippetCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * CodeSnippetCategory create
+   */
+  export type CodeSnippetCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CodeSnippetCategory.
+     */
+    data: XOR<CodeSnippetCategoryCreateInput, CodeSnippetCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * CodeSnippetCategory createMany
+   */
+  export type CodeSnippetCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CodeSnippetCategories.
+     */
+    data: CodeSnippetCategoryCreateManyInput | CodeSnippetCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CodeSnippetCategory createManyAndReturn
+   */
+  export type CodeSnippetCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many CodeSnippetCategories.
+     */
+    data: CodeSnippetCategoryCreateManyInput | CodeSnippetCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CodeSnippetCategory update
+   */
+  export type CodeSnippetCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CodeSnippetCategory.
+     */
+    data: XOR<CodeSnippetCategoryUpdateInput, CodeSnippetCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which CodeSnippetCategory to update.
+     */
+    where: CodeSnippetCategoryWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippetCategory updateMany
+   */
+  export type CodeSnippetCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CodeSnippetCategories.
+     */
+    data: XOR<CodeSnippetCategoryUpdateManyMutationInput, CodeSnippetCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which CodeSnippetCategories to update
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * Limit how many CodeSnippetCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeSnippetCategory updateManyAndReturn
+   */
+  export type CodeSnippetCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update CodeSnippetCategories.
+     */
+    data: XOR<CodeSnippetCategoryUpdateManyMutationInput, CodeSnippetCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which CodeSnippetCategories to update
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * Limit how many CodeSnippetCategories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CodeSnippetCategory upsert
+   */
+  export type CodeSnippetCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CodeSnippetCategory to update in case it exists.
+     */
+    where: CodeSnippetCategoryWhereUniqueInput
+    /**
+     * In case the CodeSnippetCategory found by the `where` argument doesn't exist, create a new CodeSnippetCategory with this data.
+     */
+    create: XOR<CodeSnippetCategoryCreateInput, CodeSnippetCategoryUncheckedCreateInput>
+    /**
+     * In case the CodeSnippetCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CodeSnippetCategoryUpdateInput, CodeSnippetCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * CodeSnippetCategory delete
+   */
+  export type CodeSnippetCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which CodeSnippetCategory to delete.
+     */
+    where: CodeSnippetCategoryWhereUniqueInput
+  }
+
+  /**
+   * CodeSnippetCategory deleteMany
+   */
+  export type CodeSnippetCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodeSnippetCategories to delete
+     */
+    where?: CodeSnippetCategoryWhereInput
+    /**
+     * Limit how many CodeSnippetCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeSnippetCategory without action
+   */
+  export type CodeSnippetCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeSnippetCategory
+     */
+    select?: CodeSnippetCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeSnippetCategory
+     */
+    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeSnippetCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Review
+   */
+
+  export type AggregateReview = {
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  export type ReviewAvgAggregateOutputType = {
+    id: number | null
+    parentId: number | null
+    codeId: number | null
+  }
+
+  export type ReviewSumAggregateOutputType = {
+    id: number | null
+    parentId: number | null
+    codeId: number | null
+  }
+
+  export type ReviewMinAggregateOutputType = {
+    id: number | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    parentId: number | null
+    userId: string | null
+    codeId: number | null
+  }
+
+  export type ReviewMaxAggregateOutputType = {
+    id: number | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    parentId: number | null
+    userId: string | null
+    codeId: number | null
+  }
+
+  export type ReviewCountAggregateOutputType = {
+    id: number
+    content: number
+    createdAt: number
+    updatedAt: number
+    parentId: number
+    userId: number
+    codeId: number
+    _all: number
+  }
+
+
+  export type ReviewAvgAggregateInputType = {
+    id?: true
+    parentId?: true
+    codeId?: true
+  }
+
+  export type ReviewSumAggregateInputType = {
+    id?: true
+    parentId?: true
+    codeId?: true
+  }
+
+  export type ReviewMinAggregateInputType = {
+    id?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    parentId?: true
+    userId?: true
+    codeId?: true
+  }
+
+  export type ReviewMaxAggregateInputType = {
+    id?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    parentId?: true
+    userId?: true
+    codeId?: true
+  }
+
+  export type ReviewCountAggregateInputType = {
+    id?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    parentId?: true
+    userId?: true
+    codeId?: true
+    _all?: true
+  }
+
+  export type ReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Review to aggregate.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Reviews
+    **/
+    _count?: true | ReviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReviewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReviewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReview[P]>
+      : GetScalarType<T[P], AggregateReview[P]>
+  }
+
+
+
+
+  export type ReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithAggregationInput | ReviewOrderByWithAggregationInput[]
+    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum
+    having?: ReviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReviewCountAggregateInputType | true
+    _avg?: ReviewAvgAggregateInputType
+    _sum?: ReviewSumAggregateInputType
+    _min?: ReviewMinAggregateInputType
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type ReviewGroupByOutputType = {
+    id: number
+    content: string
+    createdAt: Date
+    updatedAt: Date
+    parentId: number | null
+    userId: string
+    codeId: number
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    parentId?: boolean
+    userId?: boolean
+    codeId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    likes?: boolean | Review$likesArgs<ExtArgs>
+    _count?: boolean | ReviewCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    parentId?: boolean
+    userId?: boolean
+    codeId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    parentId?: boolean
+    userId?: boolean
+    codeId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectScalar = {
+    id?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    parentId?: boolean
+    userId?: boolean
+    codeId?: boolean
+  }
+
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "createdAt" | "updatedAt" | "parentId" | "userId" | "codeId", ExtArgs["result"]["review"]>
+  export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    likes?: boolean | Review$likesArgs<ExtArgs>
+    _count?: boolean | ReviewCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+  }
+  export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+  }
+
+  export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Review"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      codeSnippet: Prisma.$CodeSnippetPayload<ExtArgs>
+      likes: Prisma.$ReviewLikePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      content: string
+      createdAt: Date
+      updatedAt: Date
+      parentId: number | null
+      userId: string
+      codeId: number
+    }, ExtArgs["result"]["review"]>
+    composites: {}
+  }
+
+  type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
+
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewCountAggregateInputType | true
+    }
+
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
+    /**
+     * Find zero or one Review that matches the filter.
+     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Reviews
+     * const reviews = await prisma.review.findMany()
+     * 
+     * // Get first 10 Reviews
+     * const reviews = await prisma.review.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Review.
+     * @param {ReviewCreateArgs} args - Arguments to create a Review.
+     * @example
+     * // Create one Review
+     * const Review = await prisma.review.create({
+     *   data: {
+     *     // ... data to create a Review
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Reviews.
+     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReviewCreateManyArgs>(args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Reviews and returns the data saved in the database.
+     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Review.
+     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
+     * @example
+     * // Delete one Review
+     * const Review = await prisma.review.delete({
+     *   where: {
+     *     // ... filter to delete one Review
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Review.
+     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
+     * @example
+     * // Update one Review
+     * const review = await prisma.review.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Reviews.
+     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
+     * @example
+     * // Delete a few Reviews
+     * const { count } = await prisma.review.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReviewDeleteManyArgs>(args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews and returns the data updated in the database.
+     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Review.
+     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
+     * @example
+     * // Update or create a Review
+     * const review = await prisma.review.upsert({
+     *   create: {
+     *     // ... data to create a Review
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Review we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
+     * @example
+     * // Count the number of Reviews
+     * const count = await prisma.review.count({
+     *   where: {
+     *     // ... the filter for the Reviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReviewCountArgs>(
+      args?: Subset<T, ReviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReviewAggregateArgs>(args: Subset<T, ReviewAggregateArgs>): Prisma.PrismaPromise<GetReviewAggregateType<T>>
+
+    /**
+     * Group by Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReviewGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Review model
+   */
+  readonly fields: ReviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Review.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    codeSnippet<T extends CodeSnippetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippetDefaultArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    likes<T extends Review$likesArgs<ExtArgs> = {}>(args?: Subset<T, Review$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Review model
+   */
+  interface ReviewFieldRefs {
+    readonly id: FieldRef<"Review", 'Int'>
+    readonly content: FieldRef<"Review", 'String'>
+    readonly createdAt: FieldRef<"Review", 'DateTime'>
+    readonly updatedAt: FieldRef<"Review", 'DateTime'>
+    readonly parentId: FieldRef<"Review", 'Int'>
+    readonly userId: FieldRef<"Review", 'String'>
+    readonly codeId: FieldRef<"Review", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Review findUnique
+   */
+  export type ReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findUniqueOrThrow
+   */
+  export type ReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findFirst
+   */
+  export type ReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findFirstOrThrow
+   */
+  export type ReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findMany
+   */
+  export type ReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Reviews to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review create
+   */
+  export type ReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Review.
+     */
+    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+  }
+
+  /**
+   * Review createMany
+   */
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Review createManyAndReturn
+   */
+  export type ReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review update
+   */
+  export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Review.
+     */
+    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+    /**
+     * Choose, which Review to update.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review updateMany
+   */
+  export type ReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review updateManyAndReturn
+   */
+  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review upsert
+   */
+  export type ReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Review to update in case it exists.
+     */
+    where: ReviewWhereUniqueInput
+    /**
+     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
+     */
+    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+    /**
+     * In case the Review was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * Review delete
+   */
+  export type ReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter which Review to delete.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review deleteMany
+   */
+  export type ReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Reviews to delete
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review.likes
+   */
+  export type Review$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    where?: ReviewLikeWhereInput
+    orderBy?: ReviewLikeOrderByWithRelationInput | ReviewLikeOrderByWithRelationInput[]
+    cursor?: ReviewLikeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewLikeScalarFieldEnum | ReviewLikeScalarFieldEnum[]
+  }
+
+  /**
+   * Review without action
+   */
+  export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ReviewLike
+   */
+
+  export type AggregateReviewLike = {
+    _count: ReviewLikeCountAggregateOutputType | null
+    _avg: ReviewLikeAvgAggregateOutputType | null
+    _sum: ReviewLikeSumAggregateOutputType | null
+    _min: ReviewLikeMinAggregateOutputType | null
+    _max: ReviewLikeMaxAggregateOutputType | null
+  }
+
+  export type ReviewLikeAvgAggregateOutputType = {
+    reviewId: number | null
+  }
+
+  export type ReviewLikeSumAggregateOutputType = {
+    reviewId: number | null
+  }
+
+  export type ReviewLikeMinAggregateOutputType = {
+    userId: string | null
+    reviewId: number | null
+  }
+
+  export type ReviewLikeMaxAggregateOutputType = {
+    userId: string | null
+    reviewId: number | null
+  }
+
+  export type ReviewLikeCountAggregateOutputType = {
+    userId: number
+    reviewId: number
+    _all: number
+  }
+
+
+  export type ReviewLikeAvgAggregateInputType = {
+    reviewId?: true
+  }
+
+  export type ReviewLikeSumAggregateInputType = {
+    reviewId?: true
+  }
+
+  export type ReviewLikeMinAggregateInputType = {
+    userId?: true
+    reviewId?: true
+  }
+
+  export type ReviewLikeMaxAggregateInputType = {
+    userId?: true
+    reviewId?: true
+  }
+
+  export type ReviewLikeCountAggregateInputType = {
+    userId?: true
+    reviewId?: true
+    _all?: true
+  }
+
+  export type ReviewLikeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ReviewLike to aggregate.
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewLikes to fetch.
+     */
+    orderBy?: ReviewLikeOrderByWithRelationInput | ReviewLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReviewLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ReviewLikes
+    **/
+    _count?: true | ReviewLikeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReviewLikeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReviewLikeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReviewLikeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReviewLikeMaxAggregateInputType
+  }
+
+  export type GetReviewLikeAggregateType<T extends ReviewLikeAggregateArgs> = {
+        [P in keyof T & keyof AggregateReviewLike]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReviewLike[P]>
+      : GetScalarType<T[P], AggregateReviewLike[P]>
+  }
+
+
+
+
+  export type ReviewLikeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewLikeWhereInput
+    orderBy?: ReviewLikeOrderByWithAggregationInput | ReviewLikeOrderByWithAggregationInput[]
+    by: ReviewLikeScalarFieldEnum[] | ReviewLikeScalarFieldEnum
+    having?: ReviewLikeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReviewLikeCountAggregateInputType | true
+    _avg?: ReviewLikeAvgAggregateInputType
+    _sum?: ReviewLikeSumAggregateInputType
+    _min?: ReviewLikeMinAggregateInputType
+    _max?: ReviewLikeMaxAggregateInputType
+  }
+
+  export type ReviewLikeGroupByOutputType = {
+    userId: string
+    reviewId: number
+    _count: ReviewLikeCountAggregateOutputType | null
+    _avg: ReviewLikeAvgAggregateOutputType | null
+    _sum: ReviewLikeSumAggregateOutputType | null
+    _min: ReviewLikeMinAggregateOutputType | null
+    _max: ReviewLikeMaxAggregateOutputType | null
+  }
+
+  type GetReviewLikeGroupByPayload<T extends ReviewLikeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReviewLikeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReviewLikeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReviewLikeGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewLikeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReviewLikeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    reviewId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["reviewLike"]>
+
+  export type ReviewLikeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    reviewId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["reviewLike"]>
+
+  export type ReviewLikeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    reviewId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["reviewLike"]>
+
+  export type ReviewLikeSelectScalar = {
+    userId?: boolean
+    reviewId?: boolean
+  }
+
+  export type ReviewLikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "reviewId", ExtArgs["result"]["reviewLike"]>
+  export type ReviewLikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+  }
+  export type ReviewLikeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+  }
+  export type ReviewLikeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+  }
+
+  export type $ReviewLikePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ReviewLike"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      review: Prisma.$ReviewPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      userId: string
+      reviewId: number
+    }, ExtArgs["result"]["reviewLike"]>
+    composites: {}
+  }
+
+  type ReviewLikeGetPayload<S extends boolean | null | undefined | ReviewLikeDefaultArgs> = $Result.GetResult<Prisma.$ReviewLikePayload, S>
+
+  type ReviewLikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewLikeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewLikeCountAggregateInputType | true
+    }
+
+  export interface ReviewLikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ReviewLike'], meta: { name: 'ReviewLike' } }
+    /**
+     * Find zero or one ReviewLike that matches the filter.
+     * @param {ReviewLikeFindUniqueArgs} args - Arguments to find a ReviewLike
+     * @example
+     * // Get one ReviewLike
+     * const reviewLike = await prisma.reviewLike.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReviewLikeFindUniqueArgs>(args: SelectSubset<T, ReviewLikeFindUniqueArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ReviewLike that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReviewLikeFindUniqueOrThrowArgs} args - Arguments to find a ReviewLike
+     * @example
+     * // Get one ReviewLike
+     * const reviewLike = await prisma.reviewLike.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReviewLikeFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewLikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ReviewLike that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeFindFirstArgs} args - Arguments to find a ReviewLike
+     * @example
+     * // Get one ReviewLike
+     * const reviewLike = await prisma.reviewLike.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReviewLikeFindFirstArgs>(args?: SelectSubset<T, ReviewLikeFindFirstArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ReviewLike that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeFindFirstOrThrowArgs} args - Arguments to find a ReviewLike
+     * @example
+     * // Get one ReviewLike
+     * const reviewLike = await prisma.reviewLike.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReviewLikeFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewLikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ReviewLikes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ReviewLikes
+     * const reviewLikes = await prisma.reviewLike.findMany()
+     * 
+     * // Get first 10 ReviewLikes
+     * const reviewLikes = await prisma.reviewLike.findMany({ take: 10 })
+     * 
+     * // Only select the `userId`
+     * const reviewLikeWithUserIdOnly = await prisma.reviewLike.findMany({ select: { userId: true } })
+     * 
+     */
+    findMany<T extends ReviewLikeFindManyArgs>(args?: SelectSubset<T, ReviewLikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ReviewLike.
+     * @param {ReviewLikeCreateArgs} args - Arguments to create a ReviewLike.
+     * @example
+     * // Create one ReviewLike
+     * const ReviewLike = await prisma.reviewLike.create({
+     *   data: {
+     *     // ... data to create a ReviewLike
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReviewLikeCreateArgs>(args: SelectSubset<T, ReviewLikeCreateArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ReviewLikes.
+     * @param {ReviewLikeCreateManyArgs} args - Arguments to create many ReviewLikes.
+     * @example
+     * // Create many ReviewLikes
+     * const reviewLike = await prisma.reviewLike.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReviewLikeCreateManyArgs>(args?: SelectSubset<T, ReviewLikeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ReviewLikes and returns the data saved in the database.
+     * @param {ReviewLikeCreateManyAndReturnArgs} args - Arguments to create many ReviewLikes.
+     * @example
+     * // Create many ReviewLikes
+     * const reviewLike = await prisma.reviewLike.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ReviewLikes and only return the `userId`
+     * const reviewLikeWithUserIdOnly = await prisma.reviewLike.createManyAndReturn({
+     *   select: { userId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReviewLikeCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewLikeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ReviewLike.
+     * @param {ReviewLikeDeleteArgs} args - Arguments to delete one ReviewLike.
+     * @example
+     * // Delete one ReviewLike
+     * const ReviewLike = await prisma.reviewLike.delete({
+     *   where: {
+     *     // ... filter to delete one ReviewLike
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReviewLikeDeleteArgs>(args: SelectSubset<T, ReviewLikeDeleteArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ReviewLike.
+     * @param {ReviewLikeUpdateArgs} args - Arguments to update one ReviewLike.
+     * @example
+     * // Update one ReviewLike
+     * const reviewLike = await prisma.reviewLike.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReviewLikeUpdateArgs>(args: SelectSubset<T, ReviewLikeUpdateArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ReviewLikes.
+     * @param {ReviewLikeDeleteManyArgs} args - Arguments to filter ReviewLikes to delete.
+     * @example
+     * // Delete a few ReviewLikes
+     * const { count } = await prisma.reviewLike.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReviewLikeDeleteManyArgs>(args?: SelectSubset<T, ReviewLikeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ReviewLikes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ReviewLikes
+     * const reviewLike = await prisma.reviewLike.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReviewLikeUpdateManyArgs>(args: SelectSubset<T, ReviewLikeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ReviewLikes and returns the data updated in the database.
+     * @param {ReviewLikeUpdateManyAndReturnArgs} args - Arguments to update many ReviewLikes.
+     * @example
+     * // Update many ReviewLikes
+     * const reviewLike = await prisma.reviewLike.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ReviewLikes and only return the `userId`
+     * const reviewLikeWithUserIdOnly = await prisma.reviewLike.updateManyAndReturn({
+     *   select: { userId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReviewLikeUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewLikeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ReviewLike.
+     * @param {ReviewLikeUpsertArgs} args - Arguments to update or create a ReviewLike.
+     * @example
+     * // Update or create a ReviewLike
+     * const reviewLike = await prisma.reviewLike.upsert({
+     *   create: {
+     *     // ... data to create a ReviewLike
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ReviewLike we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReviewLikeUpsertArgs>(args: SelectSubset<T, ReviewLikeUpsertArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ReviewLikes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeCountArgs} args - Arguments to filter ReviewLikes to count.
+     * @example
+     * // Count the number of ReviewLikes
+     * const count = await prisma.reviewLike.count({
+     *   where: {
+     *     // ... the filter for the ReviewLikes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReviewLikeCountArgs>(
+      args?: Subset<T, ReviewLikeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReviewLikeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ReviewLike.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReviewLikeAggregateArgs>(args: Subset<T, ReviewLikeAggregateArgs>): Prisma.PrismaPromise<GetReviewLikeAggregateType<T>>
+
+    /**
+     * Group by ReviewLike.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewLikeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReviewLikeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReviewLikeGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewLikeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReviewLikeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewLikeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ReviewLike model
+   */
+  readonly fields: ReviewLikeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ReviewLike.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReviewLikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    review<T extends ReviewDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReviewDefaultArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ReviewLike model
+   */
+  interface ReviewLikeFieldRefs {
+    readonly userId: FieldRef<"ReviewLike", 'String'>
+    readonly reviewId: FieldRef<"ReviewLike", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ReviewLike findUnique
+   */
+  export type ReviewLikeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewLike to fetch.
+     */
+    where: ReviewLikeWhereUniqueInput
+  }
+
+  /**
+   * ReviewLike findUniqueOrThrow
+   */
+  export type ReviewLikeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewLike to fetch.
+     */
+    where: ReviewLikeWhereUniqueInput
+  }
+
+  /**
+   * ReviewLike findFirst
+   */
+  export type ReviewLikeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewLike to fetch.
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewLikes to fetch.
+     */
+    orderBy?: ReviewLikeOrderByWithRelationInput | ReviewLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ReviewLikes.
+     */
+    cursor?: ReviewLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ReviewLikes.
+     */
+    distinct?: ReviewLikeScalarFieldEnum | ReviewLikeScalarFieldEnum[]
+  }
+
+  /**
+   * ReviewLike findFirstOrThrow
+   */
+  export type ReviewLikeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewLike to fetch.
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewLikes to fetch.
+     */
+    orderBy?: ReviewLikeOrderByWithRelationInput | ReviewLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ReviewLikes.
+     */
+    cursor?: ReviewLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ReviewLikes.
+     */
+    distinct?: ReviewLikeScalarFieldEnum | ReviewLikeScalarFieldEnum[]
+  }
+
+  /**
+   * ReviewLike findMany
+   */
+  export type ReviewLikeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewLikes to fetch.
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewLikes to fetch.
+     */
+    orderBy?: ReviewLikeOrderByWithRelationInput | ReviewLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ReviewLikes.
+     */
+    cursor?: ReviewLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewLikes.
+     */
+    skip?: number
+    distinct?: ReviewLikeScalarFieldEnum | ReviewLikeScalarFieldEnum[]
+  }
+
+  /**
+   * ReviewLike create
+   */
+  export type ReviewLikeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ReviewLike.
+     */
+    data: XOR<ReviewLikeCreateInput, ReviewLikeUncheckedCreateInput>
+  }
+
+  /**
+   * ReviewLike createMany
+   */
+  export type ReviewLikeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ReviewLikes.
+     */
+    data: ReviewLikeCreateManyInput | ReviewLikeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ReviewLike createManyAndReturn
+   */
+  export type ReviewLikeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * The data used to create many ReviewLikes.
+     */
+    data: ReviewLikeCreateManyInput | ReviewLikeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ReviewLike update
+   */
+  export type ReviewLikeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ReviewLike.
+     */
+    data: XOR<ReviewLikeUpdateInput, ReviewLikeUncheckedUpdateInput>
+    /**
+     * Choose, which ReviewLike to update.
+     */
+    where: ReviewLikeWhereUniqueInput
+  }
+
+  /**
+   * ReviewLike updateMany
+   */
+  export type ReviewLikeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ReviewLikes.
+     */
+    data: XOR<ReviewLikeUpdateManyMutationInput, ReviewLikeUncheckedUpdateManyInput>
+    /**
+     * Filter which ReviewLikes to update
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * Limit how many ReviewLikes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ReviewLike updateManyAndReturn
+   */
+  export type ReviewLikeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * The data used to update ReviewLikes.
+     */
+    data: XOR<ReviewLikeUpdateManyMutationInput, ReviewLikeUncheckedUpdateManyInput>
+    /**
+     * Filter which ReviewLikes to update
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * Limit how many ReviewLikes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ReviewLike upsert
+   */
+  export type ReviewLikeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ReviewLike to update in case it exists.
+     */
+    where: ReviewLikeWhereUniqueInput
+    /**
+     * In case the ReviewLike found by the `where` argument doesn't exist, create a new ReviewLike with this data.
+     */
+    create: XOR<ReviewLikeCreateInput, ReviewLikeUncheckedCreateInput>
+    /**
+     * In case the ReviewLike was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewLikeUpdateInput, ReviewLikeUncheckedUpdateInput>
+  }
+
+  /**
+   * ReviewLike delete
+   */
+  export type ReviewLikeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
+    /**
+     * Filter which ReviewLike to delete.
+     */
+    where: ReviewLikeWhereUniqueInput
+  }
+
+  /**
+   * ReviewLike deleteMany
+   */
+  export type ReviewLikeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ReviewLikes to delete
+     */
+    where?: ReviewLikeWhereInput
+    /**
+     * Limit how many ReviewLikes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ReviewLike without action
+   */
+  export type ReviewLikeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLike
+     */
+    select?: ReviewLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewLike
+     */
+    omit?: ReviewLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewLikeInclude<ExtArgs> | null
   }
 
 
@@ -1920,15 +9479,75 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     email: 'email',
-    username: 'username',
+    nickname: 'nickname',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt',
     password: 'password',
-    profileImage: 'profileImage'
+    imageUrl: 'imageUrl',
+    reviewCount: 'reviewCount',
+    likeCount: 'likeCount',
+    gradeId: 'gradeId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const GradeScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type GradeScalarFieldEnum = (typeof GradeScalarFieldEnum)[keyof typeof GradeScalarFieldEnum]
+
+
+  export const CodeSnippetScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId'
+  };
+
+  export type CodeSnippetScalarFieldEnum = (typeof CodeSnippetScalarFieldEnum)[keyof typeof CodeSnippetScalarFieldEnum]
+
+
+  export const CategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+  export const CodeSnippetCategoryScalarFieldEnum: {
+    codeId: 'codeId',
+    categoryId: 'categoryId'
+  };
+
+  export type CodeSnippetCategoryScalarFieldEnum = (typeof CodeSnippetCategoryScalarFieldEnum)[keyof typeof CodeSnippetCategoryScalarFieldEnum]
+
+
+  export const ReviewScalarFieldEnum: {
+    id: 'id',
+    content: 'content',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    parentId: 'parentId',
+    userId: 'userId',
+    codeId: 'codeId'
+  };
+
+  export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+  export const ReviewLikeScalarFieldEnum: {
+    userId: 'userId',
+    reviewId: 'reviewId'
+  };
+
+  export type ReviewLikeScalarFieldEnum = (typeof ReviewLikeScalarFieldEnum)[keyof typeof ReviewLikeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2000,6 +9619,20 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -2011,51 +9644,77 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    username?: StringFilter<"User"> | string
+    nickname?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     password?: StringFilter<"User"> | string
-    profileImage?: StringNullableFilter<"User"> | string | null
+    imageUrl?: StringNullableFilter<"User"> | string | null
+    reviewCount?: IntFilter<"User"> | number
+    likeCount?: IntFilter<"User"> | number
+    gradeId?: IntNullableFilter<"User"> | number | null
+    grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
+    codeSnippets?: CodeSnippetListRelationFilter
+    reviews?: ReviewListRelationFilter
+    reviewLikes?: ReviewLikeListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
-    username?: SortOrder
+    nickname?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
     password?: SortOrder
-    profileImage?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrderInput | SortOrder
+    grade?: GradeOrderByWithRelationInput
+    codeSnippets?: CodeSnippetOrderByRelationAggregateInput
+    reviews?: ReviewOrderByRelationAggregateInput
+    reviewLikes?: ReviewLikeOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    username?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    nickname?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     password?: StringFilter<"User"> | string
-    profileImage?: StringNullableFilter<"User"> | string | null
-  }, "id" | "email" | "username">
+    imageUrl?: StringNullableFilter<"User"> | string | null
+    reviewCount?: IntFilter<"User"> | number
+    likeCount?: IntFilter<"User"> | number
+    gradeId?: IntNullableFilter<"User"> | number | null
+    grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
+    codeSnippets?: CodeSnippetListRelationFilter
+    reviews?: ReviewListRelationFilter
+    reviewLikes?: ReviewLikeListRelationFilter
+  }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
-    username?: SortOrder
+    nickname?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
     password?: SortOrder
-    profileImage?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -2064,89 +9723,717 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    username?: StringWithAggregatesFilter<"User"> | string
+    nickname?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     password?: StringWithAggregatesFilter<"User"> | string
-    profileImage?: StringNullableWithAggregatesFilter<"User"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    reviewCount?: IntWithAggregatesFilter<"User"> | number
+    likeCount?: IntWithAggregatesFilter<"User"> | number
+    gradeId?: IntNullableWithAggregatesFilter<"User"> | number | null
+  }
+
+  export type GradeWhereInput = {
+    AND?: GradeWhereInput | GradeWhereInput[]
+    OR?: GradeWhereInput[]
+    NOT?: GradeWhereInput | GradeWhereInput[]
+    id?: IntFilter<"Grade"> | number
+    name?: StringFilter<"Grade"> | string
+    users?: UserListRelationFilter
+  }
+
+  export type GradeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    users?: UserOrderByRelationAggregateInput
+  }
+
+  export type GradeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: GradeWhereInput | GradeWhereInput[]
+    OR?: GradeWhereInput[]
+    NOT?: GradeWhereInput | GradeWhereInput[]
+    name?: StringFilter<"Grade"> | string
+    users?: UserListRelationFilter
+  }, "id">
+
+  export type GradeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: GradeCountOrderByAggregateInput
+    _avg?: GradeAvgOrderByAggregateInput
+    _max?: GradeMaxOrderByAggregateInput
+    _min?: GradeMinOrderByAggregateInput
+    _sum?: GradeSumOrderByAggregateInput
+  }
+
+  export type GradeScalarWhereWithAggregatesInput = {
+    AND?: GradeScalarWhereWithAggregatesInput | GradeScalarWhereWithAggregatesInput[]
+    OR?: GradeScalarWhereWithAggregatesInput[]
+    NOT?: GradeScalarWhereWithAggregatesInput | GradeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Grade"> | number
+    name?: StringWithAggregatesFilter<"Grade"> | string
+  }
+
+  export type CodeSnippetWhereInput = {
+    AND?: CodeSnippetWhereInput | CodeSnippetWhereInput[]
+    OR?: CodeSnippetWhereInput[]
+    NOT?: CodeSnippetWhereInput | CodeSnippetWhereInput[]
+    id?: IntFilter<"CodeSnippet"> | number
+    title?: StringFilter<"CodeSnippet"> | string
+    content?: StringFilter<"CodeSnippet"> | string
+    createdAt?: DateTimeFilter<"CodeSnippet"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeSnippet"> | Date | string
+    userId?: StringFilter<"CodeSnippet"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
+    categories?: CodeSnippetCategoryListRelationFilter
+  }
+
+  export type CodeSnippetOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    reviews?: ReviewOrderByRelationAggregateInput
+    categories?: CodeSnippetCategoryOrderByRelationAggregateInput
+  }
+
+  export type CodeSnippetWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CodeSnippetWhereInput | CodeSnippetWhereInput[]
+    OR?: CodeSnippetWhereInput[]
+    NOT?: CodeSnippetWhereInput | CodeSnippetWhereInput[]
+    title?: StringFilter<"CodeSnippet"> | string
+    content?: StringFilter<"CodeSnippet"> | string
+    createdAt?: DateTimeFilter<"CodeSnippet"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeSnippet"> | Date | string
+    userId?: StringFilter<"CodeSnippet"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
+    categories?: CodeSnippetCategoryListRelationFilter
+  }, "id">
+
+  export type CodeSnippetOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    _count?: CodeSnippetCountOrderByAggregateInput
+    _avg?: CodeSnippetAvgOrderByAggregateInput
+    _max?: CodeSnippetMaxOrderByAggregateInput
+    _min?: CodeSnippetMinOrderByAggregateInput
+    _sum?: CodeSnippetSumOrderByAggregateInput
+  }
+
+  export type CodeSnippetScalarWhereWithAggregatesInput = {
+    AND?: CodeSnippetScalarWhereWithAggregatesInput | CodeSnippetScalarWhereWithAggregatesInput[]
+    OR?: CodeSnippetScalarWhereWithAggregatesInput[]
+    NOT?: CodeSnippetScalarWhereWithAggregatesInput | CodeSnippetScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CodeSnippet"> | number
+    title?: StringWithAggregatesFilter<"CodeSnippet"> | string
+    content?: StringWithAggregatesFilter<"CodeSnippet"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CodeSnippet"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CodeSnippet"> | Date | string
+    userId?: StringWithAggregatesFilter<"CodeSnippet"> | string
+  }
+
+  export type CategoryWhereInput = {
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    id?: IntFilter<"Category"> | number
+    name?: StringFilter<"Category"> | string
+    codeSnippetCategories?: CodeSnippetCategoryListRelationFilter
+  }
+
+  export type CategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    codeSnippetCategories?: CodeSnippetCategoryOrderByRelationAggregateInput
+  }
+
+  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    name?: StringFilter<"Category"> | string
+    codeSnippetCategories?: CodeSnippetCategoryListRelationFilter
+  }, "id">
+
+  export type CategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: CategoryCountOrderByAggregateInput
+    _avg?: CategoryAvgOrderByAggregateInput
+    _max?: CategoryMaxOrderByAggregateInput
+    _min?: CategoryMinOrderByAggregateInput
+    _sum?: CategorySumOrderByAggregateInput
+  }
+
+  export type CategoryScalarWhereWithAggregatesInput = {
+    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    OR?: CategoryScalarWhereWithAggregatesInput[]
+    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Category"> | number
+    name?: StringWithAggregatesFilter<"Category"> | string
+  }
+
+  export type CodeSnippetCategoryWhereInput = {
+    AND?: CodeSnippetCategoryWhereInput | CodeSnippetCategoryWhereInput[]
+    OR?: CodeSnippetCategoryWhereInput[]
+    NOT?: CodeSnippetCategoryWhereInput | CodeSnippetCategoryWhereInput[]
+    codeId?: IntFilter<"CodeSnippetCategory"> | number
+    categoryId?: IntFilter<"CodeSnippetCategory"> | number
+    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+  }
+
+  export type CodeSnippetCategoryOrderByWithRelationInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+    codeSnippet?: CodeSnippetOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
+  }
+
+  export type CodeSnippetCategoryWhereUniqueInput = Prisma.AtLeast<{
+    codeId_categoryId?: CodeSnippetCategoryCodeIdCategoryIdCompoundUniqueInput
+    AND?: CodeSnippetCategoryWhereInput | CodeSnippetCategoryWhereInput[]
+    OR?: CodeSnippetCategoryWhereInput[]
+    NOT?: CodeSnippetCategoryWhereInput | CodeSnippetCategoryWhereInput[]
+    codeId?: IntFilter<"CodeSnippetCategory"> | number
+    categoryId?: IntFilter<"CodeSnippetCategory"> | number
+    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+  }, "codeId_categoryId">
+
+  export type CodeSnippetCategoryOrderByWithAggregationInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+    _count?: CodeSnippetCategoryCountOrderByAggregateInput
+    _avg?: CodeSnippetCategoryAvgOrderByAggregateInput
+    _max?: CodeSnippetCategoryMaxOrderByAggregateInput
+    _min?: CodeSnippetCategoryMinOrderByAggregateInput
+    _sum?: CodeSnippetCategorySumOrderByAggregateInput
+  }
+
+  export type CodeSnippetCategoryScalarWhereWithAggregatesInput = {
+    AND?: CodeSnippetCategoryScalarWhereWithAggregatesInput | CodeSnippetCategoryScalarWhereWithAggregatesInput[]
+    OR?: CodeSnippetCategoryScalarWhereWithAggregatesInput[]
+    NOT?: CodeSnippetCategoryScalarWhereWithAggregatesInput | CodeSnippetCategoryScalarWhereWithAggregatesInput[]
+    codeId?: IntWithAggregatesFilter<"CodeSnippetCategory"> | number
+    categoryId?: IntWithAggregatesFilter<"CodeSnippetCategory"> | number
+  }
+
+  export type ReviewWhereInput = {
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    id?: IntFilter<"Review"> | number
+    content?: StringFilter<"Review"> | string
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    parentId?: IntNullableFilter<"Review"> | number | null
+    userId?: StringFilter<"Review"> | string
+    codeId?: IntFilter<"Review"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
+    likes?: ReviewLikeListRelationFilter
+  }
+
+  export type ReviewOrderByWithRelationInput = {
+    id?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    parentId?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    codeSnippet?: CodeSnippetOrderByWithRelationInput
+    likes?: ReviewLikeOrderByRelationAggregateInput
+  }
+
+  export type ReviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    content?: StringFilter<"Review"> | string
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    parentId?: IntNullableFilter<"Review"> | number | null
+    userId?: StringFilter<"Review"> | string
+    codeId?: IntFilter<"Review"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
+    likes?: ReviewLikeListRelationFilter
+  }, "id">
+
+  export type ReviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    parentId?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
+    _count?: ReviewCountOrderByAggregateInput
+    _avg?: ReviewAvgOrderByAggregateInput
+    _max?: ReviewMaxOrderByAggregateInput
+    _min?: ReviewMinOrderByAggregateInput
+    _sum?: ReviewSumOrderByAggregateInput
+  }
+
+  export type ReviewScalarWhereWithAggregatesInput = {
+    AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    OR?: ReviewScalarWhereWithAggregatesInput[]
+    NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Review"> | number
+    content?: StringWithAggregatesFilter<"Review"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    parentId?: IntNullableWithAggregatesFilter<"Review"> | number | null
+    userId?: StringWithAggregatesFilter<"Review"> | string
+    codeId?: IntWithAggregatesFilter<"Review"> | number
+  }
+
+  export type ReviewLikeWhereInput = {
+    AND?: ReviewLikeWhereInput | ReviewLikeWhereInput[]
+    OR?: ReviewLikeWhereInput[]
+    NOT?: ReviewLikeWhereInput | ReviewLikeWhereInput[]
+    userId?: StringFilter<"ReviewLike"> | string
+    reviewId?: IntFilter<"ReviewLike"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
+  }
+
+  export type ReviewLikeOrderByWithRelationInput = {
+    userId?: SortOrder
+    reviewId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    review?: ReviewOrderByWithRelationInput
+  }
+
+  export type ReviewLikeWhereUniqueInput = Prisma.AtLeast<{
+    userId_reviewId?: ReviewLikeUserIdReviewIdCompoundUniqueInput
+    AND?: ReviewLikeWhereInput | ReviewLikeWhereInput[]
+    OR?: ReviewLikeWhereInput[]
+    NOT?: ReviewLikeWhereInput | ReviewLikeWhereInput[]
+    userId?: StringFilter<"ReviewLike"> | string
+    reviewId?: IntFilter<"ReviewLike"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
+  }, "userId_reviewId">
+
+  export type ReviewLikeOrderByWithAggregationInput = {
+    userId?: SortOrder
+    reviewId?: SortOrder
+    _count?: ReviewLikeCountOrderByAggregateInput
+    _avg?: ReviewLikeAvgOrderByAggregateInput
+    _max?: ReviewLikeMaxOrderByAggregateInput
+    _min?: ReviewLikeMinOrderByAggregateInput
+    _sum?: ReviewLikeSumOrderByAggregateInput
+  }
+
+  export type ReviewLikeScalarWhereWithAggregatesInput = {
+    AND?: ReviewLikeScalarWhereWithAggregatesInput | ReviewLikeScalarWhereWithAggregatesInput[]
+    OR?: ReviewLikeScalarWhereWithAggregatesInput[]
+    NOT?: ReviewLikeScalarWhereWithAggregatesInput | ReviewLikeScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"ReviewLike"> | string
+    reviewId?: IntWithAggregatesFilter<"ReviewLike"> | number
   }
 
   export type UserCreateInput = {
     id?: string
     email: string
-    username: string
+    nickname: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     password: string
-    profileImage?: string | null
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    grade?: GradeCreateNestedOneWithoutUsersInput
+    codeSnippets?: CodeSnippetCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
     email: string
-    username: string
+    nickname: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     password: string
-    profileImage?: string | null
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    gradeId?: number | null
+    codeSnippets?: CodeSnippetUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     password?: StringFieldUpdateOperationsInput | string
-    profileImage?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    grade?: GradeUpdateOneWithoutUsersNestedInput
+    codeSnippets?: CodeSnippetUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     password?: StringFieldUpdateOperationsInput | string
-    profileImage?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    gradeId?: NullableIntFieldUpdateOperationsInput | number | null
+    codeSnippets?: CodeSnippetUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
     email: string
-    username: string
+    nickname: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     password: string
-    profileImage?: string | null
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    gradeId?: number | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     password?: StringFieldUpdateOperationsInput | string
-    profileImage?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     password?: StringFieldUpdateOperationsInput | string
-    profileImage?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    gradeId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type GradeCreateInput = {
+    name: string
+    users?: UserCreateNestedManyWithoutGradeInput
+  }
+
+  export type GradeUncheckedCreateInput = {
+    id?: number
+    name: string
+    users?: UserUncheckedCreateNestedManyWithoutGradeInput
+  }
+
+  export type GradeUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    users?: UserUpdateManyWithoutGradeNestedInput
+  }
+
+  export type GradeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    users?: UserUncheckedUpdateManyWithoutGradeNestedInput
+  }
+
+  export type GradeCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type GradeUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type GradeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CodeSnippetCreateInput = {
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCodeSnippetsInput
+    reviews?: ReviewCreateNestedManyWithoutCodeSnippetInput
+    categories?: CodeSnippetCategoryCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetUncheckedCreateInput = {
+    id?: number
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutCodeSnippetInput
+    categories?: CodeSnippetCategoryUncheckedCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCodeSnippetsNestedInput
+    reviews?: ReviewUpdateManyWithoutCodeSnippetNestedInput
+    categories?: CodeSnippetCategoryUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CodeSnippetUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    reviews?: ReviewUncheckedUpdateManyWithoutCodeSnippetNestedInput
+    categories?: CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CodeSnippetCreateManyInput = {
+    id?: number
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+  }
+
+  export type CodeSnippetUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CodeSnippetUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryCreateInput = {
+    name: string
+    codeSnippetCategories?: CodeSnippetCategoryCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateInput = {
+    id?: number
+    name: string
+    codeSnippetCategories?: CodeSnippetCategoryUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    codeSnippetCategories?: CodeSnippetCategoryUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    codeSnippetCategories?: CodeSnippetCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type CategoryUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CodeSnippetCategoryCreateInput = {
+    codeSnippet: CodeSnippetCreateNestedOneWithoutCategoriesInput
+    category: CategoryCreateNestedOneWithoutCodeSnippetCategoriesInput
+  }
+
+  export type CodeSnippetCategoryUncheckedCreateInput = {
+    codeId: number
+    categoryId: number
+  }
+
+  export type CodeSnippetCategoryUpdateInput = {
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutCategoriesNestedInput
+    category?: CategoryUpdateOneRequiredWithoutCodeSnippetCategoriesNestedInput
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateInput = {
+    codeId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CodeSnippetCategoryCreateManyInput = {
+    codeId: number
+    categoryId: number
+  }
+
+  export type CodeSnippetCategoryUpdateManyMutationInput = {
+
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateManyInput = {
+    codeId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewCreateInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    user: UserCreateNestedOneWithoutReviewsInput
+    codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    likes?: ReviewLikeCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUncheckedCreateInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    userId: string
+    codeId: number
+    likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUpdateInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: IntFieldUpdateOperationsInput | number
+    likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewCreateManyInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    userId: string
+    codeId: number
+  }
+
+  export type ReviewUpdateManyMutationInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ReviewUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewLikeCreateInput = {
+    user: UserCreateNestedOneWithoutReviewLikesInput
+    review: ReviewCreateNestedOneWithoutLikesInput
+  }
+
+  export type ReviewLikeUncheckedCreateInput = {
+    userId: string
+    reviewId: number
+  }
+
+  export type ReviewLikeUpdateInput = {
+    user?: UserUpdateOneRequiredWithoutReviewLikesNestedInput
+    review?: ReviewUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type ReviewLikeUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    reviewId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewLikeCreateManyInput = {
+    userId: string
+    reviewId: number
+  }
+
+  export type ReviewLikeUpdateManyMutationInput = {
+
+  }
+
+  export type ReviewLikeUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    reviewId?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2201,42 +10488,120 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type GradeNullableScalarRelationFilter = {
+    is?: GradeWhereInput | null
+    isNot?: GradeWhereInput | null
+  }
+
+  export type CodeSnippetListRelationFilter = {
+    every?: CodeSnippetWhereInput
+    some?: CodeSnippetWhereInput
+    none?: CodeSnippetWhereInput
+  }
+
+  export type ReviewListRelationFilter = {
+    every?: ReviewWhereInput
+    some?: ReviewWhereInput
+    none?: ReviewWhereInput
+  }
+
+  export type ReviewLikeListRelationFilter = {
+    every?: ReviewLikeWhereInput
+    some?: ReviewLikeWhereInput
+    none?: ReviewLikeWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
+  export type CodeSnippetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReviewOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReviewLikeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    username?: SortOrder
+    nickname?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
     password?: SortOrder
-    profileImage?: SortOrder
+    imageUrl?: SortOrder
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    username?: SortOrder
+    nickname?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
     password?: SortOrder
-    profileImage?: SortOrder
+    imageUrl?: SortOrder
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    username?: SortOrder
+    nickname?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
     password?: SortOrder
-    profileImage?: SortOrder
+    imageUrl?: SortOrder
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    reviewCount?: SortOrder
+    likeCount?: SortOrder
+    gradeId?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2303,6 +10668,307 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
+  }
+
+  export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GradeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type GradeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type GradeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type GradeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type GradeSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type CodeSnippetCategoryListRelationFilter = {
+    every?: CodeSnippetCategoryWhereInput
+    some?: CodeSnippetCategoryWhereInput
+    none?: CodeSnippetCategoryWhereInput
+  }
+
+  export type CodeSnippetCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CodeSnippetCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CodeSnippetAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CodeSnippetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CodeSnippetMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CodeSnippetSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CategoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CategorySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CodeSnippetScalarRelationFilter = {
+    is?: CodeSnippetWhereInput
+    isNot?: CodeSnippetWhereInput
+  }
+
+  export type CategoryScalarRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
+  export type CodeSnippetCategoryCodeIdCategoryIdCompoundUniqueInput = {
+    codeId: number
+    categoryId: number
+  }
+
+  export type CodeSnippetCategoryCountOrderByAggregateInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CodeSnippetCategoryAvgOrderByAggregateInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CodeSnippetCategoryMaxOrderByAggregateInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CodeSnippetCategoryMinOrderByAggregateInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CodeSnippetCategorySumOrderByAggregateInput = {
+    codeId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type ReviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    parentId?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
+  }
+
+  export type ReviewAvgOrderByAggregateInput = {
+    id?: SortOrder
+    parentId?: SortOrder
+    codeId?: SortOrder
+  }
+
+  export type ReviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    parentId?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
+  }
+
+  export type ReviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    parentId?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
+  }
+
+  export type ReviewSumOrderByAggregateInput = {
+    id?: SortOrder
+    parentId?: SortOrder
+    codeId?: SortOrder
+  }
+
+  export type ReviewScalarRelationFilter = {
+    is?: ReviewWhereInput
+    isNot?: ReviewWhereInput
+  }
+
+  export type ReviewLikeUserIdReviewIdCompoundUniqueInput = {
+    userId: string
+    reviewId: number
+  }
+
+  export type ReviewLikeCountOrderByAggregateInput = {
+    userId?: SortOrder
+    reviewId?: SortOrder
+  }
+
+  export type ReviewLikeAvgOrderByAggregateInput = {
+    reviewId?: SortOrder
+  }
+
+  export type ReviewLikeMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    reviewId?: SortOrder
+  }
+
+  export type ReviewLikeMinOrderByAggregateInput = {
+    userId?: SortOrder
+    reviewId?: SortOrder
+  }
+
+  export type ReviewLikeSumOrderByAggregateInput = {
+    reviewId?: SortOrder
+  }
+
+  export type GradeCreateNestedOneWithoutUsersInput = {
+    create?: XOR<GradeCreateWithoutUsersInput, GradeUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: GradeCreateOrConnectWithoutUsersInput
+    connect?: GradeWhereUniqueInput
+  }
+
+  export type CodeSnippetCreateNestedManyWithoutUserInput = {
+    create?: XOR<CodeSnippetCreateWithoutUserInput, CodeSnippetUncheckedCreateWithoutUserInput> | CodeSnippetCreateWithoutUserInput[] | CodeSnippetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutUserInput | CodeSnippetCreateOrConnectWithoutUserInput[]
+    createMany?: CodeSnippetCreateManyUserInputEnvelope
+    connect?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+  }
+
+  export type ReviewCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewLikeCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewLikeCreateWithoutUserInput, ReviewLikeUncheckedCreateWithoutUserInput> | ReviewLikeCreateWithoutUserInput[] | ReviewLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutUserInput | ReviewLikeCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewLikeCreateManyUserInputEnvelope
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+  }
+
+  export type CodeSnippetUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CodeSnippetCreateWithoutUserInput, CodeSnippetUncheckedCreateWithoutUserInput> | CodeSnippetCreateWithoutUserInput[] | CodeSnippetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutUserInput | CodeSnippetCreateOrConnectWithoutUserInput[]
+    createMany?: CodeSnippetCreateManyUserInputEnvelope
+    connect?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewLikeUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewLikeCreateWithoutUserInput, ReviewLikeUncheckedCreateWithoutUserInput> | ReviewLikeCreateWithoutUserInput[] | ReviewLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutUserInput | ReviewLikeCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewLikeCreateManyUserInputEnvelope
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2317,6 +10983,424 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type GradeUpdateOneWithoutUsersNestedInput = {
+    create?: XOR<GradeCreateWithoutUsersInput, GradeUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: GradeCreateOrConnectWithoutUsersInput
+    upsert?: GradeUpsertWithoutUsersInput
+    disconnect?: GradeWhereInput | boolean
+    delete?: GradeWhereInput | boolean
+    connect?: GradeWhereUniqueInput
+    update?: XOR<XOR<GradeUpdateToOneWithWhereWithoutUsersInput, GradeUpdateWithoutUsersInput>, GradeUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type CodeSnippetUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CodeSnippetCreateWithoutUserInput, CodeSnippetUncheckedCreateWithoutUserInput> | CodeSnippetCreateWithoutUserInput[] | CodeSnippetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutUserInput | CodeSnippetCreateOrConnectWithoutUserInput[]
+    upsert?: CodeSnippetUpsertWithWhereUniqueWithoutUserInput | CodeSnippetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CodeSnippetCreateManyUserInputEnvelope
+    set?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    disconnect?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    delete?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    connect?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    update?: CodeSnippetUpdateWithWhereUniqueWithoutUserInput | CodeSnippetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CodeSnippetUpdateManyWithWhereWithoutUserInput | CodeSnippetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CodeSnippetScalarWhereInput | CodeSnippetScalarWhereInput[]
+  }
+
+  export type ReviewUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewLikeUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewLikeCreateWithoutUserInput, ReviewLikeUncheckedCreateWithoutUserInput> | ReviewLikeCreateWithoutUserInput[] | ReviewLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutUserInput | ReviewLikeCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewLikeUpsertWithWhereUniqueWithoutUserInput | ReviewLikeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewLikeCreateManyUserInputEnvelope
+    set?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    disconnect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    delete?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    update?: ReviewLikeUpdateWithWhereUniqueWithoutUserInput | ReviewLikeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewLikeUpdateManyWithWhereWithoutUserInput | ReviewLikeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type CodeSnippetUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CodeSnippetCreateWithoutUserInput, CodeSnippetUncheckedCreateWithoutUserInput> | CodeSnippetCreateWithoutUserInput[] | CodeSnippetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutUserInput | CodeSnippetCreateOrConnectWithoutUserInput[]
+    upsert?: CodeSnippetUpsertWithWhereUniqueWithoutUserInput | CodeSnippetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CodeSnippetCreateManyUserInputEnvelope
+    set?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    disconnect?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    delete?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    connect?: CodeSnippetWhereUniqueInput | CodeSnippetWhereUniqueInput[]
+    update?: CodeSnippetUpdateWithWhereUniqueWithoutUserInput | CodeSnippetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CodeSnippetUpdateManyWithWhereWithoutUserInput | CodeSnippetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CodeSnippetScalarWhereInput | CodeSnippetScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewLikeUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewLikeCreateWithoutUserInput, ReviewLikeUncheckedCreateWithoutUserInput> | ReviewLikeCreateWithoutUserInput[] | ReviewLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutUserInput | ReviewLikeCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewLikeUpsertWithWhereUniqueWithoutUserInput | ReviewLikeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewLikeCreateManyUserInputEnvelope
+    set?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    disconnect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    delete?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    update?: ReviewLikeUpdateWithWhereUniqueWithoutUserInput | ReviewLikeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewLikeUpdateManyWithWhereWithoutUserInput | ReviewLikeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+  }
+
+  export type UserCreateNestedManyWithoutGradeInput = {
+    create?: XOR<UserCreateWithoutGradeInput, UserUncheckedCreateWithoutGradeInput> | UserCreateWithoutGradeInput[] | UserUncheckedCreateWithoutGradeInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutGradeInput | UserCreateOrConnectWithoutGradeInput[]
+    createMany?: UserCreateManyGradeInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutGradeInput = {
+    create?: XOR<UserCreateWithoutGradeInput, UserUncheckedCreateWithoutGradeInput> | UserCreateWithoutGradeInput[] | UserUncheckedCreateWithoutGradeInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutGradeInput | UserCreateOrConnectWithoutGradeInput[]
+    createMany?: UserCreateManyGradeInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUpdateManyWithoutGradeNestedInput = {
+    create?: XOR<UserCreateWithoutGradeInput, UserUncheckedCreateWithoutGradeInput> | UserCreateWithoutGradeInput[] | UserUncheckedCreateWithoutGradeInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutGradeInput | UserCreateOrConnectWithoutGradeInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutGradeInput | UserUpsertWithWhereUniqueWithoutGradeInput[]
+    createMany?: UserCreateManyGradeInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutGradeInput | UserUpdateWithWhereUniqueWithoutGradeInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutGradeInput | UserUpdateManyWithWhereWithoutGradeInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutGradeNestedInput = {
+    create?: XOR<UserCreateWithoutGradeInput, UserUncheckedCreateWithoutGradeInput> | UserCreateWithoutGradeInput[] | UserUncheckedCreateWithoutGradeInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutGradeInput | UserCreateOrConnectWithoutGradeInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutGradeInput | UserUpsertWithWhereUniqueWithoutGradeInput[]
+    createMany?: UserCreateManyGradeInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutGradeInput | UserUpdateWithWhereUniqueWithoutGradeInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutGradeInput | UserUpdateManyWithWhereWithoutGradeInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCodeSnippetsInput = {
+    create?: XOR<UserCreateWithoutCodeSnippetsInput, UserUncheckedCreateWithoutCodeSnippetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCodeSnippetsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ReviewCreateNestedManyWithoutCodeSnippetInput = {
+    create?: XOR<ReviewCreateWithoutCodeSnippetInput, ReviewUncheckedCreateWithoutCodeSnippetInput> | ReviewCreateWithoutCodeSnippetInput[] | ReviewUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutCodeSnippetInput | ReviewCreateOrConnectWithoutCodeSnippetInput[]
+    createMany?: ReviewCreateManyCodeSnippetInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type CodeSnippetCategoryCreateNestedManyWithoutCodeSnippetInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput> | CodeSnippetCategoryCreateWithoutCodeSnippetInput[] | CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput | CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput[]
+    createMany?: CodeSnippetCategoryCreateManyCodeSnippetInputEnvelope
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutCodeSnippetInput = {
+    create?: XOR<ReviewCreateWithoutCodeSnippetInput, ReviewUncheckedCreateWithoutCodeSnippetInput> | ReviewCreateWithoutCodeSnippetInput[] | ReviewUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutCodeSnippetInput | ReviewCreateOrConnectWithoutCodeSnippetInput[]
+    createMany?: ReviewCreateManyCodeSnippetInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type CodeSnippetCategoryUncheckedCreateNestedManyWithoutCodeSnippetInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput> | CodeSnippetCategoryCreateWithoutCodeSnippetInput[] | CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput | CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput[]
+    createMany?: CodeSnippetCategoryCreateManyCodeSnippetInputEnvelope
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutCodeSnippetsNestedInput = {
+    create?: XOR<UserCreateWithoutCodeSnippetsInput, UserUncheckedCreateWithoutCodeSnippetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCodeSnippetsInput
+    upsert?: UserUpsertWithoutCodeSnippetsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCodeSnippetsInput, UserUpdateWithoutCodeSnippetsInput>, UserUncheckedUpdateWithoutCodeSnippetsInput>
+  }
+
+  export type ReviewUpdateManyWithoutCodeSnippetNestedInput = {
+    create?: XOR<ReviewCreateWithoutCodeSnippetInput, ReviewUncheckedCreateWithoutCodeSnippetInput> | ReviewCreateWithoutCodeSnippetInput[] | ReviewUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutCodeSnippetInput | ReviewCreateOrConnectWithoutCodeSnippetInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutCodeSnippetInput | ReviewUpsertWithWhereUniqueWithoutCodeSnippetInput[]
+    createMany?: ReviewCreateManyCodeSnippetInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutCodeSnippetInput | ReviewUpdateWithWhereUniqueWithoutCodeSnippetInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutCodeSnippetInput | ReviewUpdateManyWithWhereWithoutCodeSnippetInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type CodeSnippetCategoryUpdateManyWithoutCodeSnippetNestedInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput> | CodeSnippetCategoryCreateWithoutCodeSnippetInput[] | CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput | CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput[]
+    upsert?: CodeSnippetCategoryUpsertWithWhereUniqueWithoutCodeSnippetInput | CodeSnippetCategoryUpsertWithWhereUniqueWithoutCodeSnippetInput[]
+    createMany?: CodeSnippetCategoryCreateManyCodeSnippetInputEnvelope
+    set?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    disconnect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    delete?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    update?: CodeSnippetCategoryUpdateWithWhereUniqueWithoutCodeSnippetInput | CodeSnippetCategoryUpdateWithWhereUniqueWithoutCodeSnippetInput[]
+    updateMany?: CodeSnippetCategoryUpdateManyWithWhereWithoutCodeSnippetInput | CodeSnippetCategoryUpdateManyWithWhereWithoutCodeSnippetInput[]
+    deleteMany?: CodeSnippetCategoryScalarWhereInput | CodeSnippetCategoryScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutCodeSnippetNestedInput = {
+    create?: XOR<ReviewCreateWithoutCodeSnippetInput, ReviewUncheckedCreateWithoutCodeSnippetInput> | ReviewCreateWithoutCodeSnippetInput[] | ReviewUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutCodeSnippetInput | ReviewCreateOrConnectWithoutCodeSnippetInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutCodeSnippetInput | ReviewUpsertWithWhereUniqueWithoutCodeSnippetInput[]
+    createMany?: ReviewCreateManyCodeSnippetInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutCodeSnippetInput | ReviewUpdateWithWhereUniqueWithoutCodeSnippetInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutCodeSnippetInput | ReviewUpdateManyWithWhereWithoutCodeSnippetInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetNestedInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput> | CodeSnippetCategoryCreateWithoutCodeSnippetInput[] | CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput | CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput[]
+    upsert?: CodeSnippetCategoryUpsertWithWhereUniqueWithoutCodeSnippetInput | CodeSnippetCategoryUpsertWithWhereUniqueWithoutCodeSnippetInput[]
+    createMany?: CodeSnippetCategoryCreateManyCodeSnippetInputEnvelope
+    set?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    disconnect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    delete?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    update?: CodeSnippetCategoryUpdateWithWhereUniqueWithoutCodeSnippetInput | CodeSnippetCategoryUpdateWithWhereUniqueWithoutCodeSnippetInput[]
+    updateMany?: CodeSnippetCategoryUpdateManyWithWhereWithoutCodeSnippetInput | CodeSnippetCategoryUpdateManyWithWhereWithoutCodeSnippetInput[]
+    deleteMany?: CodeSnippetCategoryScalarWhereInput | CodeSnippetCategoryScalarWhereInput[]
+  }
+
+  export type CodeSnippetCategoryCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCategoryInput, CodeSnippetCategoryUncheckedCreateWithoutCategoryInput> | CodeSnippetCategoryCreateWithoutCategoryInput[] | CodeSnippetCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCategoryInput | CodeSnippetCategoryCreateOrConnectWithoutCategoryInput[]
+    createMany?: CodeSnippetCategoryCreateManyCategoryInputEnvelope
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+  }
+
+  export type CodeSnippetCategoryUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCategoryInput, CodeSnippetCategoryUncheckedCreateWithoutCategoryInput> | CodeSnippetCategoryCreateWithoutCategoryInput[] | CodeSnippetCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCategoryInput | CodeSnippetCategoryCreateOrConnectWithoutCategoryInput[]
+    createMany?: CodeSnippetCategoryCreateManyCategoryInputEnvelope
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+  }
+
+  export type CodeSnippetCategoryUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCategoryInput, CodeSnippetCategoryUncheckedCreateWithoutCategoryInput> | CodeSnippetCategoryCreateWithoutCategoryInput[] | CodeSnippetCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCategoryInput | CodeSnippetCategoryCreateOrConnectWithoutCategoryInput[]
+    upsert?: CodeSnippetCategoryUpsertWithWhereUniqueWithoutCategoryInput | CodeSnippetCategoryUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: CodeSnippetCategoryCreateManyCategoryInputEnvelope
+    set?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    disconnect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    delete?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    update?: CodeSnippetCategoryUpdateWithWhereUniqueWithoutCategoryInput | CodeSnippetCategoryUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: CodeSnippetCategoryUpdateManyWithWhereWithoutCategoryInput | CodeSnippetCategoryUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: CodeSnippetCategoryScalarWhereInput | CodeSnippetCategoryScalarWhereInput[]
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<CodeSnippetCategoryCreateWithoutCategoryInput, CodeSnippetCategoryUncheckedCreateWithoutCategoryInput> | CodeSnippetCategoryCreateWithoutCategoryInput[] | CodeSnippetCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CodeSnippetCategoryCreateOrConnectWithoutCategoryInput | CodeSnippetCategoryCreateOrConnectWithoutCategoryInput[]
+    upsert?: CodeSnippetCategoryUpsertWithWhereUniqueWithoutCategoryInput | CodeSnippetCategoryUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: CodeSnippetCategoryCreateManyCategoryInputEnvelope
+    set?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    disconnect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    delete?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    connect?: CodeSnippetCategoryWhereUniqueInput | CodeSnippetCategoryWhereUniqueInput[]
+    update?: CodeSnippetCategoryUpdateWithWhereUniqueWithoutCategoryInput | CodeSnippetCategoryUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: CodeSnippetCategoryUpdateManyWithWhereWithoutCategoryInput | CodeSnippetCategoryUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: CodeSnippetCategoryScalarWhereInput | CodeSnippetCategoryScalarWhereInput[]
+  }
+
+  export type CodeSnippetCreateNestedOneWithoutCategoriesInput = {
+    create?: XOR<CodeSnippetCreateWithoutCategoriesInput, CodeSnippetUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutCategoriesInput
+    connect?: CodeSnippetWhereUniqueInput
+  }
+
+  export type CategoryCreateNestedOneWithoutCodeSnippetCategoriesInput = {
+    create?: XOR<CategoryCreateWithoutCodeSnippetCategoriesInput, CategoryUncheckedCreateWithoutCodeSnippetCategoriesInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutCodeSnippetCategoriesInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type CodeSnippetUpdateOneRequiredWithoutCategoriesNestedInput = {
+    create?: XOR<CodeSnippetCreateWithoutCategoriesInput, CodeSnippetUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutCategoriesInput
+    upsert?: CodeSnippetUpsertWithoutCategoriesInput
+    connect?: CodeSnippetWhereUniqueInput
+    update?: XOR<XOR<CodeSnippetUpdateToOneWithWhereWithoutCategoriesInput, CodeSnippetUpdateWithoutCategoriesInput>, CodeSnippetUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type CategoryUpdateOneRequiredWithoutCodeSnippetCategoriesNestedInput = {
+    create?: XOR<CategoryCreateWithoutCodeSnippetCategoriesInput, CategoryUncheckedCreateWithoutCodeSnippetCategoriesInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutCodeSnippetCategoriesInput
+    upsert?: CategoryUpsertWithoutCodeSnippetCategoriesInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutCodeSnippetCategoriesInput, CategoryUpdateWithoutCodeSnippetCategoriesInput>, CategoryUncheckedUpdateWithoutCodeSnippetCategoriesInput>
+  }
+
+  export type UserCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CodeSnippetCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<CodeSnippetCreateWithoutReviewsInput, CodeSnippetUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutReviewsInput
+    connect?: CodeSnippetWhereUniqueInput
+  }
+
+  export type ReviewLikeCreateNestedManyWithoutReviewInput = {
+    create?: XOR<ReviewLikeCreateWithoutReviewInput, ReviewLikeUncheckedCreateWithoutReviewInput> | ReviewLikeCreateWithoutReviewInput[] | ReviewLikeUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutReviewInput | ReviewLikeCreateOrConnectWithoutReviewInput[]
+    createMany?: ReviewLikeCreateManyReviewInputEnvelope
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+  }
+
+  export type ReviewLikeUncheckedCreateNestedManyWithoutReviewInput = {
+    create?: XOR<ReviewLikeCreateWithoutReviewInput, ReviewLikeUncheckedCreateWithoutReviewInput> | ReviewLikeCreateWithoutReviewInput[] | ReviewLikeUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutReviewInput | ReviewLikeCreateOrConnectWithoutReviewInput[]
+    createMany?: ReviewLikeCreateManyReviewInputEnvelope
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    upsert?: UserUpsertWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReviewsInput, UserUpdateWithoutReviewsInput>, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<CodeSnippetCreateWithoutReviewsInput, CodeSnippetUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: CodeSnippetCreateOrConnectWithoutReviewsInput
+    upsert?: CodeSnippetUpsertWithoutReviewsInput
+    connect?: CodeSnippetWhereUniqueInput
+    update?: XOR<XOR<CodeSnippetUpdateToOneWithWhereWithoutReviewsInput, CodeSnippetUpdateWithoutReviewsInput>, CodeSnippetUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type ReviewLikeUpdateManyWithoutReviewNestedInput = {
+    create?: XOR<ReviewLikeCreateWithoutReviewInput, ReviewLikeUncheckedCreateWithoutReviewInput> | ReviewLikeCreateWithoutReviewInput[] | ReviewLikeUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutReviewInput | ReviewLikeCreateOrConnectWithoutReviewInput[]
+    upsert?: ReviewLikeUpsertWithWhereUniqueWithoutReviewInput | ReviewLikeUpsertWithWhereUniqueWithoutReviewInput[]
+    createMany?: ReviewLikeCreateManyReviewInputEnvelope
+    set?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    disconnect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    delete?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    update?: ReviewLikeUpdateWithWhereUniqueWithoutReviewInput | ReviewLikeUpdateWithWhereUniqueWithoutReviewInput[]
+    updateMany?: ReviewLikeUpdateManyWithWhereWithoutReviewInput | ReviewLikeUpdateManyWithWhereWithoutReviewInput[]
+    deleteMany?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+  }
+
+  export type ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput = {
+    create?: XOR<ReviewLikeCreateWithoutReviewInput, ReviewLikeUncheckedCreateWithoutReviewInput> | ReviewLikeCreateWithoutReviewInput[] | ReviewLikeUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewLikeCreateOrConnectWithoutReviewInput | ReviewLikeCreateOrConnectWithoutReviewInput[]
+    upsert?: ReviewLikeUpsertWithWhereUniqueWithoutReviewInput | ReviewLikeUpsertWithWhereUniqueWithoutReviewInput[]
+    createMany?: ReviewLikeCreateManyReviewInputEnvelope
+    set?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    disconnect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    delete?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+    update?: ReviewLikeUpdateWithWhereUniqueWithoutReviewInput | ReviewLikeUpdateWithWhereUniqueWithoutReviewInput[]
+    updateMany?: ReviewLikeUpdateManyWithWhereWithoutReviewInput | ReviewLikeUpdateManyWithWhereWithoutReviewInput[]
+    deleteMany?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutReviewLikesInput = {
+    create?: XOR<UserCreateWithoutReviewLikesInput, UserUncheckedCreateWithoutReviewLikesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewLikesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ReviewCreateNestedOneWithoutLikesInput = {
+    create?: XOR<ReviewCreateWithoutLikesInput, ReviewUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: ReviewCreateOrConnectWithoutLikesInput
+    connect?: ReviewWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutReviewLikesNestedInput = {
+    create?: XOR<UserCreateWithoutReviewLikesInput, UserUncheckedCreateWithoutReviewLikesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewLikesInput
+    upsert?: UserUpsertWithoutReviewLikesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReviewLikesInput, UserUpdateWithoutReviewLikesInput>, UserUncheckedUpdateWithoutReviewLikesInput>
+  }
+
+  export type ReviewUpdateOneRequiredWithoutLikesNestedInput = {
+    create?: XOR<ReviewCreateWithoutLikesInput, ReviewUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: ReviewCreateOrConnectWithoutLikesInput
+    upsert?: ReviewUpsertWithoutLikesInput
+    connect?: ReviewWhereUniqueInput
+    update?: XOR<XOR<ReviewUpdateToOneWithWhereWithoutLikesInput, ReviewUpdateWithoutLikesInput>, ReviewUncheckedUpdateWithoutLikesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2369,6 +11453,28 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2384,17 +11490,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -2425,17 +11520,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -2451,6 +11535,1148 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type GradeCreateWithoutUsersInput = {
+    name: string
+  }
+
+  export type GradeUncheckedCreateWithoutUsersInput = {
+    id?: number
+    name: string
+  }
+
+  export type GradeCreateOrConnectWithoutUsersInput = {
+    where: GradeWhereUniqueInput
+    create: XOR<GradeCreateWithoutUsersInput, GradeUncheckedCreateWithoutUsersInput>
+  }
+
+  export type CodeSnippetCreateWithoutUserInput = {
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewCreateNestedManyWithoutCodeSnippetInput
+    categories?: CodeSnippetCategoryCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetUncheckedCreateWithoutUserInput = {
+    id?: number
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutCodeSnippetInput
+    categories?: CodeSnippetCategoryUncheckedCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetCreateOrConnectWithoutUserInput = {
+    where: CodeSnippetWhereUniqueInput
+    create: XOR<CodeSnippetCreateWithoutUserInput, CodeSnippetUncheckedCreateWithoutUserInput>
+  }
+
+  export type CodeSnippetCreateManyUserInputEnvelope = {
+    data: CodeSnippetCreateManyUserInput | CodeSnippetCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReviewCreateWithoutUserInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    likes?: ReviewLikeCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUncheckedCreateWithoutUserInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    codeId: number
+    likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewCreateOrConnectWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReviewLikeCreateWithoutUserInput = {
+    review: ReviewCreateNestedOneWithoutLikesInput
+  }
+
+  export type ReviewLikeUncheckedCreateWithoutUserInput = {
+    reviewId: number
+  }
+
+  export type ReviewLikeCreateOrConnectWithoutUserInput = {
+    where: ReviewLikeWhereUniqueInput
+    create: XOR<ReviewLikeCreateWithoutUserInput, ReviewLikeUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewLikeCreateManyUserInputEnvelope = {
+    data: ReviewLikeCreateManyUserInput | ReviewLikeCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GradeUpsertWithoutUsersInput = {
+    update: XOR<GradeUpdateWithoutUsersInput, GradeUncheckedUpdateWithoutUsersInput>
+    create: XOR<GradeCreateWithoutUsersInput, GradeUncheckedCreateWithoutUsersInput>
+    where?: GradeWhereInput
+  }
+
+  export type GradeUpdateToOneWithWhereWithoutUsersInput = {
+    where?: GradeWhereInput
+    data: XOR<GradeUpdateWithoutUsersInput, GradeUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type GradeUpdateWithoutUsersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type GradeUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CodeSnippetUpsertWithWhereUniqueWithoutUserInput = {
+    where: CodeSnippetWhereUniqueInput
+    update: XOR<CodeSnippetUpdateWithoutUserInput, CodeSnippetUncheckedUpdateWithoutUserInput>
+    create: XOR<CodeSnippetCreateWithoutUserInput, CodeSnippetUncheckedCreateWithoutUserInput>
+  }
+
+  export type CodeSnippetUpdateWithWhereUniqueWithoutUserInput = {
+    where: CodeSnippetWhereUniqueInput
+    data: XOR<CodeSnippetUpdateWithoutUserInput, CodeSnippetUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CodeSnippetUpdateManyWithWhereWithoutUserInput = {
+    where: CodeSnippetScalarWhereInput
+    data: XOR<CodeSnippetUpdateManyMutationInput, CodeSnippetUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CodeSnippetScalarWhereInput = {
+    AND?: CodeSnippetScalarWhereInput | CodeSnippetScalarWhereInput[]
+    OR?: CodeSnippetScalarWhereInput[]
+    NOT?: CodeSnippetScalarWhereInput | CodeSnippetScalarWhereInput[]
+    id?: IntFilter<"CodeSnippet"> | number
+    title?: StringFilter<"CodeSnippet"> | string
+    content?: StringFilter<"CodeSnippet"> | string
+    createdAt?: DateTimeFilter<"CodeSnippet"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeSnippet"> | Date | string
+    userId?: StringFilter<"CodeSnippet"> | string
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewScalarWhereInput = {
+    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    OR?: ReviewScalarWhereInput[]
+    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    id?: IntFilter<"Review"> | number
+    content?: StringFilter<"Review"> | string
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    parentId?: IntNullableFilter<"Review"> | number | null
+    userId?: StringFilter<"Review"> | string
+    codeId?: IntFilter<"Review"> | number
+  }
+
+  export type ReviewLikeUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewLikeWhereUniqueInput
+    update: XOR<ReviewLikeUpdateWithoutUserInput, ReviewLikeUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewLikeCreateWithoutUserInput, ReviewLikeUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewLikeUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewLikeWhereUniqueInput
+    data: XOR<ReviewLikeUpdateWithoutUserInput, ReviewLikeUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewLikeUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewLikeScalarWhereInput
+    data: XOR<ReviewLikeUpdateManyMutationInput, ReviewLikeUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewLikeScalarWhereInput = {
+    AND?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+    OR?: ReviewLikeScalarWhereInput[]
+    NOT?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+    userId?: StringFilter<"ReviewLike"> | string
+    reviewId?: IntFilter<"ReviewLike"> | number
+  }
+
+  export type UserCreateWithoutGradeInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    codeSnippets?: CodeSnippetCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGradeInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    codeSnippets?: CodeSnippetUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGradeInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGradeInput, UserUncheckedCreateWithoutGradeInput>
+  }
+
+  export type UserCreateManyGradeInputEnvelope = {
+    data: UserCreateManyGradeInput | UserCreateManyGradeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutGradeInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutGradeInput, UserUncheckedUpdateWithoutGradeInput>
+    create: XOR<UserCreateWithoutGradeInput, UserUncheckedCreateWithoutGradeInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutGradeInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutGradeInput, UserUncheckedUpdateWithoutGradeInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutGradeInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutGradeInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    nickname?: StringFilter<"User"> | string
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    password?: StringFilter<"User"> | string
+    imageUrl?: StringNullableFilter<"User"> | string | null
+    reviewCount?: IntFilter<"User"> | number
+    likeCount?: IntFilter<"User"> | number
+    gradeId?: IntNullableFilter<"User"> | number | null
+  }
+
+  export type UserCreateWithoutCodeSnippetsInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    grade?: GradeCreateNestedOneWithoutUsersInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCodeSnippetsInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    gradeId?: number | null
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCodeSnippetsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCodeSnippetsInput, UserUncheckedCreateWithoutCodeSnippetsInput>
+  }
+
+  export type ReviewCreateWithoutCodeSnippetInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    user: UserCreateNestedOneWithoutReviewsInput
+    likes?: ReviewLikeCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUncheckedCreateWithoutCodeSnippetInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    userId: string
+    likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewCreateOrConnectWithoutCodeSnippetInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutCodeSnippetInput, ReviewUncheckedCreateWithoutCodeSnippetInput>
+  }
+
+  export type ReviewCreateManyCodeSnippetInputEnvelope = {
+    data: ReviewCreateManyCodeSnippetInput | ReviewCreateManyCodeSnippetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CodeSnippetCategoryCreateWithoutCodeSnippetInput = {
+    category: CategoryCreateNestedOneWithoutCodeSnippetCategoriesInput
+  }
+
+  export type CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput = {
+    categoryId: number
+  }
+
+  export type CodeSnippetCategoryCreateOrConnectWithoutCodeSnippetInput = {
+    where: CodeSnippetCategoryWhereUniqueInput
+    create: XOR<CodeSnippetCategoryCreateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput>
+  }
+
+  export type CodeSnippetCategoryCreateManyCodeSnippetInputEnvelope = {
+    data: CodeSnippetCategoryCreateManyCodeSnippetInput | CodeSnippetCategoryCreateManyCodeSnippetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutCodeSnippetsInput = {
+    update: XOR<UserUpdateWithoutCodeSnippetsInput, UserUncheckedUpdateWithoutCodeSnippetsInput>
+    create: XOR<UserCreateWithoutCodeSnippetsInput, UserUncheckedCreateWithoutCodeSnippetsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCodeSnippetsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCodeSnippetsInput, UserUncheckedUpdateWithoutCodeSnippetsInput>
+  }
+
+  export type UserUpdateWithoutCodeSnippetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    grade?: GradeUpdateOneWithoutUsersNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCodeSnippetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    gradeId?: NullableIntFieldUpdateOperationsInput | number | null
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutCodeSnippetInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutCodeSnippetInput, ReviewUncheckedUpdateWithoutCodeSnippetInput>
+    create: XOR<ReviewCreateWithoutCodeSnippetInput, ReviewUncheckedCreateWithoutCodeSnippetInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutCodeSnippetInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutCodeSnippetInput, ReviewUncheckedUpdateWithoutCodeSnippetInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutCodeSnippetInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutCodeSnippetInput>
+  }
+
+  export type CodeSnippetCategoryUpsertWithWhereUniqueWithoutCodeSnippetInput = {
+    where: CodeSnippetCategoryWhereUniqueInput
+    update: XOR<CodeSnippetCategoryUpdateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedUpdateWithoutCodeSnippetInput>
+    create: XOR<CodeSnippetCategoryCreateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedCreateWithoutCodeSnippetInput>
+  }
+
+  export type CodeSnippetCategoryUpdateWithWhereUniqueWithoutCodeSnippetInput = {
+    where: CodeSnippetCategoryWhereUniqueInput
+    data: XOR<CodeSnippetCategoryUpdateWithoutCodeSnippetInput, CodeSnippetCategoryUncheckedUpdateWithoutCodeSnippetInput>
+  }
+
+  export type CodeSnippetCategoryUpdateManyWithWhereWithoutCodeSnippetInput = {
+    where: CodeSnippetCategoryScalarWhereInput
+    data: XOR<CodeSnippetCategoryUpdateManyMutationInput, CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetInput>
+  }
+
+  export type CodeSnippetCategoryScalarWhereInput = {
+    AND?: CodeSnippetCategoryScalarWhereInput | CodeSnippetCategoryScalarWhereInput[]
+    OR?: CodeSnippetCategoryScalarWhereInput[]
+    NOT?: CodeSnippetCategoryScalarWhereInput | CodeSnippetCategoryScalarWhereInput[]
+    codeId?: IntFilter<"CodeSnippetCategory"> | number
+    categoryId?: IntFilter<"CodeSnippetCategory"> | number
+  }
+
+  export type CodeSnippetCategoryCreateWithoutCategoryInput = {
+    codeSnippet: CodeSnippetCreateNestedOneWithoutCategoriesInput
+  }
+
+  export type CodeSnippetCategoryUncheckedCreateWithoutCategoryInput = {
+    codeId: number
+  }
+
+  export type CodeSnippetCategoryCreateOrConnectWithoutCategoryInput = {
+    where: CodeSnippetCategoryWhereUniqueInput
+    create: XOR<CodeSnippetCategoryCreateWithoutCategoryInput, CodeSnippetCategoryUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type CodeSnippetCategoryCreateManyCategoryInputEnvelope = {
+    data: CodeSnippetCategoryCreateManyCategoryInput | CodeSnippetCategoryCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CodeSnippetCategoryUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: CodeSnippetCategoryWhereUniqueInput
+    update: XOR<CodeSnippetCategoryUpdateWithoutCategoryInput, CodeSnippetCategoryUncheckedUpdateWithoutCategoryInput>
+    create: XOR<CodeSnippetCategoryCreateWithoutCategoryInput, CodeSnippetCategoryUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type CodeSnippetCategoryUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: CodeSnippetCategoryWhereUniqueInput
+    data: XOR<CodeSnippetCategoryUpdateWithoutCategoryInput, CodeSnippetCategoryUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type CodeSnippetCategoryUpdateManyWithWhereWithoutCategoryInput = {
+    where: CodeSnippetCategoryScalarWhereInput
+    data: XOR<CodeSnippetCategoryUpdateManyMutationInput, CodeSnippetCategoryUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type CodeSnippetCreateWithoutCategoriesInput = {
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCodeSnippetsInput
+    reviews?: ReviewCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetUncheckedCreateWithoutCategoriesInput = {
+    id?: number
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetCreateOrConnectWithoutCategoriesInput = {
+    where: CodeSnippetWhereUniqueInput
+    create: XOR<CodeSnippetCreateWithoutCategoriesInput, CodeSnippetUncheckedCreateWithoutCategoriesInput>
+  }
+
+  export type CategoryCreateWithoutCodeSnippetCategoriesInput = {
+    name: string
+  }
+
+  export type CategoryUncheckedCreateWithoutCodeSnippetCategoriesInput = {
+    id?: number
+    name: string
+  }
+
+  export type CategoryCreateOrConnectWithoutCodeSnippetCategoriesInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutCodeSnippetCategoriesInput, CategoryUncheckedCreateWithoutCodeSnippetCategoriesInput>
+  }
+
+  export type CodeSnippetUpsertWithoutCategoriesInput = {
+    update: XOR<CodeSnippetUpdateWithoutCategoriesInput, CodeSnippetUncheckedUpdateWithoutCategoriesInput>
+    create: XOR<CodeSnippetCreateWithoutCategoriesInput, CodeSnippetUncheckedCreateWithoutCategoriesInput>
+    where?: CodeSnippetWhereInput
+  }
+
+  export type CodeSnippetUpdateToOneWithWhereWithoutCategoriesInput = {
+    where?: CodeSnippetWhereInput
+    data: XOR<CodeSnippetUpdateWithoutCategoriesInput, CodeSnippetUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type CodeSnippetUpdateWithoutCategoriesInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCodeSnippetsNestedInput
+    reviews?: ReviewUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CodeSnippetUncheckedUpdateWithoutCategoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    reviews?: ReviewUncheckedUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CategoryUpsertWithoutCodeSnippetCategoriesInput = {
+    update: XOR<CategoryUpdateWithoutCodeSnippetCategoriesInput, CategoryUncheckedUpdateWithoutCodeSnippetCategoriesInput>
+    create: XOR<CategoryCreateWithoutCodeSnippetCategoriesInput, CategoryUncheckedCreateWithoutCodeSnippetCategoriesInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutCodeSnippetCategoriesInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutCodeSnippetCategoriesInput, CategoryUncheckedUpdateWithoutCodeSnippetCategoriesInput>
+  }
+
+  export type CategoryUpdateWithoutCodeSnippetCategoriesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryUncheckedUpdateWithoutCodeSnippetCategoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCreateWithoutReviewsInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    grade?: GradeCreateNestedOneWithoutUsersInput
+    codeSnippets?: CodeSnippetCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    gradeId?: number | null
+    codeSnippets?: CodeSnippetUncheckedCreateNestedManyWithoutUserInput
+    reviewLikes?: ReviewLikeUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReviewsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type CodeSnippetCreateWithoutReviewsInput = {
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCodeSnippetsInput
+    categories?: CodeSnippetCategoryCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetUncheckedCreateWithoutReviewsInput = {
+    id?: number
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    categories?: CodeSnippetCategoryUncheckedCreateNestedManyWithoutCodeSnippetInput
+  }
+
+  export type CodeSnippetCreateOrConnectWithoutReviewsInput = {
+    where: CodeSnippetWhereUniqueInput
+    create: XOR<CodeSnippetCreateWithoutReviewsInput, CodeSnippetUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type ReviewLikeCreateWithoutReviewInput = {
+    user: UserCreateNestedOneWithoutReviewLikesInput
+  }
+
+  export type ReviewLikeUncheckedCreateWithoutReviewInput = {
+    userId: string
+  }
+
+  export type ReviewLikeCreateOrConnectWithoutReviewInput = {
+    where: ReviewLikeWhereUniqueInput
+    create: XOR<ReviewLikeCreateWithoutReviewInput, ReviewLikeUncheckedCreateWithoutReviewInput>
+  }
+
+  export type ReviewLikeCreateManyReviewInputEnvelope = {
+    data: ReviewLikeCreateManyReviewInput | ReviewLikeCreateManyReviewInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutReviewsInput = {
+    update: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type UserUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    grade?: GradeUpdateOneWithoutUsersNestedInput
+    codeSnippets?: CodeSnippetUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    gradeId?: NullableIntFieldUpdateOperationsInput | number | null
+    codeSnippets?: CodeSnippetUncheckedUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CodeSnippetUpsertWithoutReviewsInput = {
+    update: XOR<CodeSnippetUpdateWithoutReviewsInput, CodeSnippetUncheckedUpdateWithoutReviewsInput>
+    create: XOR<CodeSnippetCreateWithoutReviewsInput, CodeSnippetUncheckedCreateWithoutReviewsInput>
+    where?: CodeSnippetWhereInput
+  }
+
+  export type CodeSnippetUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: CodeSnippetWhereInput
+    data: XOR<CodeSnippetUpdateWithoutReviewsInput, CodeSnippetUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type CodeSnippetUpdateWithoutReviewsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCodeSnippetsNestedInput
+    categories?: CodeSnippetCategoryUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CodeSnippetUncheckedUpdateWithoutReviewsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    categories?: CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type ReviewLikeUpsertWithWhereUniqueWithoutReviewInput = {
+    where: ReviewLikeWhereUniqueInput
+    update: XOR<ReviewLikeUpdateWithoutReviewInput, ReviewLikeUncheckedUpdateWithoutReviewInput>
+    create: XOR<ReviewLikeCreateWithoutReviewInput, ReviewLikeUncheckedCreateWithoutReviewInput>
+  }
+
+  export type ReviewLikeUpdateWithWhereUniqueWithoutReviewInput = {
+    where: ReviewLikeWhereUniqueInput
+    data: XOR<ReviewLikeUpdateWithoutReviewInput, ReviewLikeUncheckedUpdateWithoutReviewInput>
+  }
+
+  export type ReviewLikeUpdateManyWithWhereWithoutReviewInput = {
+    where: ReviewLikeScalarWhereInput
+    data: XOR<ReviewLikeUpdateManyMutationInput, ReviewLikeUncheckedUpdateManyWithoutReviewInput>
+  }
+
+  export type UserCreateWithoutReviewLikesInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    grade?: GradeCreateNestedOneWithoutUsersInput
+    codeSnippets?: CodeSnippetCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReviewLikesInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+    gradeId?: number | null
+    codeSnippets?: CodeSnippetUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReviewLikesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReviewLikesInput, UserUncheckedCreateWithoutReviewLikesInput>
+  }
+
+  export type ReviewCreateWithoutLikesInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    user: UserCreateNestedOneWithoutReviewsInput
+    codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutLikesInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    userId: string
+    codeId: number
+  }
+
+  export type ReviewCreateOrConnectWithoutLikesInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutLikesInput, ReviewUncheckedCreateWithoutLikesInput>
+  }
+
+  export type UserUpsertWithoutReviewLikesInput = {
+    update: XOR<UserUpdateWithoutReviewLikesInput, UserUncheckedUpdateWithoutReviewLikesInput>
+    create: XOR<UserCreateWithoutReviewLikesInput, UserUncheckedCreateWithoutReviewLikesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReviewLikesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReviewLikesInput, UserUncheckedUpdateWithoutReviewLikesInput>
+  }
+
+  export type UserUpdateWithoutReviewLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    grade?: GradeUpdateOneWithoutUsersNestedInput
+    codeSnippets?: CodeSnippetUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReviewLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    gradeId?: NullableIntFieldUpdateOperationsInput | number | null
+    codeSnippets?: CodeSnippetUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ReviewUpsertWithoutLikesInput = {
+    update: XOR<ReviewUpdateWithoutLikesInput, ReviewUncheckedUpdateWithoutLikesInput>
+    create: XOR<ReviewCreateWithoutLikesInput, ReviewUncheckedCreateWithoutLikesInput>
+    where?: ReviewWhereInput
+  }
+
+  export type ReviewUpdateToOneWithWhereWithoutLikesInput = {
+    where?: ReviewWhereInput
+    data: XOR<ReviewUpdateWithoutLikesInput, ReviewUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type ReviewUpdateWithoutLikesInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutLikesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CodeSnippetCreateManyUserInput = {
+    id?: number
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateManyUserInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    codeId: number
+  }
+
+  export type ReviewLikeCreateManyUserInput = {
+    reviewId: number
+  }
+
+  export type CodeSnippetUpdateWithoutUserInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUpdateManyWithoutCodeSnippetNestedInput
+    categories?: CodeSnippetCategoryUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CodeSnippetUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutCodeSnippetNestedInput
+    categories?: CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetNestedInput
+  }
+
+  export type CodeSnippetUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUpdateWithoutUserInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    codeId?: IntFieldUpdateOperationsInput | number
+    likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    codeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewLikeUpdateWithoutUserInput = {
+    review?: ReviewUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type ReviewLikeUncheckedUpdateWithoutUserInput = {
+    reviewId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewLikeUncheckedUpdateManyWithoutUserInput = {
+    reviewId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserCreateManyGradeInput = {
+    id?: string
+    email: string
+    nickname: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    password: string
+    imageUrl?: string | null
+    reviewCount?: number
+    likeCount?: number
+  }
+
+  export type UserUpdateWithoutGradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    codeSnippets?: CodeSnippetUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+    codeSnippets?: CodeSnippetUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    reviewLikes?: ReviewLikeUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutGradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nickname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: IntFieldUpdateOperationsInput | number
+    likeCount?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewCreateManyCodeSnippetInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    userId: string
+  }
+
+  export type CodeSnippetCategoryCreateManyCodeSnippetInput = {
+    categoryId: number
+  }
+
+  export type ReviewUpdateWithoutCodeSnippetInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutCodeSnippetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutCodeSnippetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CodeSnippetCategoryUpdateWithoutCodeSnippetInput = {
+    category?: CategoryUpdateOneRequiredWithoutCodeSnippetCategoriesNestedInput
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateWithoutCodeSnippetInput = {
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetInput = {
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CodeSnippetCategoryCreateManyCategoryInput = {
+    codeId: number
+  }
+
+  export type CodeSnippetCategoryUpdateWithoutCategoryInput = {
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutCategoriesNestedInput
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateWithoutCategoryInput = {
+    codeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CodeSnippetCategoryUncheckedUpdateManyWithoutCategoryInput = {
+    codeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ReviewLikeCreateManyReviewInput = {
+    userId: string
+  }
+
+  export type ReviewLikeUpdateWithoutReviewInput = {
+    user?: UserUpdateOneRequiredWithoutReviewLikesNestedInput
+  }
+
+  export type ReviewLikeUncheckedUpdateWithoutReviewInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ReviewLikeUncheckedUpdateManyWithoutReviewInput = {
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
 

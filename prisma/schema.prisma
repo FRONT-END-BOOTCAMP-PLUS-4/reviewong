@@ -9,109 +9,91 @@ datasource db {
 }
 
 model User {
-  id           String       @id @default(uuid())
-  email        String       @unique
-  username     String       @unique
-  createdAt    DateTime     @default(now()) @map("created_at")
-  updatedAt    DateTime     @updatedAt @map("updated_at")
-  deletedAt    DateTime?    @map("deleted_at")
+  id           String    @id @default(uuid())
+  email        String    @unique
+  nickname     String    
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
   password     String
-  profileImage String?      @map("profile_image")
-
-  // Relations
-  // categories   Category[]   @relation("RegMemberCategories")
-  // memberRoles  MemberRole[]
-  // menuLikes    MenuLike[]
-  // menus        Menu[]       @relation("RegMemberMenus")
-  // rcmd_menus   rcmd_menus[]
+  imageUrl     String?    @map("image_url")
+  reviewCount  Int        @default(0) @map("review_count")
+  likeCount    Int        @default(0) @map("like_count")
+  gradeId      Int?       @map("grade_id")
+  
+  grade        Grade?     @relation(fields: [gradeId], references: [id])
+  codeSnippets CodeSnippet[]
+  reviews      Review[]
+  reviewLikes  ReviewLike[]
 
   @@map("users")
 }
 
-// model Role {
-//   id          Int          @id @default(autoincrement())
-//   name        String
-//   createdAt   DateTime     @default(now()) @map("created_at")
-//   description String?
+model Grade {
+  id    Int    @id @default(autoincrement())
+  name  String
+  users User[]
+  
+  @@map("grades")
+}
 
-//   // Relations
-//   memberRoles MemberRole[]
+model CodeSnippet {
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  userId     String    @map("user_id")
 
-//   @@map("roles")
-// }
+  user       User      @relation(fields: [userId], references: [id])
+  reviews    Review[]
+  categories CodeSnippetCategory[]
 
-// model MemberRole {
-//   memberId  String   @map("member_id")
-//   roleId    Int      @map("role_id")
-//   createdAt DateTime @default(now()) @map("created_at")
+  @@map("code_snippets")
+}
 
-//   // Relations
-//   member    Member   @relation(fields: [memberId], references: [id])
-//   role      Role     @relation(fields: [roleId], references: [id])
+model Category {
+  id    Int                    @id @default(autoincrement())
+  name  String
+  codeSnippetCategories CodeSnippetCategory[]
 
-//   @@id([memberId, roleId])
-//   @@map("member_roles")
-// }
+  @@map("categories")
+}
 
-// model Category {
-//   id          Int      @id @default(autoincrement())
-//   name        String
-//   is_public   Boolean  @default(false) @map("is_public")
-//   order      Int     @default(0)
-//   regMemberId String   @map("reg_member_id")
-//   createdAt   DateTime @default(now()) @map("created_at")
+model CodeSnippetCategory {
+  codeId     Int      @map("code_id")
+  categoryId Int      @map("category_id")
 
-//   // Relations
-//   regMember   Member   @relation("RegMemberCategories", fields: [regMemberId], references: [id])
-//   menus       Menu[]
+  codeSnippet       CodeSnippet @relation(fields: [codeId], references: [id])
+  category   Category    @relation(fields: [categoryId], references: [id])
 
-//   @@map("categories")
-// }
+  @@id([codeId, categoryId])
+  @@map("code_snippet_categories")
+}
 
-// model Menu {
-//   id          Int          @id @default(autoincrement())
-//   korName     String       @map("kor_name")
-//   engName     String       @map("eng_name")
-//   price       Float
-//   isPublic    Boolean      @default(false) @map("is_public")
-//   hasIce     Boolean      @default(true) @map("has_ice")
-//   hasHot     Boolean      @default(true) @map("has_hot")
-//   description String?
-//   createdAt   DateTime     @default(now())
-//   categoryId  Int          @map("category_id")
-//   regMemberId String       @map("reg_member_id")
-//   deletedAt   DateTime?    @map("deleted_at")
-//   updatedAt   DateTime?    @updatedAt @map("updated_at")
+model Review {
+  id         Int       @id @default(autoincrement())
+  content    String
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  parentId   Int?      @map("parent_id")
+  userId     String    @map("user_id")
+  codeId     Int       @map("code_id")
 
-//   // Relations
-//   images      MenuImage[]  @relation("MenuImages")
-//   likes       MenuLike[]
-//   category    Category     @relation(fields: [categoryId], references: [id])
-//   regMember   Member       @relation("RegMemberMenus", fields: [regMemberId], references: [id])
-//   // rcmd_menus  rcmd_menus[]
+  user       User      @relation(fields: [userId], references: [id])
+  codeSnippet       CodeSnippet @relation(fields: [codeId], references: [id])
+  likes      ReviewLike[]
 
-//   @@map("menus")
-// }
+  @@map("reviews")
+}
 
-// model MenuImage {
-//   id        Int     @id @default(autoincrement())
-//   name       String
-//   isDefault Boolean @default(false) @map("is_default")
-//   menuId    Int     @map("menu_id")
+model ReviewLike {
+  userId   String  @map("user_id")
+  reviewId Int     @map("review_id")
 
-//   // Relations
-//   menu      Menu    @relation("MenuImages", fields: [menuId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
+  review   Review  @relation(fields: [reviewId], references: [id])
 
-//   @@map("menu_images")
-// }
-
-// model MenuLike {
-//   memberId  String   @map("member_id")
-//   menuId    Int      @map("menu_id")
-//   createdAt DateTime @default(now()) @map("created_at")
-//   member    Member   @relation(fields: [memberId], references: [id])
-//   menu      Menu     @relation(fields: [menuId], references: [id])
-
-//   @@id([memberId, menuId])
-//   @@map("menu_likes")
-// }
+  @@id([userId, reviewId])
+  @@map("review_likes")
+}
