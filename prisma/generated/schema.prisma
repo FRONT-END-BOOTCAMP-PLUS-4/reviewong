@@ -9,22 +9,21 @@ datasource db {
 }
 
 model User {
-  id          String    @id @default(uuid())
-  email       String    @unique
-  nickname    String
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-  deletedAt   DateTime? @map("deleted_at")
-  password    String
-  imageUrl    String?   @map("image_url")
-  reviewCount Int       @default(0) @map("review_count")
-  likeCount   Int       @default(0) @map("like_count")
-  gradeId     Int?      @map("grade_id")
-
-  grade        Grade?        @relation(fields: [gradeId], references: [id])
+  id           String        @id @default(uuid())
+  email        String        @unique
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  deletedAt    DateTime?     @map("deleted_at")
+  password     String
+  gradeId      Int?          @map("grade_id")
+  imageUrl     String?       @map("image_url")
+  likeCount    Int           @default(0) @map("like_count")
+  nickname     String
+  reviewCount  Int           @default(0) @map("review_count")
   codeSnippets CodeSnippet[]
-  reviews      Review[]
   reviewLikes  ReviewLike[]
+  reviews      Review[]
+  grade        Grade?        @relation(fields: [gradeId], references: [id])
 
   @@map("users")
 }
@@ -38,16 +37,15 @@ model Grade {
 }
 
 model CodeSnippet {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  userId    String   @map("user_id")
-
+  id         Int                   @id @default(autoincrement())
+  title      String
+  content    String
+  createdAt  DateTime              @default(now()) @map("created_at")
+  updatedAt  DateTime              @updatedAt @map("updated_at")
+  userId     String                @map("user_id")
+  categories CodeSnippetCategory[]
   user       User                  @relation(fields: [userId], references: [id])
   reviews    Review[]
-  categories CodeSnippetCategory[]
 
   @@map("code_snippets")
 }
@@ -61,28 +59,26 @@ model Category {
 }
 
 model CodeSnippetCategory {
-  codeId     Int @map("code_id")
-  categoryId Int @map("category_id")
-
-  codeSnippet CodeSnippet @relation(fields: [codeId], references: [id])
+  codeId      Int         @map("code_id")
+  categoryId  Int         @map("category_id")
   category    Category    @relation(fields: [categoryId], references: [id])
+  codeSnippet CodeSnippet @relation(fields: [codeId], references: [id])
 
   @@id([codeId, categoryId])
   @@map("code_snippet_categories")
 }
 
 model Review {
-  id        Int      @id @default(autoincrement())
-  content   String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  parentId  Int?     @map("parent_id")
-  userId    String   @map("user_id")
-  codeId    Int      @map("code_id")
-
-  user        User         @relation(fields: [userId], references: [id])
-  codeSnippet CodeSnippet  @relation(fields: [codeId], references: [id])
+  id          Int          @id @default(autoincrement())
+  content     String
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  parentId    Int?         @map("parent_id")
+  userId      String       @map("user_id")
+  codeId      Int          @map("code_id")
   likes       ReviewLike[]
+  codeSnippet CodeSnippet  @relation(fields: [codeId], references: [id])
+  user        User         @relation(fields: [userId], references: [id])
 
   @@map("reviews")
 }
@@ -90,9 +86,8 @@ model Review {
 model ReviewLike {
   userId   String @map("user_id")
   reviewId Int    @map("review_id")
-
-  user   User   @relation(fields: [userId], references: [id])
-  review Review @relation(fields: [reviewId], references: [id])
+  review   Review @relation(fields: [reviewId], references: [id])
+  user     User   @relation(fields: [userId], references: [id])
 
   @@id([userId, reviewId])
   @@map("review_likes")

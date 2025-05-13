@@ -11,17 +11,13 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:prettier/recommended"
-  ),
+  ...compat.extends("next/core-web-vitals", "next/typescript", "plugin:prettier/recommended"),
 
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     rules: {
       // 문자열은 쌍따옴표
-      quotes: ["error", "double"],
+      quotes: ["error", "single"],
 
       // 세미콜론 필수
       semi: ["error", "always"],
