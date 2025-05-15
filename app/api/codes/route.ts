@@ -3,7 +3,7 @@ import { CreateCodeSnippetDto } from '@/application/usecases/code/dto/CreateCode
 import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { NextRequest, NextResponse } from 'next/server';
 
-// POST 요청 핸들러 - 코드 스니펫 생성
+// POST 요청 - 코드 스니펫 생성
 export async function POST(request: NextRequest) {
   try {
     // 요청 본문 파싱
