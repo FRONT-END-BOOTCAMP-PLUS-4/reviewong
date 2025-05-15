@@ -1,6 +1,18 @@
-import { PrismaClient, CodeSnippet } from '@/prisma/generated';
+import { PrismaClient, CodeSnippet, CodeSnippetCategory } from '@/prisma/generated';
 import { CodeSnippetRepository } from '@/domain/repositories/CodeSnippetRepository';
-
+export type CodeSnippetWithRelations = CodeSnippet & {
+  user: {
+    id: string;
+    nickname: string;
+    imageUrl: string | null;
+  };
+  categories: (CodeSnippetCategory & {
+    category: {
+      id: number;
+      name: string;
+    };
+  })[];
+};
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
   private prisma: PrismaClient;
 
@@ -66,9 +78,23 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
     }
   }
 
-  async findById(id: number): Promise<CodeSnippet | null> {
+  async findById(id: number): Promise<CodeSnippetWithRelations | null> {
     return await this.prisma.codeSnippet.findUnique({
       where: { id },
+      include: {
+        user: {
+          select: {
+            id: true,
+            nickname: true,
+            imageUrl: true,
+          },
+        },
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+      },
     });
   }
 
