@@ -9,42 +9,43 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Github, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { signIn } from 'next-auth/react';
 
 export default function LoginForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      // 여기에 실제 로그인 로직이 들어갑니다
-      console.log('로그인 시도:', { email, password });
+    const result = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    });
 
-      // 로그인 성공 시 홈페이지로 리다이렉트
-      setTimeout(() => {
-        router.push('/');
-        setIsLoading(false);
-      }, 1500);
-    } catch (error) {
-      console.error('로그인 실패:', error);
-      setIsLoading(false);
+    if (result?.error) {
+      setError('로그인 에러 : 아이디 또는 비밀번호가 잘못되었습니다.');
+    } else {
+      router.push('/');
     }
   };
 
   return (
     <div className="grid gap-6">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleLogin}>
         <div className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">이메일</Label>
             <Input
               id="email"
               type="email"
-              placeholder="name@example.com"
+              placeholder="user@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -70,9 +71,10 @@ export default function LoginForm() {
               className="bg-white"
             />
           </div>
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading} className="font-bold">
             {isLoading ? '로그인 중...' : '로그인'}
           </Button>
+          {error && <p className="text-red-500">{error}</p>}
         </div>
       </form>
       <div className="relative">
@@ -84,13 +86,17 @@ export default function LoginForm() {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <Button variant="outline" type="button" disabled={isLoading} className="bg-white">
-          <Github className="mr-2 h-4 w-4" />
-          Github
+        <Button asChild variant="outline" type="button" disabled={isLoading} className="bg-white">
+          <Link href="/api/auth/github">
+            <Github className="mr-2 h-4 w-4" />
+            Github
+          </Link>
         </Button>
-        <Button variant="outline" type="button" disabled={isLoading} className="bg-white">
-          <Mail className="mr-2 h-4 w-4" />
-          Google
+        <Button asChild variant="outline" type="button" disabled={isLoading} className="bg-white">
+          <Link href="/api/auth/google">
+            <Mail className="mr-2 h-4 w-4" />
+            Google
+          </Link>
         </Button>
       </div>
     </div>
