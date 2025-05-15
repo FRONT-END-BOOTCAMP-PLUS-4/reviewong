@@ -4,11 +4,12 @@ import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnipp
 import { DeleteCodeSnippetUsecase } from '@/application/usecases/code/DeleteCodeSnippetUsecase';
 import { UpdateCodeSnippetUsecase } from '@/application/usecases/code/UpdateCodeSnippetUsecase';
 
-export async function GET(request: NextRequest, context: { params: { id: string } }) {
+export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const params = await context.params; // 여기서 await 해줘야 함
+    const { id } = params;
     const repository = new PrCodeSnippetRepository();
     const usecase = new GetCodeSnippetUsecase(repository);
-    const { id } = context.params;
 
     const result = await usecase.execute(parseInt(id));
 
@@ -21,13 +22,15 @@ export async function GET(request: NextRequest, context: { params: { id: string 
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
-export async function DELETE(request: NextRequest, { params }: { params: { id: number } }) {
+export async function DELETE(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
-    const repository = new PrCodeSnippetRepository();
-    const usecase = new DeleteCodeSnippetUsecase(repository);
+    const params = await context.params; // 여기서 await 해줘야 함
+    const { id } = params;
 
-    const result = await usecase.execute(params.id);
+    const codeSnippetrepository = new PrCodeSnippetRepository();
+    const usecase = new DeleteCodeSnippetUsecase(codeSnippetrepository);
+
+    const result = await usecase.execute(parseInt(id));
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 400 });
