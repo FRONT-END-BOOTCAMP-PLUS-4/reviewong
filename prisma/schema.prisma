@@ -62,7 +62,7 @@ model CodeSnippetCategory {
   codeId      Int         @map("code_id")
   categoryId  Int         @map("category_id")
   category    Category    @relation(fields: [categoryId], references: [id])
-  codeSnippet CodeSnippet @relation(fields: [codeId], references: [id])
+  codeSnippet CodeSnippet @relation(fields: [codeId], references: [id], onDelete: Cascade)
 
   @@id([codeId, categoryId])
   @@map("code_snippet_categories")
