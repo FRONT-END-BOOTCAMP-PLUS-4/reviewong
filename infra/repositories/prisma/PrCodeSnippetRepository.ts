@@ -127,6 +127,7 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
       });
       return true;
     } catch (error) {
+      console.log('Error deleting code snippet:', error);
       return false;
     }
   }
