@@ -1,4 +1,6 @@
+import { CodeSnippetWithRelations } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { CodeSnippet } from '@/prisma/generated';
+
 export type CodeSnippetCreateRequest = {
   userId: string;
   title: string;
@@ -24,7 +26,7 @@ export interface CodeSnippetRepository {
    * @param id - 조회할 코드 스니펫 ID
    * @returns 코드 스니펫 객체 또는 null
    */
-  findById(id: number): Promise<CodeSnippet | null>;
+  findById(id: number): Promise<CodeSnippetWithRelations | null>;
 
   /**
    * 사용자 ID로 코드 스니펫 조회
