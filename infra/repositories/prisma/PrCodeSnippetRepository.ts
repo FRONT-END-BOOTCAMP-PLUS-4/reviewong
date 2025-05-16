@@ -107,15 +107,54 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
   async findAll(): Promise<CodeSnippet[]> {
     return await this.prisma.codeSnippet.findMany();
   }
-
-  async update(id: number, updatedCodeSnippet: Partial<CodeSnippet>): Promise<boolean> {
+  async update(
+    id: number,
+    data: {
+      title?: string;
+      content?: string;
+      categories?: number[];
+    }
+  ): Promise<boolean> {
     try {
-      await this.prisma.codeSnippet.update({
-        where: { id },
-        data: updatedCodeSnippet,
+      const { categories, ...updateData } = data;
+
+      return await this.prisma.$transaction(async (tx) => {
+        // 1. 카테고리 처리
+        if (categories !== undefined) {
+          const existing = await tx.codeSnippetCategory.findMany({
+            where: { codeId: id },
+            select: { categoryId: true },
+          });
+
+          const existingIds = existing.map((c) => c.categoryId).sort();
+          const newIds = [...categories].sort();
+
+          const changed = JSON.stringify(existingIds) !== JSON.stringify(newIds);
+
+          if (changed) {
+            await tx.codeSnippetCategory.deleteMany({ where: { codeId: id } });
+
+            if (newIds.length > 0) {
+              await tx.codeSnippetCategory.createMany({
+                data: newIds.map((categoryId) => ({ codeId: id, categoryId })),
+                skipDuplicates: true,
+              });
+            }
+          }
+        }
+
+        // 2. 본문 업데이트
+        if (Object.keys(updateData).length > 0) {
+          await tx.codeSnippet.update({
+            where: { id },
+            data: updateData,
+          });
+        }
+
+        return true;
       });
-      return true;
     } catch (error) {
+      console.error('Error updating code snippet:', error);
       return false;
     }
   }
