@@ -1,17 +1,17 @@
-import { updateReviewDto } from '@/application/usecases/review/dto/ReviewDto';
 import { EditReviewUsecase } from '@/application/usecases/review/EditReviewUsecase';
 import { DeleteReviewUsecase } from '@/application/usecases/review/DeleteReviewUsecase';
 import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
 
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function PUT(req: NextRequest, { params }: { params: { id: number } }) {
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await context.params;
+    const reviewId = parseInt(id);
     const body = await req.json();
-    const dto = new updateReviewDto(body.content, body.parentId);
     const repository = new PrReviewRepository();
     const usecase = new EditReviewUsecase(repository);
-    const result = await usecase.execute(params.id, dto);
+    const result = await usecase.execute(reviewId, body.content);
 
     if (!result) {
       return new Response(JSON.stringify({ success: false, error: '리뷰 수정 실패' }), {
@@ -25,10 +25,9 @@ export async function PUT(req: NextRequest, { params }: { params: { id: number }
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: number } }) {
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const reviewId = params.id;
-
+    const reviewId = parseInt(params.id);
     const usecase = new DeleteReviewUsecase(new PrReviewRepository());
     await usecase.execute(reviewId);
 
