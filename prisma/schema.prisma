@@ -78,6 +78,8 @@ model Review {
   codeId      Int          @map("code_id")
   likes       ReviewLike[]
   codeSnippet CodeSnippet  @relation(fields: [codeId], references: [id])
+  parent      Review?      @relation("ReviewToReplies", fields: [parentId], references: [id])
+  replies     Review[]     @relation("ReviewToReplies")
   user        User         @relation(fields: [userId], references: [id])
 
   @@map("reviews")
@@ -86,7 +88,7 @@ model Review {
 model ReviewLike {
   userId   String @map("user_id")
   reviewId Int    @map("review_id")
-  review   Review @relation(fields: [reviewId], references: [id])
+  review   Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
   user     User   @relation(fields: [userId], references: [id])
 
   @@id([userId, reviewId])
