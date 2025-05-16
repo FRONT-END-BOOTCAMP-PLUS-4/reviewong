@@ -4,10 +4,9 @@ import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewReposito
 
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const { id } = await context.params;
-    const reviewId = parseInt(id);
+    const reviewId = parseInt(params.id);
     const body = await req.json();
     const repository = new PrReviewRepository();
     const usecase = new EditReviewUsecase(repository);
