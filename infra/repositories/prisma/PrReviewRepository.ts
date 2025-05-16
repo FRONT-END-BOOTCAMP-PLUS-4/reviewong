@@ -1,5 +1,5 @@
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@/prisma/generated';
 import { CreateReviewDto } from '@/application/usecases/review/dto/ReviewDto';
 
 export class PrReviewRepository implements ReviewRepository {
@@ -22,11 +22,12 @@ export class PrReviewRepository implements ReviewRepository {
     });
   }
 
-  async update(id: number, updatedReview: Partial<{ content: string; parentId: number | null }>) {
-    return !!(await this.prisma.review.update({
+  async update(id: number, content: Partial<{ content: string }>) {
+    const result = await this.prisma.review.update({
       where: { id },
-      data: updatedReview,
-    }));
+      data: content,
+    });
+    return !!result;
   }
 
   async delete(id: number) {

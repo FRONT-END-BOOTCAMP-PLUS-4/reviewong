@@ -19,10 +19,9 @@ export interface ReviewRepository {
   /**
    * 리뷰 업데이트
    * @param id - 업데이트할 리뷰 ID
-   * @param updatedReview - 업데이트할 데이터가 포함된 리뷰 객체
    * @returns 업데이트 성공 여부
    */
-  update(id: number, updatedReview: Partial<Review>): Promise<boolean>;
+  update(id: number, content: Partial<Review>): Promise<boolean>;
 
   /**
    * 리뷰 삭제

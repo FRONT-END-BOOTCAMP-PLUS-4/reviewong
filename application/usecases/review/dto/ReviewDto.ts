@@ -6,11 +6,3 @@ export class CreateReviewDto {
     public parentId?: number | null
   ) {}
 }
-
-export class updateReviewDto {
-  constructor(
-    public reviewId: number,
-    public content: string,
-    public parentId?: number
-  ) {}
-}
