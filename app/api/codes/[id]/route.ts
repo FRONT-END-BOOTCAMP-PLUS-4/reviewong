@@ -4,10 +4,9 @@ import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnipp
 import { DeleteCodeSnippetUsecase } from '@/application/usecases/code/DeleteCodeSnippetUsecase';
 import { UpdateCodeSnippetUsecase } from '@/application/usecases/code/UpdateCodeSnippetUsecase';
 
-export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const params = await context.params; // 여기서 await 해줘야 함
-    const { id } = params;
+    const { id } = await params;
     const repository = new PrCodeSnippetRepository();
     const usecase = new GetCodeSnippetUsecase(repository);
 
@@ -22,10 +21,12 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-export async function DELETE(request: NextRequest, context: { params: Promise<{ id: string }> }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const params = await context.params; // 여기서 await 해줘야 함
-    const { id } = params;
+    const { id } = await params;
 
     const codeSnippetrepository = new PrCodeSnippetRepository();
     const usecase = new DeleteCodeSnippetUsecase(codeSnippetrepository);
@@ -42,13 +43,15 @@ export async function DELETE(request: NextRequest, context: { params: Promise<{ 
   }
 }
 
-export async function PUT(request: NextRequest, { params }: { params: { id: number } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const body = await request.json();
+    const { id } = await params;
+
     const repository = new PrCodeSnippetRepository();
     const usecase = new UpdateCodeSnippetUsecase(repository);
+    const body = await request.json();
 
-    const result = await usecase.execute(params.id, body);
+    const result = await usecase.execute(parseInt(id, 10), body);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 400 });
