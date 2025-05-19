@@ -51,7 +51,7 @@ export type ReviewLike = $Result.DefaultSelection<Prisma.$ReviewLikePayload>
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -60,7 +60,7 @@ export type ReviewLike = $Result.DefaultSelection<Prisma.$ReviewLikePayload>
  * const users = await prisma.user.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
@@ -72,7 +72,7 @@ export class PrismaClient<
 
     /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -81,12 +81,12 @@ export class PrismaClient<
    * const users = await prisma.user.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
    * Connect with the database
@@ -111,7 +111,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -123,7 +123,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -134,7 +134,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -146,7 +146,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -170,9 +170,7 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -182,7 +180,7 @@ export class PrismaClient<
     * const users = await prisma.user.findMany()
     * ```
     */
-  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+  get user(): Prisma.UserDelegate<ExtArgs>;
 
   /**
    * `prisma.grade`: Exposes CRUD operations for the **Grade** model.
@@ -192,7 +190,7 @@ export class PrismaClient<
     * const grades = await prisma.grade.findMany()
     * ```
     */
-  get grade(): Prisma.GradeDelegate<ExtArgs, ClientOptions>;
+  get grade(): Prisma.GradeDelegate<ExtArgs>;
 
   /**
    * `prisma.codeSnippet`: Exposes CRUD operations for the **CodeSnippet** model.
@@ -202,7 +200,7 @@ export class PrismaClient<
     * const codeSnippets = await prisma.codeSnippet.findMany()
     * ```
     */
-  get codeSnippet(): Prisma.CodeSnippetDelegate<ExtArgs, ClientOptions>;
+  get codeSnippet(): Prisma.CodeSnippetDelegate<ExtArgs>;
 
   /**
    * `prisma.category`: Exposes CRUD operations for the **Category** model.
@@ -212,7 +210,7 @@ export class PrismaClient<
     * const categories = await prisma.category.findMany()
     * ```
     */
-  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
+  get category(): Prisma.CategoryDelegate<ExtArgs>;
 
   /**
    * `prisma.codeSnippetCategory`: Exposes CRUD operations for the **CodeSnippetCategory** model.
@@ -222,7 +220,7 @@ export class PrismaClient<
     * const codeSnippetCategories = await prisma.codeSnippetCategory.findMany()
     * ```
     */
-  get codeSnippetCategory(): Prisma.CodeSnippetCategoryDelegate<ExtArgs, ClientOptions>;
+  get codeSnippetCategory(): Prisma.CodeSnippetCategoryDelegate<ExtArgs>;
 
   /**
    * `prisma.review`: Exposes CRUD operations for the **Review** model.
@@ -232,7 +230,7 @@ export class PrismaClient<
     * const reviews = await prisma.review.findMany()
     * ```
     */
-  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
+  get review(): Prisma.ReviewDelegate<ExtArgs>;
 
   /**
    * `prisma.reviewLike`: Exposes CRUD operations for the **ReviewLike** model.
@@ -242,7 +240,7 @@ export class PrismaClient<
     * const reviewLikes = await prisma.reviewLike.findMany()
     * ```
     */
-  get reviewLike(): Prisma.ReviewLikeDelegate<ExtArgs, ClientOptions>;
+  get reviewLike(): Prisma.ReviewLikeDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -263,6 +261,7 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
+  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -283,7 +282,7 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics
+   * Metrics 
    */
   export type Metrics = runtime.Metrics
   export type Metric<T> = runtime.Metric<T>
@@ -301,14 +300,14 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 5.22.0
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
   }
 
-  export const prismaVersion: PrismaVersion
+  export const prismaVersion: PrismaVersion 
 
   /**
    * Utility Types
@@ -324,15 +323,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -342,9 +341,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -354,9 +353,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -367,21 +366,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -569,7 +568,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -699,14 +698,11 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
-    globalOmitOptions: {
-      omit: GlobalOmitOptions
-    }
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
       modelProps: "user" | "grade" | "codeSnippet" | "category" | "codeSnippetCategory" | "review" | "reviewLike"
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -763,10 +759,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.UserUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
           }
           upsert: {
             args: Prisma.UserUpsertArgs<ExtArgs>
@@ -838,10 +830,6 @@ export namespace Prisma {
             args: Prisma.GradeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.GradeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$GradePayload>[]
-          }
           upsert: {
             args: Prisma.GradeUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$GradePayload>
@@ -911,10 +899,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.CodeSnippetUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CodeSnippetUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeSnippetPayload>[]
           }
           upsert: {
             args: Prisma.CodeSnippetUpsertArgs<ExtArgs>
@@ -986,10 +970,6 @@ export namespace Prisma {
             args: Prisma.CategoryUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.CategoryUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
-          }
           upsert: {
             args: Prisma.CategoryUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
@@ -1059,10 +1039,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.CodeSnippetCategoryUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CodeSnippetCategoryUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeSnippetCategoryPayload>[]
           }
           upsert: {
             args: Prisma.CodeSnippetCategoryUpsertArgs<ExtArgs>
@@ -1134,10 +1110,6 @@ export namespace Prisma {
             args: Prisma.ReviewUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
-          }
           upsert: {
             args: Prisma.ReviewUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
@@ -1207,10 +1179,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.ReviewLikeUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ReviewLikeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReviewLikePayload>[]
           }
           upsert: {
             args: Prisma.ReviewLikeUpsertArgs<ExtArgs>
@@ -1297,31 +1265,8 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
-    /**
-     * Global configuration for omitting model fields by default.
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   omit: {
-     *     user: {
-     *       password: true
-     *     }
-     *   }
-     * })
-     * ```
-     */
-    omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {
-    user?: UserOmit
-    grade?: GradeOmit
-    codeSnippet?: CodeSnippetOmit
-    category?: CategoryOmit
-    codeSnippetCategory?: CodeSnippetCategoryOmit
-    review?: ReviewOmit
-    reviewLike?: ReviewLikeOmit
-  }
+
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -1362,7 +1307,6 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
-    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -1567,10 +1511,12 @@ export namespace Prisma {
 
   export type ReviewCountOutputType = {
     likes: number
+    replies: number
   }
 
   export type ReviewCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     likes?: boolean | ReviewCountOutputTypeCountLikesArgs
+    replies?: boolean | ReviewCountOutputTypeCountRepliesArgs
   }
 
   // Custom InputTypes
@@ -1589,6 +1535,13 @@ export namespace Prisma {
    */
   export type ReviewCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReviewLikeWhereInput
+  }
+
+  /**
+   * ReviewCountOutputType without action
+   */
+  export type ReviewCountOutputTypeCountRepliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
   }
 
 
@@ -1872,21 +1825,6 @@ export namespace Prisma {
     grade?: boolean | User$gradeArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
-  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    deletedAt?: boolean
-    password?: boolean
-    gradeId?: boolean
-    imageUrl?: boolean
-    likeCount?: boolean
-    nickname?: boolean
-    reviewCount?: boolean
-    grade?: boolean | User$gradeArgs<ExtArgs>
-  }, ExtArgs["result"]["user"]>
-
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
@@ -1901,7 +1839,6 @@ export namespace Prisma {
     reviewCount?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "createdAt" | "updatedAt" | "deletedAt" | "password" | "gradeId" | "imageUrl" | "likeCount" | "nickname" | "reviewCount", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     codeSnippets?: boolean | User$codeSnippetsArgs<ExtArgs>
     reviewLikes?: boolean | User$reviewLikesArgs<ExtArgs>
@@ -1910,9 +1847,6 @@ export namespace Prisma {
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    grade?: boolean | User$gradeArgs<ExtArgs>
-  }
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     grade?: boolean | User$gradeArgs<ExtArgs>
   }
 
@@ -1942,12 +1876,12 @@ export namespace Prisma {
 
   type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
 
-  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: UserCountAggregateInputType | true
     }
 
-  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
     /**
      * Find zero or one User that matches the filter.
@@ -1960,10 +1894,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one User that matches the filter or throw an error with `error.code='P2025'`
+     * Find one User that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
      * @example
@@ -1974,7 +1908,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first User that matches the filter.
@@ -1989,7 +1923,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first User that matches the filter or
@@ -2005,7 +1939,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Users that matches the filter.
@@ -2023,7 +1957,7 @@ export namespace Prisma {
      * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a User.
@@ -2037,7 +1971,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Users.
@@ -2065,7 +1999,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     * const userWithIdOnly = await prisma.user.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2075,7 +2009,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a User.
@@ -2089,7 +2023,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one User.
@@ -2106,7 +2040,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Users.
@@ -2142,36 +2076,6 @@ export namespace Prisma {
     updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
-     * @example
-     * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one User.
      * @param {UserUpsertArgs} args - Arguments to update or create a User.
      * @example
@@ -2188,7 +2092,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -2328,12 +2232,12 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    codeSnippets<T extends User$codeSnippetsArgs<ExtArgs> = {}>(args?: Subset<T, User$codeSnippetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reviewLikes<T extends User$reviewLikesArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewLikesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    grade<T extends User$gradeArgs<ExtArgs> = {}>(args?: Subset<T, User$gradeArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    codeSnippets<T extends User$codeSnippetsArgs<ExtArgs> = {}>(args?: Subset<T, User$codeSnippetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findMany"> | Null>
+    reviewLikes<T extends User$reviewLikesArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewLikesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany"> | Null>
+    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany"> | Null>
+    grade<T extends User$gradeArgs<ExtArgs> = {}>(args?: Subset<T, User$gradeArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2361,7 +2265,7 @@ export namespace Prisma {
 
   /**
    * Fields of the User model
-   */
+   */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
@@ -2387,10 +2291,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -2409,10 +2309,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -2430,10 +2326,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2483,10 +2375,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -2535,10 +2423,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -2582,10 +2466,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -2615,10 +2495,6 @@ export namespace Prisma {
      */
     select?: UserSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
@@ -2637,10 +2513,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2667,40 +2539,6 @@ export namespace Prisma {
      * Filter which Users to update
      */
     where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * User updateManyAndReturn
-   */
-  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * The data used to update Users.
-     */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
-    /**
-     * Filter which Users to update
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -2711,10 +2549,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2742,10 +2576,6 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
@@ -2763,10 +2593,6 @@ export namespace Prisma {
      * Filter which Users to delete
      */
     where?: UserWhereInput
-    /**
-     * Limit how many Users to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -2777,10 +2603,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippet
      */
     select?: CodeSnippetSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2802,10 +2624,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewLikeInclude<ExtArgs> | null
@@ -2825,10 +2643,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Review
      */
     select?: ReviewSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2850,10 +2664,6 @@ export namespace Prisma {
      */
     select?: GradeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GradeInclude<ExtArgs> | null
@@ -2868,10 +2678,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3062,23 +2868,16 @@ export namespace Prisma {
     name?: boolean
   }, ExtArgs["result"]["grade"]>
 
-  export type GradeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-  }, ExtArgs["result"]["grade"]>
-
   export type GradeSelectScalar = {
     id?: boolean
     name?: boolean
   }
 
-  export type GradeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["grade"]>
   export type GradeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Grade$usersArgs<ExtArgs>
     _count?: boolean | GradeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GradeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type GradeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $GradePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Grade"
@@ -3094,12 +2893,12 @@ export namespace Prisma {
 
   type GradeGetPayload<S extends boolean | null | undefined | GradeDefaultArgs> = $Result.GetResult<Prisma.$GradePayload, S>
 
-  type GradeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<GradeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type GradeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<GradeFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: GradeCountAggregateInputType | true
     }
 
-  export interface GradeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface GradeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Grade'], meta: { name: 'Grade' } }
     /**
      * Find zero or one Grade that matches the filter.
@@ -3112,10 +2911,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends GradeFindUniqueArgs>(args: SelectSubset<T, GradeFindUniqueArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends GradeFindUniqueArgs>(args: SelectSubset<T, GradeFindUniqueArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Grade that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Grade that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {GradeFindUniqueOrThrowArgs} args - Arguments to find a Grade
      * @example
@@ -3126,7 +2925,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends GradeFindUniqueOrThrowArgs>(args: SelectSubset<T, GradeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends GradeFindUniqueOrThrowArgs>(args: SelectSubset<T, GradeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Grade that matches the filter.
@@ -3141,7 +2940,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends GradeFindFirstArgs>(args?: SelectSubset<T, GradeFindFirstArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends GradeFindFirstArgs>(args?: SelectSubset<T, GradeFindFirstArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Grade that matches the filter or
@@ -3157,7 +2956,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends GradeFindFirstOrThrowArgs>(args?: SelectSubset<T, GradeFindFirstOrThrowArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends GradeFindFirstOrThrowArgs>(args?: SelectSubset<T, GradeFindFirstOrThrowArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Grades that matches the filter.
@@ -3175,7 +2974,7 @@ export namespace Prisma {
      * const gradeWithIdOnly = await prisma.grade.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends GradeFindManyArgs>(args?: SelectSubset<T, GradeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends GradeFindManyArgs>(args?: SelectSubset<T, GradeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Grade.
@@ -3189,7 +2988,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends GradeCreateArgs>(args: SelectSubset<T, GradeCreateArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends GradeCreateArgs>(args: SelectSubset<T, GradeCreateArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Grades.
@@ -3217,7 +3016,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Grades and only return the `id`
-     * const gradeWithIdOnly = await prisma.grade.createManyAndReturn({
+     * const gradeWithIdOnly = await prisma.grade.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3227,7 +3026,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends GradeCreateManyAndReturnArgs>(args?: SelectSubset<T, GradeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends GradeCreateManyAndReturnArgs>(args?: SelectSubset<T, GradeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Grade.
@@ -3241,7 +3040,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends GradeDeleteArgs>(args: SelectSubset<T, GradeDeleteArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends GradeDeleteArgs>(args: SelectSubset<T, GradeDeleteArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Grade.
@@ -3258,7 +3057,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends GradeUpdateArgs>(args: SelectSubset<T, GradeUpdateArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends GradeUpdateArgs>(args: SelectSubset<T, GradeUpdateArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Grades.
@@ -3294,36 +3093,6 @@ export namespace Prisma {
     updateMany<T extends GradeUpdateManyArgs>(args: SelectSubset<T, GradeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Grades and returns the data updated in the database.
-     * @param {GradeUpdateManyAndReturnArgs} args - Arguments to update many Grades.
-     * @example
-     * // Update many Grades
-     * const grade = await prisma.grade.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Grades and only return the `id`
-     * const gradeWithIdOnly = await prisma.grade.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends GradeUpdateManyAndReturnArgs>(args: SelectSubset<T, GradeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Grade.
      * @param {GradeUpsertArgs} args - Arguments to update or create a Grade.
      * @example
@@ -3340,7 +3109,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends GradeUpsertArgs>(args: SelectSubset<T, GradeUpsertArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends GradeUpsertArgs>(args: SelectSubset<T, GradeUpsertArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -3480,9 +3249,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__GradeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__GradeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends Grade$usersArgs<ExtArgs> = {}>(args?: Subset<T, Grade$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends Grade$usersArgs<ExtArgs> = {}>(args?: Subset<T, Grade$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3510,7 +3279,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Grade model
-   */
+   */ 
   interface GradeFieldRefs {
     readonly id: FieldRef<"Grade", 'Int'>
     readonly name: FieldRef<"Grade", 'String'>
@@ -3526,10 +3295,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Grade
      */
     select?: GradeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3549,10 +3314,6 @@ export namespace Prisma {
      */
     select?: GradeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GradeInclude<ExtArgs> | null
@@ -3570,10 +3331,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Grade
      */
     select?: GradeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3623,10 +3380,6 @@ export namespace Prisma {
      */
     select?: GradeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GradeInclude<ExtArgs> | null
@@ -3675,10 +3428,6 @@ export namespace Prisma {
      */
     select?: GradeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GradeInclude<ExtArgs> | null
@@ -3722,10 +3471,6 @@ export namespace Prisma {
      */
     select?: GradeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GradeInclude<ExtArgs> | null
@@ -3755,10 +3500,6 @@ export namespace Prisma {
      */
     select?: GradeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * The data used to create many Grades.
      */
     data: GradeCreateManyInput | GradeCreateManyInput[]
@@ -3773,10 +3514,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Grade
      */
     select?: GradeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3803,36 +3540,6 @@ export namespace Prisma {
      * Filter which Grades to update
      */
     where?: GradeWhereInput
-    /**
-     * Limit how many Grades to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Grade updateManyAndReturn
-   */
-  export type GradeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Grade
-     */
-    select?: GradeSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
-     * The data used to update Grades.
-     */
-    data: XOR<GradeUpdateManyMutationInput, GradeUncheckedUpdateManyInput>
-    /**
-     * Filter which Grades to update
-     */
-    where?: GradeWhereInput
-    /**
-     * Limit how many Grades to update.
-     */
-    limit?: number
   }
 
   /**
@@ -3843,10 +3550,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Grade
      */
     select?: GradeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3874,10 +3577,6 @@ export namespace Prisma {
      */
     select?: GradeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GradeInclude<ExtArgs> | null
@@ -3895,10 +3594,6 @@ export namespace Prisma {
      * Filter which Grades to delete
      */
     where?: GradeWhereInput
-    /**
-     * Limit how many Grades to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -3909,10 +3604,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3933,10 +3624,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Grade
      */
     select?: GradeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Grade
-     */
-    omit?: GradeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4166,16 +3853,6 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["codeSnippet"]>
 
-  export type CodeSnippetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    content?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["codeSnippet"]>
-
   export type CodeSnippetSelectScalar = {
     id?: boolean
     title?: boolean
@@ -4185,7 +3862,6 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type CodeSnippetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["codeSnippet"]>
   export type CodeSnippetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categories?: boolean | CodeSnippet$categoriesArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4193,9 +3869,6 @@ export namespace Prisma {
     _count?: boolean | CodeSnippetCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CodeSnippetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type CodeSnippetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -4219,12 +3892,12 @@ export namespace Prisma {
 
   type CodeSnippetGetPayload<S extends boolean | null | undefined | CodeSnippetDefaultArgs> = $Result.GetResult<Prisma.$CodeSnippetPayload, S>
 
-  type CodeSnippetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CodeSnippetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type CodeSnippetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CodeSnippetFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: CodeSnippetCountAggregateInputType | true
     }
 
-  export interface CodeSnippetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface CodeSnippetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeSnippet'], meta: { name: 'CodeSnippet' } }
     /**
      * Find zero or one CodeSnippet that matches the filter.
@@ -4237,10 +3910,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends CodeSnippetFindUniqueArgs>(args: SelectSubset<T, CodeSnippetFindUniqueArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CodeSnippetFindUniqueArgs>(args: SelectSubset<T, CodeSnippetFindUniqueArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one CodeSnippet that matches the filter or throw an error with `error.code='P2025'`
+     * Find one CodeSnippet that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {CodeSnippetFindUniqueOrThrowArgs} args - Arguments to find a CodeSnippet
      * @example
@@ -4251,7 +3924,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CodeSnippetFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeSnippetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CodeSnippetFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeSnippetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first CodeSnippet that matches the filter.
@@ -4266,7 +3939,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends CodeSnippetFindFirstArgs>(args?: SelectSubset<T, CodeSnippetFindFirstArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CodeSnippetFindFirstArgs>(args?: SelectSubset<T, CodeSnippetFindFirstArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first CodeSnippet that matches the filter or
@@ -4282,7 +3955,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends CodeSnippetFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeSnippetFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CodeSnippetFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeSnippetFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more CodeSnippets that matches the filter.
@@ -4300,7 +3973,7 @@ export namespace Prisma {
      * const codeSnippetWithIdOnly = await prisma.codeSnippet.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CodeSnippetFindManyArgs>(args?: SelectSubset<T, CodeSnippetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CodeSnippetFindManyArgs>(args?: SelectSubset<T, CodeSnippetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a CodeSnippet.
@@ -4314,7 +3987,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends CodeSnippetCreateArgs>(args: SelectSubset<T, CodeSnippetCreateArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CodeSnippetCreateArgs>(args: SelectSubset<T, CodeSnippetCreateArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many CodeSnippets.
@@ -4342,7 +4015,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many CodeSnippets and only return the `id`
-     * const codeSnippetWithIdOnly = await prisma.codeSnippet.createManyAndReturn({
+     * const codeSnippetWithIdOnly = await prisma.codeSnippet.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4352,7 +4025,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CodeSnippetCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeSnippetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CodeSnippetCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeSnippetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a CodeSnippet.
@@ -4366,7 +4039,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends CodeSnippetDeleteArgs>(args: SelectSubset<T, CodeSnippetDeleteArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CodeSnippetDeleteArgs>(args: SelectSubset<T, CodeSnippetDeleteArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one CodeSnippet.
@@ -4383,7 +4056,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CodeSnippetUpdateArgs>(args: SelectSubset<T, CodeSnippetUpdateArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CodeSnippetUpdateArgs>(args: SelectSubset<T, CodeSnippetUpdateArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more CodeSnippets.
@@ -4419,36 +4092,6 @@ export namespace Prisma {
     updateMany<T extends CodeSnippetUpdateManyArgs>(args: SelectSubset<T, CodeSnippetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CodeSnippets and returns the data updated in the database.
-     * @param {CodeSnippetUpdateManyAndReturnArgs} args - Arguments to update many CodeSnippets.
-     * @example
-     * // Update many CodeSnippets
-     * const codeSnippet = await prisma.codeSnippet.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CodeSnippets and only return the `id`
-     * const codeSnippetWithIdOnly = await prisma.codeSnippet.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CodeSnippetUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeSnippetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one CodeSnippet.
      * @param {CodeSnippetUpsertArgs} args - Arguments to update or create a CodeSnippet.
      * @example
@@ -4465,7 +4108,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends CodeSnippetUpsertArgs>(args: SelectSubset<T, CodeSnippetUpsertArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CodeSnippetUpsertArgs>(args: SelectSubset<T, CodeSnippetUpsertArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -4605,11 +4248,11 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CodeSnippetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CodeSnippetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    categories<T extends CodeSnippet$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippet$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    reviews<T extends CodeSnippet$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippet$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categories<T extends CodeSnippet$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippet$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany"> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    reviews<T extends CodeSnippet$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippet$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4637,7 +4280,7 @@ export namespace Prisma {
 
   /**
    * Fields of the CodeSnippet model
-   */
+   */ 
   interface CodeSnippetFieldRefs {
     readonly id: FieldRef<"CodeSnippet", 'Int'>
     readonly title: FieldRef<"CodeSnippet", 'String'>
@@ -4658,10 +4301,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetInclude<ExtArgs> | null
@@ -4680,10 +4319,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetInclude<ExtArgs> | null
@@ -4701,10 +4336,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippet
      */
     select?: CodeSnippetSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4754,10 +4385,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetInclude<ExtArgs> | null
@@ -4806,10 +4433,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetInclude<ExtArgs> | null
@@ -4853,10 +4476,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetInclude<ExtArgs> | null
@@ -4886,10 +4505,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * The data used to create many CodeSnippets.
      */
     data: CodeSnippetCreateManyInput | CodeSnippetCreateManyInput[]
@@ -4908,10 +4523,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippet
      */
     select?: CodeSnippetSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4938,40 +4549,6 @@ export namespace Prisma {
      * Filter which CodeSnippets to update
      */
     where?: CodeSnippetWhereInput
-    /**
-     * Limit how many CodeSnippets to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CodeSnippet updateManyAndReturn
-   */
-  export type CodeSnippetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CodeSnippet
-     */
-    select?: CodeSnippetSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
-     * The data used to update CodeSnippets.
-     */
-    data: XOR<CodeSnippetUpdateManyMutationInput, CodeSnippetUncheckedUpdateManyInput>
-    /**
-     * Filter which CodeSnippets to update
-     */
-    where?: CodeSnippetWhereInput
-    /**
-     * Limit how many CodeSnippets to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CodeSnippetIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4982,10 +4559,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippet
      */
     select?: CodeSnippetSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5013,10 +4586,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetInclude<ExtArgs> | null
@@ -5034,10 +4603,6 @@ export namespace Prisma {
      * Filter which CodeSnippets to delete
      */
     where?: CodeSnippetWhereInput
-    /**
-     * Limit how many CodeSnippets to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -5048,10 +4613,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5073,10 +4634,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -5096,10 +4653,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippet
      */
     select?: CodeSnippetSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippet
-     */
-    omit?: CodeSnippetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5290,23 +4843,16 @@ export namespace Prisma {
     name?: boolean
   }, ExtArgs["result"]["category"]>
 
-  export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-  }, ExtArgs["result"]["category"]>
-
   export type CategorySelectScalar = {
     id?: boolean
     name?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     codeSnippetCategories?: boolean | Category$codeSnippetCategoriesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Category"
@@ -5322,12 +4868,12 @@ export namespace Prisma {
 
   type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
 
-  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: CategoryCountAggregateInputType | true
     }
 
-  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
     /**
      * Find zero or one Category that matches the filter.
@@ -5340,10 +4886,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
      * @example
@@ -5354,7 +4900,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Category that matches the filter.
@@ -5369,7 +4915,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Category that matches the filter or
@@ -5385,7 +4931,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Categories that matches the filter.
@@ -5403,7 +4949,7 @@ export namespace Prisma {
      * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Category.
@@ -5417,7 +4963,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Categories.
@@ -5445,7 +4991,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Categories and only return the `id`
-     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({
+     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5455,7 +5001,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Category.
@@ -5469,7 +5015,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Category.
@@ -5486,7 +5032,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Categories.
@@ -5522,36 +5068,6 @@ export namespace Prisma {
     updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Categories and returns the data updated in the database.
-     * @param {CategoryUpdateManyAndReturnArgs} args - Arguments to update many Categories.
-     * @example
-     * // Update many Categories
-     * const category = await prisma.category.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Categories and only return the `id`
-     * const categoryWithIdOnly = await prisma.category.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Category.
      * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
      * @example
@@ -5568,7 +5084,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -5708,9 +5224,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    codeSnippetCategories<T extends Category$codeSnippetCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, Category$codeSnippetCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    codeSnippetCategories<T extends Category$codeSnippetCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, Category$codeSnippetCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5738,7 +5254,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Category model
-   */
+   */ 
   interface CategoryFieldRefs {
     readonly id: FieldRef<"Category", 'Int'>
     readonly name: FieldRef<"Category", 'String'>
@@ -5754,10 +5270,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Category
      */
     select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5777,10 +5289,6 @@ export namespace Prisma {
      */
     select?: CategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CategoryInclude<ExtArgs> | null
@@ -5798,10 +5306,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Category
      */
     select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5851,10 +5355,6 @@ export namespace Prisma {
      */
     select?: CategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CategoryInclude<ExtArgs> | null
@@ -5903,10 +5403,6 @@ export namespace Prisma {
      */
     select?: CategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CategoryInclude<ExtArgs> | null
@@ -5950,10 +5446,6 @@ export namespace Prisma {
      */
     select?: CategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CategoryInclude<ExtArgs> | null
@@ -5983,10 +5475,6 @@ export namespace Prisma {
      */
     select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
      * The data used to create many Categories.
      */
     data: CategoryCreateManyInput | CategoryCreateManyInput[]
@@ -6001,10 +5489,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Category
      */
     select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6031,36 +5515,6 @@ export namespace Prisma {
      * Filter which Categories to update
      */
     where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Category updateManyAndReturn
-   */
-  export type CategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * The data used to update Categories.
-     */
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
-    /**
-     * Filter which Categories to update
-     */
-    where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to update.
-     */
-    limit?: number
   }
 
   /**
@@ -6071,10 +5525,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Category
      */
     select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6102,10 +5552,6 @@ export namespace Prisma {
      */
     select?: CategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CategoryInclude<ExtArgs> | null
@@ -6123,10 +5569,6 @@ export namespace Prisma {
      * Filter which Categories to delete
      */
     where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -6137,10 +5579,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6161,10 +5599,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Category
      */
     select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6361,28 +5795,16 @@ export namespace Prisma {
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["codeSnippetCategory"]>
 
-  export type CodeSnippetCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    codeId?: boolean
-    categoryId?: boolean
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["codeSnippetCategory"]>
-
   export type CodeSnippetCategorySelectScalar = {
     codeId?: boolean
     categoryId?: boolean
   }
 
-  export type CodeSnippetCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"codeId" | "categoryId", ExtArgs["result"]["codeSnippetCategory"]>
   export type CodeSnippetCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
   }
   export type CodeSnippetCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
-  }
-  export type CodeSnippetCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
   }
@@ -6402,12 +5824,12 @@ export namespace Prisma {
 
   type CodeSnippetCategoryGetPayload<S extends boolean | null | undefined | CodeSnippetCategoryDefaultArgs> = $Result.GetResult<Prisma.$CodeSnippetCategoryPayload, S>
 
-  type CodeSnippetCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CodeSnippetCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type CodeSnippetCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CodeSnippetCategoryFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: CodeSnippetCategoryCountAggregateInputType | true
     }
 
-  export interface CodeSnippetCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface CodeSnippetCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeSnippetCategory'], meta: { name: 'CodeSnippetCategory' } }
     /**
      * Find zero or one CodeSnippetCategory that matches the filter.
@@ -6420,10 +5842,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends CodeSnippetCategoryFindUniqueArgs>(args: SelectSubset<T, CodeSnippetCategoryFindUniqueArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CodeSnippetCategoryFindUniqueArgs>(args: SelectSubset<T, CodeSnippetCategoryFindUniqueArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one CodeSnippetCategory that matches the filter or throw an error with `error.code='P2025'`
+     * Find one CodeSnippetCategory that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {CodeSnippetCategoryFindUniqueOrThrowArgs} args - Arguments to find a CodeSnippetCategory
      * @example
@@ -6434,7 +5856,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CodeSnippetCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeSnippetCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CodeSnippetCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeSnippetCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first CodeSnippetCategory that matches the filter.
@@ -6449,7 +5871,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends CodeSnippetCategoryFindFirstArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindFirstArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CodeSnippetCategoryFindFirstArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindFirstArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first CodeSnippetCategory that matches the filter or
@@ -6465,7 +5887,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends CodeSnippetCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CodeSnippetCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more CodeSnippetCategories that matches the filter.
@@ -6483,7 +5905,7 @@ export namespace Prisma {
      * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.findMany({ select: { codeId: true } })
      * 
      */
-    findMany<T extends CodeSnippetCategoryFindManyArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CodeSnippetCategoryFindManyArgs>(args?: SelectSubset<T, CodeSnippetCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a CodeSnippetCategory.
@@ -6497,7 +5919,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends CodeSnippetCategoryCreateArgs>(args: SelectSubset<T, CodeSnippetCategoryCreateArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CodeSnippetCategoryCreateArgs>(args: SelectSubset<T, CodeSnippetCategoryCreateArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many CodeSnippetCategories.
@@ -6525,7 +5947,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many CodeSnippetCategories and only return the `codeId`
-     * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.createManyAndReturn({
+     * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.createManyAndReturn({ 
      *   select: { codeId: true },
      *   data: [
      *     // ... provide data here
@@ -6535,7 +5957,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CodeSnippetCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeSnippetCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CodeSnippetCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeSnippetCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a CodeSnippetCategory.
@@ -6549,7 +5971,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends CodeSnippetCategoryDeleteArgs>(args: SelectSubset<T, CodeSnippetCategoryDeleteArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CodeSnippetCategoryDeleteArgs>(args: SelectSubset<T, CodeSnippetCategoryDeleteArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one CodeSnippetCategory.
@@ -6566,7 +5988,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CodeSnippetCategoryUpdateArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CodeSnippetCategoryUpdateArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more CodeSnippetCategories.
@@ -6602,36 +6024,6 @@ export namespace Prisma {
     updateMany<T extends CodeSnippetCategoryUpdateManyArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CodeSnippetCategories and returns the data updated in the database.
-     * @param {CodeSnippetCategoryUpdateManyAndReturnArgs} args - Arguments to update many CodeSnippetCategories.
-     * @example
-     * // Update many CodeSnippetCategories
-     * const codeSnippetCategory = await prisma.codeSnippetCategory.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CodeSnippetCategories and only return the `codeId`
-     * const codeSnippetCategoryWithCodeIdOnly = await prisma.codeSnippetCategory.updateManyAndReturn({
-     *   select: { codeId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CodeSnippetCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeSnippetCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one CodeSnippetCategory.
      * @param {CodeSnippetCategoryUpsertArgs} args - Arguments to update or create a CodeSnippetCategory.
      * @example
@@ -6648,7 +6040,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends CodeSnippetCategoryUpsertArgs>(args: SelectSubset<T, CodeSnippetCategoryUpsertArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CodeSnippetCategoryUpsertArgs>(args: SelectSubset<T, CodeSnippetCategoryUpsertArgs<ExtArgs>>): Prisma__CodeSnippetCategoryClient<$Result.GetResult<Prisma.$CodeSnippetCategoryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -6788,10 +6180,10 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CodeSnippetCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CodeSnippetCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    codeSnippet<T extends CodeSnippetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippetDefaultArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    codeSnippet<T extends CodeSnippetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippetDefaultArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6819,7 +6211,7 @@ export namespace Prisma {
 
   /**
    * Fields of the CodeSnippetCategory model
-   */
+   */ 
   interface CodeSnippetCategoryFieldRefs {
     readonly codeId: FieldRef<"CodeSnippetCategory", 'Int'>
     readonly categoryId: FieldRef<"CodeSnippetCategory", 'Int'>
@@ -6835,10 +6227,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6858,10 +6246,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetCategoryInclude<ExtArgs> | null
@@ -6879,10 +6263,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6932,10 +6312,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetCategoryInclude<ExtArgs> | null
@@ -6984,10 +6360,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetCategoryInclude<ExtArgs> | null
@@ -7031,10 +6403,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetCategoryInclude<ExtArgs> | null
@@ -7064,10 +6432,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetCategorySelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
      * The data used to create many CodeSnippetCategories.
      */
     data: CodeSnippetCategoryCreateManyInput | CodeSnippetCategoryCreateManyInput[]
@@ -7086,10 +6450,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7116,40 +6476,6 @@ export namespace Prisma {
      * Filter which CodeSnippetCategories to update
      */
     where?: CodeSnippetCategoryWhereInput
-    /**
-     * Limit how many CodeSnippetCategories to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CodeSnippetCategory updateManyAndReturn
-   */
-  export type CodeSnippetCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CodeSnippetCategory
-     */
-    select?: CodeSnippetCategorySelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
-     * The data used to update CodeSnippetCategories.
-     */
-    data: XOR<CodeSnippetCategoryUpdateManyMutationInput, CodeSnippetCategoryUncheckedUpdateManyInput>
-    /**
-     * Filter which CodeSnippetCategories to update
-     */
-    where?: CodeSnippetCategoryWhereInput
-    /**
-     * Limit how many CodeSnippetCategories to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CodeSnippetCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7160,10 +6486,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7191,10 +6513,6 @@ export namespace Prisma {
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CodeSnippetCategoryInclude<ExtArgs> | null
@@ -7212,10 +6530,6 @@ export namespace Prisma {
      * Filter which CodeSnippetCategories to delete
      */
     where?: CodeSnippetCategoryWhereInput
-    /**
-     * Limit how many CodeSnippetCategories to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -7226,10 +6540,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the CodeSnippetCategory
      */
     select?: CodeSnippetCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CodeSnippetCategory
-     */
-    omit?: CodeSnippetCategoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7461,6 +6771,8 @@ export namespace Prisma {
     codeId?: boolean
     likes?: boolean | Review$likesArgs<ExtArgs>
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    parent?: boolean | Review$parentArgs<ExtArgs>
+    replies?: boolean | Review$repliesArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | ReviewCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
@@ -7474,18 +6786,7 @@ export namespace Prisma {
     userId?: boolean
     codeId?: boolean
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["review"]>
-
-  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    parentId?: boolean
-    userId?: boolean
-    codeId?: boolean
-    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    parent?: boolean | Review$parentArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
 
@@ -7499,19 +6800,17 @@ export namespace Prisma {
     codeId?: boolean
   }
 
-  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "createdAt" | "updatedAt" | "parentId" | "userId" | "codeId", ExtArgs["result"]["review"]>
   export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     likes?: boolean | Review$likesArgs<ExtArgs>
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    parent?: boolean | Review$parentArgs<ExtArgs>
+    replies?: boolean | Review$repliesArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | ReviewCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    codeSnippet?: boolean | CodeSnippetDefaultArgs<ExtArgs>
+    parent?: boolean | Review$parentArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -7520,6 +6819,8 @@ export namespace Prisma {
     objects: {
       likes: Prisma.$ReviewLikePayload<ExtArgs>[]
       codeSnippet: Prisma.$CodeSnippetPayload<ExtArgs>
+      parent: Prisma.$ReviewPayload<ExtArgs> | null
+      replies: Prisma.$ReviewPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -7536,12 +6837,12 @@ export namespace Prisma {
 
   type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
 
-  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: ReviewCountAggregateInputType | true
     }
 
-  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
     /**
      * Find zero or one Review that matches the filter.
@@ -7554,10 +6855,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
      * @example
@@ -7568,7 +6869,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Review that matches the filter.
@@ -7583,7 +6884,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Review that matches the filter or
@@ -7599,7 +6900,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Reviews that matches the filter.
@@ -7617,7 +6918,7 @@ export namespace Prisma {
      * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Review.
@@ -7631,7 +6932,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Reviews.
@@ -7659,7 +6960,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Reviews and only return the `id`
-     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7669,7 +6970,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Review.
@@ -7683,7 +6984,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Review.
@@ -7700,7 +7001,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Reviews.
@@ -7736,36 +7037,6 @@ export namespace Prisma {
     updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Reviews and returns the data updated in the database.
-     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
-     * @example
-     * // Update many Reviews
-     * const review = await prisma.review.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Reviews and only return the `id`
-     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Review.
      * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
      * @example
@@ -7782,7 +7053,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -7922,11 +7193,13 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    likes<T extends Review$likesArgs<ExtArgs> = {}>(args?: Subset<T, Review$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    codeSnippet<T extends CodeSnippetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippetDefaultArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    likes<T extends Review$likesArgs<ExtArgs> = {}>(args?: Subset<T, Review$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany"> | Null>
+    codeSnippet<T extends CodeSnippetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CodeSnippetDefaultArgs<ExtArgs>>): Prisma__CodeSnippetClient<$Result.GetResult<Prisma.$CodeSnippetPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    parent<T extends Review$parentArgs<ExtArgs> = {}>(args?: Subset<T, Review$parentArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    replies<T extends Review$repliesArgs<ExtArgs> = {}>(args?: Subset<T, Review$repliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany"> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7954,7 +7227,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Review model
-   */
+   */ 
   interface ReviewFieldRefs {
     readonly id: FieldRef<"Review", 'Int'>
     readonly content: FieldRef<"Review", 'String'>
@@ -7976,10 +7249,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -7998,10 +7267,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -8019,10 +7284,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Review
      */
     select?: ReviewSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8072,10 +7333,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -8124,10 +7381,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -8171,10 +7424,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -8204,10 +7453,6 @@ export namespace Prisma {
      */
     select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * The data used to create many Reviews.
      */
     data: ReviewCreateManyInput | ReviewCreateManyInput[]
@@ -8226,10 +7471,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Review
      */
     select?: ReviewSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8256,40 +7497,6 @@ export namespace Prisma {
      * Filter which Reviews to update
      */
     where?: ReviewWhereInput
-    /**
-     * Limit how many Reviews to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Review updateManyAndReturn
-   */
-  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
-     * The data used to update Reviews.
-     */
-    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
-    /**
-     * Filter which Reviews to update
-     */
-    where?: ReviewWhereInput
-    /**
-     * Limit how many Reviews to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -8300,10 +7507,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Review
      */
     select?: ReviewSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8331,10 +7534,6 @@ export namespace Prisma {
      */
     select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
@@ -8352,10 +7551,6 @@ export namespace Prisma {
      * Filter which Reviews to delete
      */
     where?: ReviewWhereInput
-    /**
-     * Limit how many Reviews to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -8366,10 +7561,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ReviewLike
      */
     select?: ReviewLikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8383,6 +7574,41 @@ export namespace Prisma {
   }
 
   /**
+   * Review.parent
+   */
+  export type Review$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+  }
+
+  /**
+   * Review.replies
+   */
+  export type Review$repliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
    * Review without action
    */
   export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8390,10 +7616,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Review
      */
     select?: ReviewSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8586,28 +7808,16 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reviewLike"]>
 
-  export type ReviewLikeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    userId?: boolean
-    reviewId?: boolean
-    review?: boolean | ReviewDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["reviewLike"]>
-
   export type ReviewLikeSelectScalar = {
     userId?: boolean
     reviewId?: boolean
   }
 
-  export type ReviewLikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "reviewId", ExtArgs["result"]["reviewLike"]>
   export type ReviewLikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     review?: boolean | ReviewDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ReviewLikeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    review?: boolean | ReviewDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type ReviewLikeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     review?: boolean | ReviewDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -8627,12 +7837,12 @@ export namespace Prisma {
 
   type ReviewLikeGetPayload<S extends boolean | null | undefined | ReviewLikeDefaultArgs> = $Result.GetResult<Prisma.$ReviewLikePayload, S>
 
-  type ReviewLikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ReviewLikeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type ReviewLikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ReviewLikeFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: ReviewLikeCountAggregateInputType | true
     }
 
-  export interface ReviewLikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface ReviewLikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ReviewLike'], meta: { name: 'ReviewLike' } }
     /**
      * Find zero or one ReviewLike that matches the filter.
@@ -8645,10 +7855,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends ReviewLikeFindUniqueArgs>(args: SelectSubset<T, ReviewLikeFindUniqueArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ReviewLikeFindUniqueArgs>(args: SelectSubset<T, ReviewLikeFindUniqueArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one ReviewLike that matches the filter or throw an error with `error.code='P2025'`
+     * Find one ReviewLike that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {ReviewLikeFindUniqueOrThrowArgs} args - Arguments to find a ReviewLike
      * @example
@@ -8659,7 +7869,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ReviewLikeFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewLikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ReviewLikeFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewLikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first ReviewLike that matches the filter.
@@ -8674,7 +7884,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends ReviewLikeFindFirstArgs>(args?: SelectSubset<T, ReviewLikeFindFirstArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ReviewLikeFindFirstArgs>(args?: SelectSubset<T, ReviewLikeFindFirstArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first ReviewLike that matches the filter or
@@ -8690,7 +7900,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends ReviewLikeFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewLikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ReviewLikeFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewLikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more ReviewLikes that matches the filter.
@@ -8708,7 +7918,7 @@ export namespace Prisma {
      * const reviewLikeWithUserIdOnly = await prisma.reviewLike.findMany({ select: { userId: true } })
      * 
      */
-    findMany<T extends ReviewLikeFindManyArgs>(args?: SelectSubset<T, ReviewLikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ReviewLikeFindManyArgs>(args?: SelectSubset<T, ReviewLikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a ReviewLike.
@@ -8722,7 +7932,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends ReviewLikeCreateArgs>(args: SelectSubset<T, ReviewLikeCreateArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ReviewLikeCreateArgs>(args: SelectSubset<T, ReviewLikeCreateArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many ReviewLikes.
@@ -8750,7 +7960,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many ReviewLikes and only return the `userId`
-     * const reviewLikeWithUserIdOnly = await prisma.reviewLike.createManyAndReturn({
+     * const reviewLikeWithUserIdOnly = await prisma.reviewLike.createManyAndReturn({ 
      *   select: { userId: true },
      *   data: [
      *     // ... provide data here
@@ -8760,7 +7970,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ReviewLikeCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewLikeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ReviewLikeCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewLikeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a ReviewLike.
@@ -8774,7 +7984,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends ReviewLikeDeleteArgs>(args: SelectSubset<T, ReviewLikeDeleteArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ReviewLikeDeleteArgs>(args: SelectSubset<T, ReviewLikeDeleteArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one ReviewLike.
@@ -8791,7 +8001,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ReviewLikeUpdateArgs>(args: SelectSubset<T, ReviewLikeUpdateArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ReviewLikeUpdateArgs>(args: SelectSubset<T, ReviewLikeUpdateArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more ReviewLikes.
@@ -8827,36 +8037,6 @@ export namespace Prisma {
     updateMany<T extends ReviewLikeUpdateManyArgs>(args: SelectSubset<T, ReviewLikeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more ReviewLikes and returns the data updated in the database.
-     * @param {ReviewLikeUpdateManyAndReturnArgs} args - Arguments to update many ReviewLikes.
-     * @example
-     * // Update many ReviewLikes
-     * const reviewLike = await prisma.reviewLike.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more ReviewLikes and only return the `userId`
-     * const reviewLikeWithUserIdOnly = await prisma.reviewLike.updateManyAndReturn({
-     *   select: { userId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ReviewLikeUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewLikeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one ReviewLike.
      * @param {ReviewLikeUpsertArgs} args - Arguments to update or create a ReviewLike.
      * @example
@@ -8873,7 +8053,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends ReviewLikeUpsertArgs>(args: SelectSubset<T, ReviewLikeUpsertArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ReviewLikeUpsertArgs>(args: SelectSubset<T, ReviewLikeUpsertArgs<ExtArgs>>): Prisma__ReviewLikeClient<$Result.GetResult<Prisma.$ReviewLikePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -9013,10 +8193,10 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ReviewLikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ReviewLikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    review<T extends ReviewDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReviewDefaultArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    review<T extends ReviewDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReviewDefaultArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9044,7 +8224,7 @@ export namespace Prisma {
 
   /**
    * Fields of the ReviewLike model
-   */
+   */ 
   interface ReviewLikeFieldRefs {
     readonly userId: FieldRef<"ReviewLike", 'String'>
     readonly reviewId: FieldRef<"ReviewLike", 'Int'>
@@ -9060,10 +8240,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ReviewLike
      */
     select?: ReviewLikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9083,10 +8259,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewLikeInclude<ExtArgs> | null
@@ -9104,10 +8276,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ReviewLike
      */
     select?: ReviewLikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9157,10 +8325,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewLikeInclude<ExtArgs> | null
@@ -9209,10 +8373,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewLikeInclude<ExtArgs> | null
@@ -9256,10 +8416,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewLikeInclude<ExtArgs> | null
@@ -9289,10 +8445,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * The data used to create many ReviewLikes.
      */
     data: ReviewLikeCreateManyInput | ReviewLikeCreateManyInput[]
@@ -9311,10 +8463,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ReviewLike
      */
     select?: ReviewLikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9341,40 +8489,6 @@ export namespace Prisma {
      * Filter which ReviewLikes to update
      */
     where?: ReviewLikeWhereInput
-    /**
-     * Limit how many ReviewLikes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * ReviewLike updateManyAndReturn
-   */
-  export type ReviewLikeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ReviewLike
-     */
-    select?: ReviewLikeSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
-     * The data used to update ReviewLikes.
-     */
-    data: XOR<ReviewLikeUpdateManyMutationInput, ReviewLikeUncheckedUpdateManyInput>
-    /**
-     * Filter which ReviewLikes to update
-     */
-    where?: ReviewLikeWhereInput
-    /**
-     * Limit how many ReviewLikes to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewLikeIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -9385,10 +8499,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ReviewLike
      */
     select?: ReviewLikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9416,10 +8526,6 @@ export namespace Prisma {
      */
     select?: ReviewLikeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewLikeInclude<ExtArgs> | null
@@ -9437,10 +8543,6 @@ export namespace Prisma {
      * Filter which ReviewLikes to delete
      */
     where?: ReviewLikeWhereInput
-    /**
-     * Limit how many ReviewLikes to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -9451,10 +8553,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the ReviewLike
      */
     select?: ReviewLikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ReviewLike
-     */
-    omit?: ReviewLikeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -9575,7 +8673,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
@@ -9656,7 +8754,7 @@ export namespace Prisma {
     codeSnippets?: CodeSnippetListRelationFilter
     reviewLikes?: ReviewLikeListRelationFilter
     reviews?: ReviewListRelationFilter
-    grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
+    grade?: XOR<GradeNullableRelationFilter, GradeWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -9695,7 +8793,7 @@ export namespace Prisma {
     codeSnippets?: CodeSnippetListRelationFilter
     reviewLikes?: ReviewLikeListRelationFilter
     reviews?: ReviewListRelationFilter
-    grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
+    grade?: XOR<GradeNullableRelationFilter, GradeWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -9787,7 +8885,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CodeSnippet"> | Date | string
     userId?: StringFilter<"CodeSnippet"> | string
     categories?: CodeSnippetCategoryListRelationFilter
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
     reviews?: ReviewListRelationFilter
   }
 
@@ -9814,7 +8912,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CodeSnippet"> | Date | string
     userId?: StringFilter<"CodeSnippet"> | string
     categories?: CodeSnippetCategoryListRelationFilter
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
     reviews?: ReviewListRelationFilter
   }, "id">
 
@@ -9892,8 +8990,8 @@ export namespace Prisma {
     NOT?: CodeSnippetCategoryWhereInput | CodeSnippetCategoryWhereInput[]
     codeId?: IntFilter<"CodeSnippetCategory"> | number
     categoryId?: IntFilter<"CodeSnippetCategory"> | number
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    codeSnippet?: XOR<CodeSnippetRelationFilter, CodeSnippetWhereInput>
   }
 
   export type CodeSnippetCategoryOrderByWithRelationInput = {
@@ -9910,8 +9008,8 @@ export namespace Prisma {
     NOT?: CodeSnippetCategoryWhereInput | CodeSnippetCategoryWhereInput[]
     codeId?: IntFilter<"CodeSnippetCategory"> | number
     categoryId?: IntFilter<"CodeSnippetCategory"> | number
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    codeSnippet?: XOR<CodeSnippetRelationFilter, CodeSnippetWhereInput>
   }, "codeId_categoryId">
 
   export type CodeSnippetCategoryOrderByWithAggregationInput = {
@@ -9944,8 +9042,10 @@ export namespace Prisma {
     userId?: StringFilter<"Review"> | string
     codeId?: IntFilter<"Review"> | number
     likes?: ReviewLikeListRelationFilter
-    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    codeSnippet?: XOR<CodeSnippetRelationFilter, CodeSnippetWhereInput>
+    parent?: XOR<ReviewNullableRelationFilter, ReviewWhereInput> | null
+    replies?: ReviewListRelationFilter
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type ReviewOrderByWithRelationInput = {
@@ -9958,6 +9058,8 @@ export namespace Prisma {
     codeId?: SortOrder
     likes?: ReviewLikeOrderByRelationAggregateInput
     codeSnippet?: CodeSnippetOrderByWithRelationInput
+    parent?: ReviewOrderByWithRelationInput
+    replies?: ReviewOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
   }
 
@@ -9973,8 +9075,10 @@ export namespace Prisma {
     userId?: StringFilter<"Review"> | string
     codeId?: IntFilter<"Review"> | number
     likes?: ReviewLikeListRelationFilter
-    codeSnippet?: XOR<CodeSnippetScalarRelationFilter, CodeSnippetWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    codeSnippet?: XOR<CodeSnippetRelationFilter, CodeSnippetWhereInput>
+    parent?: XOR<ReviewNullableRelationFilter, ReviewWhereInput> | null
+    replies?: ReviewListRelationFilter
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
   export type ReviewOrderByWithAggregationInput = {
@@ -10011,8 +9115,8 @@ export namespace Prisma {
     NOT?: ReviewLikeWhereInput | ReviewLikeWhereInput[]
     userId?: StringFilter<"ReviewLike"> | string
     reviewId?: IntFilter<"ReviewLike"> | number
-    review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    review?: XOR<ReviewRelationFilter, ReviewWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type ReviewLikeOrderByWithRelationInput = {
@@ -10029,8 +9133,8 @@ export namespace Prisma {
     NOT?: ReviewLikeWhereInput | ReviewLikeWhereInput[]
     userId?: StringFilter<"ReviewLike"> | string
     reviewId?: IntFilter<"ReviewLike"> | number
-    review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    review?: XOR<ReviewRelationFilter, ReviewWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }, "userId_reviewId">
 
   export type ReviewLikeOrderByWithAggregationInput = {
@@ -10337,9 +9441,10 @@ export namespace Prisma {
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    parentId?: number | null
     likes?: ReviewLikeCreateNestedManyWithoutReviewInput
     codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    parent?: ReviewCreateNestedOneWithoutRepliesInput
+    replies?: ReviewCreateNestedManyWithoutParentInput
     user: UserCreateNestedOneWithoutReviewsInput
   }
 
@@ -10352,15 +9457,17 @@ export namespace Prisma {
     userId: string
     codeId: number
     likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+    replies?: ReviewUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type ReviewUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parentId?: NullableIntFieldUpdateOperationsInput | number | null
     likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
     codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    parent?: ReviewUpdateOneWithoutRepliesNestedInput
+    replies?: ReviewUpdateManyWithoutParentNestedInput
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
   }
 
@@ -10373,6 +9480,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     codeId?: IntFieldUpdateOperationsInput | number
     likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+    replies?: ReviewUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type ReviewCreateManyInput = {
@@ -10389,7 +9497,6 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parentId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ReviewUncheckedUpdateManyInput = {
@@ -10528,7 +9635,7 @@ export namespace Prisma {
     none?: ReviewWhereInput
   }
 
-  export type GradeNullableScalarRelationFilter = {
+  export type GradeNullableRelationFilter = {
     is?: GradeWhereInput | null
     isNot?: GradeWhereInput | null
   }
@@ -10739,7 +9846,7 @@ export namespace Prisma {
     none?: CodeSnippetCategoryWhereInput
   }
 
-  export type UserScalarRelationFilter = {
+  export type UserRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
@@ -10806,12 +9913,12 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type CategoryScalarRelationFilter = {
+  export type CategoryRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
   }
 
-  export type CodeSnippetScalarRelationFilter = {
+  export type CodeSnippetRelationFilter = {
     is?: CodeSnippetWhereInput
     isNot?: CodeSnippetWhereInput
   }
@@ -10844,6 +9951,11 @@ export namespace Prisma {
   export type CodeSnippetCategorySumOrderByAggregateInput = {
     codeId?: SortOrder
     categoryId?: SortOrder
+  }
+
+  export type ReviewNullableRelationFilter = {
+    is?: ReviewWhereInput | null
+    isNot?: ReviewWhereInput | null
   }
 
   export type ReviewCountOrderByAggregateInput = {
@@ -10888,7 +10000,7 @@ export namespace Prisma {
     codeId?: SortOrder
   }
 
-  export type ReviewScalarRelationFilter = {
+  export type ReviewRelationFilter = {
     is?: ReviewWhereInput
     isNot?: ReviewWhereInput
   }
@@ -11318,6 +10430,19 @@ export namespace Prisma {
     connect?: CodeSnippetWhereUniqueInput
   }
 
+  export type ReviewCreateNestedOneWithoutRepliesInput = {
+    create?: XOR<ReviewCreateWithoutRepliesInput, ReviewUncheckedCreateWithoutRepliesInput>
+    connectOrCreate?: ReviewCreateOrConnectWithoutRepliesInput
+    connect?: ReviewWhereUniqueInput
+  }
+
+  export type ReviewCreateNestedManyWithoutParentInput = {
+    create?: XOR<ReviewCreateWithoutParentInput, ReviewUncheckedCreateWithoutParentInput> | ReviewCreateWithoutParentInput[] | ReviewUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParentInput | ReviewCreateOrConnectWithoutParentInput[]
+    createMany?: ReviewCreateManyParentInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutReviewsInput = {
     create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
@@ -11329,6 +10454,13 @@ export namespace Prisma {
     connectOrCreate?: ReviewLikeCreateOrConnectWithoutReviewInput | ReviewLikeCreateOrConnectWithoutReviewInput[]
     createMany?: ReviewLikeCreateManyReviewInputEnvelope
     connect?: ReviewLikeWhereUniqueInput | ReviewLikeWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<ReviewCreateWithoutParentInput, ReviewUncheckedCreateWithoutParentInput> | ReviewCreateWithoutParentInput[] | ReviewUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParentInput | ReviewCreateOrConnectWithoutParentInput[]
+    createMany?: ReviewCreateManyParentInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type ReviewLikeUpdateManyWithoutReviewNestedInput = {
@@ -11353,6 +10485,30 @@ export namespace Prisma {
     update?: XOR<XOR<CodeSnippetUpdateToOneWithWhereWithoutReviewsInput, CodeSnippetUpdateWithoutReviewsInput>, CodeSnippetUncheckedUpdateWithoutReviewsInput>
   }
 
+  export type ReviewUpdateOneWithoutRepliesNestedInput = {
+    create?: XOR<ReviewCreateWithoutRepliesInput, ReviewUncheckedCreateWithoutRepliesInput>
+    connectOrCreate?: ReviewCreateOrConnectWithoutRepliesInput
+    upsert?: ReviewUpsertWithoutRepliesInput
+    disconnect?: ReviewWhereInput | boolean
+    delete?: ReviewWhereInput | boolean
+    connect?: ReviewWhereUniqueInput
+    update?: XOR<XOR<ReviewUpdateToOneWithWhereWithoutRepliesInput, ReviewUpdateWithoutRepliesInput>, ReviewUncheckedUpdateWithoutRepliesInput>
+  }
+
+  export type ReviewUpdateManyWithoutParentNestedInput = {
+    create?: XOR<ReviewCreateWithoutParentInput, ReviewUncheckedCreateWithoutParentInput> | ReviewCreateWithoutParentInput[] | ReviewUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParentInput | ReviewCreateOrConnectWithoutParentInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutParentInput | ReviewUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: ReviewCreateManyParentInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutParentInput | ReviewUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutParentInput | ReviewUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
   export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
     create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
@@ -11373,6 +10529,20 @@ export namespace Prisma {
     update?: ReviewLikeUpdateWithWhereUniqueWithoutReviewInput | ReviewLikeUpdateWithWhereUniqueWithoutReviewInput[]
     updateMany?: ReviewLikeUpdateManyWithWhereWithoutReviewInput | ReviewLikeUpdateManyWithWhereWithoutReviewInput[]
     deleteMany?: ReviewLikeScalarWhereInput | ReviewLikeScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<ReviewCreateWithoutParentInput, ReviewUncheckedCreateWithoutParentInput> | ReviewCreateWithoutParentInput[] | ReviewUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParentInput | ReviewCreateOrConnectWithoutParentInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutParentInput | ReviewUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: ReviewCreateManyParentInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutParentInput | ReviewUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutParentInput | ReviewUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type ReviewCreateNestedOneWithoutLikesInput = {
@@ -11642,9 +10812,10 @@ export namespace Prisma {
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    parentId?: number | null
     likes?: ReviewLikeCreateNestedManyWithoutReviewInput
     codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    parent?: ReviewCreateNestedOneWithoutRepliesInput
+    replies?: ReviewCreateNestedManyWithoutParentInput
   }
 
   export type ReviewUncheckedCreateWithoutUserInput = {
@@ -11655,6 +10826,7 @@ export namespace Prisma {
     parentId?: number | null
     codeId: number
     likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+    replies?: ReviewUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type ReviewCreateOrConnectWithoutUserInput = {
@@ -11916,8 +11088,9 @@ export namespace Prisma {
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    parentId?: number | null
     likes?: ReviewLikeCreateNestedManyWithoutReviewInput
+    parent?: ReviewCreateNestedOneWithoutRepliesInput
+    replies?: ReviewCreateNestedManyWithoutParentInput
     user: UserCreateNestedOneWithoutReviewsInput
   }
 
@@ -11929,6 +11102,7 @@ export namespace Prisma {
     parentId?: number | null
     userId: string
     likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+    replies?: ReviewUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type ReviewCreateOrConnectWithoutCodeSnippetInput = {
@@ -12188,6 +11362,63 @@ export namespace Prisma {
     create: XOR<CodeSnippetCreateWithoutReviewsInput, CodeSnippetUncheckedCreateWithoutReviewsInput>
   }
 
+  export type ReviewCreateWithoutRepliesInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    likes?: ReviewLikeCreateNestedManyWithoutReviewInput
+    codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    parent?: ReviewCreateNestedOneWithoutRepliesInput
+    user: UserCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutRepliesInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: number | null
+    userId: string
+    codeId: number
+    likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewCreateOrConnectWithoutRepliesInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutRepliesInput, ReviewUncheckedCreateWithoutRepliesInput>
+  }
+
+  export type ReviewCreateWithoutParentInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    likes?: ReviewLikeCreateNestedManyWithoutReviewInput
+    codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    replies?: ReviewCreateNestedManyWithoutParentInput
+    user: UserCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutParentInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    codeId: number
+    likes?: ReviewLikeUncheckedCreateNestedManyWithoutReviewInput
+    replies?: ReviewUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type ReviewCreateOrConnectWithoutParentInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutParentInput, ReviewUncheckedCreateWithoutParentInput>
+  }
+
+  export type ReviewCreateManyParentInputEnvelope = {
+    data: ReviewCreateManyParentInput | ReviewCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserCreateWithoutReviewsInput = {
     id?: string
     email: string
@@ -12271,6 +11502,54 @@ export namespace Prisma {
     categories?: CodeSnippetCategoryUncheckedUpdateManyWithoutCodeSnippetNestedInput
   }
 
+  export type ReviewUpsertWithoutRepliesInput = {
+    update: XOR<ReviewUpdateWithoutRepliesInput, ReviewUncheckedUpdateWithoutRepliesInput>
+    create: XOR<ReviewCreateWithoutRepliesInput, ReviewUncheckedCreateWithoutRepliesInput>
+    where?: ReviewWhereInput
+  }
+
+  export type ReviewUpdateToOneWithWhereWithoutRepliesInput = {
+    where?: ReviewWhereInput
+    data: XOR<ReviewUpdateWithoutRepliesInput, ReviewUncheckedUpdateWithoutRepliesInput>
+  }
+
+  export type ReviewUpdateWithoutRepliesInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    parent?: ReviewUpdateOneWithoutRepliesNestedInput
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutRepliesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: IntFieldUpdateOperationsInput | number
+    likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutParentInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutParentInput, ReviewUncheckedUpdateWithoutParentInput>
+    create: XOR<ReviewCreateWithoutParentInput, ReviewUncheckedCreateWithoutParentInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutParentInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutParentInput, ReviewUncheckedUpdateWithoutParentInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutParentInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutParentInput>
+  }
+
   export type UserUpsertWithoutReviewsInput = {
     update: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
     create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
@@ -12318,8 +11597,9 @@ export namespace Prisma {
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    parentId?: number | null
     codeSnippet: CodeSnippetCreateNestedOneWithoutReviewsInput
+    parent?: ReviewCreateNestedOneWithoutRepliesInput
+    replies?: ReviewCreateNestedManyWithoutParentInput
     user: UserCreateNestedOneWithoutReviewsInput
   }
 
@@ -12331,6 +11611,7 @@ export namespace Prisma {
     parentId?: number | null
     userId: string
     codeId: number
+    replies?: ReviewUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type ReviewCreateOrConnectWithoutLikesInput = {
@@ -12390,8 +11671,9 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parentId?: NullableIntFieldUpdateOperationsInput | number | null
     codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    parent?: ReviewUpdateOneWithoutRepliesNestedInput
+    replies?: ReviewUpdateManyWithoutParentNestedInput
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
   }
 
@@ -12403,6 +11685,7 @@ export namespace Prisma {
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: StringFieldUpdateOperationsInput | string
     codeId?: IntFieldUpdateOperationsInput | number
+    replies?: ReviewUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type UserUpsertWithoutReviewLikesInput = {
@@ -12512,9 +11795,10 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parentId?: NullableIntFieldUpdateOperationsInput | number | null
     likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
     codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    parent?: ReviewUpdateOneWithoutRepliesNestedInput
+    replies?: ReviewUpdateManyWithoutParentNestedInput
   }
 
   export type ReviewUncheckedUpdateWithoutUserInput = {
@@ -12525,6 +11809,7 @@ export namespace Prisma {
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
     codeId?: IntFieldUpdateOperationsInput | number
     likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+    replies?: ReviewUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type ReviewUncheckedUpdateManyWithoutUserInput = {
@@ -12623,8 +11908,9 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parentId?: NullableIntFieldUpdateOperationsInput | number | null
     likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
+    parent?: ReviewUpdateOneWithoutRepliesNestedInput
+    replies?: ReviewUpdateManyWithoutParentNestedInput
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
   }
 
@@ -12636,6 +11922,7 @@ export namespace Prisma {
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: StringFieldUpdateOperationsInput | string
     likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+    replies?: ReviewUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type ReviewUncheckedUpdateManyWithoutCodeSnippetInput = {
@@ -12667,6 +11954,15 @@ export namespace Prisma {
     userId: string
   }
 
+  export type ReviewCreateManyParentInput = {
+    id?: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    codeId: number
+  }
+
   export type ReviewLikeUpdateWithoutReviewInput = {
     user?: UserUpdateOneRequiredWithoutReviewLikesNestedInput
   }
@@ -12679,7 +11975,89 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ReviewUpdateWithoutParentInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    likes?: ReviewLikeUpdateManyWithoutReviewNestedInput
+    codeSnippet?: CodeSnippetUpdateOneRequiredWithoutReviewsNestedInput
+    replies?: ReviewUpdateManyWithoutParentNestedInput
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+  }
 
+  export type ReviewUncheckedUpdateWithoutParentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: IntFieldUpdateOperationsInput | number
+    likes?: ReviewLikeUncheckedUpdateManyWithoutReviewNestedInput
+    replies?: ReviewUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutParentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: IntFieldUpdateOperationsInput | number
+  }
+
+
+
+  /**
+   * Aliases for legacy arg types
+   */
+    /**
+     * @deprecated Use UserCountOutputTypeDefaultArgs instead
+     */
+    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GradeCountOutputTypeDefaultArgs instead
+     */
+    export type GradeCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GradeCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CodeSnippetCountOutputTypeDefaultArgs instead
+     */
+    export type CodeSnippetCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CodeSnippetCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CategoryCountOutputTypeDefaultArgs instead
+     */
+    export type CategoryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ReviewCountOutputTypeDefaultArgs instead
+     */
+    export type ReviewCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ReviewCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserDefaultArgs instead
+     */
+    export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GradeDefaultArgs instead
+     */
+    export type GradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GradeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CodeSnippetDefaultArgs instead
+     */
+    export type CodeSnippetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CodeSnippetDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CategoryDefaultArgs instead
+     */
+    export type CategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CodeSnippetCategoryDefaultArgs instead
+     */
+    export type CodeSnippetCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CodeSnippetCategoryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ReviewDefaultArgs instead
+     */
+    export type ReviewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ReviewDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ReviewLikeDefaultArgs instead
+     */
+    export type ReviewLikeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ReviewLikeDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

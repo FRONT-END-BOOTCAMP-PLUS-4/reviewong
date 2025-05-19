@@ -1,0 +1,22 @@
+import { UserRepository } from '../../domain/repositories/UserRepository';
+import { SignUpDto } from '../dto/SignUpDto';
+import { User } from '@/prisma/generated/client';
+import bcrypt from 'bcryptjs';
+
+export class SignUpUseCase {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async execute(dto: SignUpDto): Promise<User> {
+    // 이메일 중복 체크
+    const existingUser = await this.userRepository.findByEmail(dto.email);
+    if (existingUser) {
+      throw new Error('이미 존재하는 이메일입니다.');
+    }
+
+    // 비밀번호 해싱
+    const hashedPassword = await bcrypt.hash(dto.password, 10);
+
+    // 사용자 생성
+    return this.userRepository.create(dto.email, hashedPassword, dto.nickname);
+  }
+}
