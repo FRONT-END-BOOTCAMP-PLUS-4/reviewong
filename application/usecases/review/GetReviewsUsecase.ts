@@ -1,23 +1,14 @@
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
-import { ReviewWithRelations } from '@/infra/repositories/prisma/PrReviewRepository';
-
-export interface GetReviewsResponse {
-  success: boolean;
-  data?: ReviewWithRelations[];
-  error?: string;
-}
+import { GetReviewDto } from './dto/GetReviewsDto';
 
 export class GetReviewsUsecase {
   constructor(private reviewRepository: ReviewRepository) {}
 
-  async execute(codeId: number): Promise<GetReviewsResponse> {
+  async execute({ codeId, isReply }: { codeId: number; isReply: boolean }): Promise<GetReviewDto> {
     try {
-      let reviews;
-      if (true) {
-        reviews = await this.reviewRepository.findAllByCodeId(codeId);
-      } else {
-        reviews = await this.reviewRepository.findAllByParentId(codeId);
-      }
+      const reviews = isReply
+        ? await this.reviewRepository.findAllByParentId(codeId)
+        : await this.reviewRepository.findAllByCodeId(codeId);
 
       return {
         success: true,
