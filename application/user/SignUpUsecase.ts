@@ -1,12 +1,12 @@
 import { UserRepository } from '../../domain/repositories/UserRepository';
 import { SignUpDto } from '../dto/SignUpDto';
-import { User } from '@/prisma/generated/client';
+import type { User } from '@/prisma/generated/client';
 import bcrypt from 'bcryptjs';
 
 export class SignUpUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(dto: SignUpDto): Promise<User> {
+  async execute(dto: SignUpDto): Promise<string> {
     // 이메일 중복 체크
     const existingUser = await this.userRepository.findByEmail(dto.email);
     if (existingUser) {
@@ -17,6 +17,19 @@ export class SignUpUseCase {
     const hashedPassword = await bcrypt.hash(dto.password, 10);
 
     // 사용자 생성
-    return this.userRepository.create(dto.email, hashedPassword, dto.nickname);
+    const userId = await this.userRepository.create({
+      email: dto.email,
+      password: hashedPassword,
+      nickname: dto.nickname,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      deletedAt: null,
+      gradeId: null,
+      imageUrl: null,
+      likeCount: 0,
+      reviewCount: 0,
+    });
+
+    return userId;
   }
 }
