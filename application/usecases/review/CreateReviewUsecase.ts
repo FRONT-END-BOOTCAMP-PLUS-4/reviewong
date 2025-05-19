@@ -1,5 +1,5 @@
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
-import { CreateReviewDto } from './dto/ReviewDto';
+import { CreateReviewDto } from './dto/CreateReviewDto';
 
 export class CreateReviewUsecase {
   constructor(private readonly reviewRepository: ReviewRepository) {}
