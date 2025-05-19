@@ -1,4 +1,5 @@
 import { User } from '@/prisma/generated';
+
 export interface UserRepository {
   /**
    * 사용자 회원가입

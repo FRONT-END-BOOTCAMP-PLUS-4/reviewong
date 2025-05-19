@@ -1,7 +1,5 @@
 'use client';
 
-import type React from 'react';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -12,101 +10,104 @@ import { Github, Mail } from 'lucide-react';
 
 export default function SignupForm() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    nickname: '',
+  });
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     setError('');
 
-    if (password !== confirmPassword) {
-      setError('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-
-    setIsLoading(true);
-
     try {
-      // 여기에 실제 회원가입 로직이 들어갑니다
-      console.log('회원가입 시도:', { name, email, password });
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // 회원가입 성공 시 로그인 페이지로 리다이렉트
-      setTimeout(() => {
-        router.push('/login');
-        setIsLoading(false);
-      }, 1500);
-    } catch (error) {
-      console.error('회원가입 실패:', error);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || '회원가입 중 오류가 발생했습니다.');
+      }
+
+      router.push('/login?message=회원가입이 완료되었습니다. 로그인해주세요.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '회원가입 중 오류가 발생했습니다.');
+    } finally {
       setIsLoading(false);
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="grid gap-6">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="grid gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="name">이름</Label>
-            <Input
-              id="name"
-              type="text"
-              placeholder="홍길동"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              disabled={isLoading}
-              className="bg-white"
-            />
-          </div>
+          {error && <div className="rounded-md bg-red-50 p-4 text-sm text-red-600">{error}</div>}
+
           <div className="grid gap-2">
             <Label htmlFor="email">이메일</Label>
             <Input
               id="email"
+              name="email"
               type="email"
-              placeholder="name@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
+              value={formData.email}
+              onChange={handleChange}
               disabled={isLoading}
               className="bg-white"
             />
           </div>
+
+          <div className="grid gap-2">
+            <Label htmlFor="nickname">닉네임</Label>
+            <Input
+              id="nickname"
+              name="nickname"
+              type="text"
+              required
+              value={formData.nickname}
+              onChange={handleChange}
+              disabled={isLoading}
+              className="bg-white"
+            />
+          </div>
+
           <div className="grid gap-2">
             <Label htmlFor="password">비밀번호</Label>
             <Input
               id="password"
+              name="password"
               type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
+              value={formData.password}
+              onChange={handleChange}
               disabled={isLoading}
               className="bg-white"
             />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="confirm-password">비밀번호 확인</Label>
-            <Input
-              id="confirm-password"
-              type="password"
-              placeholder="••••••••"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              disabled={isLoading}
-              className="bg-white"
-            />
-          </div>
-          {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? '가입 중...' : '회원가입'}
+
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? '처리 중...' : '회원가입'}
           </Button>
         </div>
       </form>
+
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <Separator className="w-full" />
@@ -115,6 +116,7 @@ export default function SignupForm() {
           <span className="bg-white px-2 text-muted-foreground">또는 다음으로 계속</span>
         </div>
       </div>
+
       <div className="grid grid-cols-2 gap-4">
         <Button variant="outline" type="button" disabled={isLoading} className="bg-white">
           <Github className="mr-2 h-4 w-4" />

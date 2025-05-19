@@ -88,7 +88,7 @@ model Review {
 model ReviewLike {
   userId   String @map("user_id")
   reviewId Int    @map("review_id")
-  review   Review @relation(fields: [reviewId], references: [id])
+  review   Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
   user     User   @relation(fields: [userId], references: [id])
 
   @@id([userId, reviewId])
