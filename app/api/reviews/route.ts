@@ -1,4 +1,4 @@
-import { CreateReviewDto } from '@/application/usecases/review/dto/ReviewDto';
+import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
 import { CreateReviewUsecase } from '@/application/usecases/review/CreateReviewUsecase';
 import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
 
