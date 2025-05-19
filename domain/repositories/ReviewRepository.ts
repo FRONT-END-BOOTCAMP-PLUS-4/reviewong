@@ -1,9 +1,6 @@
 import { Review } from '@/prisma/generated';
-import { CreateReviewDto } from '@/application/usecases/review/dto/ReviewDto';
-import {
-  ReplyWithRelations,
-  ReviewWithRelations,
-} from '@/infra/repositories/prisma/PrReviewRepository';
+import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
+import { ReviewView } from '../entities/ReviewView';
 
 export interface ReviewRepository {
   /**
@@ -39,12 +36,12 @@ export interface ReviewRepository {
    * @param codeId - 코드 스니펫 ID
    * @returns 리뷰 목록
    */
-  findAllByCodeId(codeId: number): Promise<ReviewWithRelations[]>;
+  findAllByCodeId(codeId: number): Promise<ReviewView[]>;
 
   /**
    * 코드 스니펫에 대한 답글 목록 조회
    * @param codeId - 코드 스니펫 ID
    * @returns 답글 목록
    */
-  findAllByParentId(codeId: number): Promise<ReplyWithRelations[]>;
+  findAllByParentId(codeId: number): Promise<ReviewView[]>;
 }

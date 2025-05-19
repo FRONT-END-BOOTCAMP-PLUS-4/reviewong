@@ -1,20 +1,7 @@
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
-import { PrismaClient, Review } from '@/prisma/generated';
-import { CreateReviewDto } from '@/application/usecases/review/dto/ReviewDto';
-export type ReviewWithRelations = Review & {
-  user: {
-    id: string;
-    nickname: string;
-    imageUrl: string | null;
-  };
-  _count: {
-    replies: number;
-    likes: number;
-  };
-};
-export type ReplyWithRelations = Omit<ReviewWithRelations, '_count'> & {
-  _count: Omit<ReviewWithRelations['_count'], 'replies'>;
-};
+import { PrismaClient } from '@/prisma/generated';
+import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
+import { ReviewView } from '@/domain/entities/ReviewView';
 export class PrReviewRepository implements ReviewRepository {
   private prisma = new PrismaClient();
 
@@ -49,7 +36,7 @@ export class PrReviewRepository implements ReviewRepository {
     });
   }
 
-  async findAllByCodeId(codeId: number): Promise<ReviewWithRelations[]> {
+  async findAllByCodeId(codeId: number): Promise<ReviewView[]> {
     const reviews = await this.prisma.review.findMany({
       where: {
         codeId,
@@ -75,10 +62,16 @@ export class PrReviewRepository implements ReviewRepository {
       },
     });
 
-    return reviews;
+    return reviews.map((review) => ({
+      ...review,
+      counts: {
+        replies: review._count.replies,
+        likes: review._count.likes,
+      },
+    }));
   }
 
-  async findAllByParentId(parentId: number): Promise<ReplyWithRelations[]> {
+  async findAllByParentId(parentId: number): Promise<ReviewView[]> {
     const replies = await this.prisma.review.findMany({
       where: {
         parentId,
@@ -102,6 +95,11 @@ export class PrReviewRepository implements ReviewRepository {
       },
     });
 
-    return replies;
+    return replies.map((reply) => ({
+      ...reply,
+      counts: {
+        likes: reply._count.likes,
+      },
+    }));
   }
 }
