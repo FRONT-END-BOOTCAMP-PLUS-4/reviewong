@@ -1,7 +1,7 @@
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
 import { PrismaClient } from '@/prisma/generated';
-import { CreateReviewDto } from '@/application/usecases/review/dto/ReviewDto';
-
+import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
+import { ReviewView } from '@/domain/entities/ReviewView';
 export class PrReviewRepository implements ReviewRepository {
   private prisma = new PrismaClient();
 
@@ -34,5 +34,72 @@ export class PrReviewRepository implements ReviewRepository {
     await this.prisma.review.delete({
       where: { id },
     });
+  }
+
+  async findAllByCodeId(codeId: number): Promise<ReviewView[]> {
+    const reviews = await this.prisma.review.findMany({
+      where: {
+        codeId,
+        parentId: null, // 최상위 리뷰만 가져오기
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            nickname: true,
+            imageUrl: true,
+          },
+        },
+        _count: {
+          select: {
+            replies: true, // 대댓글 수
+            likes: true, // 좋아요 수
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return reviews.map((review) => ({
+      ...review,
+      counts: {
+        replies: review._count.replies,
+        likes: review._count.likes,
+      },
+    }));
+  }
+
+  async findAllByParentId(parentId: number): Promise<ReviewView[]> {
+    const replies = await this.prisma.review.findMany({
+      where: {
+        parentId,
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            nickname: true,
+            imageUrl: true,
+          },
+        },
+        _count: {
+          select: {
+            likes: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'asc',
+      },
+    });
+
+    return replies.map((reply) => ({
+      ...reply,
+      counts: {
+        likes: reply._count.likes,
+      },
+    }));
   }
 }

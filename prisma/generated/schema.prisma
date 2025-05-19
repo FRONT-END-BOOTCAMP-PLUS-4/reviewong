@@ -62,7 +62,7 @@ model CodeSnippetCategory {
   codeId      Int         @map("code_id")
   categoryId  Int         @map("category_id")
   category    Category    @relation(fields: [categoryId], references: [id])
-  codeSnippet CodeSnippet @relation(fields: [codeId], references: [id])
+  codeSnippet CodeSnippet @relation(fields: [codeId], references: [id], onDelete: Cascade)
 
   @@id([codeId, categoryId])
   @@map("code_snippet_categories")
@@ -78,6 +78,8 @@ model Review {
   codeId      Int          @map("code_id")
   likes       ReviewLike[]
   codeSnippet CodeSnippet  @relation(fields: [codeId], references: [id])
+  parent      Review?      @relation("ReviewToReplies", fields: [parentId], references: [id])
+  replies     Review[]     @relation("ReviewToReplies")
   user        User         @relation(fields: [userId], references: [id])
 
   @@map("reviews")
