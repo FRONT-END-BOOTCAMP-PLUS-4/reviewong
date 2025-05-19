@@ -3,10 +3,10 @@ import { User } from '@/prisma/generated';
 export interface UserRepository {
   /**
    * 사용자 회원가입
-   * @param user - 회원가입할 사용자 객체
+   * @param user - 회원가입할 사용자 객체 (id 제외)
    * @returns 생성된 사용자 ID
    */
-  create(user: User): Promise<string>;
+  create(user: Omit<User, 'id'>): Promise<string>;
 
   /**
    * 사용자 로그인
