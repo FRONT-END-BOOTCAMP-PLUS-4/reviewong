@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { SignUpUseCase } from '@/application/user/SignUpUsecase';
-import { PrismaUserRepository } from '@/infrastructure/repositories/PrismaUserRepository';
-import { PrismaClient } from '@/prisma/generated';
-
-const prisma = new PrismaClient();
+import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request) {
   try {
@@ -31,7 +29,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const userRepository = new PrismaUserRepository(prisma);
+    const userRepository = new PrUserRepository(prisma);
     const signUpUseCase = new SignUpUseCase(userRepository);
 
     await signUpUseCase.execute({
