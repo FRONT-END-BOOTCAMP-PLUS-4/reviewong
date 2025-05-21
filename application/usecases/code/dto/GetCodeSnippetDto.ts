@@ -5,13 +5,18 @@ interface UserDto {
   imageUrl?: string | null;
 }
 
+interface CategoryDto {
+  id: number;
+  name: string;
+}
+
 // CodeSnippet용 DTO 타입
 export interface CodeSnippetDto {
   id: number;
   title: string;
   content: string;
   user: UserDto;
-  categories: string[]; // 카테고리 이름 배열
+  categories: CategoryDto[]; // 카테고리 객체 배열로 변경
   createdAt: Date;
   updatedAt: Date;
 }
