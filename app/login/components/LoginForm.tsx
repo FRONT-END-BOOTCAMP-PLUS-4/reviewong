@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Github, Mail } from 'lucide-react';
-import { useLogin } from '@/app/hooks/useLogin';
+import { useLogin } from '@/hooks/useLogin';
 
 export default function LoginForm() {
   const { login, socialLogin, isLoading, error } = useLogin();
