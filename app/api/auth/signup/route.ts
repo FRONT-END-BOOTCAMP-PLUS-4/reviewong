@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
-import { hash } from 'bcryptjs';
-import { prisma } from '@/lib/prisma';
+import { SignUpUseCase } from '@/application/user/SignUpUsecase';
+import { PrismaUserRepository } from '@/infrastructure/repositories/PrismaUserRepository';
+import { PrismaClient } from '@/prisma/generated';
+
+const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
@@ -28,42 +31,23 @@ export async function POST(req: Request) {
       );
     }
 
-    // 이메일 중복 검사
-    const existingUser = await prisma.users.findUnique({
-      where: { email },
-    });
+    const userRepository = new PrismaUserRepository(prisma);
+    const signUpUseCase = new SignUpUseCase(userRepository);
 
-    if (existingUser) {
-      return NextResponse.json({ error: '이미 사용 중인 이메일입니다.' }, { status: 400 });
-    }
-
-    // 닉네임 중복 검사
-    const existingNickname = await prisma.users.findFirst({
-      where: { nickname },
-    });
-
-    if (existingNickname) {
-      return NextResponse.json({ error: '이미 사용 중인 닉네임입니다.' }, { status: 400 });
-    }
-
-    // 비밀번호 해싱
-    const hashedPassword = await hash(password, 12);
-
-    // 사용자 생성
-    await prisma.users.create({
-      data: {
-        id: crypto.randomUUID(),
-        email,
-        password: hashedPassword,
-        nickname,
-        created_at: new Date(),
-        updated_at: new Date(),
-      },
+    await signUpUseCase.execute({
+      email,
+      password,
+      nickname,
     });
 
     return NextResponse.json({ message: '회원가입이 완료되었습니다.' }, { status: 201 });
   } catch (error) {
     console.error('회원가입 에러:', error);
-    return NextResponse.json({ error: '회원가입 처리 중 오류가 발생했습니다.' }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : '회원가입 처리 중 오류가 발생했습니다.' },
+      { status: 500 }
+    );
+  } finally {
+    await prisma.$disconnect();
   }
 }
