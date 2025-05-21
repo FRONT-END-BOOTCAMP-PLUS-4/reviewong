@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReviewForm from '../components/ReviewForm';
-import { useRouter } from 'next/navigation';
+import ReviewFormGuestView from '../components/ReviewFormGuestView';
 
 export default function ReviewFormContainer({
   codeId,
@@ -12,17 +12,12 @@ export default function ReviewFormContainer({
   codeId: number;
   parentId?: number | null;
 }) {
-  const router = useRouter();
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('authToken');
     setToken(storedToken);
-    if (!storedToken) {
-      alert('로그인이 필요합니다.');
-      router.push('/login');
-    }
-  }, [router]);
+  }, []);
 
   const handleCreate = async (data: {
     content: string;
@@ -45,6 +40,10 @@ export default function ReviewFormContainer({
       alert('리뷰 작성 실패');
     }
   };
+  if (!token) {
+    return;
+    <ReviewFormGuestView />;
+  }
 
   return <ReviewForm onSubmit={handleCreate} />;
 }
