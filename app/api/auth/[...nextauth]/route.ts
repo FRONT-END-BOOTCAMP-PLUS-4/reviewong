@@ -3,8 +3,14 @@ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
+import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
+import { SocialLoginUseCase } from '@/application/usecases/auth/SocialLoginUseCase';
+import { CredentialsLoginUseCase } from '@/application/usecases/auth/CredentialsLoginUseCase';
+
+const userRepository = new PrUserRepository(prisma);
+const credentialsLoginUseCase = new CredentialsLoginUseCase(userRepository);
+const socialLoginUseCase = new SocialLoginUseCase(userRepository);
 
 const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -16,30 +22,20 @@ const handler = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          throw new Error('이메일과 비밀번호를 입력해주세요.');
+        try {
+          const user = await credentialsLoginUseCase.execute({
+            email: credentials?.email ?? '',
+            password: credentials?.password ?? '',
+          });
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.nickname,
+            image: user.imageUrl,
+          };
+        } catch (error) {
+          throw error;
         }
-
-        const user = await prisma.users.findUnique({
-          where: { email: credentials.email },
-        });
-
-        if (!user || !user.password) {
-          throw new Error('이메일 또는 비밀번호가 일치하지 않습니다.');
-        }
-
-        const isCorrectPassword = await bcrypt.compare(credentials.password, user.password);
-
-        if (!isCorrectPassword) {
-          throw new Error('이메일 또는 비밀번호가 일치하지 않습니다.');
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.nickname,
-          image: user.image_url,
-        };
       },
     }),
     GithubProvider({
@@ -72,32 +68,13 @@ const handler = NextAuth({
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === 'github') {
-        try {
-          const existingUser = await prisma.users.findUnique({
-            where: { email: user.email! },
-          });
-
-          if (!existingUser) {
-            await prisma.users.create({
-              data: {
-                id: user.id,
-                email: user.email!,
-                nickname: user.name || user.email!.split('@')[0],
-                image_url: user.image,
-                password: '', // 소셜 로그인은 비밀번호가 필요 없음
-                like_count: 0,
-                review_count: 0,
-                created_at: new Date(),
-                updated_at: new Date(),
-              },
-            });
-          }
-          return true;
-        } catch (error) {
-          console.error('깃허브 로그인 중 에러:', error);
-          return false;
-        }
+      if (account?.provider === 'github' || account?.provider === 'google') {
+        return socialLoginUseCase.execute({
+          id: user.id,
+          email: user.email!,
+          name: user.name ?? null,
+          image: user.image ?? null,
+        });
       }
       return true;
     },
@@ -117,6 +94,7 @@ const handler = NextAuth({
   pages: {
     signIn: '/login',
   },
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };
