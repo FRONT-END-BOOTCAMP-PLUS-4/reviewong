@@ -19,6 +19,10 @@ export default function ReviewFormContainer({
     setToken(storedToken);
   }, []);
 
+  if (!token) {
+    return <ReviewFormGuestView />;
+  }
+
   const handleCreate = async (data: {
     content: string;
     parentId?: number | null;
@@ -40,10 +44,6 @@ export default function ReviewFormContainer({
       alert('리뷰 작성 실패');
     }
   };
-  if (!token) {
-    return;
-    <ReviewFormGuestView />;
-  }
 
   return <ReviewForm onSubmit={handleCreate} />;
 }
