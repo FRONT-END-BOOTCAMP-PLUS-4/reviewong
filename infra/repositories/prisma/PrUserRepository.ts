@@ -1,43 +1,45 @@
-import { PrismaClient, User } from '@/prisma/generated';
 import { UserRepository } from '@/domain/repositories/UserRepository';
+import { PrismaClient, User } from '@/prisma/generated';
+import bcrypt from 'bcryptjs';
 
-export class PrUserRepository implements UserRepository {
-  private prisma: PrismaClient;
-
-  constructor() {
-    this.prisma = new PrismaClient();
-  }
+export class PrismaUserRepository implements UserRepository {
+  constructor(private readonly prisma: PrismaClient) {}
 
   async create(user: Omit<User, 'id'>): Promise<string> {
     const createdUser = await this.prisma.user.create({
-      data: user,
+      data: {
+        id: crypto.randomUUID(),
+        email: user.email,
+        password: user.password,
+        nickname: user.nickname,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        deletedAt: user.deletedAt,
+        gradeId: user.gradeId,
+        imageUrl: user.imageUrl,
+        likeCount: user.likeCount,
+        reviewCount: user.reviewCount,
+      },
     });
     return createdUser.id;
   }
 
-  async login(email: string, password: string): Promise<User | null> {
-    return await this.prisma.user.findFirst({
-      where: {
-        email: email,
-        password: password,
-      },
+  async findByEmail(email: string): Promise<User | null> {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
     });
+    return user;
   }
 
   async findById(id: string): Promise<User | null> {
-    return await this.prisma.user.findUnique({
+    const user = await this.prisma.user.findUnique({
       where: { id },
     });
-  }
-
-  async findByEmail(email: string): Promise<User | null> {
-    return await this.prisma.user.findUnique({
-      where: { email },
-    });
+    return user;
   }
 
   async findAll(): Promise<User[]> {
-    return await this.prisma.user.findMany();
+    return this.prisma.user.findMany();
   }
 
   async update(id: string, updatedUser: Partial<User>): Promise<boolean> {
@@ -48,6 +50,7 @@ export class PrUserRepository implements UserRepository {
       });
       return true;
     } catch (error) {
+      console.error('사용자 업데이트 중 오류 발생:', error);
       return false;
     }
   }
@@ -59,7 +62,22 @@ export class PrUserRepository implements UserRepository {
       });
       return true;
     } catch (error) {
+      console.error('사용자 삭제 중 오류 발생:', error);
       return false;
     }
+  }
+
+  async login(email: string, password: string): Promise<User | null> {
+    const user = await this.findByEmail(email);
+    if (!user) {
+      return null;
+    }
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if (!isValidPassword) {
+      return null;
+    }
+
+    return user;
   }
 }
