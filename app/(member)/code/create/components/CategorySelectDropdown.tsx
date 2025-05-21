@@ -1,6 +1,4 @@
 'use client';
-
-import * as React from 'react';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -13,11 +11,10 @@ import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 
 const categoryList = [
-  { id: 1, name: '알고리즘' },
-  { id: 2, name: 'React' },
-  { id: 3, name: 'Next.js' },
+  { id: 1, name: 'JavaScript' },
+  { id: 2, name: 'TypeScript' },
+  { id: 3, name: 'React.js' },
   { id: 4, name: 'CSS' },
-  { id: 5, name: 'JavaScript' },
 ];
 
 export function CategorySelectDropdown({
