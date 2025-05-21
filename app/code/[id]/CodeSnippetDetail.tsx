@@ -9,7 +9,7 @@ interface CodeSnippetDetailProps {
   author: string;
   profileImage?: string;
   date: string;
-  categories?: string[];
+  categories?: { id: number; name: string }[];
 }
 
 export default function CodeSnippetDetail({
@@ -42,10 +42,10 @@ export default function CodeSnippetDetail({
             categories.map((category) => {
               return (
                 <span
-                  key={category}
+                  key={category.id}
                   className="leading-[14px] h-[34px] bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-sm flex items-center gap-2"
                 >
-                  <span>{category}</span>
+                  <span>{category.name}</span>
                 </span>
               );
             })}
