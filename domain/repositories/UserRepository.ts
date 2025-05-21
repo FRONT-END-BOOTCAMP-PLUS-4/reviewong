@@ -1,11 +1,12 @@
 import { User } from '@/prisma/generated';
+
 export interface UserRepository {
   /**
    * 사용자 회원가입
-   * @param user - 회원가입할 사용자 객체
+   * @param user - 회원가입할 사용자 객체 (id 제외)
    * @returns 생성된 사용자 ID
    */
-  create(user: User): Promise<string>;
+  create(user: Omit<User, 'id'>): Promise<string>;
 
   /**
    * 사용자 로그인
@@ -49,9 +50,17 @@ export interface UserRepository {
    * @returns 삭제 성공 여부
    */
   delete(id: string): Promise<boolean>;
+
   /**
    * 사용자 ID로 프로필 이미지 URL 조회
    * @param id - 사용자 ID
    * @returns 프로필 이미지 URL 문자열 또는 null
    */
+
+  createSocialUser(data: {
+    id: string;
+    email: string;
+    nickname: string;
+    image_url: string | null;
+  }): Promise<User>;
 }
