@@ -36,12 +36,19 @@ export default function CodeSnippetDetail({
             <Calendar size={18} className="inline-block" />
             {date}
           </span>
-          {categories.length > 0 && (
-            <>
-              <span>•</span>
-              <span>{categories.join(', ')}</span>
-            </>
-          )}
+        </div>
+        <div className="flex flex-wrap gap-2 mt-2">
+          {categories.length > 0 &&
+            categories.map((category) => {
+              return (
+                <span
+                  key={category}
+                  className="leading-[14px] h-[34px] bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-sm flex items-center gap-2"
+                >
+                  <span>{category}</span>
+                </span>
+              );
+            })}
         </div>
       </div>
 
