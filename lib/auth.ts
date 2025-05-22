@@ -23,18 +23,32 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         try {
+          console.log('로그인 시도:', { email: credentials?.email });
+
           const user = await credentialsLoginUseCase.execute({
             email: credentials?.email ?? '',
             password: credentials?.password ?? '',
           });
-          return {
+
+          console.log('사용자 조회 결과:', user);
+
+          if (!user) {
+            console.log('사용자를 찾을 수 없음');
+            return null;
+          }
+
+          const userObject = {
             id: user.id,
             email: user.email,
-            name: user.nickname,
-            image: user.imageUrl,
+            name: user.nickname || user.email.split('@')[0],
+            image: user.imageUrl || null,
           };
+
+          console.log('반환할 사용자 객체:', userObject);
+          return userObject;
         } catch (error) {
-          throw error;
+          console.error('인증 에러:', error);
+          return null;
         }
       },
     }),
