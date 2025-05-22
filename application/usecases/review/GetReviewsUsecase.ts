@@ -4,7 +4,13 @@ import { GetReviewDto } from './dto/GetReviewsDto';
 export class GetReviewsUsecase {
   constructor(private reviewRepository: ReviewRepository) {}
 
-  async execute({ codeId, parentId }: { codeId: number; parentId: number }): Promise<GetReviewDto> {
+  async execute({
+    codeId,
+    parentId,
+  }: {
+    codeId: number;
+    parentId: number | null;
+  }): Promise<GetReviewDto> {
     try {
       const reviews = parentId
         ? await this.reviewRepository.findAllByParentId(parentId)

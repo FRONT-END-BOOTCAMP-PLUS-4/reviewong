@@ -4,14 +4,14 @@ import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewReposito
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
-    const codeId = parseInt(id);
 
-    const parentIdQuery = request.nextUrl.searchParams.get('parent_id');
+    const parentIdParam = request.nextUrl.searchParams.get('parent_id');
+    const parentId = parentIdParam !== null ? parseInt(parentIdParam, 10) : null;
     const repository = new PrReviewRepository();
     const usecase = new GetReviewsUsecase(repository);
     const result = await usecase.execute({
-      codeId,
-      isReply: parentIdQuery !== null,
+      codeId: parseInt(id),
+      parentId: parentId ? parentId : null,
     });
 
     if (!result.success) {
