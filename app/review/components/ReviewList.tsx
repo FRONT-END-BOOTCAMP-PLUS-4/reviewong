@@ -8,7 +8,7 @@ import { formatDate } from '@/utils/formatDate';
 interface ReviewListProps {
   reviews: ReviewView[];
   codeId: number;
-  onExpandClick: (reviewId: number) => void;
+  onExpandClick?: (reviewId: number) => void;
   parentId?: number | null;
   commentButton?: boolean;
 }
