@@ -4,10 +4,10 @@ import { GetReviewDto } from './dto/GetReviewsDto';
 export class GetReviewsUsecase {
   constructor(private reviewRepository: ReviewRepository) {}
 
-  async execute({ codeId, isReply }: { codeId: number; isReply: boolean }): Promise<GetReviewDto> {
+  async execute({ codeId, parentId }: { codeId: number; parentId: number }): Promise<GetReviewDto> {
     try {
-      const reviews = isReply
-        ? await this.reviewRepository.findAllByParentId(codeId)
+      const reviews = parentId
+        ? await this.reviewRepository.findAllByParentId(parentId)
         : await this.reviewRepository.findAllByCodeId(codeId);
 
       return {

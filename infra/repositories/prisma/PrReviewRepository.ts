@@ -62,11 +62,11 @@ export class PrReviewRepository implements ReviewRepository {
       },
     });
 
-    return reviews.map((review) => ({
+    return reviews.map(({ _count, ...review }) => ({
       ...review,
       counts: {
-        replies: review._count.replies,
-        likes: review._count.likes,
+        replies: _count.replies,
+        likes: _count.likes,
       },
     }));
   }
@@ -95,10 +95,10 @@ export class PrReviewRepository implements ReviewRepository {
       },
     });
 
-    return replies.map((reply) => ({
+    return replies.map(({ _count, ...reply }) => ({
       ...reply,
       counts: {
-        likes: reply._count.likes,
+        likes: _count.likes,
       },
     }));
   }
