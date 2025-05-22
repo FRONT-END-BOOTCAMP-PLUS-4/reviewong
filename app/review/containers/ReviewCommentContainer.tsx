@@ -15,7 +15,7 @@ export default function ReviewCommentContainer({
     queryKey: ['comments', codeId, parentId],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:3000/api/member/codes/${codeId}/reviews?parent_id=${parentId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/member/codes/${codeId}/reviews?parent_id=${parentId}`,
         { cache: 'no-store' }
       );
       if (!res.ok) {
