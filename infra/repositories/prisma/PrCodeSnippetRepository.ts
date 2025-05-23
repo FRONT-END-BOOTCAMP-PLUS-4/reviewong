@@ -8,7 +8,7 @@ export type CodeSnippetWithRelations = CodeSnippet & {
     imageUrl: string | null;
     grade: {
       name: string;
-    };
+    } | null;
   };
   _count: {
     reviews?: number;
