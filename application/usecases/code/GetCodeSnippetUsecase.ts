@@ -26,7 +26,7 @@ export class GetCodeSnippetUsecase {
           id: codeSnippet.user.id,
           nickname: codeSnippet.user.nickname,
           imageUrl: codeSnippet.user.imageUrl,
-          grade: codeSnippet.user.grade.name,
+          grade: codeSnippet.user.grade ? codeSnippet.user.grade.name : null,
         },
         categories: categories,
         createdAt: codeSnippet.createdAt,
