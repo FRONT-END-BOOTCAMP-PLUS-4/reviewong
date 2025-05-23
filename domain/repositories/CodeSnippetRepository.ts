@@ -1,5 +1,6 @@
 import { CodeSnippetWithRelations } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { CodeSnippet } from '@/prisma/generated';
+import { CodeListFilter } from '../filters/CodeListFilter';
 
 export type CodeSnippetCreateRequest = {
   userId: string;
@@ -36,10 +37,11 @@ export interface CodeSnippetRepository {
   findByUserId(userId: string): Promise<CodeSnippet[]>;
 
   /**
+   * 카테고리 ID로 코드 스니펫 조회
    * 모든 코드 스니펫 조회
    * @returns 코드 스니펫 리스트
    */
-  findAll(): Promise<CodeSnippet[]>;
+  findAll(filter: CodeListFilter): Promise<CodeSnippetWithRelations[]>;
 
   /**
    * 코드 스니펫 업데이트
