@@ -20,6 +20,7 @@ export default async function CodeSnippetDetailContainer({ id }: { id: string })
       content={codeSnippet.content}
       author={codeSnippet.user.nickname}
       profileImage={codeSnippet.user.imageUrl}
+      grade={codeSnippet.user.grade}
       date={formatDate(codeSnippet.createdAt)}
       categories={codeSnippet.categories}
     />
