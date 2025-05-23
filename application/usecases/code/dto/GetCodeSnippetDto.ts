@@ -3,7 +3,7 @@ interface UserDto {
   id: string;
   nickname: string;
   imageUrl?: string | null;
-  grade: string;
+  grade?: string | null;
 }
 
 interface CategoryDto {
