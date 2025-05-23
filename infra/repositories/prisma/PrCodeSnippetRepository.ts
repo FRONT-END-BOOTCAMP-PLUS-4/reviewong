@@ -5,6 +5,9 @@ export type CodeSnippetWithRelations = CodeSnippet & {
     id: string;
     nickname: string;
     imageUrl: string | null;
+    grade: {
+      name: string;
+    };
   };
   categories: (CodeSnippetCategory & {
     category: {
@@ -87,6 +90,11 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
             id: true,
             nickname: true,
             imageUrl: true,
+            grade: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         categories: {
