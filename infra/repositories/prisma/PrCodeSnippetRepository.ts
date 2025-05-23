@@ -1,5 +1,6 @@
 import { PrismaClient, CodeSnippet, CodeSnippetCategory } from '@/prisma/generated';
 import { CodeSnippetRepository } from '@/domain/repositories/CodeSnippetRepository';
+import { CodeListFilter } from '@/domain/filters/CodeListFilter';
 export type CodeSnippetWithRelations = CodeSnippet & {
   user: {
     id: string;
@@ -112,9 +113,71 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
     });
   }
 
-  async findAll(): Promise<CodeSnippet[]> {
-    return await this.prisma.codeSnippet.findMany();
+  /*
+카테코리별 코드 조회할 수 있도록 필터 적용
+*/
+
+  async findAll(filter: CodeListFilter): Promise<CodeSnippetWithRelations[]> {
+    if (filter.categories?.length) {
+      return this.prisma.codeSnippet.findMany({
+        where: {
+          categories: {
+            some: {
+              category: {
+                name: {
+                  in: filter.categories,
+                },
+              },
+            },
+          },
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              nickname: true,
+              imageUrl: true,
+              grade: {
+                select: {
+                  name: true,
+                },
+              },
+            },
+          },
+          categories: {
+            include: {
+              category: true,
+            },
+          },
+        },
+        orderBy: { createdAt: 'desc' },
+      });
+    }
+
+    return this.prisma.codeSnippet.findMany({
+      include: {
+        user: {
+          select: {
+            id: true,
+            nickname: true,
+            imageUrl: true,
+            grade: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
   }
+
   async update(
     id: number,
     data: {
