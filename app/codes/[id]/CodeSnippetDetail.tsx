@@ -4,12 +4,14 @@ import React from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import ProfileImage from '@/app/components/ProfileImage';
 import { Calendar } from 'lucide-react';
+import GradeBadge from '@/app/components/GradeBadge';
 interface CodeSnippetDetailProps {
   id: number;
   title: string;
   content: string;
   author: string;
   profileImage?: string;
+  grade?: string;
   date: string;
   categories?: { id: number; name: string }[];
   isAuthor: boolean;
@@ -21,6 +23,7 @@ export default function CodeSnippetDetail({
   content,
   author,
   profileImage,
+  grade,
   date,
   categories = [],
   isAuthor = false,
