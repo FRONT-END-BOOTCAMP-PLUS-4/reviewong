@@ -7,6 +7,7 @@ export interface ReviewView {
     id: string;
     nickname: string;
     imageUrl: string | null;
+    grade: string | null;
   };
   counts: {
     replies?: number;
