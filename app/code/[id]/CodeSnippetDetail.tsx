@@ -3,11 +3,13 @@ import React from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import ProfileImage from '@/app/components/ProfileImage';
 import { Calendar } from 'lucide-react';
+import GradeBadge from '@/app/components/GradeBadge';
 interface CodeSnippetDetailProps {
   title: string;
   content: string;
   author: string;
   profileImage?: string;
+  grade?: string;
   date: string;
   categories?: { id: number; name: string }[];
 }
@@ -17,6 +19,7 @@ export default function CodeSnippetDetail({
   content,
   author,
   profileImage,
+  grade,
   date,
   categories = [],
 }: CodeSnippetDetailProps) {
@@ -30,7 +33,10 @@ export default function CodeSnippetDetail({
             src={profileImage ?? '/default-profile-image.png'}
             alt="프로필 이미지"
           />
-          <span>{author}</span>
+          <div>
+            <span>{author}</span>
+            <GradeBadge grade={grade ?? 'bronze'} className="-mt-2.5" />
+          </div>
           <span>•</span>
           <span>
             <Calendar size={18} className="inline-block" />
