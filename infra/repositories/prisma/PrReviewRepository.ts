@@ -48,6 +48,11 @@ export class PrReviewRepository implements ReviewRepository {
             id: true,
             nickname: true,
             imageUrl: true,
+            grade: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         _count: {
@@ -64,6 +69,10 @@ export class PrReviewRepository implements ReviewRepository {
 
     return reviews.map(({ _count, ...review }) => ({
       ...review,
+      user: {
+        ...review.user,
+        grade: review.user.grade?.name || null,
+      },
       counts: {
         replies: _count.replies,
         likes: _count.likes,
@@ -82,6 +91,11 @@ export class PrReviewRepository implements ReviewRepository {
             id: true,
             nickname: true,
             imageUrl: true,
+            grade: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         _count: {
@@ -97,6 +111,10 @@ export class PrReviewRepository implements ReviewRepository {
 
     return replies.map(({ _count, ...reply }) => ({
       ...reply,
+      user: {
+        ...reply.user,
+        grade: reply.user.grade?.name || null,
+      },
       counts: {
         likes: _count.likes,
       },
