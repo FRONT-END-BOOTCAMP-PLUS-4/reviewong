@@ -11,11 +11,14 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-
+    const session = await getServerSession(authOptions);
+    if (!session || !session.user.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     const codeSnippetrepository = new PrCodeSnippetRepository();
     const usecase = new DeleteCodeSnippetUsecase(codeSnippetrepository);
 
-    const result = await usecase.execute(parseInt(id));
+    const result = await usecase.execute(parseInt(id), session.user.id);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 400 });
