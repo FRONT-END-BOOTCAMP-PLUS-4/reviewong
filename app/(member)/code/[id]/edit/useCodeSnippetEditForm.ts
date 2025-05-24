@@ -54,10 +54,7 @@ export function useCodeSnippetEditForm(id: string) {
       const res = await fetch(`/api/member/codes/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          userId: '4cbe1f00-bcff-47d1-898a-5e75f00ea53b', // FIXME: 유저 정보 동적 처리
-        }),
+        body: JSON.stringify(form),
       });
 
       if (!res.ok) {
