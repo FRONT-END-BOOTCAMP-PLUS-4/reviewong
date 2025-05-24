@@ -1,6 +1,8 @@
 import { CreateCodeSnippetUsecase } from '@/application/usecases/code/CreateCodeSnippetUsecase';
 import { CreateCodeSnippetDto } from '@/application/usecases/code/dto/CreateCodeSnippetDto';
 import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
+import { authOptions } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 // POST 요청 - 코드 스니펫 생성
@@ -8,9 +10,12 @@ export async function POST(request: NextRequest) {
   try {
     // 요청 본문 파싱
     const body = await request.json();
-
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     // 필수 필드 검증
-    if (!body.userId || !body.title || !body.content || !Array.isArray(body.categories)) {
+    if (!session.user.id || !body.title || !body.content || !Array.isArray(body.categories)) {
       return NextResponse.json(
         {
           success: false,
@@ -22,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     // DTO 생성
     const createCodeSnippetDto = new CreateCodeSnippetDto(
-      body.userId,
+      session.user.id,
       body.title,
       body.content,
       body.categories
