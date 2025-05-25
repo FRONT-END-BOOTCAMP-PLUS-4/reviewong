@@ -29,6 +29,9 @@ export class GetCodeListUsecase {
           imageUrl: snippet.user.imageUrl,
           grade: snippet.user.grade.name,
         },
+        counts: {
+          reviews: snippet._count.reviews,
+        },
         categories: snippet.categories.map((c) => ({
           id: c.category.id,
           name: c.category.name,
