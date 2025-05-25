@@ -10,6 +10,9 @@ export type CodeSnippetWithRelations = CodeSnippet & {
       name: string;
     };
   };
+  _count: {
+    reviews?: number;
+  };
   categories: (CodeSnippetCategory & {
     category: {
       id: number;
@@ -118,43 +121,18 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
 */
 
   async findAll(filter: CodeListFilter): Promise<CodeSnippetWithRelations[]> {
-    if (filter.categories?.length) {
-      return this.prisma.codeSnippet.findMany({
-        where: {
-          categories: {
-            some: {
-              category: {
-                name: {
-                  in: filter.categories,
-                },
-              },
-            },
-          },
-        },
-        include: {
-          user: {
-            select: {
-              id: true,
-              nickname: true,
-              imageUrl: true,
-              grade: {
-                select: {
-                  name: true,
-                },
-              },
-            },
-          },
-          categories: {
-            include: {
-              category: true,
-            },
-          },
-        },
-        orderBy: { createdAt: 'desc' },
-      });
-    }
-
     return this.prisma.codeSnippet.findMany({
+      where: {
+        categories: {
+          some: {
+            category: {
+              id: {
+                in: filter.categories,
+              },
+            },
+          },
+        },
+      },
       include: {
         user: {
           select: {
@@ -166,6 +144,11 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
                 name: true,
               },
             },
+          },
+        },
+        _count: {
+          select: {
+            reviews: true,
           },
         },
         categories: {
