@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlusCircle } from 'lucide-react';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import ProfileImage from './ProfileImage';
 
 export default function Header() {
   const { data: session, status } = useSession();
@@ -24,10 +24,11 @@ export default function Header() {
                 </Button>
               </Link>
               <div className="flex items-center gap-2">
-                <Avatar>
-                  <AvatarImage src={session.user?.image || '/placeholder.svg'} />
-                  <AvatarFallback>{session.user?.name?.slice(0, 2) || '??'}</AvatarFallback>
-                </Avatar>
+                <ProfileImage
+                  src={session.user?.image || '/default-profile-image.png'}
+                  alt={session.user?.name || '사용자'}
+                  size={32}
+                />
                 <span>{session.user?.name || '사용자'}</span>
               </div>
               <Button onClick={() => signOut()}>로그아웃</Button>
