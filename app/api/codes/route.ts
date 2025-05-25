@@ -9,7 +9,9 @@ export async function GET(req: NextRequest) {
     const categoryList = searchParams.get('categories');
 
     const filter: CodeListFilter = {
-      categories: categoryList ? categoryList.split(',').map((category) => category) : undefined,
+      categories: categoryList
+        ? categoryList.split(',').map((category) => parseInt(category))
+        : undefined,
       // 전달 받을 카테고리가 없을 경우 undefined로 설정
     };
 
