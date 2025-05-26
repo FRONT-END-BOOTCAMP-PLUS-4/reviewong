@@ -4,7 +4,7 @@ import { User } from '@/prisma/generated';
 import bcrypt from 'bcryptjs';
 
 export class PrUserRepository implements UserRepository {
-  constructor(private readonly prisma: PrismaClient) {}
+  private prisma = new PrismaClient();
 
   async create(user: Omit<User, 'id'>): Promise<string> {
     const createdUser = await this.prisma.user.create({
