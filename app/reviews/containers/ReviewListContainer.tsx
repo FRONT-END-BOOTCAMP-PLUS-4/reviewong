@@ -18,7 +18,7 @@ export default async function ReviewListContainer({ codeId }: { codeId: number }
   return (
     <>
       <h3 className="font-bold m-5">리뷰 목록 ({reviews.length})</h3>
-      <ReviewListClientContainer codeId={codeId} reviews={reviews} />
+      <ReviewListClientContainer codeId={codeId} initialReviews={reviews} />
     </>
   );
 }
