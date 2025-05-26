@@ -8,7 +8,7 @@ import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
 import { SocialLoginUseCase } from '@/application/usecases/auth/SocialLoginUseCase';
 import { CredentialsLoginUseCase } from '@/application/usecases/auth/CredentialsLoginUseCase';
 
-const userRepository = new PrUserRepository(prisma);
+const userRepository = new PrUserRepository();
 const credentialsLoginUseCase = new CredentialsLoginUseCase(userRepository);
 const socialLoginUseCase = new SocialLoginUseCase(userRepository);
 
