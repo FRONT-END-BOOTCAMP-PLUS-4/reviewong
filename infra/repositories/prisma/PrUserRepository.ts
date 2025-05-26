@@ -70,6 +70,49 @@ export class PrUserRepository implements UserRepository {
       reviewCount: user.reviewCount,
     };
   }
+  async findProfileSummaryById(id: string): Promise<{
+    id: string;
+    email: string;
+    nickname: string;
+    imageUrl: string | null;
+    grade?: string;
+    reviewCount: number;
+    likeCount: number;
+    codeCount: number;
+  }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        email: true,
+        nickname: true,
+        imageUrl: true,
+        reviewCount: true,
+        likeCount: true,
+        grade: {
+          select: { name: true },
+        },
+        codeSnippets: {
+          select: { id: true }, // 개수만 필요하므로 id만 가져옴
+        },
+      },
+    });
+
+    if (!user) {
+      return null;
+    }
+
+    return {
+      id: user.id,
+      email: user.email,
+      nickname: user.nickname,
+      imageUrl: user.imageUrl,
+      grade: user.grade?.name,
+      reviewCount: user.reviewCount,
+      likeCount: user.likeCount,
+      codeCount: user.codeSnippets.length,
+    };
+  }
 
   async findAll(): Promise<User[]> {
     const users = await this.prisma.user.findMany();

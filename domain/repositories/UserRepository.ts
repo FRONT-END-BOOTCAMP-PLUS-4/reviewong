@@ -24,6 +24,22 @@ export interface UserRepository {
   findById(id: string): Promise<User | null>;
 
   /**
+   * ID로 사용자 조회 & 코드 작성 수, 리뷰 수, 좋아요 수 포함
+   * @param id - 조회할 사용자 ID
+   * @returns 사용자 객체 또는 null
+   */
+  findProfileSummaryById(id: string): Promise<{
+    id: string;
+    email: string;
+    nickname: string;
+    imageUrl: string | null;
+    grade?: string;
+    reviewCount: number;
+    likeCount: number;
+    codeCount: number;
+  } | null>;
+
+  /**
    * 이메일로 사용자 조회
    * @param email - 조회할 사용자 이메일
    * @returns 사용자 객체 또는 null
