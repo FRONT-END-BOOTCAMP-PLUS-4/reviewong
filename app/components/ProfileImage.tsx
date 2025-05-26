@@ -7,16 +7,15 @@ interface ProfileImageProps {
   size?: number;
   styleClassName?: string;
 }
-
 export default function ProfileImage({
-  src = '/default-profile-image.png',
+  src,
   alt = '프로필 이미지',
   size = 40,
   styleClassName = '',
 }: ProfileImageProps) {
   return (
     <Image
-      src={src}
+      src={src || '/default-profile.png'}
       alt={alt}
       width={size}
       height={size}
