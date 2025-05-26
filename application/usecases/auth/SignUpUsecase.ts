@@ -1,5 +1,5 @@
 import { UserRepository } from '@/domain/repositories/UserRepository';
-import { SignUpDto } from '@/application/dto/auth/SignUpDto';
+import { SignUpDto } from '@/application/usecases/auth/dto/SignUpDto';
 import bcrypt from 'bcryptjs';
 
 export class SignUpUseCase {
