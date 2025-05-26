@@ -11,11 +11,11 @@ const GRADE_MAP: Record<string, string> = {
 
 export default function GradeBadge({
   size = 40,
-  grade,
+  grade = '브론즈',
   className,
 }: {
   size?: number;
-  grade: string;
+  grade?: string;
   className?: string;
 }) {
   const badgeType = GRADE_MAP[grade] || 'bronze'; // 기본값으로 bronze 사용

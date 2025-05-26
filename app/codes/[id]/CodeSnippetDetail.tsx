@@ -41,6 +41,7 @@ export default function CodeSnippetDetail({
               alt="프로필 이미지"
             />
             <span>{author}</span>
+            <GradeBadge grade={grade} />
             <span>•</span>
             <span>
               <Calendar size={18} className="inline-block" />
