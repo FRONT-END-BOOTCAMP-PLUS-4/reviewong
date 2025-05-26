@@ -12,7 +12,7 @@ const GRADE_MAP: Record<string, string> = {
 export default function GradeBadge({
   size = 40,
   grade = '브론즈',
-  className,
+  className = '',
 }: {
   size?: number;
   grade?: string;
@@ -26,7 +26,7 @@ export default function GradeBadge({
       alt={`${grade} 등급 이미지`}
       width={size}
       height={size}
-      className={`inline-block ${className}`}
+      className={`inline-block -mt-[5px] ${className}`}
     />
   );
 }
