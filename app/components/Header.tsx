@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlusCircle } from 'lucide-react';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { Code } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 
 export default function Header() {
@@ -12,7 +13,10 @@ export default function Header() {
   return (
     <header className="border-b">
       <div className="container mx-auto flex h-16 items-center justify-between">
-        <Link href="/">리뷰엉</Link>
+        <Link href="/" className="flex items-center gap-2">
+          <Code className="h-6 w-6 text-primary" />
+          <span className="text-lg font-bold">리뷰엉</span>
+        </Link>
 
         <nav>
           {status === 'authenticated' ? (
