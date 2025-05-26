@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import CodeSnippetDetail from '../code/[id]/CodeSnippetDetail';
+import CodeSnippetDetail from '../codes/[id]/CodeSnippetDetail';
 import { formatDate } from '@/utils/formatDate';
 
 async function fetchDailyChallenge() {
