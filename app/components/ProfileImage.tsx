@@ -15,7 +15,7 @@ export default function ProfileImage({
 }: ProfileImageProps) {
   return (
     <Image
-      src={src || '/default-profile.png'}
+      src={src || '/default-profile-image.png'}
       alt={alt}
       width={size}
       height={size}
