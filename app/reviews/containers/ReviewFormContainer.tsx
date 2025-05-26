@@ -1,49 +1,45 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReviewForm from '../components/ReviewForm';
 import ReviewFormGuestView from '../components/ReviewFormGuestView';
+import { useSession } from 'next-auth/react';
 
 export default function ReviewFormContainer({
   codeId,
   parentId,
+  editingReview,
+  onDone,
 }: {
   codeId: number;
   parentId?: number | null;
+  editingReview?: { id: number; content: string };
+  onDone?: () => void;
 }) {
-  const [token, setToken] = useState<string | null>(null);
+  const { data: session } = useSession();
 
-  useEffect(() => {
-    const storedToken = localStorage.getItem('authToken');
-    setToken(storedToken);
-  }, []);
-
-  if (!token) {
-    return <ReviewFormGuestView />;
-  }
-
-  const handleCreate = async (data: {
-    content: string;
-    parentId?: number | null;
-    codeId?: number;
-  }) => {
+  const handleSubmit = async ({ content }: { content: string }) => {
     try {
-      const reviewData = {
-        content: data.content,
-        codeId,
-        parentId,
-      };
-
-      await axios.post('/api/reviews', reviewData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      if (editingReview) {
+        // 수정 요청
+        await axios.put(`/api/reviews/${editingReview.id}`, { content });
+      } else {
+        // 새 리뷰 작성 요청
+        await axios.post('/api/reviews', {
+          content,
+          codeId,
+          parentId,
+        });
+      }
+      onDone?.();
     } catch {
-      alert('리뷰 작성 실패');
+      alert(editingReview ? '리뷰 수정 실패' : '리뷰 작성 실패');
     }
   };
 
-  return <ReviewForm onSubmit={handleCreate} />;
+  if (!session) {
+    return <ReviewFormGuestView />;
+  }
+
+  return <ReviewForm onSubmit={handleSubmit} initialValue={editingReview?.content} />;
 }

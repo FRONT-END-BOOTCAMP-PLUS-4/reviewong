@@ -1,14 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import { Button } from '@/components/ui/button';
 
 interface ReviewFormProps {
   onSubmit: (data: { content: string }) => void;
+  initialValue?: string;
 }
 
-export default function ReviewForm({ onSubmit }: ReviewFormProps) {
+export default function ReviewForm({ onSubmit, initialValue = '' }: ReviewFormProps) {
   const [value, setValue] = useState<string>('');
 
   const handleSubmit = () => {
@@ -22,6 +23,10 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
     });
     setValue('');
   };
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
   return (
     <div className="flex flex-col w-full p-4 bg-white border-3 rounded-lg gap-2 mt-5">
