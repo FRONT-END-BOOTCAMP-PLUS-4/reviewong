@@ -1,6 +1,5 @@
-import { UserRepository } from '../../domain/repositories/UserRepository';
-import { SignUpDto } from '../dto/SignUpDto';
-import type { User } from '@/prisma/generated/client';
+import { UserRepository } from '@/domain/repositories/UserRepository';
+import { SignUpDto } from '@/application/dto/auth/SignUpDto';
 import bcrypt from 'bcryptjs';
 
 export class SignUpUseCase {

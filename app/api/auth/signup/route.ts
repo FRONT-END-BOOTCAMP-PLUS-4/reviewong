@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { SignUpUseCase } from '@/application/user/SignUpUsecase';
+import { SignUpUseCase } from '@/application/usecases/auth/SignUpUsecase';
 import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
 import { prisma } from '@/lib/prisma';
 
