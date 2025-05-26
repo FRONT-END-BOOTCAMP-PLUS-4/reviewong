@@ -1,18 +1,26 @@
 import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
 import { CreateReviewUsecase } from '@/application/usecases/review/CreateReviewUsecase';
 import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
-
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { NextResponse, NextRequest } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    const session = await getServerSession(authOptions);
+    if (!session || !session.user.id) {
+      return NextResponse.json(
+        { success: false, message: '로그인이 필요합니다.' },
+        { status: 401 }
+      );
+    }
 
     const reviewData: CreateReviewDto = {
       content: body.content,
       codeId: body.codeId,
       parentId: body.parentId ?? null,
-      userId: body.userId,
+      userId: session.user.id,
     };
 
     const usecase = new CreateReviewUsecase(new PrReviewRepository());
