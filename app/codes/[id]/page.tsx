@@ -1,4 +1,4 @@
-import ReviewListContainer from '@/app/review/containers/ReviewListContainer';
+import ReviewListContainer from '@/app/reviews/containers/ReviewListContainer';
 import CodeSnippetDetailContainer from './CodeSnippetDetailContainer';
 
 export default function CodeSnippetDetailPage({ params }: { params: { id: string } }) {
