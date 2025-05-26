@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <QueryProvider>
           <Provider>
             <Header />
-            {children}
+            <div className="container mx-auto">{children}</div>
           </Provider>
         </QueryProvider>
       </body>
