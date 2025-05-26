@@ -2,7 +2,7 @@
 import Image from 'next/image';
 
 interface ProfileImageProps {
-  src: string;
+  src?: string;
   alt?: string;
   size?: number;
   styleClassName?: string;
