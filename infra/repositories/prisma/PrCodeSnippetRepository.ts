@@ -224,4 +224,68 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
       return false;
     }
   }
+
+  async findDailyChallenge(currentUserId: string): Promise<CodeSnippetWithRelations | null> {
+    // 1. 현재 사용자가 작성한 코드 ID 목록 조회
+    const userCodeIds = await this.prisma.codeSnippet
+      .findMany({
+        where: { userId: currentUserId },
+        select: { id: true },
+      })
+      .then((codes) => codes.map((code) => code.id));
+
+    // 2. 현재 사용자가 리뷰를 작성한 코드 ID 목록 조회
+    const reviewedCodeIds = await this.prisma.review
+      .findMany({
+        where: { userId: currentUserId },
+        select: { codeId: true },
+      })
+      .then((reviews) => reviews.map((review) => review.codeId));
+
+    // 3. 제외할 코드 ID 목록 합치기
+    const excludedCodeIds = [...new Set([...userCodeIds, ...reviewedCodeIds])];
+
+    // 4. 남은 코드 중 랜덤하게 하나 선택
+    const totalCodes = await this.prisma.codeSnippet.count({
+      where: {
+        id: {
+          notIn: excludedCodeIds,
+        },
+      },
+    });
+
+    if (totalCodes === 0) {
+      return null;
+    }
+
+    const skip = Math.floor(Math.random() * totalCodes);
+
+    return this.prisma.codeSnippet.findFirst({
+      where: {
+        id: {
+          notIn: excludedCodeIds,
+        },
+      },
+      skip: skip,
+      include: {
+        user: {
+          select: {
+            id: true,
+            nickname: true,
+            imageUrl: true,
+            grade: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+      },
+    }) as Promise<CodeSnippetWithRelations | null>;
+  }
 }
