@@ -11,6 +11,12 @@ export interface ReviewRepository {
   create(review: CreateReviewDto): Promise<Review>;
 
   /**
+   * 리뷰 ID로 리뷰 조회
+   * @param id - 조회할 리뷰 ID
+   * @returns 리뷰 객체
+   */
+  findById(id: number): Promise<Review | null>;
+  /**
    * 사용자 ID로 리뷰 조회
    * @param userId - 조회할 사용자 ID
    * @returns 리뷰 리스트
