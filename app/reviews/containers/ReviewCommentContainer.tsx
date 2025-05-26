@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import ReviewList from '../components/ReviewList';
 import { ReviewView } from '@/domain/entities/ReviewView';
+import { useSession } from 'next-auth/react';
 
 export default function ReviewCommentContainer({
   codeId,
@@ -11,6 +12,7 @@ export default function ReviewCommentContainer({
   codeId: number;
   parentId: number;
 }) {
+  const { data: session } = useSession();
   const { data, isLoading, error } = useQuery<ReviewView[]>({
     queryKey: ['comments', codeId, parentId],
     queryFn: async () => {
@@ -39,7 +41,7 @@ export default function ReviewCommentContainer({
 
   return (
     <div className="ml-6">
-      <ReviewList reviews={data!} codeId={codeId} />
+      <ReviewList reviews={data!} codeId={codeId} isAuthor={session?.user.id ?? null} />
     </div>
   );
 }
