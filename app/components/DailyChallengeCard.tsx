@@ -1,38 +1,44 @@
-'use client';
-
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import CodeSnippetDetail from '../codes/[id]/CodeSnippetDetail';
+import ReviewListContainer from '../reviews/containers/ReviewListContainer';
 import { formatDate } from '@/utils/formatDate';
+import { fetchDailyChallenge } from '../api/codes/daily/actions';
 
-async function fetchDailyChallenge() {
-  const res = await axios.get('/api/codes/daily', { withCredentials: true });
-  return res.data;
-}
+export default async function DailyChallengeCard() {
+  try {
+    const data = await fetchDailyChallenge();
 
-export default function DailyChallengeCard() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['daily-challenge'],
-    queryFn: fetchDailyChallenge,
-  });
+    if (!data) {
+      return <div>로그인이 필요합니다.</div>;
+    }
 
-  if (isLoading) {
-    return <div>로딩 중...</div>;
+    const categories = Array.isArray(data.codeSnippet.categories)
+      ? data.codeSnippet.categories.map((c: { category: string }) => c.category)
+      : [];
+
+    return (
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4">오늘의 코드 리뷰</h2>
+        {data.codeSnippet ? (
+          <>
+            <CodeSnippetDetail
+              id={data.codeSnippet.id}
+              title={data.codeSnippet.title}
+              content={data.codeSnippet.content}
+              author={data.codeSnippet.user.nickname}
+              profileImage={data.codeSnippet.user.imageUrl}
+              categories={categories}
+              isAuthor={false}
+              date={formatDate(data.codeSnippet.createdAt)}
+            />
+            <ReviewListContainer codeId={data.codeSnippet.id} />
+          </>
+        ) : (
+          <p className="text-gray-500">오늘의 코드 리뷰를 불러오는 중입니다...</p>
+        )}
+      </div>
+    );
+  } catch (error) {
+    console.error('Component Error:', error);
+    return <div>데일리 챌린지를 불러오는데 실패했습니다.</div>;
   }
-  if (error || !data) {
-    return <div>데일리 챌린지 없음</div>;
-  }
-
-  return (
-    <div className="w-full">
-      <CodeSnippetDetail
-        title={data.title}
-        content={data.content}
-        author={data.user.nickname}
-        profileImage={data.user.imageUrl}
-        date={formatDate(data.createdAt)}
-        categories={data.categories}
-      />
-    </div>
-  );
 }
