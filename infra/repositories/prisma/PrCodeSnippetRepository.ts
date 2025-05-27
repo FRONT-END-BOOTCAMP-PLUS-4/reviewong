@@ -10,9 +10,6 @@ export type CodeSnippetWithRelations = CodeSnippet & {
       name: string;
     } | null;
   };
-  _count: {
-    reviews?: number;
-  };
   categories: (CodeSnippetCategory & {
     category: {
       id: number;
@@ -226,6 +223,33 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
   }
 
   async findDailyChallenge(currentUserId: string): Promise<CodeSnippetWithRelations | null> {
+    const codeId = await this.findDailyChallengeId(currentUserId);
+    if (!codeId) {
+      return null;
+    }
+    return this.findById(codeId);
+  }
+
+  async findDailyChallengeId(currentUserId?: string): Promise<number | null> {
+    // 비회원인 경우 모든 코드 중에서 랜덤 선택
+    if (!currentUserId) {
+      const totalCodes = await this.prisma.codeSnippet.count();
+      if (totalCodes === 0) {
+        return null;
+      }
+
+      const skip = Math.floor(Math.random() * totalCodes);
+      const code = await this.prisma.codeSnippet.findFirst({
+        skip: skip,
+        select: {
+          id: true,
+        },
+      });
+
+      return code?.id ?? null;
+    }
+
+    // 회원인 경우 조건에 맞는 코드 선택
     // 1. 현재 사용자가 작성한 코드 ID 목록 조회
     const userCodeIds = await this.prisma.codeSnippet
       .findMany({
@@ -260,32 +284,18 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
 
     const skip = Math.floor(Math.random() * totalCodes);
 
-    return this.prisma.codeSnippet.findFirst({
+    const code = await this.prisma.codeSnippet.findFirst({
       where: {
         id: {
           notIn: excludedCodeIds,
         },
       },
       skip: skip,
-      include: {
-        user: {
-          select: {
-            id: true,
-            nickname: true,
-            imageUrl: true,
-            grade: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
-        categories: {
-          include: {
-            category: true,
-          },
-        },
+      select: {
+        id: true,
       },
-    }) as Promise<CodeSnippetWithRelations | null>;
+    });
+
+    return code?.id ?? null;
   }
 }
