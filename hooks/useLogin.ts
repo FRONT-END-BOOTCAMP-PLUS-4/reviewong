@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
-import { LoginCredentials, LoginResult, SocialLoginOptions } from '@/app/types/auth';
+import { LoginCredentials, LoginResult, SocialLoginOptions } from '@/types/auth';
 
 export const useLogin = () => {
   const router = useRouter();
