@@ -227,4 +227,22 @@ export class PrReviewRepository implements ReviewRepository {
       },
     }));
   }
+  async countGroupedByDate(userId: string): Promise<{ date: string; count: number }[]> {
+    const results = await this.prisma.$queryRawUnsafe<{ date: string; count: number }[]>(
+      `
+    SELECT DATE("created_at") AS date, COUNT(*) as count
+    FROM "reviews"
+    WHERE "user_id" = $1
+    AND "parent_id" IS NULL
+    GROUP BY DATE("created_at")
+    ORDER BY DATE("created_at") ASC
+    `,
+      userId
+    );
+
+    return results.map((r) => ({
+      date: r.date,
+      count: Number(r.count),
+    }));
+  }
 }
