@@ -60,4 +60,11 @@ export interface ReviewRepository {
    * @returns 최신 리뷰 2개
    */
   findLatestTwoByCodeId(codeId: number): Promise<ReviewView[]>;
+
+  /**
+   * 유저가 작성한 리뷰 개수를 날짜별로 집계
+   * @param userId - 유저 ID
+   * @returns 날짜별 리뷰 개수 리스트
+   */
+  countGroupedByDate(userId: string): Promise<{ date: string; count: number }[]>;
 }
