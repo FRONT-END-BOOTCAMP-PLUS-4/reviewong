@@ -4,22 +4,27 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { GetDailyChallengeUsecase } from '@/application/usecases/code/GetDailyChallengeUsecase';
+import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
-
-    if (!session?.user?.id) {
-      return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
-    }
-
     const codeSnippetRepository = new PrCodeSnippetRepository();
-    const getDailyChallengeUsecase = new GetDailyChallengeUsecase(codeSnippetRepository);
+    const reviewRepository = new PrReviewRepository();
 
-    const result = await getDailyChallengeUsecase.execute(session.user.id);
+    const getDailyChallengeUsecase = new GetDailyChallengeUsecase(
+      codeSnippetRepository,
+      reviewRepository
+    );
+
+    // 비회원인 경우 userId를 undefined로 전달하여 모든 코드 중에서 랜덤 선택
+    const result = await getDailyChallengeUsecase.execute(session?.user?.id);
 
     if (!result.success) {
-      return NextResponse.json({ error: result.error }, { status: 404 });
+      return NextResponse.json(
+        { error: result.error || '데일리 챌린지를 찾을 수 없습니다.' },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json(result.data);
