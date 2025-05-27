@@ -59,9 +59,16 @@ export interface CodeSnippetRepository {
   delete(id: number): Promise<boolean>;
 
   /**
+   * 일일 챌린지 코드 스니펫 ID 조회
+   * @param currentUserId - 현재 사용자 ID
+   * @returns 코드 스니펫 ID 또는 null
+   */
+  findDailyChallengeId(currentUserId?: string): Promise<number | null>;
+
+  /**
    * 일일 챌린지 코드 스니펫 조회
    * @param currentUserId - 현재 사용자 ID
-   * @returns 코드 스니펫 리스트
+   * @returns 코드 스니펫 객체 또는 null
    */
-  findDailyChallenge(currentUserId: string): Promise<CodeSnippetWithRelations | null>;
+  findDailyChallenge(currentUserId?: string): Promise<CodeSnippetWithRelations | null>;
 }
