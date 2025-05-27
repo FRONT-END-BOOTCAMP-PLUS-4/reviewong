@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const userRepository = new PrUserRepository(prisma);
+    const userRepository = new PrUserRepository();
     const signUpUseCase = new SignUpUseCase(userRepository);
 
     await signUpUseCase.execute({
