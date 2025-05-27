@@ -30,7 +30,8 @@ export default function CodeSnippetDetail({
 }: CodeSnippetDetailProps) {
   return (
     <main className="p-4">
-      <div className="mb-6 border rounded-lg border-gray-100 bg-white shadow-sm p-4">
+      {/* <div className="mb-6 border rounded-lg border-gray-100 bg-white shadow-sm p-4"> */}
+      <div className="mb-6">
         <h1 className="text-xl font-bold mb-2">{title}</h1>
         <div className="flex items-center justify-between text-gray-500">
           {/* 작성자 정보 */}
