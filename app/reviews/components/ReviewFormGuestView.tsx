@@ -36,7 +36,7 @@ export default function ReviewFormGuestView() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className="font-bold">닫기</AlertDialogCancel>
-            <AlertDialogAction className="font-bold" onClick={() => router.push('/auth/login')}>
+            <AlertDialogAction className="font-bold" onClick={() => router.push('/login')}>
               로그인
             </AlertDialogAction>
           </AlertDialogFooter>
