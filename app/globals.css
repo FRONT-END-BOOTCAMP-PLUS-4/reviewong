@@ -120,3 +120,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+.react-calendar-heatmap-month-label {
+  font-size: 9px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
