@@ -14,12 +14,14 @@ export default function ProfileImage({
   styleClassName = '',
 }: ProfileImageProps) {
   return (
-    <Image
-      src={src || '/default-profile-image.png'}
-      alt={alt}
-      width={size}
-      height={size}
-      className={`rounded-full ${styleClassName}`}
-    />
+    <div className={`w-[${size}px] h-[${size}px] relative`}>
+      <Image
+        src={src || '/default-profile-image.png'}
+        alt={alt}
+        width={size}
+        height={size}
+        className={`rounded-full ${styleClassName}`}
+      />
+    </div>
   );
 }
