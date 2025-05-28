@@ -5,6 +5,7 @@ import { ThumbsUp, MessageSquare } from 'lucide-react';
 import ReviewFormContainer from '../containers/ReviewFormContainer';
 import { formatDate } from '@/utils/formatDate';
 import GradeBadge from '@/app/components/GradeBadge';
+import MDEditor from '@uiw/react-md-editor';
 
 interface ReviewListProps {
   reviews: ReviewView[];
@@ -85,7 +86,7 @@ const ReviewList = ({
               }} // 수정 완료 후 상태 초기화용
             />
           ) : (
-            <p className="mt-2 text-sm text-gray-700 font-bold">{review.content}</p>
+            <MDEditor.Markdown source={review.content} style={{ whiteSpace: 'pre-wrap' }} />
           )}
           <div className="flex flex-row items-center gap-4 mt-2">
             <ThumbsUp className="m-3 w-5 text-gray-500" />
