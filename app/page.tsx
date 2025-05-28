@@ -18,7 +18,7 @@ export default function Home() {
             코드 리뷰를 통해 코드 품질과 서비스의 품질을 높여보세요
           </p>
           <div className="flex justify-center gap-4 mt-6">
-            <Link href="/code/create">
+            <Link href="/codes/create">
               <Button size="lg" className="gap-2">
                 <PlusCircle className="h-5 w-5" />새 코드 작성
               </Button>
