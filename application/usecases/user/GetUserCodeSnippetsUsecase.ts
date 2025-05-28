@@ -9,17 +9,20 @@ export class GetUserCodeSnippetsUsecase {
     try {
       const rawSnippets = await this.codeSnippetRepository.findAllByUserId(userId);
 
-      const data: Omit<CodeSnippetDto, 'user'>[] = rawSnippets.map((snippet) => ({
-        id: snippet.id,
-        title: snippet.title,
-        content: snippet.content,
-        createdAt: snippet.createdAt,
-        updatedAt: snippet.updatedAt,
-        categories: snippet.categories.map((c) => ({
-          id: c.category.id,
-          name: c.category.name,
-        })),
-      }));
+      const data: (Omit<CodeSnippetDto, 'user'> & { reviewCount: number })[] = rawSnippets.map(
+        (snippet) => ({
+          id: snippet.id,
+          title: snippet.title,
+          content: snippet.content,
+          createdAt: snippet.createdAt,
+          updatedAt: snippet.updatedAt,
+          categories: snippet.categories.map((c) => ({
+            id: c.category.id,
+            name: c.category.name,
+          })),
+          reviewCount: snippet._count.reviews,
+        })
+      );
 
       return new GetUserCodeSnippetsDto(true, data);
     } catch (error) {

@@ -17,7 +17,12 @@ export type CodeSnippetWithRelations = CodeSnippet & {
     };
   })[];
 };
-export type CodeSnippetWithoutUser = Omit<CodeSnippetWithRelations, 'user'>;
+export type CodeSnippetWithoutUser = Omit<CodeSnippetWithRelations, 'user'> & {
+  _count: {
+    reviews: number;
+  };
+};
+
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
   private prisma: PrismaClient;
 

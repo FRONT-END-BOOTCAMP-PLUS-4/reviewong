@@ -3,7 +3,7 @@ import { CodeSnippetDto } from '../../code/dto/GetCodeSnippetDto';
 export class GetUserCodeSnippetsDto {
   constructor(
     public success: boolean,
-    public data?: Omit<CodeSnippetDto, 'user'>[] | null,
+    public data?: (Omit<CodeSnippetDto, 'user'> & { reviewCount: number })[] | null,
     public error?: string | null
   ) {}
 }
