@@ -17,6 +17,7 @@ export type CodeSnippetWithRelations = CodeSnippet & {
     };
   })[];
 };
+export type CodeSnippetWithoutUser = Omit<CodeSnippetWithRelations, 'user'>;
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
   private prisma: PrismaClient;
 
@@ -107,16 +108,29 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
     });
   }
 
-  async findByUserId(userId: string): Promise<CodeSnippet[]> {
+  async findAllByUserId(userId: string): Promise<CodeSnippetWithoutUser[]> {
     return await this.prisma.codeSnippet.findMany({
       where: { userId },
+      include: {
+        user: true,
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+        _count: {
+          select: {
+            reviews: true,
+          },
+        },
+      },
+      orderBy: { createdAt: 'desc' },
     });
   }
 
   /*
-카테코리별 코드 조회할 수 있도록 필터 적용
-*/
-
+  카테코리별 코드 조회할 수 있도록 필터 적용
+  */
   async findAll(filter: CodeListFilter): Promise<CodeSnippetWithRelations[]> {
     return this.prisma.codeSnippet.findMany({
       where: {
