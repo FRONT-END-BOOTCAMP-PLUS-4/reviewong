@@ -92,12 +92,16 @@ const ReviewList = ({
             <ThumbsUp className="m-3 w-5 text-gray-500" />
             <div className="ml-[-1rem] text-gray-500 font-bold">{review.counts.likes ?? 0}</div>
             {commentButton && (
-              <MessageSquare
-                onClick={() => onExpandClick?.(review.id)}
-                className="w-5 text-gray-500text-gray-500"
-              ></MessageSquare>
+              <div className="flex flex-row items-center gap-3">
+                <MessageSquare
+                  onClick={() => onExpandClick?.(review.id)}
+                  className="w-5 text-gray-500 text-gray-500"
+                />
+                <div className="ml-[-2px] text-gray-500 font-bold">
+                  {review.counts.replies ?? 0}
+                </div>
+              </div>
             )}
-            <div className="ml-[-2px] text-gray-500 font-bold">{review.counts.replies ?? 0}</div>
           </div>
           {/* 대댓글 렌더링 위치 */}
           {parentId === review.id && (
