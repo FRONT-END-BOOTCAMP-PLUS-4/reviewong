@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
+import CategoryBadge from '@/app/components/CategoryBadge';
 
 const categoryList = [
   { id: 1, name: 'JavaScript' },
@@ -61,15 +62,11 @@ export function CategorySelectDropdown({
         {selected.map((id) => {
           const category = categoryList.find((c) => c.id === id);
           return (
-            <span
-              key={id}
-              className="leading-[14px] h-[34px] bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-sm flex items-center gap-2"
-            >
-              <span>{category?.name}</span>
+            <CategoryBadge key={id} name={category?.name ?? '알 수 없음'}>
               <button onClick={() => handleXBtnClick(id)} aria-label="카테고리 삭제">
                 <X size={14} />
               </button>
-            </span>
+            </CategoryBadge>
           );
         })}
       </div>
