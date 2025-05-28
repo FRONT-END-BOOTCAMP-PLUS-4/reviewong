@@ -1,6 +1,6 @@
 'use client';
-import { formatDate } from '@/utils/formatDate';
 import { useQuery } from '@tanstack/react-query';
+import MyActivityItem from '../components/MyActivityItem';
 
 const fetchMyCodes = async () => {
   const res = await fetch('/api/member/my/codes');
@@ -29,14 +29,15 @@ export default function MyWrittenCodeContainer({ isActive }: { isActive: boolean
   return (
     <div className="space-y-4">
       {data.snippets.map((item) => (
-        <div
+        <MyActivityItem
           key={item.id}
-          className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200 cursor-pointer"
-        >
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-          <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.content}</p>
-          <p className="text-xs text-gray-400">{formatDate(new Date(item.createAt))}</p>
-        </div>
+          codeId={item.id}
+          title={item.title}
+          content={item.content}
+          categories={item.categories || []}
+          createdAt={item.createdAt}
+          reviewCount={item.reviewCount}
+        />
       ))}
     </div>
   );
