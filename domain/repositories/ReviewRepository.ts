@@ -16,12 +16,14 @@ export interface ReviewRepository {
    * @returns 리뷰 객체
    */
   findById(id: number): Promise<Review | null>;
+
   /**
-   * 사용자 ID로 리뷰 조회
+   * 사용자 ID와 codeId로 리뷰 조회
    * @param userId - 조회할 사용자 ID
+   * @param codeId - 조회할 코드 스니펫 ID
    * @returns 리뷰 리스트
    */
-  findByUserId(userId: string): Promise<Review[]>;
+  findUserFirst(userId: string, codeId: number): Promise<Review | null>;
 
   /**
    * 리뷰 업데이트
