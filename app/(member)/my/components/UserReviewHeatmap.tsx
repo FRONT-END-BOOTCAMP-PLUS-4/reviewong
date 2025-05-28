@@ -11,7 +11,7 @@ export default function UserReviewHeatmap({ reviewCounts }: { reviewCounts: Heat
 
   const getClassName = (count?: number) => {
     if (!count) {
-      return 'fill-gray-200';
+      return 'fill-gray-100';
     }
     if (count >= 4) {
       return 'fill-yellow-400';
@@ -48,8 +48,8 @@ export default function UserReviewHeatmap({ reviewCounts }: { reviewCounts: Heat
               <Tooltip>
                 <TooltipTrigger asChild>
                   {React.cloneElement(element, {
-                    rx: 100,
-                    ry: 100,
+                    rx: 4,
+                    ry: 4,
                     onMouseEnter: () => value && setTooltipInfo(value),
                     onMouseLeave: () => setTooltipInfo(null),
                   })}
