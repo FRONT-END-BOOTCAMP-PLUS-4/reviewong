@@ -26,8 +26,24 @@ export async function GET() {
         { status: 404 }
       );
     }
+    const data = result.data;
+    const codeSnippet = data?.codeSnippet;
+    const categories = Array.isArray(codeSnippet?.categories)
+      ? (codeSnippet?.categories.map((c: any) => ({
+          id: c.id ?? c.categoryId,
+          name: c.name ?? c.category?.name,
+        })) ?? [])
+      : [];
 
-    return NextResponse.json(result.data);
+    return NextResponse.json({
+      ...data,
+      codeSnippet: {
+        ...codeSnippet,
+        category: categories,
+      },
+    });
+
+    // return NextResponse.json(result.data);
   } catch (error) {
     console.error('데일리 챌린지 조회 실패:', error);
     return NextResponse.json(

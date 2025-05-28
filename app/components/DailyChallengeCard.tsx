@@ -2,7 +2,6 @@ import CodeSnippetDetail from '../codes/[id]/CodeSnippetDetail';
 import ReviewListContainer from '../reviews/containers/ReviewListContainer';
 import { formatDate } from '@/utils/formatDate';
 import { fetchDailyChallenge } from '../containers/actions';
-import ReviewFormContainer from '../reviews/containers/ReviewFormContainer';
 
 export default async function DailyChallengeCard() {
   try {
@@ -11,10 +10,6 @@ export default async function DailyChallengeCard() {
     if (!data) {
       return <div>로그인이 필요합니다.</div>;
     }
-
-    const categories = Array.isArray(data.codeSnippet.categories)
-      ? data.codeSnippet.categories.map((c: { category: string }) => c.category)
-      : [];
 
     return (
       <div className="border border-gray-200 rounded-lg shadow-md p-6">
@@ -27,12 +22,11 @@ export default async function DailyChallengeCard() {
               content={data.codeSnippet.content}
               author={data.codeSnippet.user.nickname}
               profileImage={data.codeSnippet.user.imageUrl}
-              categories={categories}
+              categories={data.codeSnippet.category}
               isAuthor={false}
               date={formatDate(data.codeSnippet.createdAt)}
             />
             <ReviewListContainer codeId={data.codeSnippet.id} />
-            <ReviewFormContainer codeId={data.codeSnippet.id} />
           </>
         ) : (
           <p className="text-gray-500">오늘의 코드 리뷰를 불러오는 중입니다...</p>
