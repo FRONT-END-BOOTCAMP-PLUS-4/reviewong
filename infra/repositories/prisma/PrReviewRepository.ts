@@ -43,9 +43,16 @@ export class PrReviewRepository implements ReviewRepository {
     });
   }
 
-  async findByUserId(userId: string) {
-    return this.prisma.review.findMany({
-      where: { userId },
+  async findUserFirst(userId: string, codeId: number) {
+    return this.prisma.review.findFirst({
+      where: {
+        userId,
+        codeId,
+        parentId: null, // 최상위 리뷰만
+      },
+      orderBy: {
+        createdAt: 'asc', // 오래된 순
+      },
     });
   }
 
