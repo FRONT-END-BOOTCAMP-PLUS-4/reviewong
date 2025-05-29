@@ -14,7 +14,7 @@ export default function MyWrittenCodeContainer({ isActive }: { isActive: boolean
   const pageSize = 10;
 
   const { data, isLoading } = useQuery({
-    queryKey: ['my-reviews', page],
+    queryKey: ['my-codes', page],
     queryFn: () => fetchMyCodes(page, pageSize),
     enabled: isActive,
     placeholderData: (prev) => prev, // 페이지 변경 시 이전 데이터를 유지
