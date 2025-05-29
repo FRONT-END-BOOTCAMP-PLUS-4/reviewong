@@ -37,7 +37,7 @@ export function useCodeSnippetForm() {
       }
 
       const data = await res.json();
-      router.push(`/code/${data.id}`);
+      router.push(`/codes/${data.id}`);
     } catch (err) {
       console.error('Error creating code snippet:', err);
     }
