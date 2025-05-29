@@ -55,14 +55,14 @@ export default function MyActivityItem({
         </div>
         {typeof likeCount === 'number' && (
           <div className="flex gap-2">
-            <ThumbsUp className="text-gray-500" />
-            <div className=" mb-2 text-gray-500 font-bold">{likeCount}</div>
+            <ThumbsUp size={18} className="text-gray-500" />
+            <div className=" mb-2 text-gray-500 text-xs">{likeCount}</div>
           </div>
         )}
         {typeof reviewCount === 'number' && (
           <div className="flex gap-2">
             <MessageSquare size={18} className="text-gray-500" />
-            <div className="text-gray-500 text-xs">{reviewCount}</div>
+            <div className="mb-2 text-gray-500 text-xs">{reviewCount}</div>
           </div>
         )}
       </div>
