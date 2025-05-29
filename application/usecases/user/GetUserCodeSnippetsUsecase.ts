@@ -1,35 +1,28 @@
 import { CodeSnippetRepository } from '@/domain/repositories/CodeSnippetRepository';
 import { GetUserCodeSnippetsDto } from './dto/GetUserCodeSnippetsDto';
-import { CodeSnippetDto } from '../code/dto/GetCodeSnippetDto';
 
 export class GetUserCodeSnippetsUsecase {
   constructor(private codeSnippetRepository: CodeSnippetRepository) {}
-
-  async execute(userId: string): Promise<GetUserCodeSnippetsDto> {
+  async execute(userId: string, page: number, pageSize: number): Promise<GetUserCodeSnippetsDto> {
     try {
-      const rawSnippets = await this.codeSnippetRepository.findAllByUserId(userId);
-
-      const data: (Omit<CodeSnippetDto, 'user'> & { reviewCount: number })[] = rawSnippets.map(
-        (snippet) => ({
-          id: snippet.id,
-          title: snippet.title,
-          content: snippet.content,
-          createdAt: snippet.createdAt,
-          updatedAt: snippet.updatedAt,
-          categories: snippet.categories.map((c) => ({
-            id: c.category.id,
-            name: c.category.name,
-          })),
-          reviewCount: snippet._count.reviews,
-        })
+      const [data, totalCount] = await this.codeSnippetRepository.findAllByUserId(
+        userId,
+        page,
+        pageSize
       );
 
-      return new GetUserCodeSnippetsDto(true, data);
+      return new GetUserCodeSnippetsDto(true, {
+        codeSnippets: data,
+        totalCount,
+        page,
+        pageSize,
+      });
     } catch (error) {
-      return {
-        success: false,
-        error: error instanceof Error ? error.message : 'Failed to get user codesnippets',
-      };
+      return new GetUserCodeSnippetsDto(
+        false,
+        null,
+        error instanceof Error ? error.message : 'Failed to get user reviews'
+      );
     }
   }
 }
