@@ -35,9 +35,10 @@ export interface ReviewRepository {
   /**
    * 리뷰 삭제
    * @param id - 삭제할 리뷰 ID
+   * @param userId - 삭제를 요청한 사용자 ID
    * @returns 삭제 성공 여부
    */
-  delete(id: number): Promise<void>;
+  delete(id: number, userId: string): Promise<void>;
 
   /**
    * 코드 스니펫에 대한 리뷰 목록 조회
