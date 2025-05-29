@@ -32,6 +32,7 @@ export default function ReviewFormContainer({
         });
       }
       onDone?.();
+      window.location.reload();
     } catch {
       alert(editingReview ? '리뷰 수정 실패' : '리뷰 작성 실패');
     }
