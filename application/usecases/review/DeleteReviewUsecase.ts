@@ -12,7 +12,7 @@ export class DeleteReviewUsecase {
       if (review.userId !== userId) {
         throw new Error('리뷰 삭제 권한이 없습니다.');
       }
-      const success = await this.reviewRepository.delete(reviewId);
+      const success = await this.reviewRepository.delete(reviewId, userId);
       return success;
     } catch (error) {
       console.error('리뷰 삭제 실패:', error);
