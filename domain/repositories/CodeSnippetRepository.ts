@@ -1,5 +1,5 @@
 import {
-  CodeSnippetWithoutUser,
+  CodeSnippetWithReviewCount,
   CodeSnippetWithRelations,
 } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { CodeSnippet } from '@/prisma/generated';
@@ -34,10 +34,14 @@ export interface CodeSnippetRepository {
 
   /**
    * 사용자 ID로 코드 스니펫 조회
-   * @param userId - 사용자 ID
+   * @param userId - 사용자 ID, 요청 페이지, 페이지 사이즈
    * @returns 코드 스니펫 리스트
    */
-  findAllByUserId(userId: string): Promise<CodeSnippetWithoutUser[]>;
+  findAllByUserId(
+    userId: string,
+    page: number,
+    pageSize: number
+  ): Promise<[CodeSnippetWithReviewCount[], number]>;
 
   /**
    * 카테고리 ID로 코드 스니펫 조회

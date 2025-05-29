@@ -17,10 +17,13 @@ export type CodeSnippetWithRelations = CodeSnippet & {
     };
   })[];
 };
-export type CodeSnippetWithoutUser = Omit<CodeSnippetWithRelations, 'user'> & {
-  _count: {
-    reviews: number;
-  };
+export type CodeSnippetWithReviewCount = {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+  categories: { id: number; name: string }[];
+  reviewCount: number;
 };
 
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
@@ -112,25 +115,39 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
       },
     });
   }
+  async findAllByUserId(
+    userId: string,
+    page: number,
+    pageSize: number
+  ): Promise<[CodeSnippetWithReviewCount[], number]> {
+    const [snippets, totalCount] = await Promise.all([
+      this.prisma.codeSnippet.findMany({
+        where: { userId },
+        include: {
+          user: true,
+          categories: { include: { category: true } },
+          _count: { select: { reviews: true } },
+        },
+        orderBy: { createdAt: 'desc' },
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+      }),
+      this.prisma.codeSnippet.count({ where: { userId } }),
+    ]);
 
-  async findAllByUserId(userId: string): Promise<CodeSnippetWithoutUser[]> {
-    return await this.prisma.codeSnippet.findMany({
-      where: { userId },
-      include: {
-        user: true,
-        categories: {
-          include: {
-            category: true,
-          },
-        },
-        _count: {
-          select: {
-            reviews: true,
-          },
-        },
-      },
-      orderBy: { createdAt: 'desc' },
-    });
+    const data = snippets.map((snippet) => ({
+      id: snippet.id,
+      title: snippet.title,
+      content: snippet.content,
+      createdAt: snippet.createdAt,
+      categories: snippet.categories.map((c) => ({
+        id: c.category.id,
+        name: c.category.name,
+      })),
+      reviewCount: snippet._count.reviews,
+    }));
+
+    return [data, totalCount];
   }
 
   /*
