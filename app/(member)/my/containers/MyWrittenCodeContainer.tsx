@@ -24,21 +24,29 @@ export default function MyWrittenCodeContainer({ isActive }: { isActive: boolean
   if (!data) {
     return <p>데이터 없음</p>;
   }
-  console.log(data);
 
   return (
     <div className="space-y-4">
-      {data.snippets.map((item) => (
-        <MyActivityItem
-          key={item.id}
-          codeId={item.id}
-          title={item.title}
-          content={item.content}
-          categories={item.categories || []}
-          createdAt={item.createdAt}
-          reviewCount={item.reviewCount}
-        />
-      ))}
+      {data.snippets.map(
+        (snippet: {
+          id: number;
+          title: string;
+          content: string;
+          categories: { id: number; name: string }[];
+          createdAt: string;
+          reviewCount: number;
+        }) => (
+          <MyActivityItem
+            key={snippet.id}
+            codeId={snippet.id}
+            title={snippet.title}
+            content={snippet.content}
+            categories={snippet.categories || []}
+            createdAt={snippet.createdAt}
+            reviewCount={snippet.reviewCount}
+          />
+        )
+      )}
     </div>
   );
 }
