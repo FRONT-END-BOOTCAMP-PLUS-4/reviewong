@@ -17,7 +17,7 @@ export default function MyActivityItem({
   codeId: number;
   title: string;
   content: string;
-  categories: { id: number; name: string }[];
+  categories?: { id: number; name: string }[];
   createdAt: string;
   likeCount?: number | null;
   reviewCount?: number | null;
@@ -36,7 +36,8 @@ export default function MyActivityItem({
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
         <div className="flex gap-2">
-          {categories?.length > 0 &&
+          {categories &&
+            categories?.length > 0 &&
             categories.map((category) => (
               <CategoryBadge
                 key={category.id}
