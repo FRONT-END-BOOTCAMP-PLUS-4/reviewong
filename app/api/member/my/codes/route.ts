@@ -9,6 +9,10 @@ export async function GET(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
 
+    const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get('page') ?? '1', 10);
+    const pageSize = parseInt(searchParams.get('pageSize') ?? '10', 10);
+
     if (!session || !session.user) {
       return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
     }
@@ -16,7 +20,7 @@ export async function GET(req: NextRequest) {
     const codeSnippetRepository = new PrCodeSnippetRepository();
     const getUserCodeSnippetsUsecase = new GetUserCodeSnippetsUsecase(codeSnippetRepository);
 
-    const result = await getUserCodeSnippetsUsecase.execute(session.user.id);
+    const result = await getUserCodeSnippetsUsecase.execute(session.user.id, page, pageSize);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 404 });
