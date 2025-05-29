@@ -50,4 +50,11 @@ export interface ReviewRepository {
    * @returns 답글 목록
    */
   findAllByParentId(codeId: number): Promise<ReviewView[]>;
+
+  /**
+   * 데일리 챌린지 코드에 대한 최신 2개 리뷰 조회
+   * @param codeId - 코드 작성자 ID
+   * @returns 최신 리뷰 2개
+   */
+  findLatestTwoByCodeId(codeId: number): Promise<ReviewView[]>;
 }

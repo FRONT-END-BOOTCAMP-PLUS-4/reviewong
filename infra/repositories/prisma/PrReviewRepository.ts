@@ -164,4 +164,49 @@ export class PrReviewRepository implements ReviewRepository {
       },
     }));
   }
+
+  async findLatestTwoByCodeId(codeId: number): Promise<ReviewView[]> {
+    const reviews = await this.prisma.review.findMany({
+      where: {
+        codeId,
+        parentId: null, // 최상위 리뷰만 가져오기
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            nickname: true,
+            imageUrl: true,
+            grade: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+        _count: {
+          select: {
+            replies: true,
+            likes: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: 2,
+    });
+
+    return reviews.map(({ _count, ...review }) => ({
+      ...review,
+      user: {
+        ...review.user,
+        grade: review.user.grade?.name || null,
+      },
+      counts: {
+        replies: _count.replies,
+        likes: _count.likes,
+      },
+    }));
+  }
 }
