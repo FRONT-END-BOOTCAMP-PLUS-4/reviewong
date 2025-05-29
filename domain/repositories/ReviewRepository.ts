@@ -1,6 +1,7 @@
 import { Review } from '@/prisma/generated';
 import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
 import { ReviewView } from '../entities/ReviewView';
+import { ReviewWithCodeAndLikesView } from '../entities/ReviewWithCodeAndLikesView';
 
 export interface ReviewRepository {
   /**
@@ -24,6 +25,11 @@ export interface ReviewRepository {
    * @returns 리뷰 리스트
    */
   findUserFirst(userId: string, codeId: number): Promise<Review | null>;
+  findByUserId(
+    userId: string,
+    page: number,
+    pageSize: number
+  ): Promise<[ReviewWithCodeAndLikesView[], number]>;
 
   /**
    * 리뷰 업데이트
