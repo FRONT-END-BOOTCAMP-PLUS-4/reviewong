@@ -1,14 +1,10 @@
-import ReviewListContainer from '@/app/reviews/containers/ReviewListContainer';
-import CodeSnippetDetailContainer from './CodeSnippetDetailContainer';
-
-export default function CodeSnippetDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
-  const codeId = parseInt(id, 10);
+import CodeReviewContainer from './CodeReviewContainer';
+export default async function CodeSnippetDetailPage({ params }: { params: { id: string } }) {
+  const { id } = await params;
 
   return (
     <main>
-      <CodeSnippetDetailContainer id={id} />
-      <ReviewListContainer codeId={codeId} />
+      <CodeReviewContainer id={id} />
     </main>
   );
 }
