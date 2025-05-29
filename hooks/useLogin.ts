@@ -20,7 +20,8 @@ export const useLogin = () => {
       });
 
       if (result?.error) {
-        setError(`로그인 에러: ${result.error}`);
+        setError(`* 이메일 또는 비밀번호가 잘못 되었습니다. 이메일과 비밀번호를 정확히 입력해 주세요.
+`);
         return { error: result.error };
       } else if (result?.ok) {
         router.push('/');
