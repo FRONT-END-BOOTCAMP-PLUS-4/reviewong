@@ -22,7 +22,7 @@ export default async function DailyChallengeCard() {
               content={data.codeSnippet.content}
               author={data.codeSnippet.user.nickname}
               profileImage={data.codeSnippet.user.imageUrl}
-              categories={data.codeSnippet.category}
+              categories={data.codeSnippet.categories}
               isAuthor={false}
               date={formatDate(data.codeSnippet.createdAt)}
             />
