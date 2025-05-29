@@ -64,7 +64,7 @@ export class PrReviewRepository implements ReviewRepository {
     return !!result;
   }
 
-  async delete(id: number) {
+  async delete(id: number, userId: string): Promise<void> {
     const review = await this.prisma.review.findUnique({
       where: { id },
       select: { userId: true },
@@ -74,17 +74,28 @@ export class PrReviewRepository implements ReviewRepository {
       throw new Error('리뷰를 찾을 수 없습니다.');
     }
 
-    this.prisma.$transaction([
-      this.prisma.review.delete({
+    const userReviewCountData = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { reviewCount: true },
+    });
+
+    if (userReviewCountData && userReviewCountData.reviewCount > 0) {
+      await this.prisma.$transaction([
+        this.prisma.review.delete({
+          where: { id },
+        }),
+        this.prisma.user.update({
+          where: { id: review.userId },
+          data: {
+            reviewCount: { decrement: 1 },
+          },
+        }),
+      ]);
+    } else {
+      await this.prisma.review.delete({
         where: { id },
-      }),
-      this.prisma.user.update({
-        where: { id: review.userId },
-        data: {
-          reviewCount: { decrement: 1 },
-        },
-      }),
-    ]);
+      });
+    }
   }
 
   async findAllByCodeId(codeId: number): Promise<ReviewView[]> {
