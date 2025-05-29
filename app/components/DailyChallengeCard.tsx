@@ -1,7 +1,7 @@
 import CodeSnippetDetail from '../codes/[id]/CodeSnippetDetail';
-import ReviewListContainer from '../reviews/containers/ReviewListContainer';
 import { formatDate } from '@/utils/formatDate';
 import { fetchDailyChallenge } from '../containers/actions';
+import LatestReviewListContainer from '../reviews/containers/LatestReviewContainer';
 
 export default async function DailyChallengeCard() {
   try {
@@ -26,7 +26,7 @@ export default async function DailyChallengeCard() {
               isAuthor={false}
               date={formatDate(data.codeSnippet.createdAt)}
             />
-            <ReviewListContainer codeId={data.codeSnippet.id} />
+            <LatestReviewListContainer codeId={data.codeSnippet.id} />
           </>
         ) : (
           <p className="text-gray-500">오늘의 코드 리뷰를 불러오는 중입니다...</p>
