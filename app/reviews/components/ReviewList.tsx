@@ -19,6 +19,7 @@ interface ReviewListProps {
   parentId?: number | null;
   commentButton?: boolean;
   isAuthor: string | null; // 로그인한 유저의 ID
+  showInteractions?: boolean;
 }
 
 const ReviewList = ({
@@ -33,6 +34,7 @@ const ReviewList = ({
   parentId,
   commentButton = false,
   isAuthor,
+  showInteractions = true,
 }: ReviewListProps) => {
   return (
     <div className="space-y-4">
@@ -91,29 +93,28 @@ const ReviewList = ({
           ) : (
             <MDEditor.Markdown source={review.content} style={{ whiteSpace: 'pre-wrap' }} />
           )}
-          <div className="flex flex-row items-center gap-4 mt-2">
-            <ThumbsUp
-              onClick={() => onClickLike?.(review.id, Boolean(review.isLiked))} //undifined일 경우 false로 처리
-              className={`m-3 w-5 ${
-                review.isLiked ? 'fill-red-500 text-gray-500' : 'text-gray-500'
-              }`}
-            />
-
-            <div className="ml-[-1rem] text-gray-500 font-bold">{review.counts.likes ?? 0}</div>
-            {commentButton && (
-              <div className="flex flex-row items-center gap-3">
-                <MessageSquare
-                  onClick={() => onExpandClick?.(review.id)}
-                  className="w-5 text-gray-500 text-gray-500"
-                />
-                <div className="ml-[-2px] text-gray-500 font-bold">
-                  {review.counts.replies ?? 0}
+          {showInteractions && (
+            <div className="flex flex-row items-center gap-4 mt-2">
+              <ThumbsUp
+                onClick={() => onClickLike?.(review.id, Boolean(review.isLiked))} //undifined일 경우 false로 처리
+                className={`m-3 w-5 ${review.isLiked ? 'fill-red-500 text-gray-500' : 'text-gray-500'}`}
+              />
+              <div className="ml-[-1rem] text-gray-500 font-bold">{review.counts.likes ?? 0}</div>
+              {commentButton && (
+                <div className="flex flex-row items-center gap-3">
+                  <MessageSquare
+                    onClick={() => onExpandClick?.(review.id)}
+                    className="w-5 text-gray-500"
+                  />
+                  <div className="ml-[-2px] text-gray-500 font-bold">
+                    {review.counts.replies ?? 0}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-          {/* 대댓글 렌더링 위치 */}
-          {parentId === review.id && (
+              )}
+            </div>
+          )}
+
+          {parentId === review.id && showInteractions && (
             <div className="w-full">
               <ReviewCommentContainer codeId={codeId} parentId={review.id} />
               <ReviewFormContainer codeId={codeId} parentId={review.id} />
