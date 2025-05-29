@@ -1,14 +1,14 @@
 // app/api/daily-challenge/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
 import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { GetDailyChallengeUsecase } from '@/application/usecases/code/GetDailyChallengeUsecase';
 import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get('userId') || undefined;
+    console.log('userId', userId);
     const codeSnippetRepository = new PrCodeSnippetRepository();
     const reviewRepository = new PrReviewRepository();
 
@@ -18,7 +18,7 @@ export async function GET() {
     );
 
     // 비회원인 경우 userId를 undefined로 전달하여 모든 코드 중에서 랜덤 선택
-    const result = await getDailyChallengeUsecase.execute(session?.user?.id);
+    const result = await getDailyChallengeUsecase.execute(userId);
 
     if (!result.success) {
       return NextResponse.json(
@@ -26,24 +26,8 @@ export async function GET() {
         { status: 404 }
       );
     }
-    const data = result.data;
-    const codeSnippet = data?.codeSnippet;
-    const categories = Array.isArray(codeSnippet?.categories)
-      ? (codeSnippet?.categories.map((c: any) => ({
-          id: c.id ?? c.categoryId,
-          name: c.name ?? c.category?.name,
-        })) ?? [])
-      : [];
 
-    return NextResponse.json({
-      ...data,
-      codeSnippet: {
-        ...codeSnippet,
-        category: categories,
-      },
-    });
-
-    // return NextResponse.json(result.data);
+    return NextResponse.json(result.data);
   } catch (error) {
     console.error('데일리 챌린지 조회 실패:', error);
     return NextResponse.json(
