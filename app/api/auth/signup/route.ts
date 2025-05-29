@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     console.error('회원가입 에러:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : '회원가입 처리 중 오류가 발생했습니다.' },
-      { status: 500 }
+      { status: 400 }
     );
   } finally {
     await prisma.$disconnect();
