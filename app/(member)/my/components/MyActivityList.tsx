@@ -9,22 +9,24 @@ const TABS = [
 
 export default function MyActivityList() {
   return (
-    <Tabs defaultValue="written" className="w-full">
-      <TabsList className="grid grid-cols-2">
-        {TABS.map(({ label, value }) => (
-          <TabsTrigger key={value} value={value}>
-            {label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+    <div className="max-w-4xl mx-auto bg-white rounded-2xl">
+      <Tabs defaultValue="written" className="w-full">
+        <TabsList className="grid grid-cols-2 w-full h-[50px]">
+          {TABS.map(({ label, value }) => (
+            <TabsTrigger key={value} value={value}>
+              {label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-      <TabsContent value="written">
-        <MyWrittenCodeContainer isActive={true} />
-      </TabsContent>
+        <TabsContent value="written">
+          <MyWrittenCodeContainer isActive={true} />
+        </TabsContent>
 
-      <TabsContent value="answered">
-        <MyAnsweredReviewContainer isActive={true} />
-      </TabsContent>
-    </Tabs>
+        <TabsContent value="answered">
+          <MyAnsweredReviewContainer isActive={true} />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }
