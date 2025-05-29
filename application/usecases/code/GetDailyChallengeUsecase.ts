@@ -1,7 +1,8 @@
 import { CodeSnippetRepository } from '@/domain/repositories/CodeSnippetRepository';
-import { CodeSnippetWithRelations } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
 import { ReviewView } from '@/domain/entities/ReviewView';
+import { GetCodeSnippetUsecase } from './GetCodeSnippetUsecase';
+import { CodeSnippetDto } from './dto/GetCodeSnippetDto';
 
 export class GetDailyChallengeUsecase {
   constructor(
@@ -12,7 +13,7 @@ export class GetDailyChallengeUsecase {
   async execute(currentUserId?: string): Promise<{
     success: boolean;
     data?: {
-      codeSnippet: CodeSnippetWithRelations;
+      codeSnippet: CodeSnippetDto | undefined;
       dailyCodeReview: ReviewView[];
     };
     error?: string;
@@ -30,13 +31,17 @@ export class GetDailyChallengeUsecase {
         return { success: false, error: 'Code snippet not found' };
       }
 
-      // 3. 리뷰 개수 조회
-      const dailyCodeReview = await this.reviewRepository.findAllByCodeId(codeId);
+      // 3. 최신 리뷰 2개만 조회
+      const dailyCodeReview = await this.reviewRepository.findLatestTwoByCodeId(codeId);
+
+      // 4. GetCodeSnippetUsecase를 사용하여 DTO 변환
+      const getCodeSnippetUsecase = new GetCodeSnippetUsecase(this.codeSnippetRepository);
+      const result = await getCodeSnippetUsecase.execute(codeId);
 
       return {
         success: true,
         data: {
-          codeSnippet,
+          codeSnippet: result.data,
           dailyCodeReview: dailyCodeReview,
         },
       };
