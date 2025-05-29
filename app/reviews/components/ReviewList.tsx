@@ -34,6 +34,8 @@ const ReviewList = ({
 }: ReviewListProps) => {
   return (
     <div className="space-y-4">
+      <h3 className="font-bold m-5">리뷰 목록 ({reviews.length})</h3>
+
       {reviews.map((review) => (
         <div
           key={review.id}
@@ -48,23 +50,22 @@ const ReviewList = ({
             />
             <div className="flex flex-col w-full">
               {/* 닉네임 + 날짜 */}
-              <div className="flex flex-row items-center text-sm text-gray-800 font-semibold">
-                <div>{review.user.nickname}</div>
-                {/* 유저 랭크 */}
-                <div className="ml-2 text-xs text-gray-500 w-full">
+              <div className="flex items-center text-sm text-gray-800 font-semibold justify-between">
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <div className="truncate max-w-[120px]">{review.user.nickname}</div>
                   <GradeBadge grade={review.user.grade || undefined} />
                 </div>
                 {/* 수정/삭제 버튼 */}
                 {isAuthor === review.user.id && (
-                  <div className="flex w-full gap-2 justify-end">
+                  <div className="flex gap-2">
                     <div
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-600 hover:underline cursor-pointer"
                       onClick={() => onEditClick?.(review.id)}
                     >
                       수정
                     </div>
                     <div
-                      className="text-red-600 hover:underline"
+                      className="text-red-600 hover:underline cursor-pointer"
                       onClick={() => onDeleteClick?.(review.id)}
                     >
                       삭제
@@ -72,6 +73,7 @@ const ReviewList = ({
                   </div>
                 )}
               </div>
+
               <div className="text-xs text-gray-500"> {formatDate(review.createdAt)}</div>
             </div>
           </div>
