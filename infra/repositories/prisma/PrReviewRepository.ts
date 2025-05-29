@@ -2,6 +2,7 @@ import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
 import { PrismaClient } from '@/prisma/generated';
 import { CreateReviewDto } from '@/application/usecases/review/dto/CreateReviewDto';
 import { ReviewView } from '@/domain/entities/ReviewView';
+import { ReviewWithCodeAndLikesView } from '@/domain/entities/ReviewWithCodeAndLikesView';
 export class PrReviewRepository implements ReviewRepository {
   private prisma = new PrismaClient();
 
@@ -54,6 +55,42 @@ export class PrReviewRepository implements ReviewRepository {
         createdAt: 'asc', // 오래된 순
       },
     });
+  }
+
+  async findByUserId(
+    userId: string,
+    page: number,
+    pageSize: number
+  ): Promise<[ReviewWithCodeAndLikesView[], number]> {
+    const [reviews, totalCount] = await this.prisma.$transaction([
+      this.prisma.review.findMany({
+        where: { userId },
+        select: {
+          id: true,
+          content: true,
+          createdAt: true,
+          codeId: true,
+          codeSnippet: { select: { title: true } },
+          _count: { select: { likes: true } },
+        },
+        orderBy: { createdAt: 'desc' },
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+      }),
+      this.prisma.review.count({ where: { userId } }),
+    ]);
+
+    return [
+      reviews.map((r) => ({
+        id: r.id,
+        content: r.content,
+        createdAt: r.createdAt,
+        codeId: r.codeId,
+        codeTitle: r.codeSnippet.title,
+        likeCount: r._count.likes,
+      })),
+      totalCount,
+    ];
   }
 
   async update(id: number, content: Partial<{ content: string }>) {
