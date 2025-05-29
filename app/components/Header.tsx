@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlusCircle } from 'lucide-react';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { Code } from 'lucide-react';
+import { Code, CodeXml } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 
 export default function Header() {
@@ -21,27 +21,34 @@ export default function Header() {
         <nav>
           {status === 'authenticated' ? (
             <div className="flex items-center gap-4">
-              <Link href="/code/create">
-                <Button variant="outline" size="sm" className="gap-1">
+              <Link href="/codes/create">
+                <Button variant="outline" size="sm" className="gap-1 cursor-pointer">
                   <PlusCircle className="h-4 w-4" />
                   코드 작성
                 </Button>
               </Link>
-              <Link href="/my">
-                <div className="flex items-center gap-2">
-                  <ProfileImage
-                    src={session.user?.image || '/default-profile-image.png'}
-                    alt={session.user?.name || '사용자'}
-                    size={32}
-                  />
-                  <span>{session.user?.name || '사용자'}</span>
-                </div>
+
+              <Link href="/codes">
+                <Button size="sm" className="gap-1 cursor-pointer">
+                  <CodeXml className="h-4 w-4" />
+                  코드 리스트 보기
+                </Button>
               </Link>
-              <Button onClick={() => signOut()}>로그아웃</Button>
+
+              <Link href="/my" className="flex items-center gap-2 cursor-pointer">
+                <ProfileImage
+                  src={session.user?.image || '/default-profile-image.png'}
+                  alt={session.user?.name || '사용자'}
+                  size={32}
+                />
+                <span>{session.user?.name || '사용자'}</span>
+              </Link>
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Button onClick={() => signIn()}>로그인</Button>
+              <Button onClick={() => signIn()} className="cursor-pointer">
+                로그인
+              </Button>
             </div>
           )}
         </nav>
