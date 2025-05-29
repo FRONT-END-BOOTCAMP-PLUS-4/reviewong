@@ -1,10 +1,10 @@
-import { ReviewWithCodeAndLikes } from '@/domain/entities/ReviewWithCodeAndLikes';
+import { ReviewWithCodeAndLikesView } from '@/domain/entities/ReviewWithCodeAndLikesView';
 
 export class GetUserReviewsDto {
   constructor(
     public success: boolean,
     public data?: {
-      reviews: ReviewWithCodeAndLikes[];
+      reviews: ReviewWithCodeAndLikesView[];
       totalCount: number;
       page: number;
       pageSize: number;
