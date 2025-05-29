@@ -31,7 +31,11 @@ export default function LatestReviewListContainer({ codeId }: { codeId: number }
 
   return (
     <>
-      <h3 className="font-bold m-5">최근 리뷰</h3>
+      {reviews.length > 0 ? (
+        <h3 className="font-bold m-5">최근 리뷰</h3>
+      ) : (
+        <h3 className="font-bold m-5">리뷰 목록 ({reviews.length})</h3>
+      )}
 
       <ReviewFormContainer codeId={codeId} onDone={() => refetch()} />
       <ReviewList
