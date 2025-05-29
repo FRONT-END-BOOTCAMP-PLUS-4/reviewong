@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import SignupForm from '../components/Signup';
 
 export default function SignupContainer() {
@@ -29,7 +29,13 @@ export default function SignupContainer() {
 
       router.push('/login?message=회원가입이 완료되었습니다. 로그인해주세요.');
     } catch (err) {
-      setError(err instanceof Error ? err.message : '회원가입 중 오류가 발생했습니다.');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data.error || '회원가입 중 오류가 발생했습니다.');
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('회원가입 중 오류가 발생했습니다.');
+      }
     } finally {
       setIsLoading(false);
     }
