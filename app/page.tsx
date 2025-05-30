@@ -2,6 +2,7 @@ import { Code, CodeXml, FileCode, PlusCircle } from 'lucide-react';
 import DailyChallengeCard from './components/DailyChallengeCard';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import CreateCodeButton from './components/CreateCodeButton';
 
 export default function Home() {
   return (
@@ -19,9 +20,10 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-4 mt-6">
             <Link href="/codes/create">
-              <Button size="lg" className="gap-2">
+              {/* <Button size="lg" className="gap-2">
                 <PlusCircle className="h-5 w-5" />새 코드 작성
-              </Button>
+              </Button> */}
+              <CreateCodeButton variant="default" size="lg" />
             </Link>
             <Link href="/code/1">
               <Button size="lg" variant="outline">
