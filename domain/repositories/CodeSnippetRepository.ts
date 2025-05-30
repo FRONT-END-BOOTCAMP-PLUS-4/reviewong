@@ -1,6 +1,7 @@
 import {
   CodeSnippetWithReviewCount,
   CodeSnippetWithRelations,
+  CodeSnippetWithCount,
 } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { CodeSnippet } from '@/prisma/generated';
 import { CodeListFilter } from '../filters/CodeListFilter';
@@ -48,7 +49,7 @@ export interface CodeSnippetRepository {
    * 모든 코드 스니펫 조회
    * @returns 코드 스니펫 리스트
    */
-  findAll(filter: CodeListFilter): Promise<CodeSnippetWithRelations[]>;
+  findAll(filter: CodeListFilter): Promise<CodeSnippetWithCount[]>;
 
   /**
    * 코드 스니펫 업데이트
