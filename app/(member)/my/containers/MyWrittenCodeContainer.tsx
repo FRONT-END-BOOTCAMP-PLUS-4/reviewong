@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import MyActivityItem from '../../../components/MyActivityItem';
+import ActivityItem from '../../../components/ActivityItem';
 import { useState } from 'react';
 import MyPagination from '@/app/components/MyPagination';
 
@@ -9,20 +9,16 @@ const fetchMyCodes = async (page: number, pageSize: number) => {
   return res.json();
 };
 
-export default function MyWrittenCodeContainer({ isActive }: { isActive: boolean }) {
+export default function MyWrittenCodeContainer() {
   const [page, setPage] = useState<number>(1);
   const pageSize = 10;
 
   const { data, isLoading } = useQuery({
     queryKey: ['my-codes', page],
     queryFn: () => fetchMyCodes(page, pageSize),
-    enabled: isActive,
     placeholderData: (prev) => prev, // 페이지 변경 시 이전 데이터를 유지
     staleTime: 1000 * 60,
   });
-  if (!isActive) {
-    return null;
-  }
   if (isLoading) {
     return <p>로딩 중...</p>;
   }
@@ -44,7 +40,7 @@ export default function MyWrittenCodeContainer({ isActive }: { isActive: boolean
             createdAt: string;
             reviewCount: number;
           }) => (
-            <MyActivityItem
+            <ActivityItem
               key={snippet.id}
               codeId={snippet.id}
               title={snippet.title}
