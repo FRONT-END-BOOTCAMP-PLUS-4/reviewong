@@ -16,9 +16,6 @@ export type CodeSnippetWithRelations = CodeSnippet & {
       name: string;
     };
   })[];
-  _count?: {
-    reviews: number;
-  };
 };
 export type CodeSnippetWithReviewCount = {
   id: number;
@@ -28,7 +25,9 @@ export type CodeSnippetWithReviewCount = {
   categories: { id: number; name: string }[];
   reviewCount: number;
 };
-
+export type CodeSnippetWithCount = CodeSnippetWithRelations & {
+  reviewCount: number;
+};
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
   private prisma: PrismaClient;
 
@@ -156,8 +155,8 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
   /*
   카테코리별 코드 조회할 수 있도록 필터 적용
   */
-  async findAll(filter: CodeListFilter): Promise<CodeSnippetWithRelations[]> {
-    return this.prisma.codeSnippet.findMany({
+  async findAll(filter: CodeListFilter): Promise<CodeSnippetWithCount[]> {
+    const snippets = await this.prisma.codeSnippet.findMany({
       where: {
         categories: {
           some: {
@@ -195,6 +194,18 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
       },
       orderBy: { createdAt: 'desc' },
     });
+    return snippets.map((snippet) => ({
+      ...snippet,
+      reviewCount: snippet._count.reviews,
+      categories: snippet.categories.map((c) => ({
+        ...c,
+        category: {
+          id: c.category.id,
+          name: c.category.name,
+        },
+      })),
+      user: snippet.user,
+    }));
   }
 
   async update(
