@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import UserReviewHeatmap from '../components/UserReviewHeatmap';
+import UserReviewHeatmap from '../../../components/UserReviewHeatmap';
 
 export default function UserReviewHeatmapContainer() {
   const fetchUserHeatMapProfile = async () => {

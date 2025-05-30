@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import UserSummary from '../components/UserSummary';
+import UserSummary from '../../../components/UserSummary';
 import { useQuery } from '@tanstack/react-query';
 
 export default function UserSummaryContainer() {

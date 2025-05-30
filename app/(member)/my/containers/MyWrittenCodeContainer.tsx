@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import MyActivityItem from '../components/MyActivityItem';
+import MyActivityItem from '../../../components/MyActivityItem';
 import { useState } from 'react';
 import MyPagination from '@/app/components/MyPagination';
 
