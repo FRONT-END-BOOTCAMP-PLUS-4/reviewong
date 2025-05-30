@@ -25,7 +25,7 @@ export default function UserReviewHeatmapContainer({ nickname }: { nickname: str
   return (
     <div className="max-w-4xl mx-auto mb-6 p-6 bg-white rounded-2xl shadow border">
       <h1 className="font-bold text-xl mb-2">활동 기록</h1>
-      <p className="text-gray-400 text-sm mb-2">지난 날의 리뷰 기록을 확인해 보세요!</p>
+      <p className="text-gray-400 text-sm mb-2">{nickname}님의 리뷰 기록을 확인해 보세요!</p>
       <UserReviewHeatmap reviewCounts={data.reviewHeatmap} />
     </div>
   );
