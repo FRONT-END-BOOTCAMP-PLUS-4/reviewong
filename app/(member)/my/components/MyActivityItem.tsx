@@ -3,7 +3,6 @@ import CategoryBadge from '@/app/components/CategoryBadge';
 import { formatDate } from '@/utils/formatDate';
 import { Calendar, MessageSquare, ThumbsUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 
 export default function MyActivityItem({
   codeId,
