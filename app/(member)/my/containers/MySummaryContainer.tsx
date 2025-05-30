@@ -3,7 +3,7 @@ import React from 'react';
 import UserSummary from '../../../components/UserSummary';
 import { useQuery } from '@tanstack/react-query';
 
-export default function UserSummaryContainer() {
+export default function MySummaryContainer() {
   const fetchUserProfile = async () => {
     const res = await fetch('/api/member/my');
     if (!res.ok) {

@@ -3,7 +3,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import UserReviewHeatmap from '../../../components/UserReviewHeatmap';
 
-export default function UserReviewHeatmapContainer() {
+export default function MyReviewHeatmapContainer() {
   const fetchUserHeatMapProfile = async () => {
     const res = await fetch('/api/member/my/review_counts');
     if (!res.ok) {
