@@ -1,44 +1,33 @@
 import { CodeSnippetRepository } from '@/domain/repositories/CodeSnippetRepository';
-import { GetCodeSnippetDto } from './dto/GetCodeSnippetDto';
+import { CodeSnippetWithCount } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
 import { CodeListFilter } from '@/domain/filters/CodeListFilter';
 
 export class GetCodeListUsecase {
   constructor(private codeSnippetRepository: CodeSnippetRepository) {}
 
-  async execute(filter: CodeListFilter): Promise<GetCodeSnippetDto[]> {
+  async execute(filter: CodeListFilter): Promise<CodeSnippetWithCount[]> {
     const codeSnippets = await this.codeSnippetRepository.findAll(filter);
 
     if (!codeSnippets || codeSnippets.length === 0) {
-      return [
-        {
-          success: false,
-          error: '코드 리스트가 존재하지 않습니다.',
-        },
-      ];
+      throw new Error('No code snippets found');
     }
 
     return codeSnippets.map((snippet) => ({
-      success: true,
-      data: {
-        id: snippet.id,
-        title: snippet.title,
-        content: snippet.content,
-        user: {
-          id: snippet.user.id,
-          nickname: snippet.user.nickname,
-          imageUrl: snippet.user.imageUrl,
-          grade: snippet.user.grade?.name || '브론즈',
-        },
-        _count: {
-          reviews: snippet._count?.reviews || 0,
-        },
-        categories: snippet.categories.map((c) => ({
+      ...snippet,
+      reviewCount: snippet.reviewCount,
+      user: {
+        id: snippet.user.id,
+        nickname: snippet.user.nickname,
+        imageUrl: snippet.user.imageUrl,
+        grade: snippet.user.grade, // `grade: { name: string } | null` 형식 그대로 유지
+      },
+      categories: snippet.categories.map((c) => ({
+        ...c,
+        category: {
           id: c.category.id,
           name: c.category.name,
-        })),
-        createdAt: snippet.createdAt,
-        updatedAt: snippet.updatedAt,
-      },
+        },
+      })),
     }));
   }
 }
