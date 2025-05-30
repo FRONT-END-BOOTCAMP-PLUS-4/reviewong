@@ -1,26 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
 
 import { PrCodeSnippetRepository } from '@/infra/repositories/prisma/PrCodeSnippetRepository';
-import { GetUserCodeSnippetsUsecase } from '@/application/usecases/user/GetUserCodeSnippetsUsecase';
+import { GetUserCodeSnippetsUsecase } from '@/application/usecases/user/anon/GetUserCodeSnippetsUsecase';
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ nickname: string }> }) {
   try {
-    const session = await getServerSession(authOptions);
+    const { nickname } = await params;
 
+    if (!nickname) {
+      return NextResponse.json({ error: '존재하지 않는 사용자입니다.' }, { status: 401 });
+    }
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') ?? '1', 10);
     const pageSize = parseInt(searchParams.get('pageSize') ?? '10', 10);
 
-    if (!session || !session.user) {
-      return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
-    }
-
     const codeSnippetRepository = new PrCodeSnippetRepository();
     const getUserCodeSnippetsUsecase = new GetUserCodeSnippetsUsecase(codeSnippetRepository);
 
-    const result = await getUserCodeSnippetsUsecase.execute(session.user.id, page, pageSize);
+    const result = await getUserCodeSnippetsUsecase.execute(nickname, page, pageSize);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 404 });
