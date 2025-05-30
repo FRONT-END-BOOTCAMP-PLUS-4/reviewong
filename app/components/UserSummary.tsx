@@ -1,8 +1,17 @@
 import GradeBadge from '@/app/components/GradeBadge';
 import ProfileImage from '@/app/components/ProfileImage';
+import { Button } from '@/components/ui/button';
 import { UserSummary as UserSummaryType } from '@/types/UserSummary';
+import { signOut } from 'next-auth/react';
+
 import React from 'react';
-export default function UserSummary({ userSummary }: { userSummary: UserSummaryType }) {
+export default function UserSummary({
+  userSummary,
+  isInMy = false,
+}: {
+  userSummary: UserSummaryType;
+  isInMy?: boolean;
+}) {
   return (
     <div className="my-6 max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow border">
       <div className="flex items-start justify-between">
@@ -17,11 +26,15 @@ export default function UserSummary({ userSummary }: { userSummary: UserSummaryT
             <p className="text-sm text-gray-600">{userSummary.email}</p>
           </div>
         </div>
-
-        {/* 프로필 편집 버튼 */}
-        <button className="border px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50">
-          프로필 편집
-        </button>
+        {isInMy && (
+          <div className="flex flex-row gap-2">
+            {/* 프로필 편집 버튼 */}
+            <button className="border px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50">
+              프로필 편집
+            </button>
+            <Button onClick={() => signOut()}>로그아웃</Button>
+          </div>
+        )}
       </div>
 
       {/* 통계 카드 */}

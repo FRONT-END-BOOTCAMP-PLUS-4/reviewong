@@ -22,5 +22,5 @@ export default function MySummaryContainer() {
   if (isError) {
     return <p>에러: {(error as Error).message}</p>;
   }
-  return <UserSummary userSummary={data.user} />;
+  return <UserSummary userSummary={data.user} isInMy={true} />;
 }
