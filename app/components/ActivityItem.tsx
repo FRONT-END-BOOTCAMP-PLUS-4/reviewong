@@ -4,7 +4,7 @@ import { formatDate } from '@/utils/formatDate';
 import { Calendar, MessageSquare, ThumbsUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function MyActivityItem({
+export default function ActivityItem({
   codeId,
   title,
   content,
