@@ -93,6 +93,63 @@ export class PrReviewRepository implements ReviewRepository {
     ];
   }
 
+  async findByUserNickname(
+    nickname: string,
+    page: number,
+    pageSize: number
+  ): Promise<[ReviewWithCodeAndLikesView[], number]> {
+    const [reviews, totalCount] = await this.prisma.$transaction([
+      this.prisma.review.findMany({
+        where: {
+          user: {
+            nickname,
+          },
+        },
+        select: {
+          id: true,
+          content: true,
+          createdAt: true,
+          codeId: true,
+          codeSnippet: {
+            select: {
+              title: true,
+            },
+          },
+          _count: {
+            select: {
+              likes: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+      }),
+
+      this.prisma.review.count({
+        where: {
+          user: {
+            nickname,
+          },
+        },
+      }),
+    ]);
+
+    return [
+      reviews.map((r) => ({
+        id: r.id,
+        content: r.content,
+        createdAt: r.createdAt,
+        codeId: r.codeId,
+        codeTitle: r.codeSnippet.title,
+        likeCount: r._count.likes,
+      })),
+      totalCount,
+    ];
+  }
+
   async update(id: number, content: Partial<{ content: string }>) {
     const result = await this.prisma.review.update({
       where: { id },
@@ -264,6 +321,7 @@ export class PrReviewRepository implements ReviewRepository {
       },
     }));
   }
+
   async countGroupedByDate(userId: string): Promise<{ date: string; count: number }[]> {
     const results = await this.prisma.$queryRawUnsafe<{ date: string; count: number }[]>(
       `
@@ -275,6 +333,25 @@ export class PrReviewRepository implements ReviewRepository {
     ORDER BY DATE("created_at") ASC
     `,
       userId
+    );
+
+    return results.map((r) => ({
+      date: r.date,
+      count: Number(r.count),
+    }));
+  }
+  async countGroupedByDateByNickname(nickname: string): Promise<{ date: string; count: number }[]> {
+    const results = await this.prisma.$queryRawUnsafe<{ date: string; count: number }[]>(
+      `
+    SELECT DATE(r."created_at") AS date, COUNT(*) AS count
+    FROM "reviews" r
+    JOIN "users" u ON r."user_id" = u."id"
+    WHERE u."nickname" = $1
+      AND r."parent_id" IS NULL
+    GROUP BY DATE(r."created_at")
+    ORDER BY DATE(r."created_at") ASC
+    `,
+      nickname
     );
 
     return results.map((r) => ({
