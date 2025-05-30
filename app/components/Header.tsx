@@ -27,14 +27,16 @@ export default function Header() {
                   코드 작성
                 </Button>
               </Link>
-              <div className="flex items-center gap-2">
-                <ProfileImage
-                  src={session.user?.image || '/default-profile-image.png'}
-                  alt={session.user?.name || '사용자'}
-                  size={32}
-                />
-                <span>{session.user?.name || '사용자'}</span>
-              </div>
+              <Link href="/my">
+                <div className="flex items-center gap-2">
+                  <ProfileImage
+                    src={session.user?.image || '/default-profile-image.png'}
+                    alt={session.user?.name || '사용자'}
+                    size={32}
+                  />
+                  <span>{session.user?.name || '사용자'}</span>
+                </div>
+              </Link>
               <Button onClick={() => signOut()}>로그아웃</Button>
             </div>
           ) : (
