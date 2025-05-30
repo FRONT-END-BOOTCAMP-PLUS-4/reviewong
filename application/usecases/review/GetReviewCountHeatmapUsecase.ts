@@ -1,10 +1,10 @@
 import { ReviewRepository } from '@/domain/repositories/ReviewRepository';
-import { GetReviewCountHeatmap } from './dto/GetReviewCountHeatmap';
+import { GetReviewCountHeatmapDto } from './dto/GetReviewCountHeatmapDto';
 
 export class GetReviewCountHeatmapUsecase {
   constructor(private reviewRepository: ReviewRepository) {}
 
-  async execute(userId: string): Promise<GetReviewCountHeatmap> {
+  async execute(userId: string): Promise<GetReviewCountHeatmapDto> {
     try {
       const heatmapData = await this.reviewRepository.countGroupedByDate(userId);
 
