@@ -27,10 +27,10 @@ export class GetCodeListUsecase {
           id: snippet.user.id,
           nickname: snippet.user.nickname,
           imageUrl: snippet.user.imageUrl,
-          grade: snippet.user.grade.name,
+          grade: snippet.user.grade?.name || '브론즈',
         },
-        counts: {
-          reviews: snippet._count.reviews,
+        _count: {
+          reviews: snippet._count?.reviews || 0,
         },
         categories: snippet.categories.map((c) => ({
           id: c.category.id,
