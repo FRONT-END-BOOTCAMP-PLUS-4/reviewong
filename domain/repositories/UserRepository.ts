@@ -88,7 +88,7 @@ export interface UserRepository {
    * @param id - 사용자 ID
    * @returns 프로필 이미지 URL 문자열 또는 null
    */
-  findProfileImageUrlById(id: string): Promise<string | null>;
+  // findProfileImageUrlById(id: string): Promise<string | null>;
 
   /**
    * 사용자 생성 (소셜 로그인)
