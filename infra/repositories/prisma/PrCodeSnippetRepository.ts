@@ -152,6 +152,70 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
     return [data, totalCount];
   }
 
+  async findAllByUserNickname(
+    nickname: string,
+    page: number,
+    pageSize: number
+  ): Promise<[CodeSnippetWithReviewCount[], number]> {
+    const [snippets, totalCount] = await Promise.all([
+      this.prisma.codeSnippet.findMany({
+        where: {
+          user: {
+            nickname,
+          },
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              nickname: true,
+            },
+          },
+          categories: {
+            include: {
+              category: true,
+            },
+          },
+          _count: {
+            select: {
+              reviews: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+      }),
+      this.prisma.codeSnippet.count({
+        where: {
+          user: {
+            nickname,
+          },
+        },
+      }),
+    ]);
+
+    const data = snippets.map((snippet) => ({
+      id: snippet.id,
+      title: snippet.title,
+      content: snippet.content,
+      createdAt: snippet.createdAt,
+      categories: snippet.categories.map((c) => ({
+        id: c.category.id,
+        name: c.category.name,
+      })),
+      reviewCount: snippet._count.reviews,
+      user: {
+        id: snippet.user.id,
+        nickname: snippet.user.nickname,
+      },
+    }));
+
+    return [data, totalCount];
+  }
+
   /*
   카테코리별 코드 조회할 수 있도록 필터 적용
   */
