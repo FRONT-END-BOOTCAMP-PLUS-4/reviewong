@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import MyPagination from '@/app/components/MyPagination';
-import MyActivityItem from '../components/MyActivityItem';
+import MyActivityItem from '../../../components/MyActivityItem';
 
 const fetchMyReviews = async (page: number, pageSize: number) => {
   const res = await fetch(`/api/member/my/reviews?page=${page}&pageSize=${pageSize}`);
