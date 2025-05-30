@@ -20,8 +20,7 @@ export default function CodeListClientContainer({ codes }: Props) {
       if (!res.ok) {
         throw new Error('Failed to fetch codes');
       }
-      const result = await res.json();
-      const data = result.map((item: any) => item.data);
+      const data = await res.json();
       setCategoryCodes(data);
     } catch (error) {
       console.error(error);
