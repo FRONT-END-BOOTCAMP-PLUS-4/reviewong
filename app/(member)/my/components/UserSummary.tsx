@@ -4,7 +4,7 @@ import { UserSummary as UserSummaryType } from '@/types/UserSummary';
 import React from 'react';
 export default function UserSummary({ userSummary }: { userSummary: UserSummaryType }) {
   return (
-    <div className="mb-6 max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow border">
+    <div className="my-6 max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow border">
       <div className="flex items-start justify-between">
         {/* 프로필 영역 */}
         <div className="flex gap-4">
