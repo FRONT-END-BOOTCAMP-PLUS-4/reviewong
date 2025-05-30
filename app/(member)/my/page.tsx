@@ -1,14 +1,14 @@
-import UserReviewHeatmapContainer from './containers/UserReviewHeatmapContainer';
-import UserSummaryContainer from './containers/UserSummaryContainer';
+import MyReviewHeatmapContainer from './containers/MyReviewHeatmapContainer';
 import ActivityList from '../../components/ActivityList';
 import MyWrittenCodeContainer from './containers/MyWrittenCodeContainer';
 import MyAnsweredReviewContainer from './containers/MyAnsweredReviewContainer';
+import MySummaryContainer from './containers/MySummaryContainer';
 
 export default function Mypage() {
   return (
     <>
-      <UserSummaryContainer />
-      <UserReviewHeatmapContainer />
+      <MySummaryContainer />
+      <MyReviewHeatmapContainer />
       <ActivityList
         defaultValue="written"
         tabs={[
