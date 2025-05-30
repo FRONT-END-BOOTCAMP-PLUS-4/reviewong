@@ -88,11 +88,31 @@ export interface UserRepository {
    * @param id - 사용자 ID
    * @returns 프로필 이미지 URL 문자열 또는 null
    */
+  findProfileImageUrlById(id: string): Promise<string | null>;
 
+  /**
+   * 사용자 생성 (소셜 로그인)
+   * @param data - 사용자 생성 데이터
+   * @returns 생성된 사용자 객체
+   */
   createSocialUser(data: {
     id: string;
     email: string;
     nickname: string;
     image_url: string | null;
   }): Promise<User>;
+
+  /**
+   * 좋아요 수 기준 사용자 랭킹 조회
+   * @param rankingCount - 조회할 상위 사용자 수
+   * @returns 사용자 랭킹 리스트
+   */
+  findTopUsersByLikes(rankingCount: number): Promise<User[]>;
+
+  /**
+   * 리뷰 수 기준 사용자 랭킹 조회
+   * @param rankingCount - 조회할 상위 사용자 수
+   * @returns 사용자 랭킹 리스트
+   */
+  findTopUsersByReviews(rankingCount: number): Promise<User[]>;
 }
