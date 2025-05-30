@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { PlusCircle } from 'lucide-react';
-import { useSession, signIn, signOut } from 'next-auth/react';
+// import { PlusCircle } from 'lucide-react';
+import { useSession, signIn } from 'next-auth/react';
+// import { signOut } from 'next-auth/react';
 import { Code, CodeXml } from 'lucide-react';
 import ProfileImage from './ProfileImage';
+import CreateCodeButton from './CreateCodeButton';
 
 export default function Header() {
   const { data: session, status } = useSession();
@@ -22,10 +24,7 @@ export default function Header() {
           {status === 'authenticated' ? (
             <div className="flex items-center gap-4">
               <Link href="/codes/create">
-                <Button variant="outline" size="sm" className="gap-1 cursor-pointer">
-                  <PlusCircle className="h-4 w-4" />
-                  코드 작성
-                </Button>
+                <CreateCodeButton variant="outline" size="sm" />
               </Link>
 
               <Link href="/codes">
