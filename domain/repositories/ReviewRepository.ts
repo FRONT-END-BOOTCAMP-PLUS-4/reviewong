@@ -25,8 +25,29 @@ export interface ReviewRepository {
    * @returns 리뷰 리스트
    */
   findUserFirst(userId: string, codeId: number): Promise<Review | null>;
+
+  /**
+   * 사용자 ID로 모든 리뷰 조회
+   * @param userId - 조회할 사용자 ID
+   * @param page
+   * @param pageSize - 페이지 사이즈
+   * @returns 리뷰 리스트
+   */
   findByUserId(
     userId: string,
+    page: number,
+    pageSize: number
+  ): Promise<[ReviewWithCodeAndLikesView[], number]>;
+
+  /**
+   * 사용자 닉네임으로 모든 리뷰 조회
+   * @param nickname - 조회할 사용자 닉네임
+   * @param page
+   * @param pageSize - 페이지 사이즈
+   * @returns 리뷰 리스트
+   */
+  findByUserNickname(
+    nickname: string,
     page: number,
     pageSize: number
   ): Promise<[ReviewWithCodeAndLikesView[], number]>;
@@ -73,4 +94,11 @@ export interface ReviewRepository {
    * @returns 날짜별 리뷰 개수 리스트
    */
   countGroupedByDate(userId: string): Promise<{ date: string; count: number }[]>;
+
+  /**
+   * 유저가 작성한 리뷰 개수를 날짜별로 집계
+   * @param nickname - 사용자 닉네임
+   * @returns 날짜별 리뷰 개수 리스트
+   */
+  countGroupedByDateByNickname(nickname: string): Promise<{ date: string; count: number }[]>;
 }
