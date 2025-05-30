@@ -16,7 +16,11 @@ export type CodeSnippetWithRelations = CodeSnippet & {
       name: string;
     };
   })[];
+  _count?: {
+    reviews: number;
+  };
 };
+<<<<<<< Updated upstream
 export type CodeSnippetWithReviewCount = {
   id: number;
   title: string;
@@ -25,6 +29,8 @@ export type CodeSnippetWithReviewCount = {
   categories: { id: number; name: string }[];
   reviewCount: number;
 };
+=======
+>>>>>>> Stashed changes
 
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
   private prisma: PrismaClient;

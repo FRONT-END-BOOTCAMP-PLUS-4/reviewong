@@ -19,7 +19,7 @@ export interface Code {
     imageUrl: string | null;
     grade: string | null;
   };
-  counts: {
+  _count: {
     reviews: number;
   };
   categories?: { id: number; name: string }[];
@@ -38,17 +38,15 @@ const CodeList = ({ codes }: CodeListProps) => {
           className="border hover:border-gray-400 p-4 rounded flex flex-col items-start m-8"
         >
           <Link href={`/codes/${code.id}`} className="w-full">
-            <div className="flex flex-row items-center gap-2 mr-2">
+            <div className="flex flex-row items-center gap-2 mr-2 w-full">
               <ProfileImage
                 src={code.user.imageUrl || '/default-profile-image.png'}
                 alt={`${code.user.nickname}의 프로필 이미지`}
                 size={50}
               />
-              <div className="flex flex-row text-sm text-gray-800 font-semibold items-center">
-                {code.user.nickname}
-                <div className="ml-2 text-xs text-gray-500 w-full">
-                  <GradeBadge grade={code.user.grade || undefined} />
-                </div>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="truncate max-w-[120px]">{code.user.nickname}</div>
+                <GradeBadge grade={code.user.grade || undefined} />
               </div>
             </div>
             <p className="mt-2 text-sm text-gray-700 font-bold">{code.title}</p>
@@ -62,7 +60,7 @@ const CodeList = ({ codes }: CodeListProps) => {
                 <Calendar className="w-5 text-gray-500" />
                 <div className="text-xs">{formatDate(code.createdAt)}</div>
               </div>
-              <div className="text-xs text-gray-500">댓글 {code.counts.reviews}</div>
+              <div className="text-xs text-gray-500">댓글 {code._count.reviews ?? 0}</div>
             </div>
           </Link>
         </div>
