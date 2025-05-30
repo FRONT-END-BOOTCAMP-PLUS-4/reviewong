@@ -19,9 +19,7 @@ export interface Code {
     imageUrl: string | null;
     grade: string | null;
   };
-  _count: {
-    reviews: number;
-  };
+  reviewCount: number;
   categories?: { id: number; name: string }[];
 }
 
@@ -32,9 +30,9 @@ export interface CodeListProps {
 const CodeList = ({ codes }: CodeListProps) => {
   return (
     <div className="space-y-2">
-      {codes.map((code) => (
+      {codes.map((code, index) => (
         <div
-          key={code.id}
+          key={code.id || `${code.title}-${index}`}
           className="border hover:border-gray-400 p-4 rounded flex flex-col items-start m-8"
         >
           <Link href={`/codes/${code.id}`} className="w-full">
@@ -60,7 +58,7 @@ const CodeList = ({ codes }: CodeListProps) => {
                 <Calendar className="w-5 text-gray-500" />
                 <div className="text-xs">{formatDate(code.createdAt)}</div>
               </div>
-              <div className="text-xs text-gray-500">댓글 {code._count.reviews ?? 0}</div>
+              <div className="text-xs text-gray-500">댓글 {code.reviewCount ?? 0}</div>
             </div>
           </Link>
         </div>
