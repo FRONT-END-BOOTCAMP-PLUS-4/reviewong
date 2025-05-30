@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
-import { GetUserUsecase } from '@/application/usecases/user/GetUserUsecase';
+import { GetUserSummaryUsecase } from '@/application/usecases/user/GetUserSummaryUsecase';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
@@ -14,8 +14,8 @@ export async function GET(req: NextRequest) {
 
     // 유저 정보 가져오기
     const userRepository = new PrUserRepository();
-    const getUserUsecase = new GetUserUsecase(userRepository);
-    const result = await getUserUsecase.execute(session.user.id);
+    const getUserSummaryUsecase = new GetUserSummaryUsecase(userRepository);
+    const result = await getUserSummaryUsecase.execute(session.user.id);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 404 });

@@ -21,9 +21,8 @@ export interface CodeSnippetDto {
   createdAt: Date;
   updatedAt: Date;
 }
-
 export interface GetCodeSnippetDto {
   success: boolean;
-  data?: CodeSnippetDto;
+  data?: ((CodeSnippetDto & { counts: { reviews: number } }) | null)[];
   error?: string;
 }

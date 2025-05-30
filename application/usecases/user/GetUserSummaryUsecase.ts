@@ -1,7 +1,7 @@
 import { UserRepository } from '@/domain/repositories/UserRepository';
 import { GetUserDto } from './dto/GetUserDto';
 
-export class GetUserUsecase {
+export class GetUserSummaryUsecase {
   constructor(private userRepository: UserRepository) {}
 
   async execute(userId: string): Promise<GetUserDto> {
