@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
-import { GetUserSummaryUsecase } from '@/application/usecases/user/GetUserSummaryUsecase';
+import { GetUserSummaryUsecase } from '@/application/usecases/user/anon/GetUserSummaryUsecase';
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ nickname: string }> }) {
   try {
@@ -12,7 +12,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ nick
 
     const userRepository = new PrUserRepository();
     const getUserSummaryUsecase = new GetUserSummaryUsecase(userRepository);
-    const result = await getUserSummaryUsecase.execute();
+    const result = await getUserSummaryUsecase.execute(nickname);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 404 });
