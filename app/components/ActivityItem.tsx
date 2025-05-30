@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import CategoryBadge from '@/app/components/CategoryBadge';
 import { formatDate } from '@/utils/formatDate';
 import { Calendar, MessageSquare, ThumbsUp } from 'lucide-react';
@@ -14,7 +15,7 @@ export default function ActivityItem({
   reviewCount = null,
 }: {
   codeId: number;
-  title: string;
+  title: React.ReactNode;
   content: string;
   categories?: { id: number; name: string }[];
   createdAt: string;

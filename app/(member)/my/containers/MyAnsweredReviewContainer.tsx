@@ -39,7 +39,12 @@ export default function MyAnsweredReviewContainer() {
           <ActivityItem
             key={review.id}
             codeId={review.codeId}
-            title={review.codeTitle}
+            title={
+              <>
+                {review.codeTitle}{' '}
+                <span className="font-light text-base text-gray-400">에 남긴 리뷰</span>
+              </>
+            }
             content={review.content}
             createdAt={review.createdAt}
             likeCount={review.likeCount}
