@@ -262,14 +262,14 @@ export class PrUserRepository implements UserRepository {
 
   async getUserRankingByLikes(rankingCount: number): Promise<User[]> {
     return this.prisma.user.findMany({
-      orderBy: { likeCount: 'desc' },
+      orderBy: [{ likeCount: 'desc' }, { createdAt: 'desc' }],
       take: rankingCount,
     });
   }
 
   async getUserRankingByReviews(rankingCount: number): Promise<User[]> {
     return this.prisma.user.findMany({
-      orderBy: { reviewCount: 'desc' },
+      orderBy: [{ reviewCount: 'desc' }, { createdAt: 'desc' }],
       take: rankingCount,
     });
   }
