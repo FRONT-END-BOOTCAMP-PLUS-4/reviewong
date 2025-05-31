@@ -10,7 +10,7 @@ import MDEditor from '@uiw/react-md-editor';
 interface ReviewListProps {
   reviews: ReviewView[];
   codeId: number;
-  onClickLike?: (reviewId: number) => void; // 좋아요 클릭 핸들러
+  onClickLike?: (reviewId: number, isLiked: boolean) => void; // 좋아요 클릭 핸들러
   onExpandClick?: (reviewId: number) => void;
   onEditClick?: (reviewId: number) => void;
   editingReviewId?: number | null; // 수정 중인 리뷰 ID
@@ -93,7 +93,7 @@ const ReviewList = ({
           )}
           <div className="flex flex-row items-center gap-4 mt-2">
             <ThumbsUp
-              onClick={() => onClickLike?.(review.id)}
+              onClick={() => onClickLike?.(review.id, Boolean(review.isLiked))} //undifined일 경우 false로 처리
               className={`m-3 w-5 ${
                 review.isLiked ? 'fill-red-500 text-gray-500' : 'text-gray-500'
               }`}
