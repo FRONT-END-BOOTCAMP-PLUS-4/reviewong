@@ -31,7 +31,7 @@ export default function ActivityItem({
   return (
     <div
       onClick={handleItemClick}
-      className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow duration-200 cursor-pointer"
+      className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow duration-200 cursor-pointer"
     >
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
