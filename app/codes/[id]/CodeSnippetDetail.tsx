@@ -5,6 +5,7 @@ import ProfileImage from '@/app/components/ProfileImage';
 import { Calendar } from 'lucide-react';
 import GradeBadge from '@/app/components/GradeBadge';
 import CategoryBadge from '@/app/components/CategoryBadge';
+import { useState } from 'react';
 interface CodeSnippetDetailProps {
   id: number;
   title: string;
@@ -15,6 +16,7 @@ interface CodeSnippetDetailProps {
   date: string;
   categories?: { id: number; name: string }[];
   isAuthor: boolean;
+  userReviewContent?: string;
 }
 
 export default function CodeSnippetDetail({
@@ -27,7 +29,9 @@ export default function CodeSnippetDetail({
   date,
   categories = [],
   isAuthor = false,
+  userReviewContent = '',
 }: CodeSnippetDetailProps) {
+  const [showOwnReview, setShowOwnReview] = useState<boolean>(false);
   return (
     <main className="p-4">
       {/* <div className="mb-6 border rounded-lg border-gray-100 bg-white shadow-sm p-4"> */}
@@ -70,15 +74,38 @@ export default function CodeSnippetDetail({
       <div className="shadow-sm mb-6 border rounded-lg overflow-hidden">
         <div className="flex items-center justify-between bg-gray-100 px-4 py-2">
           <span className="font-medium">코드</span>
+          {userReviewContent.length > 0 && (
+            <label className="inline-flex gap-2 items-center cursor-pointer">
+              <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                내 리뷰 보기
+              </span>
+              <input
+                onClick={() => setShowOwnReview(!showOwnReview)}
+                type="checkbox"
+                value=""
+                className="sr-only peer"
+              />
+              <div className="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400 dark:peer-checked:bg-yellow-400"></div>
+            </label>
+          )}
         </div>
-
-        <div className="font-mono text-sm overflow-hidden relative">
-          <div className="overflow-x-auto p-4">
-            <div data-color-mode="light">
-              <MDEditor.Markdown source={content} style={{ whiteSpace: 'pre-wrap' }} />
+        {showOwnReview ? (
+          <div className="font-mono text-sm overflow-hidden relative">
+            <div className="overflow-x-auto p-4">
+              <div data-color-mode="light">
+                <MDEditor.Markdown source={userReviewContent} style={{ whiteSpace: 'pre-wrap' }} />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="font-mono text-sm overflow-hidden relative">
+            <div className="overflow-x-auto p-4">
+              <div data-color-mode="light">
+                <MDEditor.Markdown source={content} style={{ whiteSpace: 'pre-wrap' }} />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );
