@@ -1,10 +1,10 @@
 'use client';
 import Link from 'next/link';
-import React from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import ProfileImage from '@/app/components/ProfileImage';
 import { Calendar } from 'lucide-react';
 import GradeBadge from '@/app/components/GradeBadge';
+import CategoryBadge from '@/app/components/CategoryBadge';
 interface CodeSnippetDetailProps {
   id: number;
   title: string;
@@ -62,14 +62,7 @@ export default function CodeSnippetDetail({
         <div className="flex flex-wrap gap-2 mt-2">
           {categories.length > 0 &&
             categories.map((category) => {
-              return (
-                <span
-                  key={category.id}
-                  className="leading-[14px] h-[34px] bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-sm flex items-center gap-2"
-                >
-                  <span>{category.name}</span>
-                </span>
-              );
+              return <CategoryBadge key={category.id} name={category.name} />;
             })}
         </div>
       </div>
