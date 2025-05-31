@@ -7,7 +7,6 @@ export class GetUserRankingUsecase {
   async executeByLikes(rankingCount: number): Promise<GetUserRankingDto[]> {
     const users = await this.userRepository.getUserRankingByLikes(rankingCount);
     return users.map((user) => ({
-      userId: user.id,
       profileImageUrl: user.imageUrl,
       nickname: user.nickname,
       gradeId: user.gradeId,
@@ -18,7 +17,6 @@ export class GetUserRankingUsecase {
   async executeByReviews(rankingCount: number): Promise<GetUserRankingDto[]> {
     const users = await this.userRepository.getUserRankingByReviews(rankingCount);
     return users.map((user) => ({
-      userId: user.id,
       profileImageUrl: user.imageUrl,
       nickname: user.nickname,
       gradeId: user.gradeId,
