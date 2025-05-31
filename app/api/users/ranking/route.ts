@@ -6,7 +6,7 @@ const userRepository = new PrUserRepository();
 const getUserRankingUsecase = new GetUserRankingUsecase(userRepository);
 
 export async function GET(req: NextRequest) {
-  const count = 10;
+  const count = 5;
 
   const [likeRanking, reviewRanking] = await Promise.all([
     getUserRankingUsecase.executeByLikes(count),
