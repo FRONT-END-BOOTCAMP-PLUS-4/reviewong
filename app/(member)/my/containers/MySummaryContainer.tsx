@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import UserSummary from '../../../components/UserSummary';
 import { useQuery } from '@tanstack/react-query';
+import UserSummarySkeleton from '@/app/components/skeletons/UserSummarySkeleton';
+import UserSummary from '@/app/components/UserSummary';
 
 export default function MySummaryContainer() {
   const fetchUserProfile = async () => {
@@ -16,9 +17,11 @@ export default function MySummaryContainer() {
     queryKey: ['profile'],
     queryFn: fetchUserProfile,
   });
+
   if (isLoading) {
-    return <p>로딩 중...</p>;
+    return <UserSummarySkeleton />;
   }
+
   if (isError) {
     return <p>에러: {(error as Error).message}</p>;
   }
