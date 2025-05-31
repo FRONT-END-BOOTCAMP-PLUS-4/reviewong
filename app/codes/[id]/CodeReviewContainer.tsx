@@ -46,7 +46,11 @@ export default async function CodeReviewContainer({ id }: { id: string }) {
 
   return (
     <main>
-      <CodeSnippetDetailContainer id={id} userReviewContent={userReviewContent} />
+      <CodeSnippetDetailContainer
+        id={id}
+        userId={session.user.id}
+        userReviewContent={userReviewContent}
+      />
       <ReviewListContainer codeId={codeId} />
     </main>
   );
