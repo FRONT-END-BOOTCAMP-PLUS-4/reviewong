@@ -1,10 +1,11 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import ActivityItem from '../../../components/ActivityItem';
 import { useState } from 'react';
 import MyPagination from '@/app/components/MyPagination';
 import EmptyList from '@/app/components/EmptyList';
 import { Code } from 'lucide-react';
+import ActivityListSkeleton from '@/app/components/skeletons/ActivityListSkeleton';
+import ActivityItem from '@/app/components/ActivityItem';
 
 const fetchUserCodes = async (nickname: string, page: number, pageSize: number) => {
   const res = await fetch(`/api/users/${nickname}/codes?page=${page}&pageSize=${pageSize}`);
@@ -18,11 +19,10 @@ export default function UserWrittenCodeContainer({ nickname }: { nickname: strin
   const { data, isLoading } = useQuery({
     queryKey: ['my-codes', page],
     queryFn: () => fetchUserCodes(nickname, page, pageSize),
-    placeholderData: (prev) => prev, // 페이지 변경 시 이전 데이터를 유지
     staleTime: 1000 * 60,
   });
   if (isLoading) {
-    return <p>로딩 중...</p>;
+    return <ActivityListSkeleton />;
   }
   if (!data) {
     return <p>데이터 없음</p>;
