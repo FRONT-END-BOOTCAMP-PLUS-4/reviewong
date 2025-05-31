@@ -3,6 +3,7 @@ import DailyChallengeCard from './components/DailyChallengeCard';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import CreateCodeButton from './components/CreateCodeButton';
+import RankingListContainer from './containers/RankingListContainer';
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         <div className="w-full">
           <DailyChallengeCard />
         </div>
+        <RankingListContainer />
       </main>
     </div>
   );
