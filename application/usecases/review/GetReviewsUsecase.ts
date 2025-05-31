@@ -7,18 +7,33 @@ export class GetReviewsUsecase {
   async execute({
     codeId,
     parentId,
+    userId,
   }: {
     codeId: number;
     parentId: number | null;
+    userId?: string | null;
   }): Promise<GetReviewDto> {
     try {
       const reviews = parentId
         ? await this.reviewRepository.findAllByParentId(parentId)
         : await this.reviewRepository.findAllByCodeId(codeId);
 
+      const reviewIds = reviews.map((r) => r.id);
+
+      const likedIds = await this.reviewRepository.findReviewLikedIdsByUserId(
+        userId ?? null,
+        reviewIds
+      ); // 로그인한 유저가 좋아요한 리뷰
+
+      // isLiked 추가해서 반환
+      const reviewsWithIsLiked = reviews.map((review) => ({
+        ...review,
+        isLiked: likedIds.includes(review.id),
+      }));
+
       return {
         success: true,
-        data: reviews,
+        data: reviewsWithIsLiked,
       };
     } catch (error) {
       return {
