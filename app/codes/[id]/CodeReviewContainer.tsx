@@ -9,7 +9,7 @@ import ReviewFormContainer from '@/app/reviews/containers/ReviewFormContainer';
 
 export default async function CodeReviewContainer({ id }: { id: string }) {
   const codeId = parseInt(id, 10);
-
+  let userReviewContent: string | undefined;
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user.id) {
@@ -30,24 +30,23 @@ export default async function CodeReviewContainer({ id }: { id: string }) {
         },
       }
     );
-    if (!checkUserReview.ok) {
-      const nullUserReview = await checkUserReview.json();
-      if (nullUserReview.success === false) {
-        return (
-          <main>
-            <CodeSnippetDetailContainer id={id} />
-            <ReviewFormContainer codeId={codeId} />
-            <ReviewLock />
-          </main>
-        );
-      }
-      return <>리뷰 작성 여부를 확인하는 중 오류가 발생했습니다.</>;
+    const { hasUserReviewed, data } = await checkUserReview.json();
+    if (hasUserReviewed === false) {
+      return (
+        <main>
+          <CodeSnippetDetailContainer id={id} />
+          <ReviewFormContainer codeId={codeId} />
+          <ReviewLock />
+        </main>
+      );
+    } else {
+      userReviewContent = data.reviewContent;
     }
   }
 
   return (
     <main>
-      <CodeSnippetDetailContainer id={id} />
+      <CodeSnippetDetailContainer id={id} userReviewContent={userReviewContent} />
       <ReviewListContainer codeId={codeId} />
     </main>
   );
