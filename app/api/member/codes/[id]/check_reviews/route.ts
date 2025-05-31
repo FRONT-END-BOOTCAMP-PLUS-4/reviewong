@@ -12,18 +12,21 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       const getUserReview = await repository.findUserFirst(userId, parseInt(id, 10));
       if (getUserReview) {
         // 이미 리뷰를 작성한 경우, 작성된 리뷰를 반환
-        return NextResponse.json(getUserReview);
+        return NextResponse.json({
+          hasUserReviewed: true,
+          data: { reviewContent: getUserReview.content },
+        });
       } else {
         // 리뷰를 작성하지 않은 경우 false를 반환
         return NextResponse.json(
-          { success: false, message: 'No review found for this user.', data: null },
+          { hasUserReviewed: false, message: 'No review found for this user.', data: null },
           { status: 404 }
         );
       }
     }
     // 로그인하지 않은 사용자일 경우 false를 반환
     return NextResponse.json(
-      { success: false, message: 'User is not logged in.', data: null },
+      { hasUserReviewed: false, message: 'User is not logged in.', data: null },
       { status: 401 }
     );
   } catch (error) {
