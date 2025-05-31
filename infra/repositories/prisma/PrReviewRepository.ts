@@ -359,4 +359,20 @@ export class PrReviewRepository implements ReviewRepository {
       count: Number(r.count),
     }));
   }
+
+  async findReviewLikedIdsByUserId(userId: string, reviewIds: number[]): Promise<number[]> {
+    if (!userId) {
+      return [];
+    }
+
+    const likes = await this.prisma.reviewLike.findMany({
+      where: {
+        userId,
+        reviewId: { in: reviewIds }, // 주어진 리뷰 ID 목록에 해당하는 좋아요만 조회
+      },
+      select: { reviewId: true },
+    });
+
+    return likes.map((like) => like.reviewId);
+  }
 }
