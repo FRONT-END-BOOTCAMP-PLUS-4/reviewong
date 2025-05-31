@@ -8,7 +8,6 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get('userId') || undefined;
-    console.log('userId', userId);
     const codeSnippetRepository = new PrCodeSnippetRepository();
     const reviewRepository = new PrReviewRepository();
 
