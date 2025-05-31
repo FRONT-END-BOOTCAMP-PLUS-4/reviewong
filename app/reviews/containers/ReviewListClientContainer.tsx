@@ -42,6 +42,10 @@ export default function ReviewListClientContainer({ codeId, initialReviews }: Pr
     queryFn: async () => {
       const res = await fetch(`/api/member/codes/${codeId}/reviews`, {
         cache: 'no-store',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: session ? `Bearer ${session.user.id}` : '',
+        },
       });
       if (!res.ok) {
         throw new Error('리뷰 조회 실패');
@@ -55,6 +59,34 @@ export default function ReviewListClientContainer({ codeId, initialReviews }: Pr
     return <div>리뷰 불러오는 중...</div>;
   }
 
+  // (reviews)리뷰 데이터에서 좋아요 상태에 따라 delete, create 동작
+  const handleLike = async (id: number) => {
+    const review = reviews.find((r) => r.id === id);
+    if (!review) {
+      return;
+    }
+
+    const isLiked = review.isLiked;
+
+    try {
+      const res = await fetch(`/api/reviews/${id}/review_likes`, {
+        method: isLiked ? 'DELETE' : 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: session ? `Bearer ${session.user.id}` : '',
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error('리뷰 좋아요 실패');
+      }
+
+      refetch(); // 상태 갱신
+    } catch (error) {
+      console.error('리뷰 좋아요 중 오류 발생:', error);
+      alert('리뷰 좋아요에 실패했습니다. 다시 시도해주세요.');
+    }
+  };
   return (
     <>
       <ReviewFormContainer
@@ -68,6 +100,7 @@ export default function ReviewListClientContainer({ codeId, initialReviews }: Pr
         reviews={reviews}
         codeId={codeId}
         parentId={expandedId}
+        onClickLike={handleLike}
         onExpandClick={(id) => setExpandedId((prev) => (prev === id ? null : id))}
         onEditClick={(id) => setEditingReview({ id })}
         editingReviewId={editingReview?.id}
