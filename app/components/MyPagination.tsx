@@ -38,7 +38,7 @@ export default function MyPagination({
   };
 
   return (
-    <Pagination className="mt-6">
+    <Pagination className="mt-10 pb-10">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
