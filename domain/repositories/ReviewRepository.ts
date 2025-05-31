@@ -101,4 +101,12 @@ export interface ReviewRepository {
    * @returns 날짜별 리뷰 개수 리스트
    */
   countGroupedByDateByNickname(nickname: string): Promise<{ date: string; count: number }[]>;
+
+  /**
+   * 유저가 좋아요한 리뷰 ID 목록 조회
+   * @param userId - 유저 ID
+   * @returns 좋아요한 리뷰 ID 목록
+   */
+
+  findReviewLikedIdsByUserId(userId: string | null, reviewId: number[]): Promise<number[]>;
 }
