@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation';
-import CodeSnippetDetail from './CodeSnippetDetail';
 import { formatDate } from '@/utils/formatDate';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import CodeSnippetDetail from './CodeSnippetDetail';
 async function getCodeSnippet(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/codes/${id}`, {
     cache: 'no-store',
@@ -14,9 +12,16 @@ async function getCodeSnippet(id: string) {
   return codeSnippet;
 }
 
-export default async function CodeSnippetDetailContainer({ id }: { id: string }) {
+export default async function CodeSnippetDetailContainer({
+  id,
+  userId,
+  userReviewContent,
+}: {
+  id: string;
+  userId?: string;
+  userReviewContent?: string;
+}) {
   const codeSnippet = await getCodeSnippet(id);
-  const session = await getServerSession(authOptions);
   return (
     <CodeSnippetDetail
       id={codeSnippet.id}
@@ -27,7 +32,8 @@ export default async function CodeSnippetDetailContainer({ id }: { id: string })
       grade={codeSnippet.user.grade}
       date={formatDate(codeSnippet.createdAt)}
       categories={codeSnippet.categories}
-      isAuthor={session?.user?.id === codeSnippet.user.id}
+      isAuthor={userId === codeSnippet.user.id}
+      userReviewContent={userReviewContent}
     />
   );
 }
