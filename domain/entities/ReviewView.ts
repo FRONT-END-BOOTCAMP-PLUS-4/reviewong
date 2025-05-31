@@ -13,4 +13,5 @@ export interface ReviewView {
     replies?: number;
     likes: number;
   };
+  isLiked?: boolean;
 }
