@@ -2,9 +2,10 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import MyPagination from '@/app/components/MyPagination';
-import ActivityItem from '../../../components/ActivityItem';
 import EmptyList from '@/app/components/EmptyList';
 import { SquareChartGantt } from 'lucide-react';
+import ActivityListSkeleton from '@/app/components/skeletons/ActivityListSkeleton';
+import ActivityItem from '@/app/components/ActivityItem';
 
 const fetchUserReviews = async (nickname: string, page: number, pageSize: number) => {
   const res = await fetch(`/api/users/${nickname}/reviews?page=${page}&pageSize=${pageSize}`);
@@ -20,12 +21,11 @@ export default function UserAnsweredReviewContainer({ nickname }: { nickname: st
   const { data, isLoading, isError } = useQuery({
     queryKey: ['my-reviews', page],
     queryFn: () => fetchUserReviews(nickname, page, pageSize),
-    placeholderData: (prev) => prev, // 페이지 변경 시 이전 데이터를 유지
     staleTime: 1000 * 60,
   });
 
   if (isLoading) {
-    return <p>로딩 중...</p>;
+    return <ActivityListSkeleton />;
   }
   if (isError || !data) {
     return <p>리뷰를 불러오는 데 실패했습니다.</p>;

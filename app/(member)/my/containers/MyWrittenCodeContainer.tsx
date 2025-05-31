@@ -1,11 +1,12 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import ActivityItem from '../../../components/ActivityItem';
 import { useState } from 'react';
 import MyPagination from '@/app/components/MyPagination';
 import { useRouter } from 'next/navigation';
 import EmptyList from '@/app/components/EmptyList';
 import { Code } from 'lucide-react';
+import ActivityListSkeleton from '@/app/components/skeletons/ActivityListSkeleton';
+import ActivityItem from '@/app/components/ActivityItem';
 
 const fetchMyCodes = async (page: number, pageSize: number) => {
   const res = await fetch(`/api/member/my/codes?page=${page}&pageSize=${pageSize}`);
@@ -19,11 +20,10 @@ export default function MyWrittenCodeContainer() {
   const { data, isLoading } = useQuery({
     queryKey: ['my-codes', page],
     queryFn: () => fetchMyCodes(page, pageSize),
-    placeholderData: (prev) => prev, // 페이지 변경 시 이전 데이터를 유지
     staleTime: 1000 * 60,
   });
   if (isLoading) {
-    return <p>로딩 중...</p>;
+    return <ActivityListSkeleton />;
   }
   if (!data) {
     return <p>데이터 없음</p>;

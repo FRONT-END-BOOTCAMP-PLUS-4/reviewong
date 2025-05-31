@@ -6,6 +6,7 @@ import ActivityItem from '../../../components/ActivityItem';
 import EmptyList from '@/app/components/EmptyList';
 import { SquareChartGantt } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import ActivityListSkeleton from '@/app/components/skeletons/ActivityListSkeleton';
 
 const fetchMyReviews = async (page: number, pageSize: number) => {
   const res = await fetch(`/api/member/my/reviews?page=${page}&pageSize=${pageSize}`);
@@ -23,12 +24,11 @@ export default function MyAnsweredReviewContainer() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['my-reviews', page],
     queryFn: () => fetchMyReviews(page, pageSize),
-    placeholderData: (prev) => prev, // 페이지 변경 시 이전 데이터를 유지
     staleTime: 1000 * 60,
   });
 
   if (isLoading) {
-    return <p>로딩 중...</p>;
+    return <ActivityListSkeleton />;
   }
   if (isError || !data) {
     return <p>리뷰를 불러오는 데 실패했습니다.</p>;
