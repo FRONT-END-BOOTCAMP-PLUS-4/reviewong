@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import UserReviewHeatmap from '../../../components/UserReviewHeatmap';
+import UserReviewHeatmap from '@/app/components/UserReviewHeatmap';
+import UserReviewHeatmapSkeleton from '@/app/components/skeletons/UserReviewHeatmapSkeleton';
 
 export default function UserReviewHeatmapContainer({ nickname }: { nickname: string }) {
   const fetchUserHeatMapProfile = async () => {
@@ -17,7 +18,7 @@ export default function UserReviewHeatmapContainer({ nickname }: { nickname: str
     queryFn: fetchUserHeatMapProfile,
   });
   if (isLoading) {
-    return <p>로딩 중...</p>;
+    return <UserReviewHeatmapSkeleton />;
   }
   if (isError) {
     return <p>에러: {(error as Error).message}</p>;
