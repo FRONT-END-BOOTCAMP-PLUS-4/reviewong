@@ -1,11 +1,11 @@
 'use client';
 import Link from 'next/link';
-import MDEditor from '@uiw/react-md-editor';
 import ProfileImage from '@/app/components/ProfileImage';
 import { Calendar } from 'lucide-react';
 import GradeBadge from '@/app/components/GradeBadge';
 import CategoryBadge from '@/app/components/CategoryBadge';
 import { useState } from 'react';
+import MarkdownContent from '@/app/components/MarkdownContent';
 interface CodeSnippetDetailProps {
   id: number;
   title: string;
@@ -33,8 +33,7 @@ export default function CodeSnippetDetail({
 }: CodeSnippetDetailProps) {
   const [showOwnReview, setShowOwnReview] = useState<boolean>(false);
   return (
-    <main className="p-4">
-      {/* <div className="mb-6 border rounded-lg border-gray-100 bg-white shadow-sm p-4"> */}
+    <div className="p-4">
       <div className="mb-6">
         <h1 className="text-xl font-bold mb-2">{title}</h1>
         <div className="flex items-center justify-between text-gray-500">
@@ -90,23 +89,11 @@ export default function CodeSnippetDetail({
           )}
         </div>
         {showOwnReview ? (
-          <div className="font-mono text-sm overflow-hidden relative">
-            <div className="overflow-x-auto p-4">
-              <div data-color-mode="light">
-                <MDEditor.Markdown source={userReviewContent} style={{ whiteSpace: 'pre-wrap' }} />
-              </div>
-            </div>
-          </div>
+          <MarkdownContent content={userReviewContent} />
         ) : (
-          <div className="font-mono text-sm overflow-hidden relative">
-            <div className="overflow-x-auto p-4">
-              <div data-color-mode="light">
-                <MDEditor.Markdown source={content} style={{ whiteSpace: 'pre-wrap' }} />
-              </div>
-            </div>
-          </div>
+          <MarkdownContent content={content} />
         )}
       </div>
-    </main>
+    </div>
   );
 }
