@@ -42,7 +42,7 @@ const ReviewList = ({
       {reviews.map((review) => (
         <div
           key={review.id}
-          className="border p-4 rounded shadow-sm flex flex-col items-start gap-2 m-8"
+          className="border p-4 rounded-xl shadow-sm flex flex-col items-start gap-2"
         >
           <div className="flex flex-row items-center gap-2 mr-2 w-full">
             {/* 프로필 이미지 */}
@@ -94,14 +94,14 @@ const ReviewList = ({
             <MDEditor.Markdown source={review.content} style={{ whiteSpace: 'pre-wrap' }} />
           )}
           {showInteractions && (
-            <div className="flex flex-row items-center gap-4 mt-2">
+            <div className="flex flex-row items-center gap-4 mt-2 cursor-pointer ">
               <ThumbsUp
                 onClick={() => onClickLike?.(review.id, Boolean(review.isLiked))} //undifined일 경우 false로 처리
                 className={`m-3 w-5 ${review.isLiked ? 'fill-red-500 text-gray-500' : 'text-gray-500'}`}
               />
               <div className="ml-[-1rem] text-gray-500 font-bold">{review.counts.likes ?? 0}</div>
               {commentButton && (
-                <div className="flex flex-row items-center gap-3">
+                <div className="flex flex-row cursor-pointer items-center gap-3">
                   <MessageSquare
                     onClick={() => onExpandClick?.(review.id)}
                     className="w-5 text-gray-500"

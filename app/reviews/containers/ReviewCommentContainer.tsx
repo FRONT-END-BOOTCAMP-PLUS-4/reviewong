@@ -28,19 +28,17 @@ export default function ReviewCommentContainer({
   });
 
   if (isLoading) {
-    return <div className="text-gray-500 ml-8">댓글 불러오는 중...</div>;
+    return <div className="text-gray-500">댓글 불러오는 중...</div>;
   }
   if (data?.length === 0) {
     return;
   }
   if (error) {
-    return (
-      <div className="text-gray-500 ml-8">댓글을 불러오지 못했습니다. 새로고침을 해주세요!</div>
-    );
+    return <div className="text-gray-500">댓글을 불러오지 못했습니다. 새로고침을 해주세요!</div>;
   }
 
   return (
-    <div className="ml-6">
+    <div>
       <ReviewList reviews={data!} codeId={codeId} isAuthor={session?.user.id ?? null} />
     </div>
   );
