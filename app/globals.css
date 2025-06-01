@@ -126,3 +126,14 @@
   color: #333;
   font-family: 'Arial', sans-serif;
 }
+
+/* Webkit 기반 브라우저 (Chrome, Safari, Edge) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
