@@ -26,7 +26,7 @@ export default function GradeBadge({
       alt={`${grade} 등급 이미지`}
       width={size}
       height={size}
-      className={`inline-block -mt-[5px] ${className}`}
+      className={`inline-block -mt-[5px] -ml-[10px] ${className}`}
     />
   );
 }
