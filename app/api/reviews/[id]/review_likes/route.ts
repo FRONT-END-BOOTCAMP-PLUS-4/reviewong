@@ -10,6 +10,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     const { id } = await params;
     const reviewId = parseInt(id);
     const session = await getServerSession(authOptions);
+    const body = await req.json();
+    const authorId = body.authorId;
 
     if (!session || !session.user.id) {
       return NextResponse.json(
@@ -20,7 +22,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
     const repository = new PrReviewLikeRepository();
     const usecase = new CreateReviewLikeUsecase(repository);
-    const isLiked = await usecase.execute(session.user.id, reviewId);
+    const isLiked = await usecase.execute(session.user.id, reviewId, authorId);
 
     return NextResponse.json({ success: true, isLiked }, { status: 200 });
   } catch (error) {
@@ -34,6 +36,8 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
     const { id } = await params;
     const reviewId = parseInt(id);
     const session = await getServerSession(authOptions);
+    const body = await req.json();
+    const authorId = body.authorId;
 
     if (!session || !session.user.id) {
       return NextResponse.json(
@@ -44,7 +48,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
 
     const repository = new PrReviewLikeRepository();
     const usecase = new DeleteReviewLikeUsecase(repository);
-    const isLiked = await usecase.execute(session.user.id, reviewId);
+    const isLiked = await usecase.execute(session.user.id, reviewId, authorId);
 
     return NextResponse.json({ success: true, isLiked }, { status: 200 });
   } catch (error) {
