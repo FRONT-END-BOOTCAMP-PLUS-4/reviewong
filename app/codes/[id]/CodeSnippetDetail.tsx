@@ -43,8 +43,8 @@ export default function CodeSnippetDetail({
             <span>{author}</span>
             <GradeBadge grade={grade} />
             <span>•</span>
-            <span>
-              <Calendar size={18} className="inline-block" />
+            <span className="inline-flex items-center gap-1 text-sm">
+              <Calendar size={18} />
               {date}
             </span>
           </div>
