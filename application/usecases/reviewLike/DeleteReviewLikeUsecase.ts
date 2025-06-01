@@ -3,9 +3,13 @@ import { ReviewLikeRepository } from '@/domain/repositories/ReviewLikeRepository
 export class DeleteReviewLikeUsecase {
   constructor(private reviewLikeRepository: ReviewLikeRepository) {}
 
-  async execute(userId: string, reviewId: number): Promise<{ success: boolean; error?: string }> {
+  async execute(
+    userId: string,
+    reviewId: number,
+    authorId: string
+  ): Promise<{ success: boolean; error?: string }> {
     try {
-      await this.reviewLikeRepository.delete(userId, reviewId);
+      await this.reviewLikeRepository.delete(userId, reviewId, authorId);
       return { success: true };
     } catch (error) {
       return {
