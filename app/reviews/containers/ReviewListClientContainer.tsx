@@ -60,7 +60,7 @@ export default function ReviewListClientContainer({ codeId, initialReviews }: Pr
   }
 
   // (reviews)리뷰 데이터에서 좋아요 상태에 따라 delete, create 동작
-  const handleLike = async (id: number, isLiked: boolean) => {
+  const handleLike = async (id: number, isLiked: boolean, authorId: string) => {
     try {
       const res = await fetch(`/api/reviews/${id}/review_likes`, {
         method: isLiked ? 'DELETE' : 'POST',
@@ -68,6 +68,7 @@ export default function ReviewListClientContainer({ codeId, initialReviews }: Pr
           'Content-Type': 'application/json',
           Authorization: session ? `Bearer ${session.user.id}` : '',
         },
+        body: JSON.stringify({ authorId }),
       });
 
       if (!res.ok) {
