@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CodeXml, MessageSquare } from 'lucide-react';
+import { ThumbsUp, MessageSquare } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 import GradeBadge from './GradeBadge';
 import RankingListSkeleton from './RankingListSkeleton';
@@ -63,7 +63,7 @@ export default function RankingList({
               <div className="flex items-center gap-1 text-muted-foreground">
                 {type === 'like' ? (
                   <>
-                    <CodeXml className="h-4 w-4" />
+                    <ThumbsUp className="h-4 w-4" />
                     <span>{user.likeCount}</span>
                   </>
                 ) : (
