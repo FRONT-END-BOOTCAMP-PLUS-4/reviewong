@@ -26,7 +26,7 @@ export async function DELETE(
 
     return NextResponse.json({ message: 'Successfully deleted' });
   } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: `Internal Server Error ${error}` }, { status: 500 });
   }
 }
 
@@ -49,6 +49,6 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
     return NextResponse.json({ message: 'Successfully updated' });
   } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: `Internal Server Error ${error}` }, { status: 500 });
   }
 }

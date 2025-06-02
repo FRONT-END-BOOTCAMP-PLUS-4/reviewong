@@ -25,6 +25,6 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ nick
 
     return NextResponse.json(result.data); // result.data에 리뷰 + pagination 정보 포함
   } catch (error) {
-    return NextResponse.json({ error: '서버 오류가 발생했습니다.' }, { status: 500 });
+    return NextResponse.json({ error: `서버 오류가 발생했습니다. ${error}` }, { status: 500 });
   }
 }
