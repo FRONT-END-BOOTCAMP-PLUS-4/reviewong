@@ -1,9 +1,7 @@
-import { PrismaAdapter } from '@auth/prisma-adapter';
 import { AuthOptions } from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { prisma } from '@/lib/prisma';
 import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
 import { SocialLoginUseCase } from '@/application/usecases/auth/SocialLoginUseCase';
 import { CredentialsLoginUseCase } from '@/application/usecases/auth/CredentialsLoginUseCase';
@@ -13,7 +11,6 @@ const credentialsLoginUseCase = new CredentialsLoginUseCase(userRepository);
 const socialLoginUseCase = new SocialLoginUseCase(userRepository);
 
 export const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: 'credentials',
