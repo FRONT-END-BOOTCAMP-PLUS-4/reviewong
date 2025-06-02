@@ -8,7 +8,7 @@ import UserAnsweredReviewContainer from './containers/UserAnsweredReviewContaine
 
 export default function UserPage() {
   const params = useParams();
-  const nickname = params.nickname as string;
+  const nickname = decodeURIComponent(params.nickname as string);
 
   return (
     <>
