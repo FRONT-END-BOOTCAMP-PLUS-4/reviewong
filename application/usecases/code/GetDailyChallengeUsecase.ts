@@ -15,6 +15,7 @@ export class GetDailyChallengeUsecase {
     data?: {
       codeSnippet: CodeSnippetDto | undefined;
       dailyCodeReview: ReviewView[];
+      isCompleted: boolean;
     };
     error?: string;
   }> {
@@ -38,11 +39,19 @@ export class GetDailyChallengeUsecase {
       const getCodeSnippetUsecase = new GetCodeSnippetUsecase(this.codeSnippetRepository);
       const result = await getCodeSnippetUsecase.execute(codeId);
 
+      // 5. 사용자가 당일 챌린지를 완료했는지 확인
+      let isCompleted = false;
+      if (currentUserId) {
+        const userReview = await this.reviewRepository.findUserFirst(currentUserId, codeId);
+        isCompleted = !!userReview;
+      }
+
       return {
         success: true,
         data: {
           codeSnippet: result.data,
           dailyCodeReview: dailyCodeReview,
+          isCompleted,
         },
       };
     } catch (error) {
