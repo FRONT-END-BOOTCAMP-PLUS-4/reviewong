@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import CodeListClientContainer from './CodeListClientContainer';
+import { Code } from './CodeList';
 
 async function getCodeList() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/codes`, {
@@ -10,8 +11,8 @@ async function getCodeList() {
     console.error('Failed to fetch code list:', res.statusText);
     notFound();
   }
-  const result = await res.json();
-  const codes = result.map((item: any) => item.data);
+  const result: { data: Code }[] = await res.json();
+  const codes = result.map((item) => item.data);
   if (!codes) {
     notFound();
   }
