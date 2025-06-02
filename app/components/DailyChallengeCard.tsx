@@ -3,6 +3,8 @@ import { formatDate } from '@/utils/formatDate';
 import { fetchDailyChallenge } from '../containers/actions';
 import LatestReviewListContainer from '../reviews/containers/LatestReviewContainer';
 import { CheckCircle2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default async function DailyChallengeCard() {
   try {
@@ -22,6 +24,12 @@ export default async function DailyChallengeCard() {
                 <CheckCircle2 className="h-16 w-16 text-yellow-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">오늘의 챌린지를 완료하셨습니다!</h3>
                 <p className="text-gray-600">내일 새로운 챌린지가 기다리고 있어요.</p>
+                <div className="flex flex-col justify-center gap-4 mt-6">
+                  <p>다른 사람의 의견도 궁금하신가요?</p>
+                  <Button variant="outline">
+                    <Link href={`/codes/${data.codeSnippet.id}`}>코드 상세 보기</Link>
+                  </Button>
+                </div>
               </div>
             ) : (
               <>
