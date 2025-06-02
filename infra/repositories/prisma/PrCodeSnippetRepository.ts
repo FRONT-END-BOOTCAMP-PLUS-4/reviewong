@@ -30,6 +30,8 @@ export type CodeSnippetWithCount = CodeSnippetWithRelations & {
 };
 export class PrCodeSnippetRepository implements CodeSnippetRepository {
   private prisma: PrismaClient;
+  private static currentDate: string | null = null;
+  private static currentChallengeId: number | null = null;
 
   constructor() {
     this.prisma = new PrismaClient();
@@ -345,8 +347,22 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
   }
 
   async findDailyChallengeId(currentUserId?: string): Promise<number | null> {
-    // 비회원인 경우 모든 코드 중에서 랜덤 선택
+    // 오늘 날짜 확인
+    const today = new Date().toDateString();
+
+    // 오늘의 데일리 챌린지가 이미 선택되어 있다면 그대로 반환
+    if (
+      PrCodeSnippetRepository.currentDate === today &&
+      PrCodeSnippetRepository.currentChallengeId
+    ) {
+      return PrCodeSnippetRepository.currentChallengeId;
+    }
+
+    // 새로운 데일리 챌린지 선택
+    let codeId: number | null = null;
+
     if (!currentUserId) {
+      // 비회원인 경우 모든 코드 중에서 랜덤 선택
       const totalCodes = await this.prisma.codeSnippet.count();
       if (totalCodes === 0) {
         return null;
@@ -360,56 +376,64 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
         },
       });
 
-      return code?.id ?? null;
+      codeId = code?.id ?? null;
+    } else {
+      // 회원인 경우 조건에 맞는 코드 선택
+      // 1. 현재 사용자가 작성한 코드 ID 목록 조회
+      const userCodeIds = await this.prisma.codeSnippet
+        .findMany({
+          where: { userId: currentUserId },
+          select: { id: true },
+        })
+        .then((codes) => codes.map((code) => code.id));
+
+      // 2. 현재 사용자가 리뷰를 작성한 코드 ID 목록 조회
+      const reviewedCodeIds = await this.prisma.review
+        .findMany({
+          where: { userId: currentUserId },
+          select: { codeId: true },
+        })
+        .then((reviews) => reviews.map((review) => review.codeId));
+
+      // 3. 제외할 코드 ID 목록 합치기
+      const excludedCodeIds = [...new Set([...userCodeIds, ...reviewedCodeIds])];
+
+      // 4. 남은 코드 중 랜덤하게 하나 선택
+      const totalCodes = await this.prisma.codeSnippet.count({
+        where: {
+          id: {
+            notIn: excludedCodeIds,
+          },
+        },
+      });
+
+      if (totalCodes === 0) {
+        return null;
+      }
+
+      const skip = Math.floor(Math.random() * totalCodes);
+
+      const code = await this.prisma.codeSnippet.findFirst({
+        where: {
+          id: {
+            notIn: excludedCodeIds,
+          },
+        },
+        skip: skip,
+        select: {
+          id: true,
+        },
+      });
+
+      codeId = code?.id ?? null;
     }
 
-    // 회원인 경우 조건에 맞는 코드 선택
-    // 1. 현재 사용자가 작성한 코드 ID 목록 조회
-    const userCodeIds = await this.prisma.codeSnippet
-      .findMany({
-        where: { userId: currentUserId },
-        select: { id: true },
-      })
-      .then((codes) => codes.map((code) => code.id));
-
-    // 2. 현재 사용자가 리뷰를 작성한 코드 ID 목록 조회
-    const reviewedCodeIds = await this.prisma.review
-      .findMany({
-        where: { userId: currentUserId },
-        select: { codeId: true },
-      })
-      .then((reviews) => reviews.map((review) => review.codeId));
-
-    // 3. 제외할 코드 ID 목록 합치기
-    const excludedCodeIds = [...new Set([...userCodeIds, ...reviewedCodeIds])];
-
-    // 4. 남은 코드 중 랜덤하게 하나 선택
-    const totalCodes = await this.prisma.codeSnippet.count({
-      where: {
-        id: {
-          notIn: excludedCodeIds,
-        },
-      },
-    });
-
-    if (totalCodes === 0) {
-      return null;
+    // 선택된 코드 ID를 저장
+    if (codeId) {
+      PrCodeSnippetRepository.currentDate = today;
+      PrCodeSnippetRepository.currentChallengeId = codeId;
     }
 
-    const skip = Math.floor(Math.random() * totalCodes);
-
-    const code = await this.prisma.codeSnippet.findFirst({
-      where: {
-        id: {
-          notIn: excludedCodeIds,
-        },
-      },
-      skip: skip,
-      select: {
-        id: true,
-      },
-    });
-
-    return code?.id ?? null;
+    return codeId;
   }
 }
