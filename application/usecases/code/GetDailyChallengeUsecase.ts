@@ -49,7 +49,7 @@ export class GetDailyChallengeUsecase {
       return {
         success: true,
         data: {
-          codeSnippet: result.data,
+          codeSnippet: result.data ?? undefined,
           dailyCodeReview: dailyCodeReview,
           isCompleted,
         },
