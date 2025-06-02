@@ -43,21 +43,30 @@ export default function UserAnsweredReviewContainer({ nickname }: { nickname: st
       ) : (
         <>
           <div className="space-y-4">
-            {reviews.map((review: any) => (
-              <ActivityItem
-                key={review.id}
-                codeId={review.codeId}
-                title={
-                  <>
-                    {review.codeTitle}{' '}
-                    <span className="font-light text-base text-gray-400">에 남긴 리뷰</span>
-                  </>
-                }
-                content={review.content}
-                createdAt={review.createdAt}
-                likeCount={review.likeCount}
-              />
-            ))}
+            {reviews.map(
+              (review: {
+                id: number;
+                codeId: number;
+                codeTitle: string;
+                content: string;
+                createdAt: string;
+                likeCount: number;
+              }) => (
+                <ActivityItem
+                  key={review.id}
+                  codeId={review.codeId}
+                  title={
+                    <>
+                      {review.codeTitle}{' '}
+                      <span className="font-light text-base text-gray-400">에 남긴 리뷰</span>
+                    </>
+                  }
+                  content={review.content}
+                  createdAt={review.createdAt}
+                  likeCount={review.likeCount}
+                />
+              )
+            )}
           </div>
           <MyPagination page={page} totalPages={totalPages} setPage={setPage} />
         </>

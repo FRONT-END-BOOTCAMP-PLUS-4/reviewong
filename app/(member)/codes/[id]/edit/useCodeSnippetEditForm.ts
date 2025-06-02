@@ -28,14 +28,8 @@ export function useCodeSnippetEditForm(id: string) {
         setForm({
           title: data.title,
           content: data.content,
-          categories: data.categories.map((c: any) => c.id),
+          categories: data.categories.map((c: { id: number; name: string }) => c.id),
         });
-        console.log(
-          'Fetched code snippet:',
-          data,
-          data.categories,
-          data.categories.map((c: any) => c.categoryId)
-        );
       } catch (err) {
         console.error('Error fetching code snippet:', err);
       }

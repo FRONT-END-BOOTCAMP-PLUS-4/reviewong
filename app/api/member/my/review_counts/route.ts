@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
 import { GetReviewCountHeatmapUsecase } from '@/application/usecases/review/GetReviewCountHeatmapUsecase';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
