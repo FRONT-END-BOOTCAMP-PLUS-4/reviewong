@@ -20,7 +20,14 @@ export interface Code {
     grade: string | null;
   };
   reviewCount: number;
-  categories?: { id: number; name: string }[];
+  categories?: {
+    codeId: number;
+    categoryId: number;
+    category: {
+      id: number;
+      name: string;
+    };
+  }[];
 }
 
 export interface CodeListProps {
@@ -53,7 +60,7 @@ const CodeList = ({ codes }: CodeListProps) => {
               <div className="flex flex-row gap-2 items-center">
                 {code.categories &&
                   code.categories.map((category) => (
-                    <CategoryBadge key={category.id} name={category.name} />
+                    <CategoryBadge key={category.categoryId} name={category.category.name} />
                   ))}
                 <Calendar className="w-5 text-gray-500" />
                 <div className="text-xs">{formatDate(code.createdAt)}</div>
