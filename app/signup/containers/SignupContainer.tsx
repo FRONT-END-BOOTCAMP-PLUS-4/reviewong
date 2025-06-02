@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import SignupForm from '../components/Signup';
 
 export default function SignupContainer() {
