@@ -23,6 +23,6 @@ export interface CodeSnippetDto {
 }
 export interface GetCodeSnippetDto {
   success: boolean;
-  data?: ((CodeSnippetDto & { counts: { reviews: number } }) | null)[];
+  data?: CodeSnippetDto | null;
   error?: string;
 }

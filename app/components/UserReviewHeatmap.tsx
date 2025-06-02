@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef } from 'react';
-import CalendarHeatmap from 'react-calendar-heatmap';
+import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
 type HeatmapData = { date: string; count: number };
@@ -12,6 +12,7 @@ export default function UserReviewHeatmap({ reviewCounts }: { reviewCounts: Heat
     x: number;
     y: number;
   } | null>(null);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const getClassName = (count?: number) => {
@@ -33,11 +34,11 @@ export default function UserReviewHeatmap({ reviewCounts }: { reviewCounts: Heat
     return 'fill-gray-200';
   };
 
-  function shiftDate(date: string, numDays: number): Date {
+  const shiftDate = (date: Date, numDays: number): Date => {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + numDays);
     return newDate;
-  }
+  };
 
   const today = new Date();
 
@@ -47,25 +48,33 @@ export default function UserReviewHeatmap({ reviewCounts }: { reviewCounts: Heat
         startDate={shiftDate(today, -300)}
         endDate={today}
         values={reviewCounts}
-        classForValue={(value: HeatmapData | null) => getClassName(value?.count)}
-        transformDayElement={(element: React.ReactElement, value: HeatmapData | null) => {
-          return React.cloneElement(element, {
-            rx: 4,
-            ry: 4,
-            onMouseEnter: (e: MouseEvent) => {
-              if (value && containerRef.current) {
-                const containerRect = containerRef.current.getBoundingClientRect();
-                const targetRect = (e.target as HTMLElement).getBoundingClientRect();
+        classForValue={(value?: ReactCalendarHeatmapValue<string>) => {
+          const data = value as HeatmapData | undefined;
+          return getClassName(data?.count);
+        }}
+        transformDayElement={(element, value?: ReactCalendarHeatmapValue<string>) => {
+          const data = value as HeatmapData | undefined;
 
-                setTooltipInfo({
-                  ...value,
-                  x: targetRect.left - containerRect.left + targetRect.width / 2,
-                  y: targetRect.top - containerRect.top,
-                });
-              }
-            },
-            onMouseLeave: () => setTooltipInfo(null),
-          });
+          return React.cloneElement(
+            element as React.ReactElement,
+            {
+              rx: 4,
+              ry: 4,
+              onMouseEnter: (e: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+                if (data && containerRef.current) {
+                  const containerRect = containerRef.current.getBoundingClientRect();
+                  const targetRect = (e.currentTarget as SVGRectElement).getBoundingClientRect();
+
+                  setTooltipInfo({
+                    ...data,
+                    x: targetRect.left - containerRect.left + targetRect.width / 2,
+                    y: targetRect.top - containerRect.top,
+                  });
+                }
+              },
+              onMouseLeave: () => setTooltipInfo(null),
+            } as React.SVGProps<SVGRectElement>
+          );
         }}
       />
 
