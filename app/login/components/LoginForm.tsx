@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Github, Mail } from 'lucide-react';
-import type { SocialLoginOptions } from '@/app/types/auth';
+import { SocialLoginOptions } from '@/types/auth';
 
 interface LoginFormProps {
   formData: {

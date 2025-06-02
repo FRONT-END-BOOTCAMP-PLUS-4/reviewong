@@ -12,6 +12,7 @@ export function getUserIdFromRequest(request: Request): number | null {
     };
     return decoded.userId;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }

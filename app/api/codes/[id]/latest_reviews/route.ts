@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GetLatestReviewsUsecase } from '@/application/usecases/review/GetLatestReviewsUsecase';
 import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewRepository';
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
     const reviewRepository = new PrReviewRepository();
