@@ -1,5 +1,5 @@
 import { UserRepository } from '@/domain/repositories/UserRepository';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@/prisma/generated';
 import { User } from '@/prisma/generated';
 import bcrypt from 'bcryptjs';
 
