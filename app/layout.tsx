@@ -22,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <QueryProvider>
           <Provider>
             <Header />
-            <div className="container mx-auto pb-8">{children}</div>
+            <main>
+              <div className="container mx-auto pb-8">{children}</div>
+            </main>
           </Provider>
         </QueryProvider>
       </body>
