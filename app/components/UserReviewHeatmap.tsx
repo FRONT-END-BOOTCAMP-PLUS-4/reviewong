@@ -33,7 +33,7 @@ export default function UserReviewHeatmap({ reviewCounts }: { reviewCounts: Heat
     return 'fill-gray-200';
   };
 
-  function shiftDate(date: string, numDays: number): Date {
+  function shiftDate(date: Date, numDays: number): Date {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + numDays);
     return newDate;
