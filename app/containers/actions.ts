@@ -25,5 +25,9 @@ export async function fetchDailyChallenge() {
     throw new Error(`데일리 챌린지 조회 실패: ${res.status} ${res.statusText}`);
   }
 
-  return res.json();
+  const data = await res.json();
+  return {
+    ...data,
+    session: !!session, // 세션 존재 여부를 boolean으로 반환
+  };
 }
