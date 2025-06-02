@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
 import { GetUserSummaryUsecase } from '@/application/usecases/user/GetUserSummaryUsecase';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
