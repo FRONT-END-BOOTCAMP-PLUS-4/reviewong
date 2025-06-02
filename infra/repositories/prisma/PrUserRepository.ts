@@ -160,7 +160,7 @@ export class PrUserRepository implements UserRepository {
 
   async findAll(): Promise<User[]> {
     const users = await this.prisma.user.findMany();
-    return users.map((user) => ({
+    return users.map((user: User) => ({
       id: user.id,
       email: user.email,
       password: user.password,
