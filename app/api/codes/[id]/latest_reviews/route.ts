@@ -5,7 +5,7 @@ import { PrReviewRepository } from '@/infra/repositories/prisma/PrReviewReposito
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const { id } = await params;
+    const { id } = params;
     const reviewRepository = new PrReviewRepository();
     const getLatestReviewsUsecase = new GetLatestReviewsUsecase(reviewRepository);
     const result = await getLatestReviewsUsecase.execute(Number(id));
