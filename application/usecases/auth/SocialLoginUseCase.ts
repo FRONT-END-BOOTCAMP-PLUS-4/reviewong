@@ -1,7 +1,7 @@
-import { IUserRepository } from '@/domain/repositories/IUserRepository';
+import { PrUserRepository } from '@/infra/repositories/prisma/PrUserRepository';
 
 export class SocialLoginUseCase {
-  constructor(private readonly userRepository: IUserRepository) {}
+  constructor(private readonly userRepository: PrUserRepository) {}
 
   async execute(userData: {
     id: string;
