@@ -38,7 +38,12 @@ const ReviewList = ({
 }: ReviewListProps) => {
   return (
     <div className="space-y-4">
-      <h3 className="font-bold m-5">리뷰 목록 ({reviews.length})</h3>
+      {showInteractions || reviews.length !== 0 ? (
+        <h3 className="font-bold m-5">리뷰 목록 ({reviews.length})</h3>
+      ) : (
+        <h3 className="font-bold m-5">현재 리뷰가 없습니다. 첫 리뷰어가 되어 보세요!</h3>
+      )}
+
       {reviews.map((review) => (
         <div
           key={review.id}
