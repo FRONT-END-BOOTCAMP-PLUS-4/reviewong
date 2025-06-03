@@ -23,7 +23,7 @@ export class SignUpUseCase {
       createdAt: new Date(),
       updatedAt: new Date(),
       deletedAt: null,
-      gradeId: null,
+      gradeId: 1,
       imageUrl: null,
       likeCount: 0,
       reviewCount: 0,
