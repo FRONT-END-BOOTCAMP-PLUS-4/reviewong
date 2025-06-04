@@ -52,7 +52,7 @@ export default function CodeSnippetDetail({
           {/* 수정/삭제 버튼 */}
           {isAuthor && (
             <div className="space-x-2">
-              <Link href={`/code/${id}/edit`} className="inline-block">
+              <Link href={`/codes/${id}/edit`} className="inline-block">
                 <button className="text-sm text-blue-600 hover:underline">수정</button>
               </Link>
               <button className="text-sm text-red-600 hover:underline" onClick={() => {}}>
