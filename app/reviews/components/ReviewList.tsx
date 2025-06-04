@@ -54,6 +54,7 @@ const ReviewList = ({
             <ProfileImage
               src={review.user.imageUrl || '/default-profile-image.png'}
               alt={`${review.user.nickname}의 프로필 이미지`}
+              nickname={review.user.nickname}
               size={50}
             />
             <div className="flex flex-col w-full">

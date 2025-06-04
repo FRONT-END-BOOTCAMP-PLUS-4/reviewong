@@ -49,6 +49,7 @@ const CodeList = ({ codes }: CodeListProps) => {
                 <ProfileImage
                   src={code.user.imageUrl || '/default-profile-image.png'}
                   alt={`${code.user.nickname}의 프로필 이미지`}
+                  nickname={code.user.nickname}
                   size={50}
                 />
                 <div className="flex items-center gap-2">

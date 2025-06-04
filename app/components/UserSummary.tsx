@@ -17,7 +17,7 @@ export default function UserSummary({
       <div className="flex items-start justify-between">
         {/* 프로필 영역 */}
         <div className="flex gap-4">
-          <ProfileImage size={60} />
+          <ProfileImage size={60} redirectUserPage={false} />
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-xl font-bold">{userSummary.nickname}</h2>

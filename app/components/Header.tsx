@@ -38,6 +38,7 @@ export default function Header() {
                 <ProfileImage
                   src={session.user?.image || '/default-profile-image.png'}
                   alt={session.user?.name || '사용자'}
+                  redirectUserPage={false}
                   size={32}
                 />
                 <span>{session.user?.name || '사용자'}</span>

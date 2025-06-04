@@ -52,6 +52,7 @@ export default function RankingList({
               <ProfileImage
                 src={user.profileImageUrl || '/default-profile-image.png'}
                 alt={user.nickname}
+                nickname={user.nickname}
                 size={32}
               />
               <div className="flex-1">
