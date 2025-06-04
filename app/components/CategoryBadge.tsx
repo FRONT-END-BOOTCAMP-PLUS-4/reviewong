@@ -19,9 +19,12 @@ export default function CategoryBadge({
   const colorClass = CATEGORY_COLOR_MAP[name];
 
   return (
-    <span className={`px-2 py-1 rounded-full text-xs ${colorClass} ${className}`}>
+    <span
+      style={{ lineHeight: '13px' }}
+      className={`px-2.5 py-1.5 flex gap-2 rounded-full text-xs ${colorClass} ${className}`}
+    >
       {name}
-      {children && <span className="ml-2">{children}</span>}
+      {children}
     </span>
   );
 }
