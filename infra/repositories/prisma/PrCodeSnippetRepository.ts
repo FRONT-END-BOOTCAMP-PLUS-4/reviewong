@@ -436,4 +436,18 @@ export class PrCodeSnippetRepository implements CodeSnippetRepository {
 
     return codeId;
   }
+
+  async findUserIdByCodeId(id: number): Promise<string | undefined | null> {
+    const result = await this.prisma.codeSnippet.findUnique({
+      where: { id },
+      select: {
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    return result?.user.id;
+  }
 }

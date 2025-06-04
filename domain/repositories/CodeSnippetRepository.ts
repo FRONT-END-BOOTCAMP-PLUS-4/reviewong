@@ -90,4 +90,11 @@ export interface CodeSnippetRepository {
    * @returns 코드 스니펫 객체 또는 null
    */
   findDailyChallenge(currentUserId?: string): Promise<CodeSnippetWithRelations | null>;
+
+  /**
+   * 코드 스니펫의 작성자 ID 조회
+   * @param codeId - 코드 스니펫 ID
+   * @returns 작성자 ID 또는 null
+   */
+  findUserIdByCodeId(id: number): Promise<string | undefined | null>;
 }
