@@ -13,7 +13,7 @@ export default function CreateCodeButton({
   return (
     <Button variant={variant} size={size} className="gap-1 cursor-pointer">
       <PlusCircle className="h-4 w-4" />
-      코드 작성
+      <span className="font-bold">코드 작성</span>
     </Button>
   );
 }

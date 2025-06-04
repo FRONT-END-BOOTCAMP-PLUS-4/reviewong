@@ -3,6 +3,7 @@ import DailyChallengeCard from './components/DailyChallengeCard';
 import Link from 'next/link';
 import CreateCodeButton from './components/CreateCodeButton';
 import RankingListContainer from './containers/RankingListContainer';
+import AnimatedHeadline from './components/AnimatedHeadline';
 
 export default function Home() {
   return (
@@ -21,13 +22,7 @@ export default function Home() {
             </div>
           </div>
 
-          <h1 className="text-4xl font-extrabold tracking-tight">
-            리뷰엉이, 당신의 코드를 기다립니다
-          </h1>
-
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            코드 리뷰를 통해 더 나은 서비스와 더 나은 코드를 만들어보세요.
-          </p>
+          <AnimatedHeadline />
 
           <div className="flex justify-center mt-4">
             <Link href="/codes/create">
