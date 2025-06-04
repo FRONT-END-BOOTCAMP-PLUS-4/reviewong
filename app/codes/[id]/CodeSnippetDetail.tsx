@@ -39,7 +39,7 @@ export default function CodeSnippetDetail({
         <div className="flex items-center justify-between text-gray-500">
           {/* 작성자 정보 */}
           <div className="flex items-center space-x-2">
-            <ProfileImage size={40} src={profileImage} alt="프로필 이미지" />
+            <ProfileImage size={40} src={profileImage} nickname={author} alt="프로필 이미지" />
             <span>{author}</span>
             <GradeBadge grade={grade} />
             <span>•</span>
