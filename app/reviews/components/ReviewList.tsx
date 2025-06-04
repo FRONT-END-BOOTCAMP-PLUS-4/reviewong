@@ -102,7 +102,7 @@ const ReviewList = ({
             <div className="flex flex-row items-center gap-4 mt-2 cursor-pointer ">
               <ThumbsUp
                 onClick={() => onClickLike?.(review.id, Boolean(review.isLiked), review.user.id)} //undifined일 경우 false로 처리
-                className={`m-3 w-5 ${review.isLiked ? 'fill-red-500 text-gray-500' : 'text-gray-500'}`}
+                className={`m-3 w-5 ${review.isLiked ? 'text-yellow-400' : 'text-gray-500'}`}
               />
               <div className="ml-[-1rem] text-gray-500 font-bold">{review.counts.likes ?? 0}</div>
               {commentButton && (
