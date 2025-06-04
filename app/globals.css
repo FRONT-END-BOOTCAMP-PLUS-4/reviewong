@@ -120,10 +120,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'NanumSquare', sans-serif;
   }
-}
-body {
-  font-family: 'NanumSquare', sans-serif;
 }
 .react-calendar-heatmap-month-label {
   font-size: 9px;
