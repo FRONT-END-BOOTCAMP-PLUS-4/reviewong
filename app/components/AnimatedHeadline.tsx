@@ -9,7 +9,6 @@ const SUBTEXT = '코드 리뷰를 통해 더 나은 서비스와 더 나은 코�
 export default function AnimatedHeadline() {
   const [headlineText, setHeadlineText] = useState('');
   const [headlineIndex, setHeadlineIndex] = useState(0);
-  const [subText, setSubText] = useState('');
   const [subIndex, setSubIndex] = useState(0);
   const [headlineDone, setHeadlineDone] = useState(false);
 
@@ -28,7 +27,6 @@ export default function AnimatedHeadline() {
   useEffect(() => {
     if (headlineDone && subIndex < SUBTEXT.length) {
       const timeout = setTimeout(() => {
-        setSubText((prev) => prev + SUBTEXT[subIndex]);
         setSubIndex((prev) => prev + 1);
       }, 20);
       return () => clearTimeout(timeout);
