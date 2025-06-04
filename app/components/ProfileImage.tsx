@@ -1,6 +1,4 @@
-// ProfileImage.tsx
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 interface ProfileImageProps {
   src?: string;
@@ -18,11 +16,9 @@ export default function ProfileImage({
   redirectUserPage = true,
   nickname = '',
 }: ProfileImageProps) {
-  const router = useRouter();
-
   const handleClickImage = () => {
     if (redirectUserPage) {
-      router.push(`/users/${nickname}`);
+      window.location.href = `/users/${nickname}`;
     }
   };
 
