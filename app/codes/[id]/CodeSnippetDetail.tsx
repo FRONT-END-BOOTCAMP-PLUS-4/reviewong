@@ -33,7 +33,7 @@ export default function CodeSnippetDetail({
 }: CodeSnippetDetailProps) {
   const [showOwnReview, setShowOwnReview] = useState<boolean>(false);
   return (
-    <div className="p-4">
+    <div className="py-4">
       <div className="mb-6">
         <h1 className="text-xl font-bold mb-2">{title}</h1>
         <div className="flex items-center justify-between text-gray-500">
