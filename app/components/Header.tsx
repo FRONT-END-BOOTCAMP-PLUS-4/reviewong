@@ -28,7 +28,7 @@ export default function Header() {
               </Link>
 
               <Link href="/codes">
-                <Button size="sm" className="gap-1 cursor-pointer">
+                <Button size="sm" className="text-black gap-1 cursor-pointer font-bold">
                   <CodeXml className="h-4 w-4" />
                   코드 리스트 보기
                 </Button>
