@@ -15,7 +15,7 @@ export default async function DailyChallengeCard() {
     }
 
     return (
-      <div className="border border-gray-200 rounded-lg shadow-md p-6">
+      <div className="border border-gray-200 rounded-xl shadow-md p-6">
         <h2 className="text-2xl font-bold mb-4 border-b pb-4">오늘의 코드 리뷰</h2>
         {data.codeSnippet ? (
           <>
