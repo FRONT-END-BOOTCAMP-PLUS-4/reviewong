@@ -55,7 +55,7 @@ export function useCodeSnippetEditForm(id: string) {
         throw new Error('Failed to update code snippet');
       }
 
-      router.push(`/code/${id}`);
+      router.push(`/codes/${id}`);
     } catch (err) {
       console.error('Error updating code snippet:', err);
     }
