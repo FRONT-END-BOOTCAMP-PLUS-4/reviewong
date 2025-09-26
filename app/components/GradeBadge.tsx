@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
 const GRADE_MAP: Record<string, string> = {
   브론즈: 'bronze',
@@ -177,8 +178,10 @@ export default function GradeBadge({
         } ${className}`}
         onClick={handleClick}
       />
-
-      <GradeModal isOpen={isModalOpen} onClose={handleCloseModal} grade={grade} />
+      {createPortal(
+        <GradeModal isOpen={isModalOpen} onClose={handleCloseModal} grade={grade} />,
+        document.body
+      )}
     </>
   );
 }
