@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import { createPortal } from 'react-dom';
+import Portal from './Portal';
 
 const GRADE_MAP: Record<string, string> = {
   브론즈: 'bronze',
@@ -20,19 +20,7 @@ const GRADE_RANGES = [
 ];
 
 // 모달 컴포넌트
-function GradeModal({
-  isOpen,
-  onClose,
-  grade,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  grade: string;
-}) {
-  if (!isOpen) {
-    return null;
-  }
-
+function GradeModal({ onClose, grade }: { onClose: () => void; grade: string }) {
   return (
     <>
       <div
@@ -178,9 +166,10 @@ export default function GradeBadge({
         } ${className}`}
         onClick={handleClick}
       />
-      {createPortal(
-        <GradeModal isOpen={isModalOpen} onClose={handleCloseModal} grade={grade} />,
-        document.body
+      {isModalOpen && (
+        <Portal>
+          <GradeModal onClose={handleCloseModal} grade={grade} />
+        </Portal>
       )}
     </>
   );
